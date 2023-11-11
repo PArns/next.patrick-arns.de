@@ -1,11 +1,56 @@
+import Desktop from "@/components/os/desktop";
+import Window from "@/components/os/window";
+
+import { createElement } from "react";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Patrick-Arns.de - Under construction
-        </p>
-      </div>
-    </main>
+    <Desktop>
+      <Window
+        sortIndex={0}
+        width="50%"
+        height="50%"
+        title="UNDER CONSTRUCTION!"
+        icon="/favicons/favicon-32x32.png"
+        isInitiallyOpen={true}
+      >
+        <div className="m-10">
+          Da GatsbbyJS leider beschlossen hat, das Hosting einzustellen und
+          meine Webseite aufgrund von Bildern etc. zu groß ist, um regulär
+          kompiliert zu werden, gibt es aktuell leider nur diesen Platzhalter
+          hier.
+          <br />
+          <br />
+          Aber bald gibt&apos;s hier wieder etwas zu sehen! Derweil könnt ihr dann
+          diesen neuen und noch sehr rudimentären Fenstermanager bestaunen ;)
+          <br />
+          <br />
+          Ich habe, nicht zuletzt aufgrund dessen, das alle Seiten in einem
+          iFrame dargestellt werden, beschlossen, die Seite komplett neu zu
+          schreiben!
+          <br />
+          <br />
+          <br />
+          Geduldet euch also noch ein bisschen, bald ist diese wieder, auch mit
+          DE/EN als Sprache, sowie vielen neuen Funktionen, wieder online ...
+        </div>
+      </Window>
+
+      <Window sortIndex={1} title="Window 2" icon="/favicons/favicon-32x32.png">
+        Hello World!
+      </Window>
+
+      {createElement(
+        Window,
+        {
+          title: "Das dritte Fenster!",
+          icon: "/favicons/favicon-32x32.png",
+          sortIndex: 3,
+        },
+        <div>
+          <b>Manually created!</b>
+        </div>
+      )}
+    </Desktop>
   );
 }
