@@ -10,12 +10,13 @@ export default function Home() {
         sortIndex={0}
         width="50%"
         height="50%"
+        
         title="UNDER CONSTRUCTION!"
         icon="/favicons/favicon-32x32.png"
         isInitiallyOpen={true}
       >
         <div className="m-10">
-          Da GatsbbyJS leider beschlossen hat, das Hosting einzustellen und
+          Da GatsbyJS leider beschlossen hat, das Hosting einzustellen und
           meine Webseite aufgrund von Bildern etc. zu groß ist, um regulär
           kompiliert zu werden, gibt es aktuell leider nur diesen Platzhalter
           hier.
