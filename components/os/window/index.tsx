@@ -122,6 +122,7 @@ export default class Window extends Component<WindowContract> {
           }}
           style={{ zIndex: this.state.zIndex }}
           onMouseDown={() => clickWindow(this)}
+          onResize={() => clickWindow(this)}
           ref={this.refRnd}
         >
           <div className="cursor-default flex flex-col h-full">
