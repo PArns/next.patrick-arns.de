@@ -112,8 +112,8 @@ export default class Window extends Component<WindowContract> {
           className={classes}
           enableResizing={resizing}
           bounds="parent"
-          minHeight={100}
-          minWidth={150}
+          minHeight={300}
+          minWidth={400}
           default={{
             x: 0,
             y: 0,
@@ -144,7 +144,9 @@ export default class Window extends Component<WindowContract> {
                 <div className="m-1">X</div>
               </div>
             </div>
-            <div className="w-auto flex flex-grow">{this.props.children}</div>
+            <div className="w-auto flex flex-grow overflow-y-auto">
+              {this.props.children}
+            </div>
           </div>
         </Rnd>
       );

@@ -74,7 +74,7 @@ function AppIcon({
     click(window);
   };
 
-  let activeButton = classNames("inline-flex rounded-full h-1 w-1 shadow-md", {
+  let activeButton = classNames("inline-flex rounded-full h-1.5 w-1.5 shadow-md", {
     "bg-gray-500": !window.state.active,
     "bg-sky-500": window.state.active,
     visible: window.state.visible,
