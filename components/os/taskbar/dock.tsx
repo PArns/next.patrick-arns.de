@@ -18,11 +18,12 @@ export default function Dock({
   windowsArray: any;
   click: Function;
 }) {
-  if (!Array.isArray(windowsArray)) {
-    return <></>;
+  let winArray = [];
+
+  if (Array.isArray(windowsArray)) {
+    const a = Array.from(windowsArray);
+    winArray = a.sort(compare);
   }
-  const a = Array.from(windowsArray);
-  const winArray = a.sort(compare);
 
   let mouseX = useMotionValue(Infinity);
 
@@ -33,7 +34,12 @@ export default function Dock({
       className="mx-auto flex h-16 items-end gap-4 rounded-2xl bg-gray-700/50 backdrop-blur-md px-4 pb-3"
     >
       {winArray.map((window) => (
-        <AppIcon mouseX={mouseX} window={window} click={click} />
+        <AppIcon
+          mouseX={mouseX}
+          window={window}
+          click={click}
+          key={window.props.title}
+        />
       ))}
     </motion.div>
   );
@@ -74,12 +80,15 @@ function AppIcon({
     click(window);
   };
 
-  let activeButton = classNames("inline-flex rounded-full h-1.5 w-1.5 shadow-md", {
-    "bg-gray-500": !window.state.active,
-    "bg-sky-500": window.state.active,
-    visible: window.state.visible,
-    invisible: !window.state.visible,
-  });
+  let activeButton = classNames(
+    "inline-flex rounded-full h-1.5 w-1.5 shadow-md",
+    {
+      "bg-gray-500": !window.state.active,
+      "bg-sky-500": window.state.active,
+      visible: window.state.visible,
+      invisible: !window.state.visible,
+    }
+  );
 
   return (
     <motion.button
