@@ -12,7 +12,7 @@ export default function Home() {
         height="50%"
         
         title="UNDER CONSTRUCTION!"
-        icon="/favicons/favicon-32x32.png"
+        icon="/appicons/sketch.png"
         isInitiallyOpen={true}
       >
         <div className="m-10">
@@ -37,7 +37,7 @@ export default function Home() {
         </div>
       </Window>
 
-      <Window sortIndex={1} title="Window 2" icon="/favicons/favicon-32x32.png">
+      <Window sortIndex={1} title="Window 2" icon="/appicons/blog.png">
         Hello World!
       </Window>
 
