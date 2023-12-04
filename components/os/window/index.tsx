@@ -131,7 +131,7 @@ export default class Window extends Component<WindowContract> {
                   src={this.props.icon}
                   width={20}
                   height={20}
-                  alt="Icon for this window"
+                  alt={this.props.title}
                 />
               </div>
               <div className="grow text-center cursor-move justify-center align-middle">

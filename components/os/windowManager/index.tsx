@@ -27,6 +27,7 @@ export function clickWindow(window: Window) {
 
 export function closeWindow(window: Window) {
   window.setVisibleState(false);
+  taskbarInstance.setWindows(windowArray);
 }
 
 export function openWindow(window: Window) {
