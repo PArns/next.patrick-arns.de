@@ -2,14 +2,21 @@ import Taskbar from "../taskbar";
 import Window from "../window";
 
 let windowArray = Array<Window>();
+let entryPath = "/";
+
+export function getEntryPath(appPathOnly: boolean) {
+  if (!appPathOnly) return entryPath;
+
+  const appPath = entryPath.split("/")[1];
+  return "/" + appPath;
+}
 
 export function registerWindow(window: Window) {
   if (!windowArray.includes(window)) {
     windowArray.push(window);
   } else return windowArray.indexOf(window);
 
-  if (taskbarInstance) 
-    taskbarInstance.setWindows(windowArray);
+  if (taskbarInstance) taskbarInstance.setWindows(windowArray);
 }
 
 export function clickWindow(window: Window) {
@@ -21,13 +28,16 @@ export function clickWindow(window: Window) {
   });
 
   window.setVisibleState(true);
-
   taskbarInstance.setWindows(windowArray);
+
+  setTimeout(syncBrowserWithActiveWindow, 10);
 }
 
 export function closeWindow(window: Window) {
   window.setVisibleState(false);
+
   taskbarInstance.setWindows(windowArray);
+  setTimeout(syncBrowserWithActiveWindow, 10);
 }
 
 export function openWindow(window: Window) {
@@ -40,8 +50,10 @@ let taskbarInstance: Taskbar;
 export function registerTaskBar(taskbar: Taskbar) {
   taskbarInstance = taskbar;
 
-  if (windowArray && windowArray.length)
+  if (windowArray && windowArray.length) {
     taskbarInstance.setWindows(windowArray);
+    setTimeout(syncBrowserWithActiveWindow, 10);
+  }
 }
 
 function moveElementToStart<T>(items: T[], item: T): T[] {
@@ -55,3 +67,39 @@ function moveElementToStart<T>(items: T[], item: T): T[] {
 
   return res;
 }
+
+function syncBrowserWithActiveWindow() {
+  let windowFound = false;
+  windowArray.forEach(function (window, i) {
+    if (window.state.active) {
+      setUriFromActiveWindow(window);
+      windowFound = true;
+      return;
+    }
+  });
+
+  if (!windowFound) setUriFromActiveWindow(null);
+}
+
+function setUriFromActiveWindow(activeWindow: Window | null) {
+  if (activeWindow == null) {
+    checkAndUpdateUri("/");
+    return;
+  }
+
+  checkAndUpdateUri(activeWindow.state.route);
+}
+
+function checkAndUpdateUri(newUri: string) {
+  if (window.location.pathname !== newUri)
+    window.history.pushState(null, "", newUri);
+}
+
+function start() {
+  if (typeof window === "undefined") return;
+
+  console.log("START!", window.location.pathname);
+  entryPath = window.location.pathname;
+}
+
+start();

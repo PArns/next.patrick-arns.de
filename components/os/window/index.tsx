@@ -6,29 +6,50 @@ import { Rnd } from "react-rnd";
 import classNames from "classnames";
 import Image from "next/image";
 
-import { registerWindow, clickWindow, closeWindow } from "../windowManager";
+import {
+  registerWindow,
+  clickWindow,
+  closeWindow,
+  getEntryPath,
+} from "../windowManager";
+
+function shouldBeVisible(thisWindow: Window) {
+  const entryUri = getEntryPath(true);
+  if (entryUri === thisWindow.props.route) return true;
+
+  const visible =
+    thisWindow.props.isInitiallyOpen === undefined
+      ? false
+      : thisWindow.props.isInitiallyOpen;
+
+  return entryUri === "/" ? visible : false;
+}
+
+function shouldBeActive(thisWindow: Window) {
+  const entryUri = getEntryPath(true);
+  if (entryUri === thisWindow.props.route) return true;
+}
 
 type WindowContract = {
   title: string;
   icon: string;
+  sortIndex: number;
+  route: string;
   width?: string;
   height?: string;
   center?: boolean;
-  sortIndex: number;
   isInitiallyOpen?: boolean;
   children?: React.ReactNode;
 };
 
 export default class Window extends Component<WindowContract> {
   state = {
-    zIndex: 0,
     title: this.props.title,
-    active: false,
+    route: this.props.route,
+    zIndex: 0,
+    visible: shouldBeVisible(this),
+    active: shouldBeActive(this),
     center: this.props.center === undefined ? true : this.props.center,
-    visible:
-      this.props.isInitiallyOpen === undefined
-        ? false
-        : this.props.isInitiallyOpen,
   };
 
   rnd!: Rnd;
@@ -73,6 +94,12 @@ export default class Window extends Component<WindowContract> {
   setVisibleState(visibleState: boolean) {
     this.setState({
       visible: visibleState,
+    });
+  }
+
+  setRoute(route: string) {
+    this.setState({
+      route: route,
     });
   }
 

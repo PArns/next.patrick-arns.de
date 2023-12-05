@@ -6,6 +6,11 @@ import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
 
+import Desktop from "@/components/os/desktop";
+
+import UnderConstruction from "./_apps/underconstruction";
+import Blog from "./_apps/blog";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,7 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={classes}>
-        <div>{children}</div>
+        <Desktop>
+          <Blog />
+          <UnderConstruction />
+        </Desktop>
         <Analytics />
       </body>
     </html>
