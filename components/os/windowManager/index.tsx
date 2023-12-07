@@ -6,9 +6,25 @@ let entryPath = "/";
 
 export function getEntryPath(appPathOnly: boolean) {
   if (!appPathOnly) return entryPath;
+  return getAppRoute(entryPath);
+}
 
-  const appPath = entryPath.split("/")[1];
+function getAppRoute(fullPath: string) {
+  const appPath = fullPath.split("/")[1];
   return "/" + appPath;
+}
+
+function getAppByRoute(appRoute: string) {
+  let appForRoute = null;
+
+  windowArray.forEach(function (window, i) {
+    if (window.props.route === appRoute) {
+      appForRoute = window;
+      return;
+    }
+  });
+
+  return appForRoute;
 }
 
 export function registerWindow(window: Window) {
@@ -95,11 +111,22 @@ function checkAndUpdateUri(newUri: string) {
     window.history.pushState(null, "", newUri);
 }
 
+function registerBackNavigationHandler() {
+  window.addEventListener("popstate", () => {
+    const backApp = getAppRoute(window.location.pathname);
+    const appWindow = getAppByRoute(backApp);
+
+    if (appWindow != null) clickWindow(appWindow);
+  });
+}
+
 function start() {
   if (typeof window === "undefined") return;
 
   console.log("START!", window.location.pathname);
   entryPath = window.location.pathname;
+
+  registerBackNavigationHandler();
 }
 
 start();
