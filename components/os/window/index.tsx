@@ -13,24 +13,24 @@ import {
   getEntryPath,
 } from "../windowManager";
 
-function shouldBeVisible(thisWindow: Window) {
+export function shouldBeVisible(windowProperties: Readonly<WindowContract>) {
   const entryUri = getEntryPath(true);
-  if (entryUri === thisWindow.props.route) return true;
+  if (entryUri === windowProperties.route) return true;
 
   const visible =
-    thisWindow.props.isInitiallyOpen === undefined
+    windowProperties.isInitiallyOpen === undefined
       ? false
-      : thisWindow.props.isInitiallyOpen;
+      : windowProperties.isInitiallyOpen;
 
   return entryUri === "/" ? visible : false;
 }
 
-function shouldBeActive(thisWindow: Window) {
+export function shouldBeActive(windowProperties: Readonly<WindowContract>) {
   const entryUri = getEntryPath(true);
-  if (entryUri === thisWindow.props.route) return true;
+  if (entryUri === windowProperties.route) return true;
 }
 
-type WindowContract = {
+export type WindowContract = {
   title: string;
   icon: string;
   sortIndex: number;
@@ -47,8 +47,8 @@ export default class Window extends Component<WindowContract> {
     title: this.props.title,
     route: this.props.route,
     zIndex: 0,
-    visible: shouldBeVisible(this),
-    active: shouldBeActive(this),
+    visible: shouldBeVisible(this.props),
+    active: shouldBeActive(this.props),
     center: this.props.center === undefined ? true : this.props.center,
   };
 

@@ -1,18 +1,16 @@
-import Window from "@/components/os/window";
+"use client";
+
+import { IFrameWindow } from "@/components/os/iframe-window";
 
 export default function Blog() {
   return (
-    <Window
+    <IFrameWindow
       sortIndex={1}
       width="50%"
       height="50%"
       route="/blog"
       title="Blog"
       icon="/appicons/blog.png"
-    >
-      <div className="m-10">
-       BLOG!
-      </div>
-    </Window>
+    ></IFrameWindow>
   );
 }
