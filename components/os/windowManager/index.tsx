@@ -124,7 +124,12 @@ function start() {
   if (typeof window === "undefined") return;
 
   console.log("START!", window.location.pathname);
-  entryPath = window.location.pathname;
+
+  if (window.location.hash) {
+    entryPath = window.location.hash;
+  } else {
+    entryPath = window.location.pathname;
+  }
 
   registerBackNavigationHandler();
 }
