@@ -8,6 +8,6 @@ interface ContentfulImageAssetProps {
 }
 
 export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
-  const assetSrc = props.asset.fields.file.url;
+  const assetSrc = props?.asset?.fields?.file?.url;
   return <ContentfulImage src={assetSrc} {...props} />;
 }

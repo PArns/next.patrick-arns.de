@@ -1,14 +1,59 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { TypeBackgroundImagesFields } from "@/api/types";
+import ContentfulImageAsset from "@/components/contentful/image-asset";
 
 import Taskbar from "../taskbar";
 
-export default function Desktop({ children }: { children: React.ReactNode }) {
+const randomGenerator = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+export default function Desktop({
+  children,
+  backgroundImages,
+}: {
+  children: React.ReactNode;
+  backgroundImages: TypeBackgroundImagesFields[];
+}) {
+  const [background, setBackground] = useState<TypeBackgroundImagesFields>();
+
+  const bgImage = {
+    pointerEvents: "none",
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    zIndex: -1,
+    objectPosition: (
+      (background?.position || "center") as string
+    ).toLowerCase(),
+  };
+
+  function getRandomBackgroundImageData() {
+    const randomPosition = randomGenerator(0, backgroundImages.length - 1);
+    const background = backgroundImages[randomPosition];
+
+    return background;
+  }
+
+  useEffect(() => {
+    const backgroundImage = getRandomBackgroundImageData();
+    setBackground(backgroundImage);
+  }, [background]);
+
   return (
-    <div className="bg-red-900 w-screen h-screen flex flex-col">
+    <div className="w-screen h-screen flex flex-col">
+      <ContentfulImageAsset
+        asset={background?.image}
+        alt={background?.name}
+        width={1024}
+        height={1024}
+        style={bgImage}
+      />
       <div className="flex-none">Patrick-Arns.de</div>
-      <div className="flex-grow">
-        {children}
-      </div>
+      <div className="flex-grow">{children}</div>
       <div className="flex-none">
         <Taskbar />
       </div>
