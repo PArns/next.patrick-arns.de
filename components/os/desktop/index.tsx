@@ -5,6 +5,7 @@ import { TypeBackgroundImagesFields } from "@/api/types";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 
 import Taskbar from "../taskbar";
+import TitleBar from "../titlebar";
 
 const randomGenerator = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -13,9 +14,11 @@ const randomGenerator = (min: number, max: number) => {
 export default function Desktop({
   children,
   backgroundImages,
+  pageName,
 }: {
   children: React.ReactNode;
   backgroundImages: TypeBackgroundImagesFields[];
+  pageName: string;
 }) {
   const [background, setBackground] = useState<TypeBackgroundImagesFields>();
 
@@ -41,18 +44,20 @@ export default function Desktop({
   useEffect(() => {
     const backgroundImage = getRandomBackgroundImageData();
     setBackground(backgroundImage);
-  }, [background]);
+  }, [background, getRandomBackgroundImageData]);
 
   return (
     <div className="w-screen h-screen flex flex-col">
       <ContentfulImageAsset
         asset={background?.image}
         alt={background?.name}
-        width={1024}
-        height={1024}
+        width={1500}
+        height={1500}
         style={bgImage}
       />
-      <div className="flex-none">Patrick-Arns.de</div>
+      <div className="flex-none">
+        <TitleBar pageName={pageName} />
+      </div>
       <div className="flex-grow">{children}</div>
       <div className="flex-none">
         <Taskbar />

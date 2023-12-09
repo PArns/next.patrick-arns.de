@@ -8,7 +8,7 @@ import { GetBackgroundImages } from "@/api/provider/background-image-provider";
 export default async function AppLayout() {
   const backgroundImages = await GetBackgroundImages();
   return (
-    <Desktop backgroundImages={backgroundImages}>
+    <Desktop backgroundImages={backgroundImages} pageName="Patrick-Arns.de">
       <Blog />
       <UnderConstruction />
     </Desktop>
