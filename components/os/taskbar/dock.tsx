@@ -1,3 +1,5 @@
+"use client";
+
 import {
   MotionValue,
   motion,
@@ -5,7 +7,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { useRef, MouseEvent } from "react";
+import { useRef, useEffect, MouseEvent } from "react";
 
 import Window from "./../window";
 import Image from "next/image";
@@ -66,6 +68,14 @@ function AppIcon({
 }) {
   let ref = useRef<HTMLButtonElement>(null);
 
+  useEffect(() => {
+    const init = async () => {
+      const { Tooltip, initTE } = await import("tw-elements");
+      initTE({ Tooltip });
+    };
+    init();
+  }, []);
+
   let distance = useTransform(mouseX, (val) => {
     let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
 
@@ -95,8 +105,9 @@ function AppIcon({
       ref={ref}
       style={{ width }}
       className="aspect-square w-10"
-      title={window.props.title}
       onClick={handleMouseEvent}
+      data-te-toggle="tooltip"
+      title={window.state.title}
     >
       <div className="flex flex-col">
         <div className="-mt-3">

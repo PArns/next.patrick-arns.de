@@ -20,7 +20,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-rnd": "^10.4.1",
-    "state-pool": "^0.10.0"
+    "state-pool": "^0.10.0",
+    "tw-elements": "^1.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
