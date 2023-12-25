@@ -32,10 +32,12 @@ export default class IconContainer extends Component {
     }
 
     return (
-      <div className="flex flex-col m-4 gap-4">
+      <div className="flex h-full w-min flex-col flex-wrap m-4 gap-4">
         {winArray.map((window) => (
           <DesktopIcon
-            window={window}
+            icon={window.props.icon}
+            title={window.props.title}
+            key={window.props.title}
             click={() => {
               clickWindow(window);
             }}
@@ -46,7 +48,15 @@ export default class IconContainer extends Component {
   }
 }
 
-function DesktopIcon({ window, click }: { window: Window; click: Function }) {
+function DesktopIcon({
+  icon,
+  title,
+  click,
+}: {
+  icon: string;
+  title: string;
+  click: Function;
+}) {
   const handleMouseEvent = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     click(window);
@@ -54,20 +64,22 @@ function DesktopIcon({ window, click }: { window: Window; click: Function }) {
 
   return (
     <button
-      className="hover:bg-white/50 bg-white/20 border border-white/20 w-28 flex flex-col backdrop-blur-lg rounded-lg p-2"
+      className="w-28 p-1 select-none rounded-md border border-transparent py-2 text-white transition duration-200 ease-in-out hover:border-sky-100 hover:bg-sky-100/50 hover:backdrop-blur-md dark:hover:border-gray-400 dark:hover:bg-gray-800/50"
       onClick={handleMouseEvent}
     >
-      <div className="flex justify-center items-center w-full mb-1">
+      <div className="flex justify-center items-center mb-1">
         <Image
-          src={window.props.icon}
-          width={60}
-          height={60}
-          alt={window.props.title}
-          className="object-contain"
+          src={icon}
+          width={48}
+          height={48}
+          alt={title}
+          className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
         />
       </div>
-      <div className="justify-center items-center w-full">
-        <p className="text-ellipsis overflow-hidden">{window.props.title}</p>
+      <div className="justify-center items-center">
+        <p className="text-ellipsis overflow-hidden rop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+          {title}
+        </p>
       </div>
     </button>
   );
