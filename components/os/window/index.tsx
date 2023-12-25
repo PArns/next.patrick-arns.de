@@ -39,6 +39,7 @@ export type WindowContract = {
   height?: string;
   center?: boolean;
   isInitiallyOpen?: boolean;
+  hasDesktopIcon?: boolean;
   children?: React.ReactNode;
 };
 

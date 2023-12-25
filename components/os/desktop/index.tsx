@@ -6,6 +6,7 @@ import ContentfulImageAsset from "@/components/contentful/image-asset";
 
 import Taskbar from "../taskbar";
 import TitleBar from "../titlebar";
+import IconContainer from "../icon-container";
 
 const randomGenerator = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -58,7 +59,10 @@ export default function Desktop({
       <div className="flex-none">
         <TitleBar pageName={pageName} />
       </div>
-      <div className="flex-grow">{children}</div>
+      <div className="flex-grow">
+        <IconContainer />
+        {children}
+      </div>
       <div className="flex-none">
         <Taskbar />
       </div>

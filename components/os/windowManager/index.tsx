@@ -1,8 +1,14 @@
 import Taskbar from "../taskbar";
 import Window from "../window";
+import IconContainer from "../icon-container";
+import TitleBar from "../titlebar";
 
 let windowArray = Array<Window>();
 let entryPath = "/";
+
+let taskbarInstance: Taskbar;
+let iconContainerInstance: IconContainer;
+let titleBarInstance: TitleBar;
 
 export function getEntryPath(appPathOnly: boolean) {
   if (!appPathOnly) return entryPath;
@@ -33,6 +39,7 @@ export function registerWindow(window: Window) {
   } else return windowArray.indexOf(window);
 
   if (taskbarInstance) taskbarInstance.setWindows(windowArray);
+  if (iconContainerInstance) iconContainerInstance.setWindows(windowArray);
 }
 
 export function clickWindow(window: Window) {
@@ -45,6 +52,7 @@ export function clickWindow(window: Window) {
 
   window.setVisibleState(true);
   taskbarInstance.setWindows(windowArray);
+  titleBarInstance.setActiveWindow(window);
 
   setTimeout(syncBrowserWithActiveWindow, 10);
 }
@@ -53,6 +61,8 @@ export function closeWindow(window: Window) {
   window.setVisibleState(false);
 
   taskbarInstance.setWindows(windowArray);
+  titleBarInstance.setActiveWindow(undefined);
+
   setTimeout(syncBrowserWithActiveWindow, 10);
 }
 
@@ -61,8 +71,6 @@ export function openWindow(window: Window) {
   clickWindow(window);
 }
 
-let taskbarInstance: Taskbar;
-
 export function registerTaskBar(taskbar: Taskbar) {
   taskbarInstance = taskbar;
 
@@ -70,6 +78,19 @@ export function registerTaskBar(taskbar: Taskbar) {
     taskbarInstance.setWindows(windowArray);
     setTimeout(syncBrowserWithActiveWindow, 10);
   }
+}
+
+export function registerDesktopIconContainer(iconContainer: IconContainer) {
+  iconContainerInstance = iconContainer;
+
+  if (windowArray && windowArray.length) {
+    iconContainerInstance.setWindows(windowArray);
+  }
+}
+
+export function registerTitleBar(titleBar: TitleBar) {
+  titleBarInstance = titleBar;
+  syncBrowserWithActiveWindow();
 }
 
 function moveElementToStart<T>(items: T[], item: T): T[] {
@@ -86,15 +107,22 @@ function moveElementToStart<T>(items: T[], item: T): T[] {
 
 function syncBrowserWithActiveWindow() {
   let windowFound = false;
+
   windowArray.forEach(function (window, i) {
     if (window.state.active) {
       setUriFromActiveWindow(window);
+
+      if (titleBarInstance) titleBarInstance.setActiveWindow(window);
+
       windowFound = true;
       return;
     }
   });
 
-  if (!windowFound) setUriFromActiveWindow(null);
+  if (!windowFound) {
+    setUriFromActiveWindow(null);
+    if (titleBarInstance) titleBarInstance.setActiveWindow(undefined);
+  }
 }
 
 function setUriFromActiveWindow(activeWindow: Window | null) {
@@ -122,8 +150,6 @@ function registerBackNavigationHandler() {
 
 function start() {
   if (typeof window === "undefined") return;
-
-  console.log("START!", window.location.pathname);
 
   if (window.location.hash) {
     entryPath = window.location.hash;

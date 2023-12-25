@@ -9,7 +9,6 @@ import { registerTaskBar, clickWindow } from "../windowManager";
 export default class Taskbar extends Component {
   state = {
     windowArray: Array<Window>,
-    activeWindow: Window,
   };
 
   componentDidMount(): void {
