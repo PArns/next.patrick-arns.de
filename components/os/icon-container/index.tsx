@@ -1,12 +1,17 @@
 "use client";
 
-import React, { Component, MouseEvent } from "react";
+import React, { Component } from "react";
 import Window from "../window";
-import Image from "next/image";
+import DesktopIcon from "./desktop-icon";
 
 import { registerDesktopIconContainer, clickWindow } from "../windowManager";
+import { TypeSocialMediaLinkFields } from "@/api/types";
 
-export default class IconContainer extends Component {
+export type IconContainerContract = {
+  socialMediaLinks?: TypeSocialMediaLinkFields[];
+};
+
+export default class IconContainer extends Component<IconContainerContract> {
   state = {
     windowArray: Array<Window>,
   };
@@ -24,11 +29,18 @@ export default class IconContainer extends Component {
   }
 
   render() {
-    let winArray = [];
+    let winArray: Window[] = [];
 
     if (Array.isArray(this.state.windowArray)) {
       const a = Array.from(this.state.windowArray);
       winArray = a.sort(compare);
+    }
+
+    let socialMediaLinkArray: TypeSocialMediaLinkFields[] = [];
+
+    if (Array.isArray(this.props.socialMediaLinks)) {
+      const a = Array.from(this.props.socialMediaLinks);
+      socialMediaLinkArray = a.sort(socialMediaLinkCompare);
     }
 
     return (
@@ -43,46 +55,20 @@ export default class IconContainer extends Component {
             }}
           />
         ))}
+
+        {socialMediaLinkArray.map((link) => (
+          <DesktopIcon
+            contentfulIcon={link.icon}
+            title={link.name?.toString() as string}
+            key={link.name?.toString() as string}
+            click={() => {
+              window.open(link.link?.toString(), "_blank");
+            }}
+          />
+        ))}
       </div>
     );
   }
-}
-
-function DesktopIcon({
-  icon,
-  title,
-  click,
-}: {
-  icon: string;
-  title: string;
-  click: Function;
-}) {
-  const handleMouseEvent = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    click(window);
-  };
-
-  return (
-    <button
-      className="w-28 p-1 select-none rounded-md border border-transparent py-2 text-white transition duration-200 ease-in-out hover:border-sky-100 hover:bg-sky-100/50 hover:backdrop-blur-md dark:hover:border-gray-400 dark:hover:bg-gray-800/50"
-      onClick={handleMouseEvent}
-    >
-      <div className="flex justify-center items-center mb-1">
-        <Image
-          src={icon}
-          width={48}
-          height={48}
-          alt={title}
-          className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
-        />
-      </div>
-      <div className="justify-center items-center">
-        <p className="text-ellipsis overflow-hidden rop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-          {title}
-        </p>
-      </div>
-    </button>
-  );
 }
 
 function compare(a: Window, b: Window) {
@@ -90,6 +76,19 @@ function compare(a: Window, b: Window) {
     return -1;
   }
   if (a.props.sortIndex > b.props.sortIndex) {
+    return 1;
+  }
+  return 0;
+}
+
+function socialMediaLinkCompare(
+  a: TypeSocialMediaLinkFields,
+  b: TypeSocialMediaLinkFields
+) {
+  if (a.order && b.order && a.order < b.order) {
+    return -1;
+  }
+  if (a.order && b.order && a.order > b.order) {
     return 1;
   }
   return 0;

@@ -1,7 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { TypeBackgroundImagesFields } from "@/api/types";
+import {
+  TypeBackgroundImagesFields,
+  TypeSocialMediaLinkFields,
+} from "@/api/types";
+
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 
 import Taskbar from "../taskbar";
@@ -15,10 +19,12 @@ const randomGenerator = (min: number, max: number) => {
 export default function Desktop({
   children,
   backgroundImages,
+  socialMediaLinks,
   pageName,
 }: {
   children: React.ReactNode;
   backgroundImages: TypeBackgroundImagesFields[];
+  socialMediaLinks?: TypeSocialMediaLinkFields[];
   pageName: string;
 }) {
   const [background, setBackground] = useState<TypeBackgroundImagesFields>();
@@ -60,7 +66,7 @@ export default function Desktop({
         <TitleBar pageName={pageName} />
       </div>
       <div className="flex-grow">
-        <IconContainer />
+        <IconContainer socialMediaLinks={socialMediaLinks} />
         {children}
       </div>
       <div className="flex-none">
