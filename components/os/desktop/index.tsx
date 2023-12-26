@@ -70,7 +70,7 @@ export default function Desktop({
         {children}
       </div>
       <div className="flex-none">
-        <Taskbar />
+        <Taskbar socialMediaLinks={socialMediaLinks} />
       </div>
     </div>
   );
