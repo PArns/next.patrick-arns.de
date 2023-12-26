@@ -9,15 +9,17 @@ import ContentfulImageAsset from "@/components/contentful/image-asset";
 export default function SocialMediaIcon({
   mouseX,
   click,
+  href,
   name,
   contentfulAsset,
 }: {
   mouseX: MotionValue;
-  click: Function;
+  click?: Function;
+  href: string;
   name: string;
   contentfulAsset: any;
 }) {
-  let ref = useRef<HTMLButtonElement>(null);
+  let ref = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const init = async () => {
@@ -36,14 +38,20 @@ export default function SocialMediaIcon({
   let widthSync = useTransform(distance, [-150, 0, 150], [40, 100, 40]);
   let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
 
-  const handleMouseEvent = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleMouseEvent = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    click(window);
+
+    if (click) {
+      click();
+    } else if (href) {
+      window.open(href, "_blank");
+    }
   };
 
   return (
-    <motion.button
+    <motion.a
       ref={ref}
+      href={href}
       style={{ width }}
       className="aspect-square w-10"
       onClick={handleMouseEvent}
@@ -51,7 +59,7 @@ export default function SocialMediaIcon({
       title={name}
     >
       <div className="flex flex-col">
-        <div className="-mt-3">
+        <div>
           <ContentfulImageAsset
             asset={contentfulAsset}
             width={128}
@@ -60,8 +68,7 @@ export default function SocialMediaIcon({
             className="object-contain"
           />
         </div>
-        <div className="h-1 -mt-2"></div>
       </div>
-    </motion.button>
+    </motion.a>
   );
 }

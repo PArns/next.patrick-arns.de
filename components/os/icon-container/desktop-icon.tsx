@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { MouseEvent, useEffect } from "react";
 import Image from "next/image";
@@ -10,12 +10,14 @@ export default function DesktopIcon({
   name,
   title,
   click,
+  href,
 }: {
   icon?: string;
   contentfulIcon?: any;
   name: string;
   title?: string;
-  click: Function;
+  click?: Function;
+  href?: string;
 }) {
   useEffect(() => {
     const init = async () => {
@@ -25,16 +27,22 @@ export default function DesktopIcon({
     init();
   }, []);
 
-  const handleMouseEvent = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleMouseEvent = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    click(window);
+
+    if (click) {
+      click();
+    } else if (href) {
+      window.open(href, "_blank");
+    }
   };
 
   return (
-    <button
-      className="w-28 h-28 p-1 select-none rounded-md border border-transparent py-2 text-white transition duration-200 ease-in-out hover:border-sky-100 hover:bg-sky-100/50 hover:backdrop-blur-md dark:hover:border-gray-400 dark:hover:bg-gray-800/50"
+    <a
+      className="text-center align-middle w-28 h-22 p-1 select-none rounded-md border border-transparent py-2 text-white transition duration-200 ease-in-out hover:border-sky-100 hover:bg-sky-100/50 hover:backdrop-blur-md dark:hover:border-gray-400 dark:hover:bg-gray-800/50"
       data-te-toggle="tooltip"
       title={title}
+      href={href}
       onClick={handleMouseEvent}
     >
       <div className="flex justify-center items-center mb-1">
@@ -61,6 +69,6 @@ export default function DesktopIcon({
           {name}
         </p>
       </div>
-    </button>
+    </a>
   );
 }

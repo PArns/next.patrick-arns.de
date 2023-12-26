@@ -57,9 +57,7 @@ export default function Dock({
         <SocialMediaIcon
           mouseX={mouseX}
           contentfulAsset={link.icon}
-          click={() => {
-            window.open(link.link?.toString(), "_blank");
-          }}
+          href={link.link?.toString() as string}
           name={link.name?.toString() as string}
           key={link.name?.toString() as string}
         />

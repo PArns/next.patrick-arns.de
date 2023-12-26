@@ -48,8 +48,9 @@ export default class IconContainer extends Component<IconContainerContract> {
         {winArray.map((window) => (
           <DesktopIcon
             icon={window.props.icon}
-            name={window.props.title}
-            key={window.props.title}
+            name={window.state.title}
+            key={window.state.title}
+            href={window.state.route}
             click={() => {
               clickWindow(window);
             }}
@@ -62,9 +63,7 @@ export default class IconContainer extends Component<IconContainerContract> {
             name={link.name?.toString() as string}
             title={link.title?.toString() as string}
             key={link.name?.toString() as string}
-            click={() => {
-              window.open(link.link?.toString(), "_blank");
-            }}
+            href={link.link?.toString() as string}
           />
         ))}
       </div>

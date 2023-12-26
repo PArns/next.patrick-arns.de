@@ -21,7 +21,7 @@ export default function AppIcon({
     window: Window;
     click: Function;
   }) {
-    let ref = useRef<HTMLButtonElement>(null);
+    let ref = useRef<HTMLAnchorElement>(null);
   
     useEffect(() => {
       const init = async () => {
@@ -40,7 +40,7 @@ export default function AppIcon({
     let widthSync = useTransform(distance, [-150, 0, 150], [40, 100, 40]);
     let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
   
-    const handleMouseEvent = (e: MouseEvent<HTMLButtonElement>) => {
+    const handleMouseEvent = (e: MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
       click(window);
     };
@@ -56,16 +56,17 @@ export default function AppIcon({
     );
   
     return (
-      <motion.button
+      <motion.a
         ref={ref}
         style={{ width }}
-        className="aspect-square w-10"
+        className="aspect-square w-10 text-center"
         onClick={handleMouseEvent}
+        href={window.state.route}
         data-te-toggle="tooltip"
         title={window.state.title}
       >
         <div className="flex flex-col">
-          <div className="-mt-3">
+          <div className="-mt-1">
             <Image
               src={window.props.icon}
               width={128}
@@ -78,7 +79,7 @@ export default function AppIcon({
             <span className={activeButton}></span>
           </div>
         </div>
-      </motion.button>
+      </motion.a>
     );
   }
   
