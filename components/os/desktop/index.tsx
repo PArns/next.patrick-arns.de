@@ -55,13 +55,15 @@ export default function Desktop({
 
   return (
     <div className="w-screen h-screen flex flex-col">
-      <ContentfulImageAsset
-        asset={background?.image}
-        alt={background?.name}
-        width={1500}
-        height={1500}
-        style={bgImage}
-      />
+      {background && (
+        <ContentfulImageAsset
+          asset={background.image}
+          alt={background.name}
+          width={1500}
+          height={1500}
+          style={bgImage}
+        />
+      )}
       <div className="flex-none">
         <TitleBar pageName={pageName} />
       </div>
