@@ -6,6 +6,8 @@ import Clock from "../clock";
 
 import { registerTitleBar } from "../windowManager";
 
+import Image from "next/image";
+
 export type TitleBarContract = {
   pageName: string;
 };
@@ -14,6 +16,7 @@ export default class TitleBar extends Component<TitleBarContract> {
   state = {
     activeWindow: null,
     title: this.props.pageName,
+    appIcon: null,
   };
 
   componentDidMount(): void {
@@ -26,13 +29,16 @@ export default class TitleBar extends Component<TitleBarContract> {
     });
 
     let title = this.props.pageName;
+    let appIcon = null;
 
     if (activeWindow) {
       title = this.props.pageName + " - " + activeWindow.state.title;
+      appIcon = activeWindow.props.icon;
     }
 
     this.setState({
       title: title,
+      appIcon: appIcon,
     });
 
     if (typeof window !== "undefined") {
@@ -43,7 +49,22 @@ export default class TitleBar extends Component<TitleBarContract> {
   render() {
     return (
       <div className="backdrop-blur-lg bg-white/50 flex flex-row px-2 drop-shadow">
-        <div className="flex-none">{this.state.title}</div>
+        <div className="flex-none">
+          <div className="flex flex-row">
+            {this.state.appIcon && (
+              <div>
+                <Image
+                  src={this.state.appIcon}
+                  alt={this.state.title}
+                  width={20}
+                  height={20}
+                  className="pt-1 pr-1"
+                />
+              </div>
+            )}
+            <div>{this.state.title}</div>
+          </div>
+        </div>
         <div className="flex-grow"></div>
         <div className="flex-none">
           <Clock timeFormat="hh-mm" />
