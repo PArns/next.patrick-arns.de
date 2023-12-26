@@ -44,7 +44,7 @@ export default class IconContainer extends Component<IconContainerContract> {
     }
 
     return (
-      <div className="flex h-full w-min flex-col flex-wrap m-4 gap-4">
+      <div className="flex h-screen pb-16 absolute flex-col flex-wrap content-start m-4 gap-2">
         {winArray.map((window) => (
           <DesktopIcon
             icon={window.props.icon}

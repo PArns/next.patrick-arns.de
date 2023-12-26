@@ -65,7 +65,7 @@ export default function Desktop({
       <div className="flex-none">
         <TitleBar pageName={pageName} />
       </div>
-      <div className="flex-grow">
+      <div className="flex-grow flex">
         <IconContainer socialMediaLinks={socialMediaLinks} />
         {children}
       </div>
