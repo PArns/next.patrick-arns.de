@@ -109,7 +109,7 @@ function syncBrowserWithActiveWindow() {
   let windowFound = false;
 
   windowArray.forEach(function (window, i) {
-    if (window.state.active) {
+    if (window.state.active && window.state.visible) {
       setUriFromActiveWindow(window);
 
       if (titleBarInstance) titleBarInstance.setActiveWindow(window);
