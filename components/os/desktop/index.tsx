@@ -41,17 +41,17 @@ export default function Desktop({
     ).toLowerCase(),
   };
 
-  function getRandomBackgroundImageData() {
-    const randomPosition = randomGenerator(0, backgroundImages.length - 1);
-    const background = backgroundImages[randomPosition];
-
-    return background;
-  }
-
   useEffect(() => {
+    function getRandomBackgroundImageData() {
+      const randomPosition = randomGenerator(0, backgroundImages.length - 1);
+      const background = backgroundImages[randomPosition];
+
+      return background;
+    }
+
     const backgroundImage = getRandomBackgroundImageData();
     setBackground(backgroundImage);
-  }, [background, getRandomBackgroundImageData]);
+  }, [background, backgroundImages]);
 
   return (
     <div className="w-screen h-screen flex flex-col">
