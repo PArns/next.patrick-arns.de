@@ -50,7 +50,7 @@ export default function Dock({
       ))}
 
       {socialMediaLinkArray.length && (
-        <div className="w-0.5 h-full bg-slate-500 -m-2"></div>
+        <div className="mx-[0px] w-[1px] h-full bg-slate-500 -m-2"></div>
       )}
 
       {socialMediaLinkArray.map((link) => (
