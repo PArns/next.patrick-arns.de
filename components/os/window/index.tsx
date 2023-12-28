@@ -161,6 +161,7 @@ export default class Window extends Component<WindowContract> {
                   width={20}
                   height={20}
                   alt={this.props.title}
+                  className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
                 />
               </div>
               <div className="grow text-center cursor-move justify-center align-middle">

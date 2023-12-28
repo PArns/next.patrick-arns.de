@@ -29,7 +29,7 @@ export default class TitleBar extends Component<TitleBarContract> {
     });
 
     let title = this.props.pageName;
-    let appIcon = null;
+    let appIcon = "/favicons/favicon-32x32.png";
 
     if (activeWindow) {
       title = this.props.pageName + " - " + activeWindow.state.title;
@@ -58,7 +58,7 @@ export default class TitleBar extends Component<TitleBarContract> {
                   alt={this.state.title}
                   width={20}
                   height={20}
-                  className="pt-1 pr-1"
+                  className="pt-1 pr-1 drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
                 />
               </div>
             )}
