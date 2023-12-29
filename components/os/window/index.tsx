@@ -124,7 +124,6 @@ export default class Window extends Component<WindowContract> {
   }
 
   handleContainerClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    // Überprüft, ob das geklickte Element ein Link ist
     const target = event.target as HTMLElement;
     if (target && target.tagName === "A") {
       const href = (target as HTMLAnchorElement).getAttribute("href");

@@ -14,16 +14,6 @@ import IconContainer from "../icon-container";
 const randomGenerator = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
-// Moved outside the component for better performance
-const bgImageStyle = {
-  pointerEvents: "none",
-  position: "absolute",
-  width: "100%",
-  height: "100%",
-  objectFit: "cover",
-  zIndex: -1,
-};
-
 export default function Desktop({
   children,
   backgroundImages,
@@ -36,11 +26,6 @@ export default function Desktop({
   pageName: string;
 }) {
   const [background, setBackground] = useState<TypeBackgroundImagesFields>();
-
-  const getRandomBackgroundImageData = () => {
-    const randomPosition = randomGenerator(0, backgroundImages.length - 1);
-    return backgroundImages[randomPosition];
-  };
 
   const bgImage = {
     pointerEvents: "none",
@@ -55,9 +40,14 @@ export default function Desktop({
   };
 
   useEffect(() => {
+    const getRandomBackgroundImageData = () => {
+      const randomPosition = randomGenerator(0, backgroundImages.length - 1);
+      return backgroundImages[randomPosition];
+    };
+
     const backgroundImage = getRandomBackgroundImageData();
     setBackground(backgroundImage);
-  }, [backgroundImages]);
+  });
 
   return (
     <div className="w-screen h-screen flex flex-col">
