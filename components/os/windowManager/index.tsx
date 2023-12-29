@@ -36,8 +36,8 @@ function getAppByRoute(appRoute: string) {
 function isWindowAlreadyRegistered(window: Window): boolean {
   let isRegistered = false;
 
-  windowArray.forEach(function (registeredWindow, i) {
-    if (registeredWindow.props.sortIndex === window.props.sortIndex) {
+  windowArray.forEach(function (registeredWindow) {
+    if (registeredWindow.props.route === window.props.route) {
       isRegistered = true;
       return;
     }

@@ -7,13 +7,21 @@ import {
 } from "@/api/types";
 
 import ContentfulImageAsset from "@/components/contentful/image-asset";
-
 import Taskbar from "../taskbar";
 import TitleBar from "../titlebar";
 import IconContainer from "../icon-container";
 
-const randomGenerator = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+const randomGenerator = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
+// Moved outside the component for better performance
+const bgImageStyle = {
+  pointerEvents: "none",
+  position: "absolute",
+  width: "100%",
+  height: "100%",
+  objectFit: "cover",
+  zIndex: -1,
 };
 
 export default function Desktop({
@@ -29,6 +37,11 @@ export default function Desktop({
 }) {
   const [background, setBackground] = useState<TypeBackgroundImagesFields>();
 
+  const getRandomBackgroundImageData = () => {
+    const randomPosition = randomGenerator(0, backgroundImages.length - 1);
+    return backgroundImages[randomPosition];
+  };
+
   const bgImage = {
     pointerEvents: "none",
     position: "absolute",
@@ -42,16 +55,9 @@ export default function Desktop({
   };
 
   useEffect(() => {
-    function getRandomBackgroundImageData() {
-      const randomPosition = randomGenerator(0, backgroundImages.length - 1);
-      const background = backgroundImages[randomPosition];
-
-      return background;
-    }
-
     const backgroundImage = getRandomBackgroundImageData();
     setBackground(backgroundImage);
-  }, [background, backgroundImages]);
+  }, [backgroundImages]);
 
   return (
     <div className="w-screen h-screen flex flex-col">
