@@ -4,6 +4,8 @@ import { MouseEvent, useEffect } from "react";
 import Image from "next/image";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 
+import Link from "next/link";
+
 export default function DesktopIcon({
   icon,
   contentfulIcon,
@@ -38,11 +40,11 @@ export default function DesktopIcon({
   };
 
   return (
-    <a
+    <Link
       className="text-center align-middle w-28 h-22 p-1 select-none rounded-md border border-transparent py-2 text-white transition duration-200 ease-in-out hover:border-sky-100 hover:bg-sky-100/50 hover:backdrop-blur-md dark:hover:border-gray-400 dark:hover:bg-gray-800/50"
       data-te-toggle="tooltip"
       title={title}
-      href={href}
+      href={`${href}`}
       onClick={handleMouseEvent}
     >
       <div className="flex justify-center items-center mb-1">
@@ -70,6 +72,6 @@ export default function DesktopIcon({
           {name}
         </p>
       </div>
-    </a>
+    </Link>
   );
 }

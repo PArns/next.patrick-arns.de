@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Component } from "react";
+import React, { Component, useRef, useCallback } from "react";
 import { Rnd } from "react-rnd";
 
 import classNames from "classnames";
@@ -12,6 +12,8 @@ import {
   closeWindow,
   getEntryPath,
 } from "../windowManager";
+
+import dynamic from "next/dynamic";
 
 export function shouldBeVisible(windowProperties: Readonly<WindowContract>) {
   const entryUri = getEntryPath(true);
@@ -78,6 +80,15 @@ export default class Window extends Component<WindowContract> {
 
   componentDidMount(): void {
     registerWindow(this);
+    this.correntEntryRoute();
+  }
+
+  correntEntryRoute() {
+    const entryUri = getEntryPath(true);
+    const fullUri = getEntryPath(false);
+
+    if (entryUri !== this.props.route || entryUri === fullUri) return;
+    this.setRoute(fullUri);
   }
 
   setZIndex(newIndex: number) {
@@ -113,6 +124,16 @@ export default class Window extends Component<WindowContract> {
       title: title,
     });
   }
+
+  handleContainerClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    // Überprüft, ob das geklickte Element ein Link ist
+    const target = event.target as HTMLElement;
+    if (target && target.tagName === "A") {
+      const href = (target as HTMLAnchorElement).getAttribute("href");
+
+      if (href) this.setRoute(href);
+    }
+  };
 
   render() {
     const resizing = {
@@ -174,7 +195,10 @@ export default class Window extends Component<WindowContract> {
                 <div className="m-1">X</div>
               </div>
             </div>
-            <div className="w-auto flex flex-grow overflow-y-auto">
+            <div
+              className="w-auto flex flex-grow overflow-y-auto"
+              onClick={this.handleContainerClick}
+            >
               {this.props.children}
             </div>
           </div>

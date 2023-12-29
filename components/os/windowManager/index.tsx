@@ -33,8 +33,21 @@ function getAppByRoute(appRoute: string) {
   return appForRoute;
 }
 
+function isWindowAlreadyRegistered(window: Window): boolean {
+  let isRegistered = false;
+
+  windowArray.forEach(function (registeredWindow, i) {
+    if (registeredWindow.props.sortIndex === window.props.sortIndex) {
+      isRegistered = true;
+      return;
+    }
+  });
+
+  return isRegistered;
+}
+
 export function registerWindow(window: Window) {
-  if (!windowArray.includes(window)) {
+  if (!isWindowAlreadyRegistered(window)) {
     windowArray.push(window);
   } else return windowArray.indexOf(window);
 
