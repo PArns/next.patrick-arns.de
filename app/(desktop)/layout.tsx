@@ -4,6 +4,7 @@ import { GetBackgroundImages } from "@/api/provider/background-image-provider";
 import { GetSocialMediaLinks } from "@/api/provider/social-media-link-provider";
 
 import Window from "@/components/os/window";
+import DynamicWindow from "@/components/os/window/dynamic";
 
 export default async function AppLayout({
   blog,
@@ -21,7 +22,7 @@ export default async function AppLayout({
       socialMediaLinks={socialMediaLinks}
       pageName="Patrick-Arns.de"
     >
-      <Window
+      <DynamicWindow
         sortIndex={0}
         width="50%"
         height="50%"
@@ -32,9 +33,9 @@ export default async function AppLayout({
         key={"underconstruction"}
       >
         {underconstruction}
-      </Window>
+      </DynamicWindow>
 
-      <Window
+      <DynamicWindow
         sortIndex={1}
         width="50%"
         height="50%"
@@ -44,7 +45,7 @@ export default async function AppLayout({
         key={"blog"}
       >
         {blog}
-      </Window>
+      </DynamicWindow>
     </Desktop>
   );
 }

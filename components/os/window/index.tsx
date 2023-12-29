@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Component, useRef, useCallback } from "react";
+import React, { Component } from "react";
 import { Rnd } from "react-rnd";
 
 import classNames from "classnames";
@@ -12,8 +12,6 @@ import {
   closeWindow,
   getEntryPath,
 } from "../windowManager";
-
-import dynamic from "next/dynamic";
 
 export function shouldBeVisible(windowProperties: Readonly<WindowContract>) {
   const entryUri = getEntryPath(true);
