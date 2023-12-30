@@ -4,92 +4,6 @@ import events, { WindowDetails, desktopWindowEvents } from "./events";
 import { createEvent } from "react-event-hook";
 import { useRouter } from "next/navigation";
 
-/*
-let windowArray = Array<Window>();
-let entryPath = "/";
-
-export function getEntryPath(appPathOnly: boolean) {
-  if (!appPathOnly) return entryPath;
-  return getAppRoute(entryPath);
-}
-
-function getAppRoute(fullPath: string) {
-  const appPath = fullPath.split("/")[1];
-  return "/" + appPath;
-}
-
-function getAppByRoute(appRoute: string) {
-  let appForRoute = null;
-
-  windowArray.forEach(function (window, i) {
-    if (window.props.route === appRoute) {
-      appForRoute = window;
-      return;
-    }
-  });
-
-  return appForRoute;
-}
-
-function syncBrowserWithActiveWindow() {
-  let windowFound = false;
-
-  windowArray.forEach(function (window, i) {
-    if (window.state.active && window.state.visible) {
-      setUriFromActiveWindow(window);
-
-      if (titleBarInstance) titleBarInstance.setActiveWindow(window);
-
-      windowFound = true;
-      return;
-    }
-  });
-
-  if (!windowFound) {
-    setUriFromActiveWindow(null);
-    if (titleBarInstance) titleBarInstance.setActiveWindow(undefined);
-  }
-}
-
-function setUriFromActiveWindow(activeWindow: Window | null) {
-  if (activeWindow == null) {
-    checkAndUpdateUri("/");
-    return;
-  }
-
-  checkAndUpdateUri(activeWindow.state.route);
-}
-
-function checkAndUpdateUri(newUri: string) {
-  if (window.location.pathname !== newUri)
-    window.history.pushState(null, "", newUri);
-}
-
-function registerBackNavigationHandler() {
-  window.addEventListener("popstate", () => {
-    const backApp = getAppRoute(window.location.pathname);
-    const appWindow = getAppByRoute(backApp);
-
-    if (appWindow != null) clickWindow(appWindow);
-  });
-}
-
-function start() {
-  if (typeof window === "undefined") return;
-
-  if (window.location.hash) {
-    entryPath = window.location.hash;
-  } else {
-    entryPath = window.location.pathname;
-  }
-
-  registerBackNavigationHandler();
-}
-
-start();
-
-*/
-
 function moveElementToStart<T>(items: T[], item: T): T[] {
   const itemIndex = items.indexOf(item);
 
@@ -124,11 +38,7 @@ export {
 
 const registeredWindows: RegisteredWindows = [];
 
-export default function WindowManager({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function WindowManager() {
   const router = useRouter();
 
   const getActiveWindow = (): WindowDetails | null => {
@@ -282,5 +192,5 @@ export default function WindowManager({
     }
   };
 
-  return <>{children}</>;
+  return <></>;
 }
