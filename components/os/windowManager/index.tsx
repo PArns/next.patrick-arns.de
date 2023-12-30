@@ -1,5 +1,8 @@
+"use client";
+
 import events, { WindowDetails, desktopWindowEvents } from "./events";
 import { createEvent } from "react-event-hook";
+import { useRouter } from "next/navigation";
 
 /*
 let windowArray = Array<Window>();
@@ -126,6 +129,17 @@ export default function WindowManager({
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+
+  const getActiveWindow = (): WindowDetails | null => {
+    return registeredWindows.find((window) => window.active === true) ?? null;
+  };
+
+  const setRouteFromActiveWindow = (activeWindow: WindowDetails | null) => {
+    const newRoute = activeWindow?.route ?? "/";
+    router.push(newRoute);
+  };
+
   // ----------------- WindowManager Events ----------------
   makeWindowActiveEvent.useOnMakeWindowActiveEventListener((windowDetails) => {
     const existingWindowsClone: RegisteredWindows = JSON.parse(
@@ -139,6 +153,8 @@ export default function WindowManager({
     if (existingWindowIndex === -1) return;
 
     const existingWindow = existingWindowsClone[existingWindowIndex];
+    if (existingWindow.active) return;
+
     const newWindowOrder = moveElementToStart(
       existingWindowsClone,
       existingWindow
@@ -179,6 +195,8 @@ export default function WindowManager({
     registeredWindowsChangedEvent.emitOnRegisteredWindowsChangedEvent(
       registeredWindows
     );
+
+    setRouteFromActiveWindow(windowDetails);
   });
 
   // -------------------- Window Events --------------------
@@ -257,9 +275,7 @@ export default function WindowManager({
         registeredWindows
       );
 
-      const activeWindow = registeredWindows.find(
-        (window) => window.active === true
-      );
+      const activeWindow = getActiveWindow();
 
       if (!activeWindow)
         activeWindowChangedEvent.emitOnActiveWindowChangedEvent(null);
