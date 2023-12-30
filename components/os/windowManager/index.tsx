@@ -215,7 +215,10 @@ export default function WindowManager({
       const activeWindow = getActiveWindow();
 
       if (!activeWindow)
+      {
         activeWindowChangedEvent.emitOnActiveWindowChangedEvent(null);
+        router.push("/");
+      }
     }
   };
 
