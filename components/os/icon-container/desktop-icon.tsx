@@ -5,21 +5,22 @@ import Image from "next/image";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 
 import Link from "next/link";
+import { EntryFieldTypes } from "contentful/dist/types/types/entry";
 
 export default function DesktopIcon({
   icon,
   contentfulIcon,
   name,
   title,
-  click,
   href,
+  click,
 }: {
   icon?: string;
   contentfulIcon?: any;
-  name: string;
-  title?: string;
+  name?: string | EntryFieldTypes.Symbol;
+  title?: string | EntryFieldTypes.Symbol;
+  href?: string | EntryFieldTypes.Symbol;
   click?: Function;
-  href?: string;
 }) {
   useEffect(() => {
     const init = async () => {
@@ -35,7 +36,7 @@ export default function DesktopIcon({
     if (click) {
       click();
     } else if (href) {
-      window.open(href, "_blank");
+      window.open(href.toString(), "_blank");
     }
   };
 
@@ -43,7 +44,7 @@ export default function DesktopIcon({
     <Link
       className="text-center align-middle w-28 h-22 p-1 select-none rounded-md border border-transparent py-2 text-white transition duration-200 ease-in-out hover:border-sky-100 hover:bg-sky-100/50 hover:backdrop-blur-md dark:hover:border-gray-400 dark:hover:bg-gray-800/50"
       data-te-toggle="tooltip"
-      title={title}
+      title={title?.toString()}
       href={`${href}`}
       onClick={handleMouseEvent}
     >
@@ -53,7 +54,7 @@ export default function DesktopIcon({
             src={icon}
             width={48}
             height={48}
-            alt={name}
+            alt={name?.toString() as string}
             className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
           />
         )}
@@ -62,14 +63,14 @@ export default function DesktopIcon({
             asset={contentfulIcon}
             width={48}
             height={48}
-            alt={name}
+            alt={name || "Icon"}
             className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
           />
         )}
       </div>
       <div className="justify-center items-center">
         <p className="text-ellipsis overflow-hidden rop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-          {name}
+          {name?.toString()}
         </p>
       </div>
     </Link>
