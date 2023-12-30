@@ -6,18 +6,21 @@ import { title } from "process";
 
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import { EntryFieldTypes } from "contentful/dist/types/types/entry";
+import { Albert_Sans } from "next/font/google";
 
 export default function SocialMediaIcon({
   mouseX,
   click,
   href,
   name,
+  alt,
   contentfulAsset,
 }: {
   mouseX: MotionValue;
   click?: Function;
   href?: string | EntryFieldTypes.Symbol;
   name?: string | EntryFieldTypes.Symbol;
+  alt?: string | EntryFieldTypes.Symbol;
   contentfulAsset: any;
 }) {
   let ref = useRef<HTMLAnchorElement>(null);
@@ -65,7 +68,7 @@ export default function SocialMediaIcon({
             asset={contentfulAsset}
             width={128}
             height={128}
-            alt={title}
+            alt={alt?.toString() || name?.toString() || "Social Media Icon"}
             className="object-contain"
           />
         </div>

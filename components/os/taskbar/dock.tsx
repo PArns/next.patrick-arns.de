@@ -23,7 +23,6 @@ export default function Dock({
 
   registeredWindowsChangedEvent.useOnRegisteredWindowsChangedEventListener(
     (newWindowArray) => {
-      console.log("newWindowArray", newWindowArray);
       setWindowsArray(newWindowArray);
     }
   );
