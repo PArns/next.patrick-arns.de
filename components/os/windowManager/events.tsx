@@ -5,6 +5,9 @@ export interface WindowDetails {
   name: string;
   title: string;
   icon: string;
+  isInitiallyOpen?: boolean;
+  hasDesktopIcon?: boolean;
+  startRoute: string;
   route: string;
   active: boolean;
   visible: boolean;

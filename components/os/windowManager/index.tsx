@@ -38,7 +38,11 @@ export {
 
 const registeredWindows: RegisteredWindows = [];
 
-export default function WindowManager() {
+export default function WindowManager({
+  startRoute,
+}: {
+  startRoute: string | null;
+}) {
   const router = useRouter();
 
   const getActiveWindow = (): WindowDetails | null => {
@@ -128,6 +132,29 @@ export default function WindowManager() {
 
   events.windowRegisteredEvent.useOnWindowRegisteredListener((newWindow) => {
     updateWindowDetails(newWindow);
+
+    // Set startup window, once it's registered ...
+    if (!startRoute) return;
+
+    if (startRoute != "/" && startRoute.startsWith(newWindow.startRoute)) {
+      // correct route of the app to the given URL ...
+      if (startRoute !== newWindow.route) {
+        newWindow.route = startRoute;
+        events.windowRouteChanged.emitOnWindowRouteChanged(newWindow);
+      }
+
+      // ... and make it active
+      setTimeout(
+        () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
+        100
+      );
+    } else if (startRoute == "/" && newWindow.isInitiallyOpen) {
+      // If the app is initially open, make it active
+      setTimeout(
+        () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
+        100
+      );
+    }
   });
 
   events.windowActivatedEvent.useOnWindowActivatedListener(

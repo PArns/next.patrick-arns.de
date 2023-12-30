@@ -11,34 +11,6 @@ import { makeWindowActiveEvent } from "../windowManager";
 import events, { WindowDetails } from "../windowManager/events";
 import { desktopWindowEvents } from "../windowManager/events";
 
-export function shouldBeVisible(
-  windowProperties: Readonly<WindowContract>
-): boolean {
-  return true;
-  /*
-  const entryUri = getEntryPath(true);
-  if (entryUri === windowProperties.route) return true;
-
-  const visible =
-    windowProperties.isInitiallyOpen === undefined
-      ? false
-      : windowProperties.isInitiallyOpen;
-
-  return entryUri === "/" ? visible : false;*/
-}
-
-export function shouldBeActive(
-  windowProperties: Readonly<WindowContract>
-): boolean {
-  return false;
-
-  /*
-  const entryUri = getEntryPath(true);
-
-  if (entryUri === windowProperties.route) return true;
-  return false;*/
-}
-
 export type WindowContract = {
   id: string;
   title: string;
@@ -70,35 +42,9 @@ export default function DesktopWindow({
 
   const [zIndexState, setZIndexState] = useState(0);
 
-  const [visibleState, setVisibleState] = useState(
-    shouldBeVisible({
-      id,
-      title,
-      icon,
-      route,
-      width,
-      height,
-      center,
-      isInitiallyOpen,
-      hasDesktopIcon,
-      children,
-    })
-  );
+  const [visibleState, setVisibleState] = useState(false);
 
-  const [activeState, setActiveState] = useState(
-    shouldBeActive({
-      id,
-      title,
-      icon,
-      route,
-      width,
-      height,
-      center,
-      isInitiallyOpen,
-      hasDesktopIcon,
-      children,
-    })
-  );
+  const [activeState, setActiveState] = useState(false);
 
   const rndRef = useRef<Rnd>(null);
 
@@ -111,6 +57,11 @@ export default function DesktopWindow({
       setVisibleState(windowDetails.visible);
     }
   );
+
+  events.windowRouteChanged.useOnWindowRouteChangedListener((windowDetails) => {
+    if (windowDetails.id !== id) return;
+    setRouteState(windowDetails.route);
+  });
 
   const handleContainerClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as HTMLElement;
@@ -125,8 +76,11 @@ export default function DesktopWindow({
     return {
       id: id,
       name: title,
-      title: titleState,
       icon: icon,
+      startRoute: route,
+      isInitiallyOpen: isInitiallyOpen,
+      hasDesktopIcon: hasDesktopIcon,
+      title: titleState,
       route: routeState,
       active: activeState,
       visible: visibleState,
@@ -145,18 +99,6 @@ export default function DesktopWindow({
   useEffect(() => {
     events.windowTitleChanged.emitOnWindowTitleChanged(currentWindowDetails());
   }, [titleState]);
-
-  useEffect(() => {
-    events.windowRouteChanged.emitOnWindowRouteChanged(currentWindowDetails());
-  }, [routeState]);
-
-  useEffect(() => {
-    events.windowActivatedEvent.emitOnWindowActivated(currentWindowDetails());
-  }, [activeState]);
-
-  useEffect(() => {
-    events.windowOpenedEvent.emitOnWindowOpened(currentWindowDetails());
-  }, [visibleState]);
 
   useEffect(() => {
     if (!(center === undefined ? true : center) || !visibleState) return;

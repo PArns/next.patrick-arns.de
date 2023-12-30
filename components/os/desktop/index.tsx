@@ -1,3 +1,5 @@
+import { headers } from "next/headers";
+
 import {
   TypeBackgroundImagesFields,
   TypeSocialMediaLinkFields,
@@ -20,9 +22,12 @@ export default function Desktop({
   socialMediaLinks?: TypeSocialMediaLinkFields[];
   pageName: string;
 }) {
+  const headersList = headers();
+  const startRoute = headersList.get("x-url")?? null;
+
   return (
     <div className="w-screen h-screen flex flex-col">
-      <WindowManager />
+      <WindowManager startRoute={startRoute} />
       <BackgroundImage backgroundImages={backgroundImages} />
 
       <div className="flex-none">
