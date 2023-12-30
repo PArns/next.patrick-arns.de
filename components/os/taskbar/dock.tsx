@@ -1,38 +1,32 @@
 "use client";
 
 import { motion, useMotionValue } from "framer-motion";
-
-import Window from "./../window";
-
 import { TypeSocialMediaLinkFields } from "@/api/types";
 
 import AppIcon from "./app-icon";
 import SocialMediaIcon from "./social-media-icon";
+import {
+  RegisteredWindows,
+  registeredWindowsChangedEvent,
+  makeWindowActiveEvent,
+} from "../windowManager";
+import { useState } from "react";
 
 export default function Dock({
-  windowsArray,
-  click,
   socialMediaLinks,
 }: {
-  windowsArray: any;
-  click: Function;
   socialMediaLinks?: TypeSocialMediaLinkFields[];
 }) {
-  let winArray: Window[] = [];
-
-  if (Array.isArray(windowsArray)) {
-    const a = Array.from(windowsArray) as Window[];
-    winArray = a;
-  }
-
-  let socialMediaLinkArray: TypeSocialMediaLinkFields[] = [];
-
-  if (Array.isArray(socialMediaLinks)) {
-    const a = Array.from(socialMediaLinks) as TypeSocialMediaLinkFields[];
-    socialMediaLinkArray = a;
-  }
-
   let mouseX = useMotionValue(Infinity);
+
+  const [windowsArray, setWindowsArray] = useState<RegisteredWindows>([]);
+
+  registeredWindowsChangedEvent.useOnRegisteredWindowsChangedEventListener(
+    (newWindowArray) => {
+      console.log("newWindowArray", newWindowArray);
+      setWindowsArray(newWindowArray);
+    }
+  );
 
   return (
     <motion.div
@@ -40,28 +34,32 @@ export default function Dock({
       onMouseLeave={() => mouseX.set(Infinity)}
       className="mx-auto flex h-16 items-end gap-4 rounded-2xl bg-gray-700/50 backdrop-blur-md px-4 pb-3"
     >
-      {winArray.map((window) => (
+      {windowsArray.map((window) => (
         <AppIcon
           mouseX={mouseX}
           window={window}
-          click={click}
-          key={window.props.title}
+          click={() =>
+            makeWindowActiveEvent.emitOnMakeWindowActiveEvent(window)
+          }
+          key={window.id}
         />
       ))}
 
-      {socialMediaLinkArray.length && (
+      {socialMediaLinks && socialMediaLinks.length && (
         <div className="mx-[0px] w-[1px] h-full bg-slate-500 -m-2"></div>
       )}
 
-      {socialMediaLinkArray.map((link) => (
-        <SocialMediaIcon
-          mouseX={mouseX}
-          contentfulAsset={link.icon}
-          href={link.link?.toString() as string}
-          name={link.name?.toString() as string}
-          key={link.name?.toString() as string}
-        />
-      ))}
+      {socialMediaLinks &&
+        socialMediaLinks.length &&
+        socialMediaLinks.map((link) => (
+          <SocialMediaIcon
+            mouseX={mouseX}
+            contentfulAsset={link.icon}
+            href={link.link}
+            name={link.name}
+            key={link.name?.toString() as string}
+          />
+        ))}
     </motion.div>
   );
 }

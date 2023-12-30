@@ -1,17 +1,9 @@
-import Taskbar from "../taskbar";
-import Window from "../window";
-import TitleBar from "../titlebar";
-
 import events, { WindowDetails, desktopWindowEvents } from "./events";
-
 import { createEvent } from "react-event-hook";
-import { register } from "module";
 
+/*
 let windowArray = Array<Window>();
 let entryPath = "/";
-
-let taskbarInstance: Taskbar;
-let titleBarInstance: TitleBar;
 
 export function getEntryPath(appPathOnly: boolean) {
   if (!appPathOnly) return entryPath;
@@ -34,101 +26,6 @@ function getAppByRoute(appRoute: string) {
   });
 
   return appForRoute;
-}
-
-function isWindowAlreadyRegistered(window: Window): boolean {
-  let isRegistered = false;
-
-  windowArray.forEach(function (registeredWindow) {
-    if (registeredWindow.props.route === window.props.route) {
-      isRegistered = true;
-      return;
-    }
-  });
-
-  return isRegistered;
-}
-
-export function registerWindow(window: Window) {
-  let newWindowRegistered = false;
-
-  if (!isWindowAlreadyRegistered(window)) {
-    newWindowRegistered = true;
-    windowArray.push(window);
-  }
-
-  if (newWindowRegistered) {
-    if (taskbarInstance) taskbarInstance.setWindows(windowArray);
-  }
-
-  console.log("registerWindow", windowArray);
-  console.trace();
-}
-
-export function unregisterWindow(window: Window) {
-  windowArray = windowArray.filter(function (registeredWindow) {
-    return registeredWindow.props.route !== window.props.route;
-  });
-
-  if (taskbarInstance) taskbarInstance.setWindows(windowArray);
-
-  console.log("unregisterWindow", windowArray);
-  console.trace();
-}
-
-export function clickWindow(window: Window) {
-  windowArray = moveElementToStart(windowArray, window);
-
-  windowArray.forEach(function (window, i) {
-    window.setZIndex(500 - i);
-    window.setActiveState(i === 0);
-  });
-
-  window.setVisibleState(true);
-  taskbarInstance.setWindows(windowArray);
-  titleBarInstance.setActiveWindow(window);
-
-  setTimeout(syncBrowserWithActiveWindow, 10);
-}
-
-export function closeWindow(window: Window) {
-  window.setVisibleState(false);
-
-  taskbarInstance.setWindows(windowArray);
-  titleBarInstance.setActiveWindow(undefined);
-
-  setTimeout(syncBrowserWithActiveWindow, 10);
-}
-
-export function openWindow(window: Window) {
-  window.setVisibleState(true);
-  clickWindow(window);
-}
-
-export function registerTaskBar(taskbar: Taskbar) {
-  taskbarInstance = taskbar;
-
-  if (windowArray && windowArray.length) {
-    taskbarInstance.setWindows(windowArray);
-    setTimeout(syncBrowserWithActiveWindow, 10);
-  }
-}
-
-export function registerTitleBar(titleBar: TitleBar) {
-  titleBarInstance = titleBar;
-  syncBrowserWithActiveWindow();
-}
-
-function moveElementToStart<T>(items: T[], item: T): T[] {
-  const itemIndex = items.indexOf(item);
-
-  // Item is not found or it is already on start
-  if (itemIndex === -1 || itemIndex === 0) return items;
-
-  items.splice(itemIndex, 1);
-  const res = [item].concat(items);
-
-  return res;
 }
 
 function syncBrowserWithActiveWindow() {
@@ -188,17 +85,39 @@ function start() {
 
 start();
 
+*/
+
+function moveElementToStart<T>(items: T[], item: T): T[] {
+  const itemIndex = items.indexOf(item);
+
+  // Item is not found or it is already on start
+  if (itemIndex === -1 || itemIndex === 0) return items;
+
+  items.splice(itemIndex, 1);
+  const res = [item].concat(items);
+
+  return res;
+}
+
 export type RegisteredWindows = Array<WindowDetails>;
 
 const registeredWindowsChangedEvent = createEvent(
   "onRegisteredWindowsChangedEvent"
 )<RegisteredWindows>();
 
-const makeWindowsActiveEvent = createEvent(
-  "onMakeWindowsActiveEvent"
+const makeWindowActiveEvent = createEvent(
+  "onMakeWindowActiveEvent"
 )<WindowDetails>();
 
-export { registeredWindowsChangedEvent, makeWindowsActiveEvent };
+const activeWindowChangedEvent = createEvent(
+  "onActiveWindowChangedEvent"
+)<WindowDetails | null>();
+
+export {
+  registeredWindowsChangedEvent,
+  makeWindowActiveEvent,
+  activeWindowChangedEvent,
+};
 
 const registeredWindows: RegisteredWindows = [];
 
@@ -208,56 +127,59 @@ export default function WindowManager({
   children: React.ReactNode;
 }) {
   // ----------------- WindowManager Events ----------------
-  makeWindowsActiveEvent.useOnMakeWindowsActiveEventListener(
-    (windowDetails) => {
-      const existingWindowsClone: RegisteredWindows = JSON.parse(
-        JSON.stringify(registeredWindows)
+  makeWindowActiveEvent.useOnMakeWindowActiveEventListener((windowDetails) => {
+    const existingWindowsClone: RegisteredWindows = JSON.parse(
+      JSON.stringify(registeredWindows)
+    );
+
+    const existingWindowIndex = existingWindowsClone.findIndex(
+      (window) => window.id === windowDetails.id
+    );
+
+    if (existingWindowIndex === -1) return;
+
+    const existingWindow = existingWindowsClone[existingWindowIndex];
+    const newWindowOrder = moveElementToStart(
+      existingWindowsClone,
+      existingWindow
+    );
+
+    // Correct zIndex and active state for all windows
+    newWindowOrder.forEach((window, i) => {
+      window.zIndex = 500 - i;
+      window.active = i === 0;
+
+      if (window.active) {
+        window.visible = true;
+      }
+    });
+
+    // Update the registeredWindows array
+    newWindowOrder.forEach((newWindow) => {
+      const registeredWindowIndex = registeredWindows.findIndex(
+        (window) => window.id === newWindow.id
       );
 
-      const existingWindowIndex = existingWindowsClone.findIndex(
-        (window) => window.id === windowDetails.id
-      );
+      if (registeredWindowIndex !== -1) {
+        const registeredWindow = registeredWindows[registeredWindowIndex];
 
-      if (existingWindowIndex === -1) return;
+        if (JSON.stringify(registeredWindow) !== JSON.stringify(newWindow)) {
+          // Update the registeredWindow
+          registeredWindows[registeredWindowIndex] = newWindow;
 
-      const existingWindow = existingWindowsClone[existingWindowIndex];
-      const newWindowOrder = moveElementToStart(
-        existingWindowsClone,
-        existingWindow
-      );
-
-      // Correct zIndex and active state for all windows
-      newWindowOrder.forEach((window, i) => {
-        window.zIndex = 500 - i;
-        window.active = i === 0;
-
-        if (window.active) {
-          window.visible = true;
+          // Fire the updateWindowDetailsEvent
+          desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
+            newWindow
+          );
         }
-      });
+      }
+    });
 
-      // Update the registeredWindows array
-      newWindowOrder.forEach((newWindow) => {
-        const registeredWindowIndex = registeredWindows.findIndex(
-          (window) => window.id === newWindow.id
-        );
-
-        if (registeredWindowIndex !== -1) {
-          const registeredWindow = registeredWindows[registeredWindowIndex];
-
-          if (JSON.stringify(registeredWindow) !== JSON.stringify(newWindow)) {
-            // Update the registeredWindow
-            registeredWindows[registeredWindowIndex] = newWindow;
-
-            // Fire the updateWindowDetailsEvent
-            desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
-              newWindow
-            );
-          }
-        }
-      });
-    }
-  );
+    activeWindowChangedEvent.emitOnActiveWindowChangedEvent(windowDetails);
+    registeredWindowsChangedEvent.emitOnRegisteredWindowsChangedEvent(
+      registeredWindows
+    );
+  });
 
   // -------------------- Window Events --------------------
   events.windowDestroyedEvent.useOnWindowDestroyedListener(
@@ -315,6 +237,11 @@ export default function WindowManager({
           ...windowDetails,
         };
 
+        // Fire the updateWindowDetailsEvent
+        desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
+          windowDetails
+        );
+
         changesMade = true;
       }
     } else {
@@ -329,6 +256,13 @@ export default function WindowManager({
       registeredWindowsChangedEvent.emitOnRegisteredWindowsChangedEvent(
         registeredWindows
       );
+
+      const activeWindow = registeredWindows.find(
+        (window) => window.active === true
+      );
+
+      if (!activeWindow)
+        activeWindowChangedEvent.emitOnActiveWindowChangedEvent(null);
     }
   };
 

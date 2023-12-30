@@ -1,75 +1,51 @@
 "use client";
 
-import React, { Component } from "react";
-import Window from "../window";
+import { useState } from "react";
+
+import { activeWindowChangedEvent } from "../windowManager";
+
 import Clock from "../clock";
-
-import { registerTitleBar } from "../windowManager";
-
 import Image from "next/image";
+import { WindowDetails } from "../windowManager/events";
 
-export type TitleBarContract = {
-  pageName: string;
-};
+const defaultIcon = "/favicons/favicon-32x32.png";
 
-export default class TitleBar extends Component<TitleBarContract> {
-  state = {
-    activeWindow: null,
-    title: this.props.pageName,
-    appIcon: null,
-  };
+export default function TitleBar({ pageName }: { pageName: string }) {
+  const [title, setTitle] = useState<string>(pageName);
+  const [appIcon, setAppIcon] = useState<string>(defaultIcon);
 
-  componentDidMount(): void {
-    registerTitleBar(this);
-  }
-
-  setActiveWindow(activeWindow?: Window) {
-    this.setState({
-      activeWindow: activeWindow,
-    });
-
-    let title = this.props.pageName;
-    let appIcon = "/favicons/favicon-32x32.png";
-
-    if (activeWindow) {
-      title = this.props.pageName + " - " + activeWindow.state.title;
-      appIcon = activeWindow.props.icon;
+  activeWindowChangedEvent.useOnActiveWindowChangedEventListener(
+    (window: WindowDetails | null) => {
+      if (window) {
+        setTitle(pageName + " - " + window.title);
+        setAppIcon(window.icon);
+      } else {
+        setTitle(pageName);
+        setAppIcon(defaultIcon);
+      }
     }
+  );
 
-    this.setState({
-      title: title,
-      appIcon: appIcon,
-    });
-
-    if (typeof window !== "undefined") {
-      window.document.title = title;
-    }
-  }
-
-  render() {
-    return (
-      <div className="backdrop-blur-lg bg-white/50 flex flex-row px-2 drop-shadow">
-        <div className="flex-none">
-          <div className="flex flex-row">
-            {this.state.appIcon && (
-              <div>
-                <Image
-                  src={this.state.appIcon}
-                  alt={this.state.title}
-                  width={20}
-                  height={20}
-                  className="pt-1 pr-1 drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
-                />
-              </div>
-            )}
-            <div>{this.state.title}</div>
+  return (
+    <div className="backdrop-blur-lg bg-white/50 flex flex-row px-2 drop-shadow">
+      <div className="flex-none">
+        <div className="flex flex-row">
+          <div>
+            <Image
+              src={appIcon}
+              alt={title}
+              width={20}
+              height={20}
+              className="pt-1 pr-1 drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
+            />
           </div>
-        </div>
-        <div className="flex-grow"></div>
-        <div className="flex-none">
-          <Clock timeFormat="hh-mm" />
+          <div>{title}</div>
         </div>
       </div>
-    );
-  }
+      <div className="flex-grow"></div>
+      <div className="flex-none">
+        <Clock timeFormat="hh-mm" />
+      </div>
+    </div>
+  );
 }

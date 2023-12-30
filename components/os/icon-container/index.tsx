@@ -6,7 +6,7 @@ import { TypeSocialMediaLinkFields } from "@/api/types";
 
 import {
   registeredWindowsChangedEvent,
-  makeWindowsActiveEvent,
+  makeWindowActiveEvent,
   RegisteredWindows,
 } from "../windowManager";
 
@@ -34,7 +34,7 @@ const IconContainer: React.FC<IconContainerContract> = ({
           key={window.id}
           href={window.route}
           click={() => {
-            makeWindowsActiveEvent.emitOnMakeWindowsActiveEvent(window);
+            makeWindowActiveEvent.emitOnMakeWindowActiveEvent(window);
           }}
         />
       ))}

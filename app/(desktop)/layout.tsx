@@ -3,8 +3,7 @@ import Desktop from "@/components/os/desktop";
 import { GetBackgroundImages } from "@/api/provider/background-image-provider";
 import { GetSocialMediaLinks } from "@/api/provider/social-media-link-provider";
 
-import DynamicWindow from "@/components/os/window/dynamic";
-import { DesktopWindow } from "@/components/os/window";
+import  DesktopWindow  from "@/components/os/window";
 
 export default async function AppLayout({
   blog,
