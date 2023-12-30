@@ -101,6 +101,19 @@ export default function DesktopWindow({
   }, [titleState]);
 
   useEffect(() => {
+    events.windowActivatedEvent.emitOnWindowActivated(currentWindowDetails());
+  }, [activeState]);
+
+  useEffect(() => {
+    events.windowOpenedEvent.emitOnWindowOpened(currentWindowDetails());
+
+    // On close set the route back to the start URL ...
+    if (!visibleState)
+      setRouteState(route);
+    
+  }, [visibleState]);
+
+  useEffect(() => {
     if (!(center === undefined ? true : center) || !visibleState) return;
 
     const parentSize = rndRef.current?.getParentSize();
