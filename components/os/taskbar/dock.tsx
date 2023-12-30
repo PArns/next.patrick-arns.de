@@ -21,15 +21,15 @@ export default function Dock({
   let winArray: Window[] = [];
 
   if (Array.isArray(windowsArray)) {
-    const a = Array.from(windowsArray);
-    winArray = a.sort(compare);
+    const a = Array.from(windowsArray) as Window[];
+    winArray = a;
   }
 
   let socialMediaLinkArray: TypeSocialMediaLinkFields[] = [];
 
   if (Array.isArray(socialMediaLinks)) {
-    const a = Array.from(socialMediaLinks);
-    socialMediaLinkArray = a.sort(socialMediaLinkCompare);
+    const a = Array.from(socialMediaLinks) as TypeSocialMediaLinkFields[];
+    socialMediaLinkArray = a;
   }
 
   let mouseX = useMotionValue(Infinity);
@@ -64,27 +64,4 @@ export default function Dock({
       ))}
     </motion.div>
   );
-}
-
-function compare(a: Window, b: Window) {
-  if (a.props.sortIndex < b.props.sortIndex) {
-    return -1;
-  }
-  if (a.props.sortIndex > b.props.sortIndex) {
-    return 1;
-  }
-  return 0;
-}
-
-function socialMediaLinkCompare(
-  a: TypeSocialMediaLinkFields,
-  b: TypeSocialMediaLinkFields
-) {
-  if (a.order && b.order && a.order < b.order) {
-    return -1;
-  }
-  if (a.order && b.order && a.order > b.order) {
-    return 1;
-  }
-  return 0;
 }
