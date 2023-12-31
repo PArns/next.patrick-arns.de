@@ -6,15 +6,14 @@ import { useRef, useEffect, useState, MouseEvent } from "react";
 import Image from "next/image";
 import classNames from "classnames";
 import { WindowDetails, desktopWindowEvents } from "../windowManager/events";
+import { makeWindowActiveEvent } from "../windowManager";
 
 export default function AppIcon({
   mouseX,
   window,
-  click,
 }: {
   mouseX: MotionValue;
   window: WindowDetails;
-  click: Function;
 }) {
   const [currentWindowStatus, setCurrentWindowStatus] =
     useState<WindowDetails>(window);
@@ -24,6 +23,7 @@ export default function AppIcon({
   desktopWindowEvents.updateWindowDetailsEvent.useOnUpdateWindowDetailsListener(
     (window) => {
       if (window.id === currentWindowStatus.id) {
+        console.log("updateWindowDetailsEvent", window);
         setCurrentWindowStatus(window);
       }
     }
@@ -48,7 +48,7 @@ export default function AppIcon({
 
   const handleMouseEvent = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    click(window);
+    makeWindowActiveEvent.emitOnMakeWindowActiveEvent(currentWindowStatus);
   };
 
   let activeButton = classNames(
@@ -67,7 +67,7 @@ export default function AppIcon({
       style={{ width }}
       className="aspect-square w-10 text-center"
       onClick={handleMouseEvent}
-      href={window.route}
+      href={currentWindowStatus.route}
       data-te-toggle="tooltip"
       title={window.title}
     >

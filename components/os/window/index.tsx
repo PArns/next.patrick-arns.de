@@ -58,17 +58,26 @@ export default function DesktopWindow({
     }
   );
 
-  events.windowRouteChanged.useOnWindowRouteChangedListener((windowDetails) => {
-    if (windowDetails.id !== id) return;
-    setRouteState(windowDetails.route);
-  });
+  events.windowStartRouteChanged.useOnWindowStartRouteChangedListener(
+    (windowDetails) => {
+      if (windowDetails.id !== id) return;
+
+      setRouteState(windowDetails.route);
+    }
+  );
 
   const handleContainerClick = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as HTMLElement;
     if (target && target.tagName === "A") {
       const href = (target as HTMLAnchorElement).getAttribute("href");
 
-      if (href) setRouteState(href);
+      if (href) {
+        setRouteState(href);
+
+        const currentWindow = currentWindowDetails();
+        currentWindow.route = href;
+        events.windowRouteChanged.emitOnWindowRouteChanged(currentWindow);
+      }
     }
   };
 
@@ -106,11 +115,6 @@ export default function DesktopWindow({
 
   useEffect(() => {
     events.windowOpenedEvent.emitOnWindowOpened(currentWindowDetails());
-
-    // On close set the route back to the start URL ...
-    if (!visibleState)
-      setRouteState(route);
-    
   }, [visibleState]);
 
   useEffect(() => {
@@ -138,6 +142,11 @@ export default function DesktopWindow({
   const closeWindow = () => {
     setVisibleState(false);
     setActiveState(false);
+    setRouteState(route);
+
+    const currentWindow = currentWindowDetails();
+    currentWindow.route = route;
+    events.windowRouteChanged.emitOnWindowRouteChanged(currentWindow);
   };
 
   const resizing = {

@@ -140,7 +140,7 @@ export default function WindowManager({
       // correct route of the app to the given URL ...
       if (startRoute !== newWindow.route) {
         newWindow.route = startRoute;
-        events.windowRouteChanged.emitOnWindowRouteChanged(newWindow);
+        events.windowStartRouteChanged.emitOnWindowStartRouteChanged(newWindow);
       }
 
       // ... and make it active

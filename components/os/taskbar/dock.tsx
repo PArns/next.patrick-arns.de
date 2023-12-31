@@ -8,7 +8,6 @@ import SocialMediaIcon from "./social-media-icon";
 import {
   RegisteredWindows,
   registeredWindowsChangedEvent,
-  makeWindowActiveEvent,
 } from "../windowManager";
 import { useState } from "react";
 
@@ -37,9 +36,6 @@ export default function Dock({
         <AppIcon
           mouseX={mouseX}
           window={window}
-          click={() =>
-            makeWindowActiveEvent.emitOnMakeWindowActiveEvent(window)
-          }
           key={window.id}
         />
       ))}
