@@ -10,6 +10,7 @@ import { makeWindowActiveEvent } from "../windowManager";
 
 import events, { WindowDetails } from "../windowManager/events";
 import { desktopWindowEvents } from "../windowManager/events";
+import IconXMark from "@/components/icons/x-mark";
 
 export type WindowContract = {
   id: string;
@@ -189,8 +190,8 @@ export default function DesktopWindow({
           ref={rndRef}
         >
           <div className="cursor-default flex flex-col h-full">
-            <div className="flex h-7">
-              <div className="flex-none flex w-7 h-7 items-center justify-center">
+            <div className="flex h-6 border-b bg-white/30">
+              <div className="flex-none flex w-7 h-6 items-center justify-center">
                 <Image
                   src={icon}
                   width={20}
@@ -199,14 +200,14 @@ export default function DesktopWindow({
                   className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
                 />
               </div>
-              <div className="grow text-center cursor-move justify-center align-middle">
+              <div className="grow text-center cursor-move justify-center align-middle font-bold">
                 {titleState}
               </div>
               <div
-                className="flex-none flex w-4 h-4 items-center justify-center hover:bg-red-500/90"
+                className="flex-none flex w-6 h-6 items-center justify-center hover:bg-red-400/90 rounded-tr-md"
                 onClick={() => closeWindow()}
               >
-                <div className="m-1">X</div>
+                <IconXMark />
               </div>
             </div>
             <div
