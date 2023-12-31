@@ -1,18 +1,15 @@
-"use client";
+import { headers } from "next/headers";
 
-import React, { useEffect, useState } from "react";
 import {
   TypeBackgroundImagesFields,
   TypeSocialMediaLinkFields,
 } from "@/api/types";
 
-import ContentfulImageAsset from "@/components/contentful/image-asset";
 import Taskbar from "../taskbar";
 import TitleBar from "../titlebar";
 import IconContainer from "../icon-container";
-
-const randomGenerator = (min: number, max: number) =>
-  Math.floor(Math.random() * (max - min + 1)) + min;
+import WindowManager from "../windowManager";
+import BackgroundImage from "../background-image";
 
 export default function Desktop({
   children,
@@ -25,41 +22,14 @@ export default function Desktop({
   socialMediaLinks?: TypeSocialMediaLinkFields[];
   pageName: string;
 }) {
-  const [background, setBackground] = useState<TypeBackgroundImagesFields>();
-
-  const bgImage = {
-    pointerEvents: "none",
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    zIndex: -1,
-    objectPosition: (
-      (background?.position || "center") as string
-    ).toLowerCase(),
-  };
-
-  useEffect(() => {
-    const getRandomBackgroundImageData = () => {
-      const randomPosition = randomGenerator(0, backgroundImages.length - 1);
-      return backgroundImages[randomPosition];
-    };
-
-    const backgroundImage = getRandomBackgroundImageData();
-    setBackground(backgroundImage);
-  });
+  const headersList = headers();
+  const startRoute = headersList.get("x-url")?? null;
 
   return (
     <div className="w-screen h-screen flex flex-col">
-      {background && (
-        <ContentfulImageAsset
-          asset={background.image}
-          alt={background.name}
-          width={1500}
-          height={1500}
-          style={bgImage}
-        />
-      )}
+      <WindowManager startRoute={startRoute} />
+      <BackgroundImage backgroundImages={backgroundImages} />
+
       <div className="flex-none">
         <TitleBar pageName={pageName} />
       </div>

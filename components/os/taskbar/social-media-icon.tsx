@@ -5,18 +5,22 @@ import { useRef, useEffect, MouseEvent } from "react";
 import { title } from "process";
 
 import ContentfulImageAsset from "@/components/contentful/image-asset";
+import { EntryFieldTypes } from "contentful/dist/types/types/entry";
+import { Albert_Sans } from "next/font/google";
 
 export default function SocialMediaIcon({
   mouseX,
   click,
   href,
   name,
+  alt,
   contentfulAsset,
 }: {
   mouseX: MotionValue;
   click?: Function;
-  href: string;
-  name: string;
+  href?: string | EntryFieldTypes.Symbol;
+  name?: string | EntryFieldTypes.Symbol;
+  alt?: string | EntryFieldTypes.Symbol;
   contentfulAsset: any;
 }) {
   let ref = useRef<HTMLAnchorElement>(null);
@@ -44,19 +48,19 @@ export default function SocialMediaIcon({
     if (click) {
       click();
     } else if (href) {
-      window.open(href, "_blank");
+      window.open(href.toString(), "_blank");
     }
   };
 
   return (
     <motion.a
       ref={ref}
-      href={href}
+      href={href?.toString()}
       style={{ width }}
       className="aspect-square w-10"
       onClick={handleMouseEvent}
       data-te-toggle="tooltip"
-      title={name}
+      title={name?.toString()}
     >
       <div className="flex flex-col">
         <div>
@@ -64,7 +68,7 @@ export default function SocialMediaIcon({
             asset={contentfulAsset}
             width={128}
             height={128}
-            alt={title}
+            alt={alt?.toString() || name?.toString() || "Social Media Icon"}
             className="object-contain"
           />
         </div>
