@@ -119,14 +119,33 @@ export default function DesktopWindow({
   }, [visibleState]);
 
   useEffect(() => {
-    if (!(center === undefined ? true : center) || !visibleState) return;
+    if (!visibleState) return;
 
-    const parentSize = rndRef.current?.getParentSize();
     const self = rndRef.current?.getSelfElement();
+    const parentSize = rndRef.current?.getParentSize();
 
     if (self == null || parentSize == null) return;
 
-    const selfSize = { width: self.offsetWidth, height: self.offsetHeight };
+    let selfSize = { width: self.offsetWidth, height: self.offsetHeight };
+
+    // Height resize bug fix ...
+    if (height?.endsWith("%")) {
+      const heightPercent = parseInt(height.replace("%", ""));
+      const heightPx = (heightPercent / 100) * parentSize.height;
+      selfSize.height = heightPx;
+    }
+
+    if (width?.endsWith("%")) {
+      const widthPercent = parseInt(width.replace("%", ""));
+      const widthPx = (widthPercent / 100) * parentSize.width;
+      selfSize.width = widthPx;
+    }
+
+    setTimeout(() => {
+      rndRef.current?.updateSize(selfSize);
+    });
+
+    if (!(center === undefined ? true : center)) return;
 
     const left = parentSize.width / 2 - selfSize.width / 2;
     const top = parentSize.height / 2 - selfSize.height / 2;
@@ -191,8 +210,8 @@ export default function DesktopWindow({
           default={{
             x: 0,
             y: 0,
-            width: width ? width : "auto",
-            height: height ? height : "auto",
+            width: "50%",
+            height: 300,
           }}
           style={{ zIndex: zIndexState }}
           onMouseDown={() => activateWindow()}
@@ -210,9 +229,7 @@ export default function DesktopWindow({
                   className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
                 />
               </div>
-              <div className={windowTitleClass}>
-                {titleState}
-              </div>
+              <div className={windowTitleClass}>{titleState}</div>
               <div
                 className="flex-none flex w-6 h-6 items-center justify-center hover:bg-red-500/50 rounded-tr-sm"
                 onClick={() => closeWindow()}

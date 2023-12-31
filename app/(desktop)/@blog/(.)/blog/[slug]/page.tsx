@@ -1,11 +1,70 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Metadata, ResolvingMetadata } from "next";
 
-export default function BlogOverlay({ params }: { params: { slug: string } }) {
+import {
+  GetBlogPosts,
+  GetBlogPostBySlug,
+} from "@/api/provider/blog-post-provider";
+import RichTextRenderer from "@/components/contentful/rich-text-renderer";
+import ContentfulImageAsset from "@/components/contentful/image-asset";
+
+interface BlogPostPageParams {
+  slug: string;
+}
+
+interface BlogPostPageProps {
+  params: BlogPostPageParams;
+}
+
+// Tell Next.js about all our blog posts so
+// they can be statically generated at build time.
+export async function generateStaticParams(): Promise<BlogPostPageParams[]> {
+  const blogPosts = await GetBlogPosts();
+  return blogPosts.map((post) => ({ slug: post.slug }));
+}
+
+// For each blog post, tell Next.js which metadata
+// (e.g. page title) to display.
+export async function generateMetadata(
+  { params }: BlogPostPageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const blogPost = await GetBlogPostBySlug(params.slug);
+
+  if (!blogPost) {
+    return notFound();
+  }
+
+  return {
+    title: blogPost.title,
+  };
+}
+
+export default async function BlogOverlay({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const post = await GetBlogPostBySlug(params.slug);
+
+  if (!post) {
+    return notFound();
+  }
+
   return (
-    <>
-      SLUG {params.slug}
-      <br />
-      <Link href="/blog">Back to index</Link>{" "}
-    </>
+    <div className="flex flex-col">
+      <div>
+        
+      </div>
+      <div>{post.title?.toString()}</div>
+      <div>{post.subTitle?.toString()}</div>
+      <div>
+        <RichTextRenderer document={post.body} />
+      </div>
+      <div>
+        <Link href="/blog">Back to index</Link>
+      </div>
+    </div>
   );
 }
