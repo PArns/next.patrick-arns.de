@@ -146,6 +146,9 @@ export default function DesktopWindow({
 
     const currentWindow = currentWindowDetails();
     currentWindow.route = route;
+    currentWindow.active = false;
+    currentWindow.visible = false;
+
     events.windowRouteChanged.emitOnWindowRouteChanged(currentWindow);
   };
 
