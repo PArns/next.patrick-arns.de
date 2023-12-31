@@ -31,6 +31,7 @@ const windowDestroyedEvent = createEvent("onWindowDestroyed")<WindowDetails>();
 const windowActivatedEvent = createEvent("onWindowActivated")<WindowDetails>();
 const windowOpenedEvent = createEvent("onWindowOpened")<WindowDetails>();
 const windowRouteChanged = createEvent("onWindowRouteChanged")<WindowDetails>();
+const windowStartRouteChanged = createEvent("onWindowStartRouteChanged")<WindowDetails>();
 const windowTitleChanged = createEvent("onWindowTitleChanged")<WindowDetails>();
 
 const events = {
@@ -42,6 +43,7 @@ const events = {
   windowOpenedEvent,
 
   windowRouteChanged,
+  windowStartRouteChanged,
 
   windowTitleChanged,
 };
