@@ -1,3 +1,9 @@
+export async function generateMetadata() {
+  return {
+    title: "Under Construction",
+  };
+}
+
 export default function UnderConstruction() {
   return (
     <div className="m-10">
@@ -6,8 +12,8 @@ export default function UnderConstruction() {
       werden, gibt es aktuell leider nur diesen Platzhalter hier.
       <br />
       <br />
-      Aber bald gibt es hier wieder etwas zu sehen! Derweil könnt ihr dann diesen
-      neuen und noch sehr rudimentären Fenstermanager bestaunen.
+      Aber bald gibt es hier wieder etwas zu sehen! Derweil könnt ihr dann
+      diesen neuen und noch sehr rudimentären Fenstermanager bestaunen.
       <br />
       <br />
       Ich habe, nicht zuletzt aufgrund dessen, das alle Seiten in einem iFrame
