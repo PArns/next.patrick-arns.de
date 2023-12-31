@@ -77,7 +77,7 @@ export default function AppIcon({
             width={128}
             height={128}
             alt={window.title}
-            className="object-contain"
+            className="object-contain drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
           />
         </div>
         <div className="h-1 -mt-2">

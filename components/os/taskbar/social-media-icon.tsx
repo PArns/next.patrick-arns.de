@@ -69,7 +69,7 @@ export default function SocialMediaIcon({
             width={128}
             height={128}
             alt={alt?.toString() || name?.toString() || "Social Media Icon"}
-            className="object-contain"
+            className="object-contain drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
           />
         </div>
       </div>

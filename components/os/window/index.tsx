@@ -164,16 +164,26 @@ export default function DesktopWindow({
     topRight: false,
   };
 
-  const classes = classNames("backdrop-blur-sm rounded-md shadow-md border-2", {
-    "bg-white/80 border-sky-500": activeState,
-    "bg-white/50 border-gray-100/50": !activeState,
-  });
+  const windowClasses = classNames(
+    "backdrop-blur-sm rounded-md shadow-md border-2",
+    {
+      "bg-white/80 border-sky-500": activeState,
+      "bg-white/50 border-gray-100/50": !activeState,
+    }
+  );
+
+  const windowTitleClass = classNames(
+    "grow text-center cursor-move justify-center align-middle",
+    {
+      "font-bold": activeState,
+    }
+  );
 
   return (
     <>
       {visibleState && (
         <Rnd
-          className={classes}
+          className={windowClasses}
           enableResizing={resizing}
           bounds="parent"
           minHeight={300}
@@ -200,11 +210,11 @@ export default function DesktopWindow({
                   className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
                 />
               </div>
-              <div className="grow text-center cursor-move justify-center align-middle font-bold">
+              <div className={windowTitleClass}>
                 {titleState}
               </div>
               <div
-                className="flex-none flex w-6 h-6 items-center justify-center hover:bg-red-400/90 rounded-tr-md"
+                className="flex-none flex w-6 h-6 items-center justify-center hover:bg-red-500/50 rounded-tr-sm"
                 onClick={() => closeWindow()}
               >
                 <IconXMark />
