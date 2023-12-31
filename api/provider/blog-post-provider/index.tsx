@@ -12,6 +12,7 @@ export interface BlogPost {
   subTitle: string;
   slug: string;
   body: RichTextDocument | null;
+  excerpt: string;
   image: any;
 }
 
@@ -29,6 +30,7 @@ export function parseContentfulBlogPost(
     subTitle: blogPostEntry.fields.subTitle || "",
     slug: blogPostEntry.fields.slug,
     body: blogPostEntry.fields.body || null,
+    excerpt: blogPostEntry.fields.excerpt || "",
     image: blogPostEntry.fields.image || null,
   };
 }
@@ -38,6 +40,7 @@ export async function GetBlogPostsMeta() {}
 export async function GetBlogPosts() {
   const res = await client.getEntries<TypeBlogPostSkeleton>({
     content_type: "blogPost",
+    order: ["-fields.publishedAt"],
     "fields.listEntry": true,
   });
 

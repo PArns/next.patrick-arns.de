@@ -7,7 +7,7 @@ import {
   GetBlogPostBySlug,
 } from "@/api/provider/blog-post-provider";
 import RichTextRenderer from "@/components/contentful/rich-text-renderer";
-import ContentfulImageAsset from "@/components/contentful/image-asset";
+import BlogHeader from "@/components/blog/blog-header";
 
 interface BlogPostPageParams {
   slug: string;
@@ -49,12 +49,12 @@ export default async function BlogOverlay({
   }
 
   return (
-    <div className="flex flex-col">
-      <div>
-        <ContentfulImageAsset asset={post.image} alt={post.title} width={500} height={500} />
-      </div>
-      <div>{post.title?.toString()}</div>
-      <div>{post.subTitle?.toString()}</div>
+    <div className="flex flex-col p-2">
+      <BlogHeader
+        title={post.title}
+        subTitle={post.subTitle}
+        backgroundImage={post.image}
+      />
       <div>
         <RichTextRenderer document={post.body} />
       </div>

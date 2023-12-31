@@ -9,6 +9,7 @@ export interface TypeBlogPostFields {
     listEntry: EntryFieldTypes.Boolean;
     image: EntryFieldTypes.AssetLink;
     body: EntryFieldTypes.RichText;
+    excerpt: EntryFieldTypes.Text;
 }
 
 export type TypeBlogPostSkeleton = EntrySkeletonType<TypeBlogPostFields, "blogPost">;

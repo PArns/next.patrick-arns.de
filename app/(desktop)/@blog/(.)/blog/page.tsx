@@ -1,16 +1,19 @@
-import Link from "next/link";
-
 import { GetBlogPosts } from "@/api/provider/blog-post-provider";
+import BlogCard from "@/components/blog/blog-card";
+
+export async function generateMetadata() {
+  return {
+    title: "Blog",
+  };
+}
 
 export default async function BlogIndex() {
   const posts = await GetBlogPosts();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full p-2 gap-2">
       {posts.map((post) => (
-        <div key={post.slug.toString()}>
-          <Link href={`/blog/${post.slug}`}>{post.title?.toString()}</Link>
-        </div>
+        <BlogCard post={post} key={post.slug} />
       ))}
     </div>
   );
