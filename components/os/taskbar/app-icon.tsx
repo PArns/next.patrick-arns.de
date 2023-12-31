@@ -23,7 +23,6 @@ export default function AppIcon({
   desktopWindowEvents.updateWindowDetailsEvent.useOnUpdateWindowDetailsListener(
     (window) => {
       if (window.id === currentWindowStatus.id) {
-        console.log("updateWindowDetailsEvent", window);
         setCurrentWindowStatus(window);
       }
     }
