@@ -63,6 +63,7 @@ export default class Clock extends Component<ClockContract> {
   };
 
   componentDidMount() {
+    this.updateDateTime();
     this.runner = setInterval(this.updateDateTime, 1000); // Updated interval to 1 second for efficiency
   }
 
