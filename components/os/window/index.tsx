@@ -38,13 +38,9 @@ export default function DesktopWindow({
   children,
 }: WindowContract) {
   const [titleState, setTitleState] = useState(title);
-
   const [routeState, setRouteState] = useState(route);
-
   const [zIndexState, setZIndexState] = useState(0);
-
   const [visibleState, setVisibleState] = useState(false);
-
   const [activeState, setActiveState] = useState(false);
 
   const rndRef = useRef<Rnd>(null);
@@ -140,7 +136,7 @@ export default function DesktopWindow({
       const widthPx = (widthPercent / 100) * parentSize.width;
       selfSize.width = widthPx;
     }
-
+  
     setTimeout(() => {
       rndRef.current?.updateSize(selfSize);
     });
@@ -207,12 +203,6 @@ export default function DesktopWindow({
           bounds="parent"
           minHeight={300}
           minWidth={400}
-          default={{
-            x: 0,
-            y: 0,
-            width: "50%",
-            height: 300,
-          }}
           style={{ zIndex: zIndexState }}
           onMouseDown={() => activateWindow()}
           onResize={() => activateWindow()}
