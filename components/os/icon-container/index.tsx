@@ -32,7 +32,7 @@ const IconContainer: React.FC<IconContainerContract> = ({
           icon={window.icon}
           name={window.title}
           key={window.id}
-          href={window.route}
+          href={window.startRoute}
           click={() => {
             makeWindowActiveEvent.emitOnMakeWindowActiveEvent(window);
           }}
