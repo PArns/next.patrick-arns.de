@@ -8,11 +8,13 @@ interface ContentfulImageProps {
   [key: string]: any; // For other props that might be passed
 }
 
-const contentfulLoader = ({ src, width, quality }: ImageLoaderProps) => {
-  return `${src}?w=${width}&q=${quality || 75}`;
-};
-
 export default function ContentfulImage(props: ContentfulImageProps) {
-  const { alt, ...rest } = props;
-  return <Image alt={alt} loader={contentfulLoader} {...rest} />;
+  const { alt, src, width, height, quality, ...rest } = props;
+
+  const imageSource = src.startsWith("//") ? "https:" + src : src;
+  const fullSource = `${imageSource}?w=${width}&q=${quality || 75}`;
+
+  return (
+    <Image alt={alt} width={width} height={height} src={fullSource} {...rest} />
+  );
 }

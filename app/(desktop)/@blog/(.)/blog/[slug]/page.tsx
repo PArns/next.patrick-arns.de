@@ -17,15 +17,11 @@ interface BlogPostPageProps {
   params: BlogPostPageParams;
 }
 
-// Tell Next.js about all our blog posts so
-// they can be statically generated at build time.
 export async function generateStaticParams(): Promise<BlogPostPageParams[]> {
   const blogPosts = await GetBlogPosts();
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-// For each blog post, tell Next.js which metadata
-// (e.g. page title) to display.
 export async function generateMetadata(
   { params }: BlogPostPageProps,
   parent: ResolvingMetadata
@@ -55,7 +51,7 @@ export default async function BlogOverlay({
   return (
     <div className="flex flex-col">
       <div>
-        
+        <ContentfulImageAsset asset={post.image} alt={post.title} width={500} height={500} />
       </div>
       <div>{post.title?.toString()}</div>
       <div>{post.subTitle?.toString()}</div>
