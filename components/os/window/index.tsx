@@ -64,7 +64,13 @@ export default function DesktopWindow({
   );
 
   const handleContainerClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    const target = event.target as HTMLElement;
+    let target = event.target as HTMLElement;
+
+    while (target) {
+      if (target.tagName === "A") break;
+      target = target.parentElement as HTMLElement;
+    }
+
     if (target && target.tagName === "A") {
       const href = (target as HTMLAnchorElement).getAttribute("href");
 
