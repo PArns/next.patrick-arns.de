@@ -82,7 +82,7 @@ export default function Lightbox() {
                       width={1980}
                       height={1980}
                       alt={image?.title || "Lightbox Image"}
-                      className="object-contain w-full max-h-[calc(100vh-120px)]"
+                      className="object-contain w-full max-h-[calc(100vh-100px)]"
                       loading="eager"
                     />
                   </div>

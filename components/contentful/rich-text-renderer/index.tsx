@@ -5,18 +5,15 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import {
   BLOCKS,
   INLINES,
-  Inline,
   Document as RichTextDocument,
 } from "@contentful/rich-text-types";
 
 import classNames from "classnames";
 import Link from "next/link";
-import ContentfulImageAsset, {
-  getImageSource,
-  getImageAssetId,
-} from "../image-asset";
+import ContentfulImageAsset, { getImageSource } from "../image-asset";
 
 import { showLightBoxImage } from "@/components/os/lightbox";
+import PhotoGallery, { GalleryPhoto } from "@/components/photo-gallery";
 
 export default function RichTextRenderer({
   document,
@@ -113,11 +110,20 @@ export default function RichTextRenderer({
             );
           }
           case "imageGallery": {
-            return (
-              <div className="clear-both flex justify-center">
-                <div className="xl:w-5/6">GALLERY PENDING</div>
-              </div>
-            );
+            let galleryImages: GalleryPhoto[] = [];
+
+            fields.images.map((image: any) => {
+              galleryImages.push({
+                src: getImageSource(image, 400),
+                lightboxImageSrc: getImageSource(image, 1980),
+                alt: image.fields.description,
+                title: image.fields.title,
+                width: image.fields.file.details.image.width,
+                height: image.fields.file.details.image.height,
+              });
+            });
+
+            return <PhotoGallery photos={galleryImages} />;
           }
           default: {
             return (
@@ -173,10 +179,12 @@ export default function RichTextRenderer({
         );
       },
       [BLOCKS.HEADING_6]: (node: any, children: any) => {
-        return <h6 className="clear-both pb-2 text-xl text-gray-600">{children}</h6>;
+        return (
+          <h6 className="clear-both pb-2 text-xl text-gray-600">{children}</h6>
+        );
       },
       [BLOCKS.PARAGRAPH]: (node: any, children: any) => {
-        return <div className="pb-3">{children}</div>;
+        return <div className="[&:not(:last-child)]:pb-3">{children}</div>;
       },
     },
   };
