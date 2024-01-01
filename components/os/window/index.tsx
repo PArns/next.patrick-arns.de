@@ -142,7 +142,7 @@ export default function DesktopWindow({
       const widthPx = (widthPercent / 100) * parentSize.width;
       selfSize.width = widthPx;
     }
-  
+
     setTimeout(() => {
       rndRef.current?.updateSize(selfSize);
     });
@@ -201,9 +201,10 @@ export default function DesktopWindow({
           onMouseDown={() => activateWindow()}
           onResize={() => activateWindow()}
           ref={rndRef}
+          dragHandleClassName="draggable"
         >
           <div className="cursor-default flex flex-col h-full">
-            <div className="flex h-6 border-b bg-white/30">
+            <div className="flex h-6 border-b bg-white/30 draggable">
               <div className="flex-none flex w-7 h-6 items-center justify-center">
                 <Image
                   src={icon}
