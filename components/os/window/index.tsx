@@ -174,17 +174,6 @@ export default function DesktopWindow({
     events.windowRouteChanged.emitOnWindowRouteChanged(currentWindow);
   };
 
-  const resizing = {
-    bottom: true,
-    bottomLeft: false,
-    bottomRight: true,
-    left: false,
-    right: true,
-    top: false,
-    topLeft: false,
-    topRight: false,
-  };
-
   const windowClasses = classNames(
     "backdrop-blur-sm rounded-md shadow-md border-2",
     {
@@ -205,7 +194,6 @@ export default function DesktopWindow({
       {visibleState && (
         <Rnd
           className={windowClasses}
-          enableResizing={resizing}
           bounds="parent"
           minHeight={300}
           minWidth={400}
