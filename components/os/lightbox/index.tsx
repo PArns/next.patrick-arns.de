@@ -83,6 +83,7 @@ export default function Lightbox() {
                       height={1980}
                       alt={image?.title || "Lightbox Image"}
                       className="object-contain w-full max-h-[calc(100vh-120px)]"
+                      loading="eager"
                     />
                   </div>
                 </Dialog.Panel>

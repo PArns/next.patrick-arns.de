@@ -59,7 +59,32 @@ export default async function BlogOverlay({
         <RichTextRenderer document={post.body} />
       </div>
       <div>
-        <Link href="/blog">Back to index</Link>
+        <div className="mr-1 mt-6 flex flex-nowrap text-neutral-800">
+          <Link
+            href="/blog"
+            className="rounded bg-sky-500 px-4 py-2 mb-2 font-semibold text-white transition hover:bg-sky-700"
+          >
+            <div className="flex flex-nowrap">
+              <div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="h-6 w-6 pr-2"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+                  />
+                </svg>
+              </div>
+              <div>Back to Index</div>
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );

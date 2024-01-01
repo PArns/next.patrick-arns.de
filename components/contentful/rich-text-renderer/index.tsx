@@ -64,6 +64,8 @@ export default function RichTextRenderer({
               classes.push("drop-shadow-lg");
 
               imageClasses.push("rounded-lg");
+              imageClasses.push("xl:w-full");
+              imageClasses.push("md:w-28");
             }
 
             if (floatingDirection)
@@ -73,7 +75,7 @@ export default function RichTextRenderer({
               styleObject["maxWidth"] = `${maxWidth}px`;
 
             const subTitleClasses = classNames(
-              "flex flex-col text-center w-max",
+              "flex flex-col text-center items-center justify-center w-auto",
               {
                 "float-left": classes.indexOf("float-left") > -1,
                 "pr-4": classes.indexOf("float-left") > -1,
@@ -94,7 +96,7 @@ export default function RichTextRenderer({
                   height={500}
                   alt={name}
                   className={imageClasses.join(" ")}
-                  styles={styleObject}
+                  style={styleObject}
                   onClick={() => {
                     if (useLightBox) {
                       showLightBoxImage({
@@ -147,31 +149,31 @@ export default function RichTextRenderer({
       },
       [BLOCKS.HEADING_1]: (node: any, children: any) => {
         return (
-          <h1 className="clear-both text-6xl text-gray-600">{children}</h1>
+          <h1 className="clear-both pb-2 text-6xl text-gray-600">{children}</h1>
         );
       },
       [BLOCKS.HEADING_2]: (node: any, children: any) => {
         return (
-          <h2 className="clear-both text-5xl text-gray-600">{children}</h2>
+          <h2 className="clear-both pb-2 text-5xl text-gray-600">{children}</h2>
         );
       },
       [BLOCKS.HEADING_3]: (node: any, children: any) => {
         return (
-          <h3 className="clear-both text-4xl text-gray-600">{children}</h3>
+          <h3 className="clear-both pb-2 text-4xl text-gray-600">{children}</h3>
         );
       },
       [BLOCKS.HEADING_4]: (node: any, children: any) => {
         return (
-          <h4 className="clear-both text-3xl text-gray-600">{children}</h4>
+          <h4 className="clear-both pb-2 text-3xl text-gray-600">{children}</h4>
         );
       },
       [BLOCKS.HEADING_5]: (node: any, children: any) => {
         return (
-          <h5 className="clear-both text-2xl text-gray-600">{children}</h5>
+          <h5 className="clear-both pb-2 text-2xl text-gray-600">{children}</h5>
         );
       },
       [BLOCKS.HEADING_6]: (node: any, children: any) => {
-        return <h6 className="clear-both text-xl text-gray-600">{children}</h6>;
+        return <h6 className="clear-both pb-2 text-xl text-gray-600">{children}</h6>;
       },
       [BLOCKS.PARAGRAPH]: (node: any, children: any) => {
         return <div className="pb-3">{children}</div>;
