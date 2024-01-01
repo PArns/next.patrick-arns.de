@@ -10,7 +10,7 @@ interface ContentfulImageAssetProps {
   [key: string]: any; // For other props that might be passed
 }
 
-export function GetImageSource(asset: any, width: number, quality?: number) {
+export function getImageSource(asset: any, width: number, quality?: number) {
   const assetSrc = asset?.fields?.file?.url;
 
   const imageSource = assetSrc.startsWith("//")
@@ -22,9 +22,13 @@ export function GetImageSource(asset: any, width: number, quality?: number) {
   return fullSource;
 }
 
+export function getImageAssetId(asset: any) {
+  return asset?.sys?.id;
+}
+
 export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
   const { alt, asset, width, height, quality, ...rest } = props;
-  const imageSource = GetImageSource(asset, width, quality);
+  const imageSource = getImageSource(asset, width, quality);
 
   return (
     <Image
