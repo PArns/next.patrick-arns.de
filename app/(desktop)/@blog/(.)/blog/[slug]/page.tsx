@@ -49,17 +49,17 @@ export default async function BlogOverlay({
   }
 
   return (
-    <div className="flex flex-col p-2 w-full">
+    <div className="flex flex-col p-2 w-ful">
       <BlogHeader
         title={post.title}
         subTitle={post.subTitle}
         backgroundImage={post.image}
       />
-      <div>
+      <div className="mt-4 p-4 rounded-md bg-white">
         <RichTextRenderer document={post.body} />
       </div>
       <div>
-        <div className="mr-1 mt-6 flex flex-nowrap text-neutral-800">
+        <div className="mr-1 mt-2 flex flex-nowrap text-neutral-800">
           <Link
             href="/blog"
             className="rounded bg-sky-500 px-4 py-2 mb-2 font-semibold text-white transition hover:bg-sky-700"
@@ -81,7 +81,7 @@ export default async function BlogOverlay({
                   />
                 </svg>
               </div>
-              <div>Back to Index</div>
+              <div>Back to Blog overview</div>
             </div>
           </Link>
         </div>
