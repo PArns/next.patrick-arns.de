@@ -182,7 +182,7 @@ export default function DesktopWindow({
   );
 
   const windowTitleClass = classNames(
-    "grow text-center cursor-move justify-center align-middle",
+    "grow text-center cursor-move justify-center align-middle vertical-center",
     {
       "font-bold": activeState,
     }
@@ -203,19 +203,19 @@ export default function DesktopWindow({
           dragHandleClassName="draggable"
         >
           <div className="cursor-default flex flex-col h-full">
-            <div className="flex h-6 border-b bg-white/30 draggable">
-              <div className="flex-none flex w-7 h-6 items-center justify-center">
+            <div className="flex h-7 border-b bg-white/30 draggable">
+              <div className="flex-none flex w-8 h-7 items-center justify-center">
                 <Image
                   src={icon}
-                  width={20}
-                  height={20}
+                  width={24}
+                  height={24}
                   alt={title}
                   className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
                 />
               </div>
               <div className={windowTitleClass}>{titleState}</div>
               <div
-                className="flex-none flex w-6 h-6 items-center justify-center hover:bg-red-500/50 rounded-tr-sm"
+                className="flex-none flex w-7 h-7 items-center justify-center hover:bg-red-500/50 rounded-tr-sm"
                 onClick={() => closeWindow()}
               >
                 <IconXMark />
