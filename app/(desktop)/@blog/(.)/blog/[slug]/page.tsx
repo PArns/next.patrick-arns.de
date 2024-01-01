@@ -49,7 +49,7 @@ export default async function BlogOverlay({
   }
 
   return (
-    <div className="flex flex-col p-2">
+    <div className="flex flex-col p-2 w-full">
       <BlogHeader
         title={post.title}
         subTitle={post.subTitle}
