@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEvent, useEffect } from "react";
+import { MouseEvent } from "react";
 import Image from "next/image";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 
@@ -22,14 +22,6 @@ export default function DesktopIcon({
   href?: string | EntryFieldTypes.Symbol;
   click?: Function;
 }) {
-  useEffect(() => {
-    const init = async () => {
-      const { Tooltip, initTE } = await import("tw-elements");
-      initTE({ Tooltip });
-    };
-    init();
-  }, []);
-
   const handleMouseEvent = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { MotionValue, motion, useSpring, useTransform } from "framer-motion";
-import { useRef, useEffect, useState, MouseEvent } from "react";
+import { useRef, useState, MouseEvent } from "react";
 
 import Image from "next/image";
 import classNames from "classnames";
@@ -27,14 +27,6 @@ export default function AppIcon({
       }
     }
   );
-
-  useEffect(() => {
-    const init = async () => {
-      const { Tooltip, initTE } = await import("tw-elements");
-      initTE({ Tooltip });
-    };
-    init();
-  }, []);
 
   let distance = useTransform(mouseX, (val) => {
     let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };

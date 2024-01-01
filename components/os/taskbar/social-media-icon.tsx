@@ -1,12 +1,10 @@
 "use client";
 
 import { MotionValue, motion, useSpring, useTransform } from "framer-motion";
-import { useRef, useEffect, MouseEvent } from "react";
-import { title } from "process";
+import { useRef, MouseEvent } from "react";
 
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import { EntryFieldTypes } from "contentful/dist/types/types/entry";
-import { Albert_Sans } from "next/font/google";
 
 export default function SocialMediaIcon({
   mouseX,
@@ -24,14 +22,6 @@ export default function SocialMediaIcon({
   contentfulAsset: any;
 }) {
   let ref = useRef<HTMLAnchorElement>(null);
-
-  useEffect(() => {
-    const init = async () => {
-      const { Tooltip, initTE } = await import("tw-elements");
-      initTE({ Tooltip });
-    };
-    init();
-  }, []);
 
   let distance = useTransform(mouseX, (val) => {
     let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
