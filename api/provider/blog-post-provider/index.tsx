@@ -57,7 +57,6 @@ export async function GetBlogPostBySlug(slug: string) {
     limit: 1,
     include: 10,
     "fields.slug": slug,
-    "fields.listEntry": true,
   });
 
   const post = res.items[0];
