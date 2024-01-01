@@ -14,6 +14,7 @@ export interface BlogPost {
   body: RichTextDocument | null;
   excerpt: string;
   image: any;
+  publishedAt: Date;
 }
 
 // A function to transform a Contentful blog post
@@ -32,6 +33,7 @@ export function parseContentfulBlogPost(
     body: blogPostEntry.fields.body || null,
     excerpt: blogPostEntry.fields.excerpt || "",
     image: blogPostEntry.fields.image || null,
+    publishedAt: new Date(blogPostEntry.fields.publishedAt),
   };
 }
 
