@@ -10,6 +10,7 @@ import TitleBar from "../titlebar";
 import IconContainer from "../icon-container";
 import WindowManager from "../windowManager";
 import BackgroundImage from "../background-image";
+import Lightbox from "../lightbox";
 
 export default function Desktop({
   children,
@@ -23,23 +24,26 @@ export default function Desktop({
   pageName: string;
 }) {
   const headersList = headers();
-  const startRoute = headersList.get("x-url")?? null;
+  const startRoute = headersList.get("x-url") ?? null;
 
   return (
-    <div className="w-screen h-screen flex flex-col">
-      <WindowManager startRoute={startRoute} />
-      <BackgroundImage backgroundImages={backgroundImages} />
+    <>
+      <div className="w-screen h-screen flex flex-col">
+        <WindowManager startRoute={startRoute} />
+        <BackgroundImage backgroundImages={backgroundImages} />
 
-      <div className="flex-none">
-        <TitleBar pageName={pageName} />
+        <div className="flex-none">
+          <TitleBar pageName={pageName} />
+        </div>
+        <div className="flex-grow flex">
+          <IconContainer socialMediaLinks={socialMediaLinks} />
+          {children}
+        </div>
+        <div className="flex-none">
+          <Taskbar socialMediaLinks={socialMediaLinks} />
+        </div>
       </div>
-      <div className="flex-grow flex">
-        <IconContainer socialMediaLinks={socialMediaLinks} />
-        {children}
-      </div>
-      <div className="flex-none">
-        <Taskbar socialMediaLinks={socialMediaLinks} />
-      </div>
-    </div>
+      <Lightbox />
+    </>
   );
 }

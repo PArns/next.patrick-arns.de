@@ -9,9 +9,6 @@ import {
   Document as RichTextDocument,
 } from "@contentful/rich-text-types";
 
-import "lightbox.js-react/dist/index.css";
-import { SlideshowLightbox, initLightboxJS } from "lightbox.js-react";
-
 import classNames from "classnames";
 import Link from "next/link";
 import ContentfulImageAsset, {
@@ -19,19 +16,14 @@ import ContentfulImageAsset, {
   getImageAssetId,
 } from "../image-asset";
 
+import { showLightBoxImage } from "@/components/os/lightbox";
+
 export default function RichTextRenderer({
   document,
 }: {
   document: RichTextDocument | null;
 }) {
   if (!document) return null;
-
-  /*useEffect(() => {
-    initLightboxJS(
-      process.env.NEXT_PUBLIC_LIGHTBOX_LICENSE_KEY as string,
-      process.env.NEXT_PUBLIC_LIGHTBOX_PLAN_TYPE as string
-    );
-  });*/
 
   const renderOptions = {
     renderNode: {
@@ -90,36 +82,31 @@ export default function RichTextRenderer({
               }
             );
 
-            let lightBoxImages = [];
-
-            const imageAssetId = "lightbox-" + getImageAssetId(image);
-
             if (useLightBox) {
-              lightBoxImages.push({
-                src: getImageSource(image, 1920, 90),
-                alt: name,
-              });
+              imageClasses.push("cursor-zoom-in");
             }
 
             return (
               <div className={subTitleClasses}>
-                <SlideshowLightbox
-                  lightboxIdentifier={imageAssetId}
-                  framework="next"
-                  images={lightBoxImages}
-                >
-                  <ContentfulImageAsset
-                    asset={image}
-                    className={imageClasses.join(" ")}
-                    alt={name}
-                    width={maxWidth}
-                    height={200}
-                    data-lightbox={imageAssetId}
-                  />
-                  {showSubtitle && (
-                    <span className="text-gray-400">{name}</span>
-                  )}
-                </SlideshowLightbox>
+                <ContentfulImageAsset
+                  asset={image}
+                  width={500}
+                  height={500}
+                  alt={name}
+                  className={imageClasses.join(" ")}
+                  styles={styleObject}
+                  onClick={() => {
+                    if (useLightBox) {
+                      showLightBoxImage({
+                        src: getImageSource(image, 1980),
+                        title: name,
+                      });
+                    }
+                  }}
+                />
+                {showSubtitle && (
+                  <span className="text-sm text-gray-500">{name}</span>
+                )}
               </div>
             );
           }
@@ -160,45 +147,31 @@ export default function RichTextRenderer({
       },
       [BLOCKS.HEADING_1]: (node: any, children: any) => {
         return (
-          <h1 className="clear-both text-6xl text-gray-600">
-            {children}
-          </h1>
+          <h1 className="clear-both text-6xl text-gray-600">{children}</h1>
         );
       },
       [BLOCKS.HEADING_2]: (node: any, children: any) => {
         return (
-          <h2 className="clear-both text-5xl text-gray-600">
-            {children}
-          </h2>
+          <h2 className="clear-both text-5xl text-gray-600">{children}</h2>
         );
       },
       [BLOCKS.HEADING_3]: (node: any, children: any) => {
         return (
-          <h3 className="clear-both text-4xl text-gray-600">
-            {children}
-          </h3>
+          <h3 className="clear-both text-4xl text-gray-600">{children}</h3>
         );
       },
       [BLOCKS.HEADING_4]: (node: any, children: any) => {
         return (
-          <h4 className="clear-both text-3xl text-gray-600">
-            {children}
-          </h4>
+          <h4 className="clear-both text-3xl text-gray-600">{children}</h4>
         );
       },
       [BLOCKS.HEADING_5]: (node: any, children: any) => {
         return (
-          <h5 className="clear-both text-2xl text-gray-600">
-            {children}
-          </h5>
+          <h5 className="clear-both text-2xl text-gray-600">{children}</h5>
         );
       },
       [BLOCKS.HEADING_6]: (node: any, children: any) => {
-        return (
-          <h6 className="clear-both text-xl text-gray-600">
-            {children}
-          </h6>
-        );
+        return <h6 className="clear-both text-xl text-gray-600">{children}</h6>;
       },
       [BLOCKS.PARAGRAPH]: (node: any, children: any) => {
         return <div className="pb-3">{children}</div>;

@@ -71,16 +71,15 @@ export default function DesktopWindow({
       target = target.parentElement as HTMLElement;
     }
 
-    if (target && target.tagName === "A") {
-      const href = (target as HTMLAnchorElement).getAttribute("href");
+    if (!target || target.tagName !== "A") return;
+    const href = (target as HTMLAnchorElement).getAttribute("href");
 
-      if (href) {
-        setRouteState(href);
+    if (href) {
+      setRouteState(href);
 
-        const currentWindow = currentWindowDetails();
-        currentWindow.route = href;
-        events.windowRouteChanged.emitOnWindowRouteChanged(currentWindow);
-      }
+      const currentWindow = currentWindowDetails();
+      currentWindow.route = href;
+      events.windowRouteChanged.emitOnWindowRouteChanged(currentWindow);
     }
   };
 
