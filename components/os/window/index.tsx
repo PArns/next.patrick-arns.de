@@ -19,6 +19,7 @@ export type WindowContract = {
   route: string;
   width?: string;
   height?: string;
+  maxWidth?: string | number;
   center?: boolean;
   isInitiallyOpen?: boolean;
   hasDesktopIcon?: boolean;
@@ -32,6 +33,7 @@ export default function DesktopWindow({
   route,
   width,
   height,
+  maxWidth,
   center,
   isInitiallyOpen,
   hasDesktopIcon,
@@ -196,6 +198,7 @@ export default function DesktopWindow({
           bounds="parent"
           minHeight={300}
           minWidth={400}
+          maxWidth={maxWidth}
           style={{ zIndex: zIndexState }}
           onMouseDown={() => activateWindow()}
           onResize={() => activateWindow()}

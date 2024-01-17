@@ -36,6 +36,7 @@ export default async function AppLayout({
       <DesktopWindow
         width="80%"
         height="80%"
+        maxWidth={1900}
         route="/blog"
         title="Blog"
         icon="/appicons/blog.png"
