@@ -99,7 +99,19 @@ export default function DesktopWindow({
       visible: visibleState,
       zIndex: zIndexState,
     };
-  }, [id, title, icon, route, isInitiallyOpen, hasDesktopIcon, titleState, routeState, activeState, visibleState, zIndexState]);
+  }, [
+    id,
+    title,
+    icon,
+    route,
+    isInitiallyOpen,
+    hasDesktopIcon,
+    titleState,
+    routeState,
+    activeState,
+    visibleState,
+    zIndexState,
+  ]);
 
   useEffect(() => {
     events.windowRegisteredEvent.emitOnWindowRegistered(currentWindowDetails());
@@ -107,7 +119,7 @@ export default function DesktopWindow({
     return () => {
       events.windowDestroyedEvent.emitOnWindowDestroyed(currentWindowDetails());
     };
-  }, [currentWindowDetails]);
+  }, []); // Please ignore here: Warning: React Hook useEffect has a missing dependency: 'currentWindowDetails'.
 
   useEffect(() => {
     events.windowTitleChanged.emitOnWindowTitleChanged(currentWindowDetails());
