@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useCallback, useState, useRef } from "react";
 import { Rnd } from "react-rnd";
 
 import classNames from "classnames";
@@ -85,7 +85,7 @@ export default function DesktopWindow({
     }
   };
 
-  const currentWindowDetails = (): WindowDetails => {
+  const currentWindowDetails = useCallback((): WindowDetails => {
     return {
       id: id,
       name: title,
@@ -99,7 +99,7 @@ export default function DesktopWindow({
       visible: visibleState,
       zIndex: zIndexState,
     };
-  };
+  }, [id, title, icon, route, isInitiallyOpen, hasDesktopIcon, titleState, routeState, activeState, visibleState, zIndexState]);
 
   useEffect(() => {
     events.windowRegisteredEvent.emitOnWindowRegistered(currentWindowDetails());
@@ -107,19 +107,19 @@ export default function DesktopWindow({
     return () => {
       events.windowDestroyedEvent.emitOnWindowDestroyed(currentWindowDetails());
     };
-  }, []);
+  }, [currentWindowDetails]);
 
   useEffect(() => {
     events.windowTitleChanged.emitOnWindowTitleChanged(currentWindowDetails());
-  }, [titleState]);
+  }, [titleState, currentWindowDetails]);
 
   useEffect(() => {
     events.windowActivatedEvent.emitOnWindowActivated(currentWindowDetails());
-  }, [activeState]);
+  }, [activeState, currentWindowDetails]);
 
   useEffect(() => {
     events.windowOpenedEvent.emitOnWindowOpened(currentWindowDetails());
-  }, [visibleState]);
+  }, [visibleState, currentWindowDetails]);
 
   useEffect(() => {
     if (!visibleState) return;
@@ -161,7 +161,7 @@ export default function DesktopWindow({
     setTimeout(() => {
       rndRef.current?.updatePosition({ x: left, y: top });
     }, 0);
-  }, [visibleState]);
+  }, [visibleState, center, width, height, maxWidth]);
 
   const activateWindow = () => {
     makeWindowActiveEvent.emitOnMakeWindowActiveEvent(currentWindowDetails());
