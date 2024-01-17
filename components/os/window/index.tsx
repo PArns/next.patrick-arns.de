@@ -19,7 +19,7 @@ export type WindowContract = {
   route: string;
   width?: string;
   height?: string;
-  maxWidth?: string | number;
+  maxWidth?: number;
   center?: boolean;
   isInitiallyOpen?: boolean;
   hasDesktopIcon?: boolean;
@@ -141,7 +141,12 @@ export default function DesktopWindow({
     if (width?.endsWith("%")) {
       const widthPercent = parseInt(width.replace("%", ""));
       const widthPx = (widthPercent / 100) * parentSize.width;
+
       selfSize.width = widthPx;
+    }
+
+    if (maxWidth && selfSize.width > maxWidth) {
+      selfSize.width = maxWidth;
     }
 
     setTimeout(() => {
