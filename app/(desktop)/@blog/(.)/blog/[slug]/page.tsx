@@ -38,12 +38,13 @@ export async function generateMetadata(
     title: blogPost.title,
     description: blogPost.excerpt,
     openGraph: {
+      type: "article",
+      publishedTime: blogPost.publishedAt.toISOString(),
+      url: `https://patrick-arns.de/blog/${params.slug}`,
       images: [
         { url: getImageSource(blogPost.image, 800), width: 800 },
         { url: getImageSource(blogPost.image, 1800), width: 1800 },
       ],
-      type: "article",
-      publishedTime: blogPost.publishedAt.toISOString(),
     },
   };
 }
