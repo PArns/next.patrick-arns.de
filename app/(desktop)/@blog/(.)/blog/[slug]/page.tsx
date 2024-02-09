@@ -41,6 +41,7 @@ export async function generateMetadata(
       type: "article",
       publishedTime: blogPost.publishedAt.toISOString(),
       url: `https://patrick-arns.de/blog/${params.slug}`,
+      locale: "de_DE",
       images: [
         { url: getImageSource(blogPost.image, 800), width: 800 },
         { url: getImageSource(blogPost.image, 1800), width: 1800 },
@@ -69,7 +70,15 @@ export default async function BlogOverlay({
           backgroundImage={post.image}
         />
         <div className="mt-4 p-4 rounded-md bg-white">
-          <RichTextRenderer document={post.body} />
+          <h3 className="text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl mb-1 dark:text-white">
+            {post.title}
+          </h3>
+          <h4 className="text-xl font-semibold leading-tight text-gray-900 lg:text-2xl mb-4 dark:text-white">
+            {post.subTitle}
+          </h4>
+          <article>
+            <RichTextRenderer document={post.body} />
+          </article>
         </div>
         <div>
           <div className="mr-1 mt-2 flex flex-nowrap text-neutral-800">
