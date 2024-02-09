@@ -35,6 +35,7 @@ export async function generateMetadata(
   }
 
   return {
+    metadataBase: new URL("https://patrick-arns.de"),
     title: blogPost.title,
     description: blogPost.excerpt,
     openGraph: {
