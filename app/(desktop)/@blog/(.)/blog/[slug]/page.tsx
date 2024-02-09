@@ -9,6 +9,8 @@ import {
 import RichTextRenderer from "@/components/contentful/rich-text-renderer";
 import BlogHeader from "@/components/blog/blog-header";
 
+import { getImageSource } from "@/components/contentful/image-asset";
+
 interface BlogPostPageParams {
   slug: string;
 }
@@ -34,6 +36,15 @@ export async function generateMetadata(
 
   return {
     title: blogPost.title,
+    description: blogPost.excerpt,
+    openGraph: {
+      images: [
+        { url: getImageSource(blogPost.image, 800), width: 800 },
+        { url: getImageSource(blogPost.image, 1800), width: 1800 },
+      ],
+      type: "article",
+      publishedTime: blogPost.publishedAt.toISOString(),
+    },
   };
 }
 
