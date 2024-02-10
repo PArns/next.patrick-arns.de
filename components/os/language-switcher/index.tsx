@@ -85,7 +85,7 @@ export default function LanguageSwitcher() {
               width={26}
               height={26}
               alt="Language"
-              className="pt-[5px] opacity-60 hover:opacity-100"
+              className="pt-[5px] opacity-70 hover:opacity-90"
             />
           </Menu.Button>
           <Menu.Items className="absolute mt-[2px] origin-top-left divide-y divide-gray-100 rounded-md backdrop-blur-lg bg-white/90 drop-shadow ring-1 ring-black/5 focus:outline-none">
