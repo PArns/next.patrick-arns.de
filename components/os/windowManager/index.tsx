@@ -58,8 +58,8 @@ export default function WindowManager({
   };
 
   const setRouteFromActiveWindow = (activeWindow: WindowDetails | null) => {
-    const newRoute = activeWindow?.route ?? `/${currentLocale}`;
-    router.push(newRoute);
+    const newRoute = activeWindow?.route ?? "/";
+    router.push(`/${currentLocale}${newRoute}`);
   };
 
   // ----------------- WindowManager Events ----------------
@@ -144,6 +144,8 @@ export default function WindowManager({
     // Set startup window, once it's registered ...
     if (!startRoute) return;
 
+    startRoute = removeLocaleFromRoute(startRoute, currentLocale);
+
     if (startRoute != "/" && startRoute.startsWith(newWindow.startRoute)) {
       // correct route of the app to the given URL ...
       if (startRoute !== newWindow.route) {
@@ -227,6 +229,22 @@ export default function WindowManager({
         router.push(`/${currentLocale}`);
       }
     }
+  };
+
+  const removeLocaleFromRoute = (
+    routeToRemoveLocaleFrom: string,
+    localeToBeRemoved: string
+  ): string => {
+    if (
+      routeToRemoveLocaleFrom === `/${localeToBeRemoved}` ||
+      routeToRemoveLocaleFrom === `/${localeToBeRemoved}/`
+    )
+      return "/";
+
+    if (!routeToRemoveLocaleFrom.startsWith(`/${localeToBeRemoved}`))
+      return routeToRemoveLocaleFrom;
+
+    return routeToRemoveLocaleFrom.substring(`/${localeToBeRemoved}`.length);
   };
 
   return <></>;
