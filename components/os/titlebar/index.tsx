@@ -44,7 +44,7 @@ export default function TitleBar({ pageName }: { pageName: string }) {
         </div>
       </div>
       <div className="flex-grow"></div>
-      <div className="flex-none px-2 pt-1">
+      <div className="flex-none px-2">
         <LanguageSwitcher />
       </div>
       <div className="flex-none">

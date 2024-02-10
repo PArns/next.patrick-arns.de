@@ -20,7 +20,7 @@ export default function LanguageSwitcher() {
 
   const pathRegEx = /\/[a-z]{2}\/(.*)/gm;
 
-  const [currentLocale, setCurrentLocale] = useState(config.defaultLocale);
+  const [currentLocale, setCurrentLocale] = useState<string>("");
   const [supportedLocales, setSupportedLocales] = useState<Array<langEntry>>(
     []
   );
@@ -77,47 +77,50 @@ export default function LanguageSwitcher() {
 
   return (
     <>
-      <Menu>
-        <Menu.Button>
-          <Image
-            src={`/flags/${currentLocale}.png`}
-            width={26}
-            height={26}
-            alt="Language"
-          />
-        </Menu.Button>
-        <Menu.Items className="absolute mt-[2px] origin-top-left divide-y divide-gray-100 rounded-md backdrop-blur-lg bg-white/90 drop-shadow ring-1 ring-black/5 focus:outline-none">
-          {supportedLocales.map((loc) => (
-            <Menu.Item
-              as="div"
-              key={loc.locale}
-              className="p-1 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-white ui-not-active:text-black"
-            >
-              {({ active }) => (
-                <a
-                  href={loc.path}
-                  className={`${
-                    active ? "bg-violet-500 text-white" : "text-gray-900"
-                  } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                >
-                  <div className="flex flex-row">
-                    <div>
-                      <Image
-                        src={`/flags/${loc.locale}.png`}
-                        width={20}
-                        height={12}
-                        alt={`Language ${loc.locale}`}
-                        className="mt-[5px] mr-2"
-                      />
+      {currentLocale && (
+        <Menu>
+          <Menu.Button>
+            <Image
+              src={`/flags/${currentLocale}.png`}
+              width={26}
+              height={26}
+              alt="Language"
+              className="pt-[5px] opacity-60 hover:opacity-100"
+            />
+          </Menu.Button>
+          <Menu.Items className="absolute mt-[2px] origin-top-left divide-y divide-gray-100 rounded-md backdrop-blur-lg bg-white/90 drop-shadow ring-1 ring-black/5 focus:outline-none">
+            {supportedLocales.map((loc) => (
+              <Menu.Item
+                as="div"
+                key={loc.locale}
+                className="p-1 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-white ui-not-active:text-black"
+              >
+                {({ active }) => (
+                  <a
+                    href={loc.path}
+                    className={`${
+                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
+                    <div className="flex flex-row">
+                      <div>
+                        <Image
+                          src={`/flags/${loc.locale}.png`}
+                          width={20}
+                          height={12}
+                          alt={`Language ${loc.locale}`}
+                          className="mt-[5px] mr-2"
+                        />
+                      </div>
+                      <div>{loc.language}</div>
                     </div>
-                    <div>{loc.language}</div>
-                  </div>
-                </a>
-              )}
-            </Menu.Item>
-          ))}
-        </Menu.Items>
-      </Menu>
+                  </a>
+                )}
+              </Menu.Item>
+            ))}
+          </Menu.Items>
+        </Menu>
+      )}
     </>
   );
 }

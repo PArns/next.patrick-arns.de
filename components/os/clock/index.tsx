@@ -77,11 +77,15 @@ export default class Clock extends Component<ClockContract> {
       : " - ";
 
     return (
-      <div>
-        <span>{this.state.date}</span>
-        <span>{separator}</span>
-        <span>{this.state.time}</span>
-      </div>
+      <>
+        {this.state.date && (
+          <div>
+            <span>{this.state.date}</span>
+            <span>{separator}</span>
+            <span>{this.state.time}</span>
+          </div>
+        )}
+      </>
     );
   }
 }
