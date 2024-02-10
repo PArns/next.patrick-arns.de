@@ -32,10 +32,15 @@ const activeWindowChangedEvent = createEvent(
   "onActiveWindowChangedEvent"
 )<WindowDetails | null>();
 
+const getCurrentLocale = ():string => {
+  return currentLocale;
+}
+
 export {
   registeredWindowsChangedEvent,
   makeWindowActiveEvent,
   activeWindowChangedEvent,
+  getCurrentLocale
 };
 
 const registeredWindows: RegisteredWindows = [];

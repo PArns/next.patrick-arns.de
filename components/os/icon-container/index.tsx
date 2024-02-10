@@ -8,6 +8,7 @@ import {
   registeredWindowsChangedEvent,
   makeWindowActiveEvent,
   RegisteredWindows,
+  getCurrentLocale
 } from "../windowManager";
 
 export type IconContainerContract = {
@@ -18,6 +19,7 @@ const IconContainer: React.FC<IconContainerContract> = ({
   socialMediaLinks,
 }) => {
   const [windowArray, setWindowArray] = useState<RegisteredWindows>([]);
+  const currentLocale = getCurrentLocale();
 
   registeredWindowsChangedEvent.useOnRegisteredWindowsChangedEventListener(
     (newWindowArray) => {
@@ -32,7 +34,7 @@ const IconContainer: React.FC<IconContainerContract> = ({
           icon={window.icon}
           name={window.title}
           key={window.id}
-          href={window.startRoute}
+          href={`/${currentLocale}${window.startRoute}`}
           click={() => {
             makeWindowActiveEvent.emitOnMakeWindowActiveEvent(window);
           }}
