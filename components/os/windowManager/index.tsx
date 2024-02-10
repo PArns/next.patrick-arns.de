@@ -4,6 +4,8 @@ import events, { WindowDetails, desktopWindowEvents } from "./events";
 import { createEvent } from "react-event-hook";
 import { useRouter } from "next/navigation";
 
+import PageBaseConfiguration from "@/configuration";
+
 function moveElementToStart<T>(items: T[], item: T): T[] {
   const itemIndex = items.indexOf(item);
 
@@ -37,20 +39,26 @@ export {
 };
 
 const registeredWindows: RegisteredWindows = [];
+let currentLocale: string = "";
 
 export default function WindowManager({
   startRoute,
+  startLocale,
 }: {
   startRoute: string | null;
+  startLocale: string | null;
 }) {
   const router = useRouter();
+  const config = PageBaseConfiguration();
+
+  currentLocale = startLocale ?? config.defaultLocale;
 
   const getActiveWindow = (): WindowDetails | null => {
     return registeredWindows.find((window) => window.active === true) ?? null;
   };
 
   const setRouteFromActiveWindow = (activeWindow: WindowDetails | null) => {
-    const newRoute = activeWindow?.route ?? "/";
+    const newRoute = activeWindow?.route ?? `/${currentLocale}`;
     router.push(newRoute);
   };
 
@@ -214,10 +222,9 @@ export default function WindowManager({
 
       const activeWindow = getActiveWindow();
 
-      if (!activeWindow)
-      {
+      if (!activeWindow) {
         activeWindowChangedEvent.emitOnActiveWindowChangedEvent(null);
-        router.push("/");
+        router.push(`/${currentLocale}`);
       }
     }
   };
