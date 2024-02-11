@@ -99,7 +99,7 @@ export default function LanguageSwitcher() {
                   <a
                     href={loc.path}
                     className={`${
-                      active ? "bg-violet-500 text-white" : "text-gray-900"
+                      active ? "bg-sky-500 text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                   >
                     <div className="flex flex-row">
