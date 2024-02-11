@@ -5,11 +5,10 @@ import classNames from "classnames";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import { headers } from "next/headers";
-
 import PageBaseConfiguration from "@/configuration";
 
 import "./globals.css";
+import { getCurrentLocale } from "@/helper/localization";
 
 const inter = Inter({ subsets: ["latin"] });
 const config = PageBaseConfiguration();
@@ -24,8 +23,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const headersList = headers();
-  const currentLocale = headersList.get("x-locale") ?? config.defaultLocale;
+  const currentLocale = getCurrentLocale();
 
   const classes = classNames(inter.className, "overflow-hidden");
 

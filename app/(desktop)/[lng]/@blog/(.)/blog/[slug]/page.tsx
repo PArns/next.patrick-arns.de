@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
@@ -6,15 +5,18 @@ import {
   GetBlogPosts,
   GetBlogPostBySlug,
 } from "@/api/provider/blog-post-provider";
-import RichTextRenderer from "@/components/contentful/rich-text-renderer";
-import BlogHeader from "@/components/blog/blog-header";
-
-import { getImageSource } from "@/components/contentful/image-asset";
 
 import PageBaseConfiguration from "@/configuration";
 
+import RichTextRenderer from "@/components/contentful/rich-text-renderer";
+import BlogHeader from "@/components/blog/blog-header";
+import Link from "next/link";
+
+import { getImageSource } from "@/components/contentful/image-asset";
+
 interface BlogPostPageParams {
   slug: string;
+  lng: string;
 }
 
 interface BlogPostPageProps {
@@ -22,15 +24,26 @@ interface BlogPostPageProps {
 }
 
 export async function generateStaticParams(): Promise<BlogPostPageParams[]> {
-  const blogPosts = await GetBlogPosts();
-  return blogPosts.map((post) => ({ slug: post.slug }));
+  const config = PageBaseConfiguration();
+  const entries: BlogPostPageParams[] = [];
+
+  config.supportedLocales.forEach(async (locale) => {
+    const blogPosts = await GetBlogPosts(locale);
+
+    blogPosts.forEach((post) => {
+      entries.push({ slug: post.slug, lng: locale });
+    });
+  });
+
+  return entries;
 }
 
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
-  const blogPost = await GetBlogPostBySlug(params.slug);
   const config = PageBaseConfiguration();
+
+  const blogPost = await GetBlogPostBySlug(params.slug, params.lng);
 
   if (!blogPost) {
     return notFound();
@@ -43,8 +56,8 @@ export async function generateMetadata({
     openGraph: {
       type: "article",
       publishedTime: blogPost.publishedAt.toISOString(),
-      url: `https://patrick-arns.de/blog/${params.slug}`,
-      locale: "de",
+      url: `${config.baseUrl}/${params.lng}/blog/${params.slug}`,
+      locale: params.lng,
       images: [
         { url: getImageSource(blogPost.image, 800), width: 800 },
         { url: getImageSource(blogPost.image, 1800), width: 1800 },
@@ -56,9 +69,11 @@ export async function generateMetadata({
 export default async function BlogOverlay({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; lng: string };
 }) {
-  const post = await GetBlogPostBySlug(params.slug);
+  const post = await GetBlogPostBySlug(params.slug, params.lng);
+
+  console.log("PARAMS", params);
 
   if (!post) {
     return notFound();
