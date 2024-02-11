@@ -10,10 +10,10 @@ export default function BlogCard({
   return (
     <Link
       href={`/${post.locale}/blog/${post.slug}`}
-      className="w-full flex-flex-col rounded-lg drop-shadow-lg"
+      className="flex rounded-lg drop-shadow-lg"
     >
-      <article>
-        <div className="relative overflow-hidden bg-cover bg-no-repeat p-16 w-full">
+      <article className="w-full">
+        <div className="relative overflow-hidden bg-cover bg-no-repeat p-16">
           <ContentfulImageAsset
             asset={post.image}
             alt={post.title}

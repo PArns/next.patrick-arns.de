@@ -78,8 +78,8 @@ export default async function BlogOverlay({
   }
 
   return (
-    <div className="mx-auto">
-      <div className="container flex flex-col p-2 w-ful">
+    <div className="mx-auto container">
+      <div className="flex flex-col p-2 w-ful">
         <BlogHeader
           title={post.title}
           subTitle={post.subTitle}
