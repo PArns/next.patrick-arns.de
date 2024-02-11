@@ -63,9 +63,6 @@ export async function GetBlogPostBySlug(slug: string, locale: string) {
     "fields.slug": slug,
   });
 
-  console.log(res);
-  console.log(slug, locale);
-
   const post = res.items[0];
   return parseContentfulBlogPost(post);
 }

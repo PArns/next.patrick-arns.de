@@ -73,8 +73,6 @@ export default async function BlogOverlay({
 }) {
   const post = await GetBlogPostBySlug(params.slug, params.lng);
 
-  console.log("PARAMS", params);
-
   if (!post) {
     return notFound();
   }
