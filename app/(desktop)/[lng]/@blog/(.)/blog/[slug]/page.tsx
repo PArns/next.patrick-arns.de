@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import {
   GetBlogPosts,
   GetBlogPostBySlug,
-} from "@/api/provider/blog-post-provider";
+} from "@/contentful/provider/blog-post-provider";
 
 import PageBaseConfiguration from "@/configuration";
 

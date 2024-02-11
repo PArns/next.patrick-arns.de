@@ -1,4 +1,4 @@
-import { GetBlogPosts } from "@/api/provider/blog-post-provider";
+import { GetBlogPosts } from "@/contentful/provider/blog-post-provider";
 import BlogCard from "@/components/blog/blog-card";
 
 export async function generateMetadata() {

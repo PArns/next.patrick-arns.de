@@ -1,6 +1,6 @@
-import client from "@/api/client";
+import client from "@/contentful/client";
 
-import { TypeBlogPostSkeleton } from "@/api/types";
+import { TypeBlogPostSkeleton } from "@/contentful/types";
 
 import { Entry, LocaleCode } from "contentful";
 import { Document as RichTextDocument } from "@contentful/rich-text-types";

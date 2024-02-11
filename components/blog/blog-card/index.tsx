@@ -1,4 +1,4 @@
-import { BlogPost } from "@/api/provider/blog-post-provider";
+import { BlogPost } from "@/contentful/provider/blog-post-provider";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import Link from "next/link";
 

@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import {
   TypeBackgroundImagesFields,
   TypeSocialMediaLinkFields,
-} from "@/api/types";
+} from "@/contentful/types";
 
 import Taskbar from "../taskbar";
 import TitleBar from "../titlebar";

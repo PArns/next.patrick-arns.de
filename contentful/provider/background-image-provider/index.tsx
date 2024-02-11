@@ -1,9 +1,9 @@
-import client from "@/api/client";
+import client from "@/contentful/client";
 
 import {
   TypeBackgroundImagesFields,
   TypeBackgroundImagesSkeleton,
-} from "@/api/types";
+} from "@/contentful/types";
 
 export async function GetBackgroundImages() {
   const response = await client.getEntries<TypeBackgroundImagesSkeleton>({

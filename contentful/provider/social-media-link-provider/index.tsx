@@ -1,9 +1,9 @@
-import client from "@/api/client";
+import client from "@/contentful/client";
 
 import {
   TypeSocialMediaLinkFields,
   TypeSocialMediaLinkSkeleton,
-} from "@/api/types";
+} from "@/contentful/types";
 
 export async function GetSocialMediaLinks() {
   const response = await client.getEntries<TypeSocialMediaLinkSkeleton>({

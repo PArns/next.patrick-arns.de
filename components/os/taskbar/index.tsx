@@ -1,5 +1,5 @@
 import Dock from "./dock";
-import { TypeSocialMediaLinkFields } from "@/api/types";
+import { TypeSocialMediaLinkFields } from "@/contentful/types";
 
 export default function Taskbar({
   socialMediaLinks,

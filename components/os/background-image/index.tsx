@@ -1,6 +1,6 @@
 "use client";
 
-import { TypeBackgroundImagesFields } from "@/api/types";
+import { TypeBackgroundImagesFields } from "@/contentful/types";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import { useEffect, useState } from "react";
 
