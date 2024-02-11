@@ -18,8 +18,6 @@ export default function LanguageSwitcher() {
   const pathName = usePathname();
   const config = PageBaseConfiguration();
 
-  const pathRegEx = /\/[a-z]{2}\/(.*)/gm;
-
   const [currentLocale, setCurrentLocale] = useState<string>("");
   const [supportedLocales, setSupportedLocales] = useState<Array<langEntry>>(
     []
@@ -37,7 +35,9 @@ export default function LanguageSwitcher() {
   }
 
   useEffect(() => {
+    const pathRegEx = /\/[a-z]{2}\/(.*)/gm;
     const match = Array.from(pathName.matchAll(pathRegEx), (m) => m[1]);
+    
     let langUrls: langEntry[] = [];
 
     config.supportedLocales.map((supportedLocale) => {
@@ -73,7 +73,7 @@ export default function LanguageSwitcher() {
     });
 
     setSupportedLocales(langUrls);
-  }, [pathName]);
+  }, [pathName, config.supportedLocales]);
 
   return (
     <>
