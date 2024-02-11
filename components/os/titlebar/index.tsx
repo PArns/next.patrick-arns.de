@@ -44,11 +44,11 @@ export default function TitleBar({ pageName }: { pageName: string }) {
         </div>
       </div>
       <div className="flex-grow"></div>
-      <div className="flex-none px-2">
-        <LanguageSwitcher />
+      <div className="flex-none pr-2">
+        <Clock timeFormat="hh-mm" />
       </div>
       <div className="flex-none">
-        <Clock timeFormat="hh-mm" />
+        <LanguageSwitcher />
       </div>
     </div>
   );

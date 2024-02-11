@@ -6,7 +6,7 @@ import PageBaseConfiguration from "@/configuration";
 import { useEffect, useState } from "react";
 
 import Image from "next/image";
-import { Menu } from "@headlessui/react";
+import { Menu, Transition } from "@headlessui/react";
 
 interface langEntry {
   locale: string;
@@ -88,37 +88,46 @@ export default function LanguageSwitcher() {
               className="pt-[5px] opacity-70 hover:opacity-90"
             />
           </Menu.Button>
-          <Menu.Items className="absolute mt-[2px] origin-top-left divide-y divide-gray-100 rounded-md bg-white/90 ring-1 ring-black/5 drop-shadow backdrop-blur-lg focus:outline-none">
-            {supportedLocales.map((loc) => (
-              <Menu.Item
-                as="div"
-                key={loc.locale}
-                className="ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-white ui-not-active:text-black p-1"
-              >
-                {({ active }) => (
-                  <a
-                    href={loc.path}
-                    className={`${
-                      active ? "bg-sky-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                  >
-                    <div className="flex flex-row">
-                      <div>
-                        <Image
-                          src={`/flags/${loc.locale}.png`}
-                          width={20}
-                          height={12}
-                          alt={`Language ${loc.locale}`}
-                          className="mr-2 mt-[5px]"
-                        />
+          <Transition
+            enter="transition duration-100 ease-out"
+            enterFrom="transform scale-95 opacity-0"
+            enterTo="transform scale-100 opacity-100"
+            leave="transition duration-75 ease-out"
+            leaveFrom="transform scale-100 opacity-100"
+            leaveTo="transform scale-95 opacity-0"
+          >
+            <Menu.Items className="absolute right-2 mt-[2px] w-28 origin-top-right divide-y divide-gray-100 rounded-md bg-white/90 ring-1 ring-black/5 drop-shadow backdrop-blur-lg focus:outline-none">
+              {supportedLocales.map((loc) => (
+                <Menu.Item
+                  as="div"
+                  key={loc.locale}
+                  className="ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-white ui-not-active:text-black p-1"
+                >
+                  {({ active }) => (
+                    <a
+                      href={loc.path}
+                      className={`${
+                        active ? "bg-sky-500 text-white" : "text-gray-900"
+                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                    >
+                      <div className="flex flex-row">
+                        <div>
+                          <Image
+                            src={`/flags/${loc.locale}.png`}
+                            width={20}
+                            height={12}
+                            alt={`Language ${loc.locale}`}
+                            className="mr-2 mt-[5px]"
+                          />
+                        </div>
+                        <div>{loc.language}</div>
                       </div>
-                      <div>{loc.language}</div>
-                    </div>
-                  </a>
-                )}
-              </Menu.Item>
-            ))}
-          </Menu.Items>
+                    </a>
+                  )}
+                </Menu.Item>
+              ))}
+            </Menu.Items>
+          </Transition>
         </Menu>
       )}
     </>
