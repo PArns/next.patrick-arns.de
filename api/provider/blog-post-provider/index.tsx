@@ -14,13 +14,15 @@ export interface BlogPost {
   body: RichTextDocument | null;
   excerpt: string;
   image: any;
+  locale: string;
   publishedAt: Date;
 }
 
 // A function to transform a Contentful blog post
 // into our own BlogPost object.
 export function parseContentfulBlogPost(
-  blogPostEntry?: BlogPostEntry
+  blogPostEntry?: BlogPostEntry,
+  locale?: string,
 ): BlogPost | null {
   if (!blogPostEntry) {
     return null;
@@ -33,6 +35,7 @@ export function parseContentfulBlogPost(
     body: blogPostEntry.fields.body || null,
     excerpt: blogPostEntry.fields.excerpt || "",
     image: blogPostEntry.fields.image || null,
+    locale: locale || "en",
     publishedAt: new Date(blogPostEntry.fields.publishedAt),
   };
 }
@@ -50,7 +53,7 @@ export async function GetBlogPosts(locale: LocaleCode) {
   });
 
   return res.items.map(
-    (blogPostEntry) => parseContentfulBlogPost(blogPostEntry) as BlogPost
+    (blogPostEntry) => parseContentfulBlogPost(blogPostEntry, locale) as BlogPost
   );
 }
 

@@ -4,14 +4,12 @@ import Link from "next/link";
 
 export default function BlogCard({
   post,
-  locale,
 }: {
   post: BlogPost;
-  locale: string;
 }) {
   return (
     <Link
-      href={`/${locale}/blog/${post.slug}`}
+      href={`/${post.locale}/blog/${post.slug}`}
       className="w-full flex-flex-col rounded-lg drop-shadow-lg"
     >
       <article>

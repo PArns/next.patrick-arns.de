@@ -18,7 +18,7 @@ export default async function BlogIndex({
     <div className="mx-auto">
       <div className="container flex flex-col w-full p-2 gap-2">
         {posts.map((post) => (
-          <BlogCard locale={params.lng} post={post} key={post.slug} />
+          <BlogCard post={post} key={post.slug} />
         ))}
       </div>
     </div>
