@@ -4,6 +4,6 @@ export default function PageBaseConfiguration() {
     description: "Coming soon ...",
     baseUrl: new URL("https://patrick-arns.de"),
     supportedLocales: ["de", "en"],
-    defaultLocale: "de"
+    defaultLocale: "en"
   };
 }
