@@ -1,18 +1,22 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 
 import {
   GetBlogPosts,
   GetBlogPostBySlug,
 } from "@/api/provider/blog-post-provider";
+
+import PageBaseConfiguration from "@/configuration";
+
 import RichTextRenderer from "@/components/contentful/rich-text-renderer";
 import BlogHeader from "@/components/blog/blog-header";
+import Link from "next/link";
 
 import { getImageSource } from "@/components/contentful/image-asset";
 
 interface BlogPostPageParams {
   slug: string;
+  lng: string;
 }
 
 interface BlogPostPageProps {
@@ -20,29 +24,40 @@ interface BlogPostPageProps {
 }
 
 export async function generateStaticParams(): Promise<BlogPostPageParams[]> {
-  const blogPosts = await GetBlogPosts();
-  return blogPosts.map((post) => ({ slug: post.slug }));
+  const config = PageBaseConfiguration();
+  const entries: BlogPostPageParams[] = [];
+
+  config.supportedLocales.forEach(async (locale) => {
+    const blogPosts = await GetBlogPosts(locale);
+
+    blogPosts.forEach((post) => {
+      entries.push({ slug: post.slug, lng: locale });
+    });
+  });
+
+  return entries;
 }
 
-export async function generateMetadata(
-  { params }: BlogPostPageProps,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const blogPost = await GetBlogPostBySlug(params.slug);
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const config = PageBaseConfiguration();
+
+  const blogPost = await GetBlogPostBySlug(params.slug, params.lng);
 
   if (!blogPost) {
     return notFound();
   }
 
   return {
-    metadataBase: new URL("https://patrick-arns.de"),
+    metadataBase: config.baseUrl,
     title: blogPost.title,
     description: blogPost.excerpt,
     openGraph: {
       type: "article",
       publishedTime: blogPost.publishedAt.toISOString(),
-      url: `https://patrick-arns.de/blog/${params.slug}`,
-      locale: "de_DE",
+      url: `${config.baseUrl}/${params.lng}/blog/${params.slug}`,
+      locale: params.lng,
       images: [
         { url: getImageSource(blogPost.image, 800), width: 800 },
         { url: getImageSource(blogPost.image, 1800), width: 1800 },
@@ -54,17 +69,17 @@ export async function generateMetadata(
 export default async function BlogOverlay({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string; lng: string };
 }) {
-  const post = await GetBlogPostBySlug(params.slug);
+  const post = await GetBlogPostBySlug(params.slug, params.lng);
 
   if (!post) {
     return notFound();
   }
 
   return (
-    <div className="mx-auto">
-      <div className="container flex flex-col p-2 w-ful">
+    <div className="mx-auto container">
+      <div className="flex flex-col p-2 w-ful">
         <BlogHeader
           title={post.title}
           subTitle={post.subTitle}
@@ -84,7 +99,7 @@ export default async function BlogOverlay({
         <div>
           <div className="mr-1 mt-2 flex flex-nowrap text-neutral-800">
             <Link
-              href="/blog"
+              href={`/${params.lng}/blog`}
               className="rounded bg-sky-500 px-4 py-2 mb-2 font-semibold text-white transition hover:bg-sky-700"
             >
               <div className="flex flex-nowrap">

@@ -4,6 +4,8 @@ import events, { WindowDetails, desktopWindowEvents } from "./events";
 import { createEvent } from "react-event-hook";
 import { useRouter } from "next/navigation";
 
+import PageBaseConfiguration from "@/configuration";
+
 function moveElementToStart<T>(items: T[], item: T): T[] {
   const itemIndex = items.indexOf(item);
 
@@ -30,20 +32,65 @@ const activeWindowChangedEvent = createEvent(
   "onActiveWindowChangedEvent"
 )<WindowDetails | null>();
 
+const getCurrentLocale = (): string => {
+  return currentLocale;
+};
+
+const removeLocaleFromRoute = (
+  routeToRemoveLocaleFrom: string,
+  localeToBeRemoved?: string
+): string => {
+  if (!Boolean(localeToBeRemoved)) localeToBeRemoved = getCurrentLocale();
+
+  if (
+    routeToRemoveLocaleFrom === `/${localeToBeRemoved}` ||
+    routeToRemoveLocaleFrom === `/${localeToBeRemoved}/`
+  )
+    return "/";
+
+  if (!routeToRemoveLocaleFrom.startsWith(`/${localeToBeRemoved}`))
+    return routeToRemoveLocaleFrom;
+
+  return routeToRemoveLocaleFrom.substring(`/${localeToBeRemoved}`.length);
+};
+
+const addLocaleToRoute = (
+  routeToAddLocaleTo: string,
+  localeToBeAdded?: string
+): string => {
+  if (!Boolean(localeToBeAdded)) localeToBeAdded = getCurrentLocale();
+
+  const removedLocale = removeLocaleFromRoute(
+    routeToAddLocaleTo,
+    localeToBeAdded
+  );
+
+  return `/${localeToBeAdded}${removedLocale}`;
+};
+
 export {
   registeredWindowsChangedEvent,
   makeWindowActiveEvent,
   activeWindowChangedEvent,
+  getCurrentLocale,
+  removeLocaleFromRoute,
+  addLocaleToRoute,
 };
 
 const registeredWindows: RegisteredWindows = [];
+let currentLocale: string = "";
 
 export default function WindowManager({
   startRoute,
+  startLocale,
 }: {
   startRoute: string | null;
+  startLocale: string | null;
 }) {
   const router = useRouter();
+  const config = PageBaseConfiguration();
+
+  currentLocale = startLocale ?? config.defaultLocale;
 
   const getActiveWindow = (): WindowDetails | null => {
     return registeredWindows.find((window) => window.active === true) ?? null;
@@ -51,7 +98,7 @@ export default function WindowManager({
 
   const setRouteFromActiveWindow = (activeWindow: WindowDetails | null) => {
     const newRoute = activeWindow?.route ?? "/";
-    router.push(newRoute);
+    router.push(`/${currentLocale}${newRoute}`);
   };
 
   // ----------------- WindowManager Events ----------------
@@ -136,6 +183,8 @@ export default function WindowManager({
     // Set startup window, once it's registered ...
     if (!startRoute) return;
 
+    startRoute = removeLocaleFromRoute(startRoute, currentLocale);
+
     if (startRoute != "/" && startRoute.startsWith(newWindow.startRoute)) {
       // correct route of the app to the given URL ...
       if (startRoute !== newWindow.route) {
@@ -214,10 +263,9 @@ export default function WindowManager({
 
       const activeWindow = getActiveWindow();
 
-      if (!activeWindow)
-      {
+      if (!activeWindow) {
         activeWindowChangedEvent.emitOnActiveWindowChangedEvent(null);
-        router.push("/");
+        router.push(`/${currentLocale}`);
       }
     }
   };

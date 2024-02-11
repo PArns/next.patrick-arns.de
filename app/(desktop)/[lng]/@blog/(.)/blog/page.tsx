@@ -7,12 +7,16 @@ export async function generateMetadata() {
   };
 }
 
-export default async function BlogIndex() {
-  const posts = await GetBlogPosts();
+export default async function BlogIndex({
+  params,
+}: {
+  params: { lng: string };
+}) {
+  const posts = await GetBlogPosts(params.lng);
 
   return (
-    <div className="mx-auto">
-      <div className="container flex flex-col w-full p-2 gap-2">
+    <div className="container mx-auto">
+      <div className="flex flex-col p-2 gap-2">
         {posts.map((post) => (
           <BlogCard post={post} key={post.slug} />
         ))}

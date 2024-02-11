@@ -7,6 +7,7 @@ import { activeWindowChangedEvent } from "../windowManager";
 import Clock from "../clock";
 import Image from "next/image";
 import { WindowDetails } from "../windowManager/events";
+import LanguageSwitcher from "../language-switcher";
 
 const defaultIcon = "/favicons/favicon-32x32.png";
 
@@ -43,6 +44,9 @@ export default function TitleBar({ pageName }: { pageName: string }) {
         </div>
       </div>
       <div className="flex-grow"></div>
+      <div className="flex-none px-2">
+        <LanguageSwitcher />
+      </div>
       <div className="flex-none">
         <Clock timeFormat="hh-mm" />
       </div>

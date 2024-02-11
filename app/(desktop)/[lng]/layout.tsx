@@ -3,7 +3,8 @@ import Desktop from "@/components/os/desktop";
 import { GetBackgroundImages } from "@/api/provider/background-image-provider";
 import { GetSocialMediaLinks } from "@/api/provider/social-media-link-provider";
 
-import  DesktopWindow  from "@/components/os/window";
+import DesktopWindow from "@/components/os/window";
+import PageBaseConfiguration from "@/configuration";
 
 export default async function AppLayout({
   blog,
@@ -12,6 +13,7 @@ export default async function AppLayout({
   blog: React.ReactNode;
   underconstruction: React.ReactNode;
 }) {
+  const config = PageBaseConfiguration();
   const backgroundImages = await GetBackgroundImages();
   const socialMediaLinks = await GetSocialMediaLinks();
 
@@ -19,7 +21,7 @@ export default async function AppLayout({
     <Desktop
       backgroundImages={backgroundImages}
       socialMediaLinks={socialMediaLinks}
-      pageName="Patrick-Arns.de"
+      pageName={config.title}
     >
       <DesktopWindow
         width="50%"

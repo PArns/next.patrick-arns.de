@@ -2,14 +2,18 @@ import { BlogPost } from "@/api/provider/blog-post-provider";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import Link from "next/link";
 
-export default function BlogCard({ post }: { post: BlogPost }) {
+export default function BlogCard({
+  post,
+}: {
+  post: BlogPost;
+}) {
   return (
     <Link
-      href={`/blog/${post.slug}`}
-      className="w-full flex-flex-col rounded-lg drop-shadow-lg"
+      href={`/${post.locale}/blog/${post.slug}`}
+      className="flex rounded-lg drop-shadow-lg"
     >
-      <article>
-        <div className="relative overflow-hidden bg-cover bg-no-repeat p-16 w-full">
+      <article className="w-full">
+        <div className="relative overflow-hidden bg-cover bg-no-repeat p-16">
           <ContentfulImageAsset
             asset={post.image}
             alt={post.title}

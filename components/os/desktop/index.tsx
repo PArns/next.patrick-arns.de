@@ -12,6 +12,8 @@ import WindowManager from "../windowManager";
 import BackgroundImage from "../background-image";
 import Lightbox from "../lightbox";
 
+import PageBaseConfiguration from "@/configuration";
+
 export default function Desktop({
   children,
   backgroundImages,
@@ -23,13 +25,16 @@ export default function Desktop({
   socialMediaLinks?: TypeSocialMediaLinkFields[];
   pageName: string;
 }) {
+  const config = PageBaseConfiguration();
+
   const headersList = headers();
   const startRoute = headersList.get("x-url") ?? null;
+  const startLocale = headersList.get("x-locale") ?? config.defaultLocale;
 
   return (
     <>
       <div className="w-screen h-screen flex flex-col">
-        <WindowManager startRoute={startRoute} />
+        <WindowManager startRoute={startRoute} startLocale={startLocale} />
         <BackgroundImage backgroundImages={backgroundImages} />
 
         <div className="flex-none">

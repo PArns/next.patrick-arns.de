@@ -1,23 +1,59 @@
 import { NextResponse, type NextRequest } from "next/server";
 
+import { match } from "@formatjs/intl-localematcher";
+import Negotiator from "negotiator";
+import PageBaseConfiguration from "./configuration";
+
+function getLocale(request: NextRequest) {
+  const config = PageBaseConfiguration();
+
+  const acceptedLanguage = request.headers.get("accept-language") ?? undefined;
+  let headers = { "accept-language": acceptedLanguage };
+  let languages = new Negotiator({ headers }).languages();
+
+  return match(languages, config.supportedLocales, config.defaultLocale);
+}
+
 export async function middleware(request: NextRequest) {
+  const config = PageBaseConfiguration();
+
+  const pathname = request.nextUrl.pathname;
+
+  const pathnameIsMissingLocale = config.supportedLocales.every(
+    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  );
+
+  // Redirect if there is no locale
+  if (pathnameIsMissingLocale) {
+    const locale = getLocale(request);
+
+    // e.g. incoming request is /products
+    // The new URL is now /en-US/products
+    return NextResponse.redirect(
+      new URL(`/${locale}/${pathname}`, request.url)
+    );
+  }
+
+  const pathName = request.nextUrl.pathname;
+  const pathRegEx = /\/([a-z]{2})\/{0,1}(.*)/gm;
+
+  const match = Array.from(pathName.matchAll(pathRegEx), (m) => m[1]);
+  let locale = "";
+
+  if (match != null && match.length == 1) locale = match[0];
+
   return NextResponse.next({
     request: {
-      headers: new Headers({ "x-url": request.nextUrl.pathname }),
+      headers: new Headers({
+        "x-url": pathName,
+        "x-locale": locale,
+      }),
     },
   });
 }
 
-// the following code has been copied from https://nextjs.org/docs/advanced-features/middleware#matcher
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    '/((?!api|_next/static|_next/image|favicon.ico|appicons|favicons).*)',
+    "/((?!api|_next|favicon.ico|appicons|favicons|flags|assets|.*\\..*).*)",
   ],
-}
+};
