@@ -6,7 +6,7 @@ import { useRef, useState, MouseEvent } from "react";
 import Image from "next/image";
 import classNames from "classnames";
 import { WindowDetails, desktopWindowEvents } from "../windowManager/events";
-import { makeWindowActiveEvent, getCurrentLocale } from "../windowManager";
+import { makeWindowActiveEvent, addLocaleToRoute } from "../windowManager";
 
 export default function AppIcon({
   mouseX,
@@ -17,8 +17,6 @@ export default function AppIcon({
 }) {
   const [currentWindowStatus, setCurrentWindowStatus] =
     useState<WindowDetails>(window);
-
-  const currentLocale = getCurrentLocale();
 
   let ref = useRef<HTMLAnchorElement>(null);
 
@@ -60,7 +58,7 @@ export default function AppIcon({
       style={{ width }}
       className="aspect-square w-10 text-center"
       onClick={handleMouseEvent}
-      href={`/${currentLocale}${currentWindowStatus.route}`}
+      href={addLocaleToRoute(currentWindowStatus.route)}
       data-te-toggle="tooltip"
       title={window.title}
     >

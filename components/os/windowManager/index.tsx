@@ -32,15 +32,49 @@ const activeWindowChangedEvent = createEvent(
   "onActiveWindowChangedEvent"
 )<WindowDetails | null>();
 
-const getCurrentLocale = ():string => {
+const getCurrentLocale = (): string => {
   return currentLocale;
-}
+};
+
+const removeLocaleFromRoute = (
+  routeToRemoveLocaleFrom: string,
+  localeToBeRemoved?: string
+): string => {
+  if (!Boolean(localeToBeRemoved)) localeToBeRemoved = getCurrentLocale();
+
+  if (
+    routeToRemoveLocaleFrom === `/${localeToBeRemoved}` ||
+    routeToRemoveLocaleFrom === `/${localeToBeRemoved}/`
+  )
+    return "/";
+
+  if (!routeToRemoveLocaleFrom.startsWith(`/${localeToBeRemoved}`))
+    return routeToRemoveLocaleFrom;
+
+  return routeToRemoveLocaleFrom.substring(`/${localeToBeRemoved}`.length);
+};
+
+const addLocaleToRoute = (
+  routeToAddLocaleTo: string,
+  localeToBeAdded?: string
+): string => {
+  if (!Boolean(localeToBeAdded)) localeToBeAdded = getCurrentLocale();
+
+  const removedLocale = removeLocaleFromRoute(
+    routeToAddLocaleTo,
+    localeToBeAdded
+  );
+
+  return `/${localeToBeAdded}${removedLocale}`;
+};
 
 export {
   registeredWindowsChangedEvent,
   makeWindowActiveEvent,
   activeWindowChangedEvent,
-  getCurrentLocale
+  getCurrentLocale,
+  removeLocaleFromRoute,
+  addLocaleToRoute,
 };
 
 const registeredWindows: RegisteredWindows = [];
@@ -234,22 +268,6 @@ export default function WindowManager({
         router.push(`/${currentLocale}`);
       }
     }
-  };
-
-  const removeLocaleFromRoute = (
-    routeToRemoveLocaleFrom: string,
-    localeToBeRemoved: string
-  ): string => {
-    if (
-      routeToRemoveLocaleFrom === `/${localeToBeRemoved}` ||
-      routeToRemoveLocaleFrom === `/${localeToBeRemoved}/`
-    )
-      return "/";
-
-    if (!routeToRemoveLocaleFrom.startsWith(`/${localeToBeRemoved}`))
-      return routeToRemoveLocaleFrom;
-
-    return routeToRemoveLocaleFrom.substring(`/${localeToBeRemoved}`.length);
   };
 
   return <></>;
