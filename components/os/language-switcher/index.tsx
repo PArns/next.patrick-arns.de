@@ -73,7 +73,7 @@ export default function LanguageSwitcher() {
     });
 
     setSupportedLocales(langUrls);
-  }, [pathName, config.supportedLocales]);
+  }, [pathName]);
 
   return (
     <>
