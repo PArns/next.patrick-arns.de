@@ -24,11 +24,11 @@ export default function TitleBar({ pageName }: { pageName: string }) {
         setTitle(pageName);
         setAppIcon(defaultIcon);
       }
-    }
+    },
   );
 
   return (
-    <div className="backdrop-blur-lg bg-white/50 flex flex-row px-2 drop-shadow">
+    <div className="flex flex-row bg-white/50 px-2 drop-shadow backdrop-blur-lg">
       <div className="flex-none">
         <div className="flex flex-row">
           <div>
@@ -37,7 +37,7 @@ export default function TitleBar({ pageName }: { pageName: string }) {
               alt={title}
               width={20}
               height={20}
-              className="pt-1 pr-1 drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
+              className="pr-1 pt-1 drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
             />
           </div>
           <div>{title}</div>

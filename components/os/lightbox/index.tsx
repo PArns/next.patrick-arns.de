@@ -55,8 +55,8 @@ export default function Lightbox() {
             <div className="fixed inset-0 bg-black/80 backdrop-blur-md" />
           </Transition.Child>
 
-          <div className="fixed inset-0 overflow-none h-96">
-            <div className="flex items-center justify-center text-center pt-6">
+          <div className="overflow-none fixed inset-0 h-96">
+            <div className="flex items-center justify-center pt-6 text-center">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -66,11 +66,11 @@ export default function Lightbox() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="transform rounded-md shadow-md border-2 border-sky-500 bg-white/60 p-2 text-left align-middle transition-all">
+                <Dialog.Panel className="transform rounded-md border-2 border-sky-500 bg-white/60 p-2 text-left align-middle shadow-md transition-all">
                   <Dialog.Title as="div" className="flex p-0">
                     <div className="flex-1">{image?.title}</div>
                     <div
-                      className="flex-none flex w-6 h-6 items-center justify-center hover:bg-red-500/50 rounded-tr-sm"
+                      className="flex h-6 w-6 flex-none items-center justify-center rounded-tr-sm hover:bg-red-500/50"
                       onClick={() => closeModal()}
                     >
                       <IconXMark />
@@ -82,7 +82,7 @@ export default function Lightbox() {
                       width={1980}
                       height={1980}
                       alt={image?.title || "Lightbox Image"}
-                      className="object-contain w-full max-h-[calc(100vh-100px)]"
+                      className="max-h-[calc(100vh-100px)] w-full object-contain"
                       loading="eager"
                     />
                   </div>

@@ -8,7 +8,7 @@ import {
   registeredWindowsChangedEvent,
   makeWindowActiveEvent,
   RegisteredWindows,
-  getCurrentLocale
+  getCurrentLocale,
 } from "../windowManager";
 
 export type IconContainerContract = {
@@ -24,11 +24,11 @@ const IconContainer: React.FC<IconContainerContract> = ({
   registeredWindowsChangedEvent.useOnRegisteredWindowsChangedEventListener(
     (newWindowArray) => {
       setWindowArray(newWindowArray);
-    }
+    },
   );
 
   return (
-    <div className="flex h-screen pb-16 absolute flex-col flex-wrap content-start m-4 gap-2">
+    <div className="absolute m-4 flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
       {windowArray.map((window) => (
         <DesktopIcon
           icon={window.icon}

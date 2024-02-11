@@ -24,8 +24,8 @@ export default async function initTranslations({
     i18nInstance.use(
       resourcesToBackend(
         (language: string, namespace: string) =>
-          import(`@/i18n/locales/${language}/${namespace}.json`)
-      )
+          import(`@/i18n/locales/${language}/${namespace}.json`),
+      ),
     );
   }
 

@@ -54,7 +54,7 @@ export default function DesktopWindow({
       setActiveState(windowDetails.active);
       setZIndexState(windowDetails.zIndex);
       setVisibleState(windowDetails.visible);
-    }
+    },
   );
 
   events.windowStartRouteChanged.useOnWindowStartRouteChangedListener(
@@ -62,7 +62,7 @@ export default function DesktopWindow({
       if (windowDetails.id !== id) return;
 
       setRouteState(windowDetails.route);
-    }
+    },
   );
 
   const handleContainerClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -197,14 +197,14 @@ export default function DesktopWindow({
     {
       "bg-white/80 border-sky-500": activeState,
       "bg-white/50 border-gray-100/50": !activeState,
-    }
+    },
   );
 
   const windowTitleClass = classNames(
     "grow text-center cursor-move justify-center align-middle vertical-center",
     {
       "font-bold": activeState,
-    }
+    },
   );
 
   return (
@@ -222,9 +222,9 @@ export default function DesktopWindow({
           ref={rndRef}
           dragHandleClassName="draggable"
         >
-          <div className="cursor-default flex flex-col h-full">
-            <div className="flex h-7 border-b bg-white/30 draggable">
-              <div className="flex-none flex w-8 h-7 items-center justify-center">
+          <div className="flex h-full cursor-default flex-col">
+            <div className="draggable flex h-7 border-b bg-white/30">
+              <div className="flex h-7 w-8 flex-none items-center justify-center">
                 <Image
                   src={icon}
                   width={24}
@@ -235,14 +235,14 @@ export default function DesktopWindow({
               </div>
               <div className={windowTitleClass}>{titleState}</div>
               <div
-                className="flex-none flex w-7 h-7 items-center justify-center hover:bg-red-500/50 rounded-tr-sm"
+                className="flex h-7 w-7 flex-none items-center justify-center rounded-tr-sm hover:bg-red-500/50"
                 onClick={() => closeWindow()}
               >
                 <IconXMark />
               </div>
             </div>
             <div
-              className="w-auto flex flex-grow overflow-y-auto"
+              className="flex w-auto flex-grow overflow-y-auto"
               onClick={handleContainerClick}
             >
               {children}

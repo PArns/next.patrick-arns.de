@@ -21,15 +21,15 @@ function moveElementToStart<T>(items: T[], item: T): T[] {
 export type RegisteredWindows = Array<WindowDetails>;
 
 const registeredWindowsChangedEvent = createEvent(
-  "onRegisteredWindowsChangedEvent"
+  "onRegisteredWindowsChangedEvent",
 )<RegisteredWindows>();
 
 const makeWindowActiveEvent = createEvent(
-  "onMakeWindowActiveEvent"
+  "onMakeWindowActiveEvent",
 )<WindowDetails>();
 
 const activeWindowChangedEvent = createEvent(
-  "onActiveWindowChangedEvent"
+  "onActiveWindowChangedEvent",
 )<WindowDetails | null>();
 
 const getCurrentLocale = (): string => {
@@ -38,7 +38,7 @@ const getCurrentLocale = (): string => {
 
 const removeLocaleFromRoute = (
   routeToRemoveLocaleFrom: string,
-  localeToBeRemoved?: string
+  localeToBeRemoved?: string,
 ): string => {
   if (!Boolean(localeToBeRemoved)) localeToBeRemoved = getCurrentLocale();
 
@@ -56,13 +56,13 @@ const removeLocaleFromRoute = (
 
 const addLocaleToRoute = (
   routeToAddLocaleTo: string,
-  localeToBeAdded?: string
+  localeToBeAdded?: string,
 ): string => {
   if (!Boolean(localeToBeAdded)) localeToBeAdded = getCurrentLocale();
 
   const removedLocale = removeLocaleFromRoute(
     routeToAddLocaleTo,
-    localeToBeAdded
+    localeToBeAdded,
   );
 
   return `/${localeToBeAdded}${removedLocale}`;
@@ -104,11 +104,11 @@ export default function WindowManager({
   // ----------------- WindowManager Events ----------------
   makeWindowActiveEvent.useOnMakeWindowActiveEventListener((windowDetails) => {
     const existingWindowsClone: RegisteredWindows = JSON.parse(
-      JSON.stringify(registeredWindows)
+      JSON.stringify(registeredWindows),
     );
 
     const existingWindowIndex = existingWindowsClone.findIndex(
-      (window) => window.id === windowDetails.id
+      (window) => window.id === windowDetails.id,
     );
 
     if (existingWindowIndex === -1) return;
@@ -118,7 +118,7 @@ export default function WindowManager({
 
     const newWindowOrder = moveElementToStart(
       existingWindowsClone,
-      existingWindow
+      existingWindow,
     );
 
     // Correct zIndex and active state for all windows
@@ -134,7 +134,7 @@ export default function WindowManager({
     // Update the registeredWindows array
     newWindowOrder.forEach((newWindow) => {
       const registeredWindowIndex = registeredWindows.findIndex(
-        (window) => window.id === newWindow.id
+        (window) => window.id === newWindow.id,
       );
 
       if (registeredWindowIndex !== -1) {
@@ -146,7 +146,7 @@ export default function WindowManager({
 
           // Fire the updateWindowDetailsEvent
           desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
-            newWindow
+            newWindow,
           );
         }
       }
@@ -154,7 +154,7 @@ export default function WindowManager({
 
     activeWindowChangedEvent.emitOnActiveWindowChangedEvent(windowDetails);
     registeredWindowsChangedEvent.emitOnRegisteredWindowsChangedEvent(
-      registeredWindows
+      registeredWindows,
     );
 
     setRouteFromActiveWindow(windowDetails);
@@ -164,7 +164,7 @@ export default function WindowManager({
   events.windowDestroyedEvent.useOnWindowDestroyedListener(
     (destroyedWindow) => {
       const existingWindowIndex = registeredWindows.findIndex(
-        (window) => window.id === destroyedWindow.id
+        (window) => window.id === destroyedWindow.id,
       );
 
       if (existingWindowIndex !== -1) {
@@ -172,9 +172,9 @@ export default function WindowManager({
       }
 
       registeredWindowsChangedEvent.emitOnRegisteredWindowsChangedEvent(
-        registeredWindows
+        registeredWindows,
       );
-    }
+    },
   );
 
   events.windowRegisteredEvent.useOnWindowRegisteredListener((newWindow) => {
@@ -195,13 +195,13 @@ export default function WindowManager({
       // ... and make it active
       setTimeout(
         () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
-        100
+        100,
       );
     } else if (startRoute == "/" && newWindow.isInitiallyOpen) {
       // If the app is initially open, make it active
       setTimeout(
         () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
-        100
+        100,
       );
     }
   });
@@ -209,7 +209,7 @@ export default function WindowManager({
   events.windowActivatedEvent.useOnWindowActivatedListener(
     (activatedWindow) => {
       updateWindowDetails(activatedWindow);
-    }
+    },
   );
 
   events.windowOpenedEvent.useOnWindowOpenedListener((openedWindow) => {
@@ -226,7 +226,7 @@ export default function WindowManager({
 
   const updateWindowDetails = (windowDetails: WindowDetails) => {
     const existingWindowIndex = registeredWindows.findIndex(
-      (window) => window.id === windowDetails.id
+      (window) => window.id === windowDetails.id,
     );
 
     let changesMade = false;
@@ -243,7 +243,7 @@ export default function WindowManager({
 
         // Fire the updateWindowDetailsEvent
         desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
-          windowDetails
+          windowDetails,
         );
 
         changesMade = true;
@@ -258,7 +258,7 @@ export default function WindowManager({
     // only if changes were made
     if (changesMade) {
       registeredWindowsChangedEvent.emitOnRegisteredWindowsChangedEvent(
-        registeredWindows
+        registeredWindows,
       );
 
       const activeWindow = getActiveWindow();

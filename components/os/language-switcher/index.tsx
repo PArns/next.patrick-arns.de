@@ -20,7 +20,7 @@ export default function LanguageSwitcher() {
 
   const [currentLocale, setCurrentLocale] = useState<string>("");
   const [supportedLocales, setSupportedLocales] = useState<Array<langEntry>>(
-    []
+    [],
   );
 
   function getLocaleName(locale: string): string {
@@ -37,7 +37,7 @@ export default function LanguageSwitcher() {
   useEffect(() => {
     const pathRegEx = /\/[a-z]{2}\/(.*)/gm;
     const match = Array.from(pathName.matchAll(pathRegEx), (m) => m[1]);
-    
+
     let langUrls: langEntry[] = [];
 
     config.supportedLocales.map((supportedLocale) => {
@@ -88,12 +88,12 @@ export default function LanguageSwitcher() {
               className="pt-[5px] opacity-70 hover:opacity-90"
             />
           </Menu.Button>
-          <Menu.Items className="absolute mt-[2px] origin-top-left divide-y divide-gray-100 rounded-md backdrop-blur-lg bg-white/90 drop-shadow ring-1 ring-black/5 focus:outline-none">
+          <Menu.Items className="absolute mt-[2px] origin-top-left divide-y divide-gray-100 rounded-md bg-white/90 ring-1 ring-black/5 drop-shadow backdrop-blur-lg focus:outline-none">
             {supportedLocales.map((loc) => (
               <Menu.Item
                 as="div"
                 key={loc.locale}
-                className="p-1 ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-white ui-not-active:text-black"
+                className="ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-white ui-not-active:text-black p-1"
               >
                 {({ active }) => (
                   <a
@@ -109,7 +109,7 @@ export default function LanguageSwitcher() {
                           width={20}
                           height={12}
                           alt={`Language ${loc.locale}`}
-                          className="mt-[5px] mr-2"
+                          className="mr-2 mt-[5px]"
                         />
                       </div>
                       <div>{loc.language}</div>

@@ -2,11 +2,7 @@ import { BlogPost } from "@/api/provider/blog-post-provider";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import Link from "next/link";
 
-export default function BlogCard({
-  post,
-}: {
-  post: BlogPost;
-}) {
+export default function BlogCard({ post }: { post: BlogPost }) {
   return (
     <Link
       href={`/${post.locale}/blog/${post.slug}`}
@@ -19,10 +15,10 @@ export default function BlogCard({
             alt={post.title}
             width={600}
             height={300}
-            className="absolute top-0 left-0 right-0 bottom-0 h-full w-full object-cover rounded-t-lg"
+            className="absolute bottom-0 left-0 right-0 top-0 h-full w-full rounded-t-lg object-cover"
           />
 
-          <div className="absolute top-2 left-2 overflow-hidden">
+          <div className="absolute left-2 top-2 overflow-hidden">
             <div className="text-white">
               <h1 className="text-3xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                 {post.title}
@@ -34,13 +30,13 @@ export default function BlogCard({
           </div>
 
           <div className="absolute bottom-0 left-2 overflow-hidden">
-            <div className="text-white text-md font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+            <div className="text-md font-semibold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
               {post.publishedAt.toLocaleDateString()}
             </div>
           </div>
         </div>
         {post.excerpt && (
-          <div className="bg-white/50 rounded-b-lg p-2">{post.excerpt}</div>
+          <div className="rounded-b-lg bg-white/50 p-2">{post.excerpt}</div>
         )}
       </article>
     </Link>

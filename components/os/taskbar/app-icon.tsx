@@ -25,7 +25,7 @@ export default function AppIcon({
       if (window.id === currentWindowStatus.id) {
         setCurrentWindowStatus(window);
       }
-    }
+    },
   );
 
   let distance = useTransform(mouseX, (val) => {
@@ -49,7 +49,7 @@ export default function AppIcon({
       "bg-sky-500": currentWindowStatus.active,
       visible: currentWindowStatus.visible,
       invisible: !currentWindowStatus.visible,
-    }
+    },
   );
 
   return (
@@ -72,7 +72,7 @@ export default function AppIcon({
             className="object-contain drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
           />
         </div>
-        <div className="h-1 -mt-2">
+        <div className="-mt-2 h-1">
           <span className={activeButton}></span>
         </div>
       </div>

@@ -78,18 +78,18 @@ export default async function BlogOverlay({
   }
 
   return (
-    <div className="mx-auto container">
-      <div className="flex flex-col p-2 w-ful">
+    <div className="container mx-auto">
+      <div className="flex flex-col p-2">
         <BlogHeader
           title={post.title}
           subTitle={post.subTitle}
           backgroundImage={post.image}
         />
-        <div className="mt-4 p-4 rounded-md bg-white">
-          <h3 className="text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl mb-1 dark:text-white">
+        <div className="mt-4 rounded-md bg-white p-4">
+          <h3 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900 dark:text-white lg:text-4xl">
             {post.title}
           </h3>
-          <h4 className="text-xl font-semibold leading-tight text-gray-900 lg:text-2xl mb-4 dark:text-white">
+          <h4 className="mb-4 text-xl font-semibold leading-tight text-gray-900 dark:text-white lg:text-2xl">
             {post.subTitle}
           </h4>
           <article>
@@ -100,7 +100,7 @@ export default async function BlogOverlay({
           <div className="mr-1 mt-2 flex flex-nowrap text-neutral-800">
             <Link
               href={`/${params.lng}/blog`}
-              className="rounded bg-sky-500 px-4 py-2 mb-2 font-semibold text-white transition hover:bg-sky-700"
+              className="mb-2 rounded bg-sky-500 px-4 py-2 font-semibold text-white transition hover:bg-sky-700"
             >
               <div className="flex flex-nowrap">
                 <div>

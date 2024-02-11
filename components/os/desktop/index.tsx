@@ -33,14 +33,14 @@ export default function Desktop({
 
   return (
     <>
-      <div className="w-screen h-screen flex flex-col">
+      <div className="flex h-screen w-screen flex-col">
         <WindowManager startRoute={startRoute} startLocale={startLocale} />
         <BackgroundImage backgroundImages={backgroundImages} />
 
         <div className="flex-none">
           <TitleBar pageName={pageName} />
         </div>
-        <div className="flex-grow flex">
+        <div className="flex flex-grow">
           <IconContainer socialMediaLinks={socialMediaLinks} />
           {children}
         </div>

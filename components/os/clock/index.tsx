@@ -42,7 +42,7 @@ export default class Clock extends Component<ClockContract> {
       "narrow",
     ];
     const useDateFormat = validDateFormats.includes(
-      this.props.dateFormat as "long" | "short" | "narrow"
+      this.props.dateFormat as "long" | "short" | "narrow",
     )
       ? (this.props.dateFormat as "long" | "short" | "narrow")
       : "short";

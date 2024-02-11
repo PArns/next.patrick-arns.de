@@ -78,7 +78,7 @@ export default function RichTextRenderer({
                 "pr-4": classes.indexOf("float-left") > -1,
                 "float-right": classes.indexOf("float-right") > -1,
                 "pl-4": classes.indexOf("float-right") > -1,
-              }
+              },
             );
 
             if (useLightBox) {
@@ -127,7 +127,7 @@ export default function RichTextRenderer({
           }
           default: {
             return (
-              <b className="bg-red-500 mr-2">
+              <b className="mr-2 bg-red-500">
                 UNKNOWN EMBEDDED TYPE {contentType}
               </b>
             );

@@ -23,25 +23,21 @@ export default function Dock({
   registeredWindowsChangedEvent.useOnRegisteredWindowsChangedEventListener(
     (newWindowArray) => {
       setWindowsArray(newWindowArray);
-    }
+    },
   );
 
   return (
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className="mx-auto flex h-16 items-end gap-4 rounded-2xl bg-gray-700/50 backdrop-blur-md px-4 pb-3"
+      className="mx-auto flex h-16 items-end gap-4 rounded-2xl bg-gray-700/50 px-4 pb-3 backdrop-blur-md"
     >
       {windowsArray.map((window) => (
-        <AppIcon
-          mouseX={mouseX}
-          window={window}
-          key={window.id}
-        />
+        <AppIcon mouseX={mouseX} window={window} key={window.id} />
       ))}
 
       {socialMediaLinks && socialMediaLinks.length && (
-        <div className="mx-[0px] w-[1px] h-full bg-slate-500 -m-2"></div>
+        <div className="-m-2 mx-[0px] h-full w-[1px] bg-slate-500"></div>
       )}
 
       {socialMediaLinks &&

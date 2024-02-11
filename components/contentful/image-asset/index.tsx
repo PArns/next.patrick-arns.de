@@ -30,8 +30,7 @@ export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
   const { alt, asset, width, height, quality, ...rest } = props;
   const imageSource = getImageSource(asset, width, quality);
 
-  if (!Boolean(imageSource) || imageSource === undefined)
-    return (<></>);
+  if (!Boolean(imageSource) || imageSource === undefined) return <></>;
 
   return (
     <Image
