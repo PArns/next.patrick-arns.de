@@ -13,7 +13,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           <ContentfulImageAsset
             asset={post.image}
             alt={post.title}
-            width={600}
+            width={800}
             height={300}
             className="absolute bottom-0 left-0 right-0 top-0 h-full w-full rounded-t-lg object-cover"
           />
