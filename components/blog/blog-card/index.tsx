@@ -2,6 +2,7 @@ import { BlogPost } from "@/contentful/provider/blog-post-provider";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import Link from "next/link";
 import DateRenderer from "@/components/date-renderer";
+import Translate from "@/components/translate";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (
@@ -10,7 +11,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
       className="flex rounded-lg drop-shadow-lg"
     >
       <article className="w-full">
-        <div className="relative overflow-hidden bg-cover bg-no-repeat p-16">
+        <div className="relative overflow-hidden bg-cover bg-no-repeat p-24">
           <ContentfulImageAsset
             asset={post.image}
             alt={post.title}
@@ -21,24 +22,33 @@ export default function BlogCard({ post }: { post: BlogPost }) {
 
           <div className="absolute left-2 top-2 overflow-hidden">
             <div className="text-white">
-              <h1 className="text-3xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+              <h1 className="text-4xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                 {post.title}
               </h1>
-              <h2 className="text-xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+              <h2 className="text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                 {post.subTitle}
               </h2>
             </div>
           </div>
 
           <div className="absolute bottom-0 left-2 overflow-hidden">
-            <div className="text-md font-semibold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+            <div className="text-lg font-semibold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
               <DateRenderer date={post.publishedAt} />
             </div>
           </div>
         </div>
-        {post.excerpt && (
-          <div className="rounded-b-lg bg-white/50 p-2">{post.excerpt}</div>
-        )}
+
+        <div className="rounded-b-lg bg-white/50 p-2">
+          {post.excerpt && <div>{post.excerpt}</div>}
+          <div className="mr-1 mt-2 flex w-full flex-nowrap place-content-end text-neutral-800">
+            <Link
+              href={`/${post.locale}/blog/${post.slug}`}
+              className="rounded bg-sky-500 px-4 py-2 font-semibold text-white transition hover:bg-sky-700"
+            >
+              <Translate id="more" ns="blog" locale={post.locale} />
+            </Link>
+          </div>
+        </div>
       </article>
     </Link>
   );
