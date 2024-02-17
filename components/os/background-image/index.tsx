@@ -2,7 +2,7 @@
 
 import { TypeBackgroundImagesFields } from "@/contentful/types";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 
 const randomGenerator = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
@@ -14,7 +14,7 @@ export default function BackgroundImage({
 }) {
   const [background, setBackground] = useState<TypeBackgroundImagesFields>();
 
-  const bgImage = {
+  const bgImage: CSSProperties = {
     pointerEvents: "none",
     position: "absolute",
     width: "100%",
@@ -37,17 +37,16 @@ export default function BackgroundImage({
   }, [backgroundImages]);
 
   return (
-    <>
+    <div className="w-screen h-screen absolute">
       {background && (
         <ContentfulImageAsset
           asset={background.image}
+          fill={true}
           alt={background.name || "Background"}
-          width={1500}
-          height={1500}
           style={bgImage}
-          priority={true}
+          usePlaceholder={true}
         />
       )}
-    </>
+    </div>
   );
 }

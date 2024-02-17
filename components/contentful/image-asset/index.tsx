@@ -1,13 +1,19 @@
 import { EntryFieldTypes } from "contentful/dist/types/types/entry";
 import Image from "next/image";
+import { CSSProperties } from "react";
 
 interface ContentfulImageAssetProps {
   asset: any;
   alt: string | EntryFieldTypes.Symbol;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   quality?: number;
   priority?: boolean;
+  fill?: boolean;
+  usePlaceholder?: boolean;
+  maxImageWidth?: number;
+  style?: CSSProperties;
+  sizes?: string;
   [key: string]: any; // For other props that might be passed
 }
 
@@ -18,7 +24,7 @@ export function getImageSource(asset: any, width: number, quality?: number) {
     ? "https:" + assetSrc
     : assetSrc;
 
-  const fullSource = `${imageSource}?w=${width}&q=${quality || 75}`;
+  const fullSource = `${imageSource}?w=${width}&q=${quality ?? 90}`;
 
   return fullSource;
 }
@@ -28,8 +34,25 @@ export function getImageAssetId(asset: any) {
 }
 
 export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
-  const { alt, asset, width, height, quality, priority, ...rest } = props;
-  const imageSource = getImageSource(asset, width, quality);
+  const {
+    alt,
+    asset,
+    width,
+    height,
+    quality,
+    priority,
+    fill,
+    maxImageWidth,
+    style,
+    usePlaceholder,
+    sizes,
+    ...rest
+  } = props;
+
+  const imageSource = getImageSource(asset, width ?? maxImageWidth ?? 1980);
+  let previewImageSource: string | undefined = undefined;
+
+  if (usePlaceholder) previewImageSource = getImageSource(asset, 100, 10);
 
   if (!Boolean(imageSource) || imageSource === undefined) return <></>;
 
@@ -39,8 +62,13 @@ export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
       width={width}
       height={height}
       src={imageSource}
-      {...rest}
+      blurDataURL={previewImageSource}
       priority={priority}
+      placeholder={usePlaceholder ? "blur" : undefined}
+      fill={fill}
+      quality={quality}
+      style={style}
+      {...rest}
     />
   );
 }
