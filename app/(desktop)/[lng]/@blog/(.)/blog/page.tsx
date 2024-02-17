@@ -1,5 +1,10 @@
-import { GetBlogPosts } from "@/contentful/provider/blog-post-provider";
+import {
+  BlogPost,
+  GetBlogPosts,
+} from "@/contentful/provider/blog-post-provider";
 import BlogCard from "@/components/blog/blog-card";
+
+import PageBaseConfiguration from "@/configuration";
 
 export async function generateMetadata() {
   return {
@@ -12,11 +17,15 @@ export default async function BlogIndex({
 }: {
   params: { lng: string };
 }) {
-  const posts = await GetBlogPosts(params.lng);
+  const config = PageBaseConfiguration();
+  let posts: BlogPost[] = [];
+
+  if (config.supportedLocales.includes(params.lng))
+    posts = await GetBlogPosts(params.lng);
 
   return (
     <div className="container mx-auto">
-      <div className="flex flex-col p-2 gap-2">
+      <div className="flex flex-col gap-2 p-2">
         {posts.map((post) => (
           <BlogCard post={post} key={post.slug} />
         ))}

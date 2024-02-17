@@ -21,7 +21,6 @@ function getLocale(request: NextRequest) {
 
 export async function middleware(request: NextRequest) {
   const config = PageBaseConfiguration();
-
   const pathname = request.nextUrl.pathname;
 
   const pathnameIsMissingLocale = config.supportedLocales.every(
