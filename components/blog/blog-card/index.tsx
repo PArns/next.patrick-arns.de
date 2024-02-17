@@ -1,6 +1,7 @@
 import { BlogPost } from "@/contentful/provider/blog-post-provider";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import Link from "next/link";
+import DateRenderer from "@/components/date-renderer";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (
@@ -13,7 +14,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           <ContentfulImageAsset
             asset={post.image}
             alt={post.title}
-            width={600}
+            width={800}
             height={300}
             className="absolute bottom-0 left-0 right-0 top-0 h-full w-full rounded-t-lg object-cover"
           />
@@ -31,7 +32,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
 
           <div className="absolute bottom-0 left-2 overflow-hidden">
             <div className="text-md font-semibold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-              {post.publishedAt.toLocaleDateString()}
+              <DateRenderer date={post.publishedAt} />
             </div>
           </div>
         </div>
