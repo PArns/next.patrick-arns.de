@@ -97,8 +97,8 @@ export default function WindowManager({
   };
 
   const setRouteFromActiveWindow = (activeWindow: WindowDetails | null) => {
-    const newRoute = activeWindow?.route ?? "/";
-    router.push(`/${currentLocale}${newRoute}`);
+    const newRoute = addLocaleToRoute(activeWindow?.route ?? "/");
+    router.push(newRoute);
   };
 
   // ----------------- WindowManager Events ----------------
