@@ -1,7 +1,3 @@
-import BlogIndex, { generateMetadata as metaData } from "./(.)/blog/page";
-
-export async function generateMetadata() {
-  return metaData();
-}
+import BlogIndex from "./(.)/blog/page";
 
 export default BlogIndex;
