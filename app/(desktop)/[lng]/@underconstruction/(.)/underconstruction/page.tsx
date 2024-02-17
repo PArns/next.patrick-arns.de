@@ -67,11 +67,11 @@ export default async function UnderConstruction({
         <Translation lang="en">
           <h1 className="mb-2 text-2xl">Hello Stranger!</h1>
           <p className="mb-4">
-            As you may have noticed in recent weeks, there's been quite a bit
+            As you may have noticed in recent weeks, there&apos;s been quite a bit
             happening on these pages.
           </p>
           <p className="mb-4">
-            In addition to a slightly modified layout, there's a lot going on
+            In addition to a slightly modified layout, there&apos;s a lot going on
             &quot;under the hood&quot; right now.
           </p>
           <p className="mb-4">
