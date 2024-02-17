@@ -121,7 +121,9 @@ export default async function BlogOverlay({
                     />
                   </svg>
                 </div>
-                <div><Translate id="back" ns="blog" locale={params.lng} /></div>
+                <div>
+                  <Translate id="back" ns="blog" locale={params.lng} />
+                </div>
               </div>
             </Link>
           </div>

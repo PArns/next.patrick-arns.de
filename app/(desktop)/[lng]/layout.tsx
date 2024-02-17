@@ -24,8 +24,8 @@ export default async function AppLayout({
       pageName={config.title}
     >
       <DesktopWindow
-        width="50%"
-        height="50%"
+        width="70%"
+        height="70%"
         route="/underconstruction"
         title="Under Construction"
         icon="/appicons/bulldozer.png"
