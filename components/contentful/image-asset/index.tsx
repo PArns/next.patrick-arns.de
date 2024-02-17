@@ -7,6 +7,7 @@ interface ContentfulImageAssetProps {
   width: number;
   height: number;
   quality?: number;
+  priority?: boolean;
   [key: string]: any; // For other props that might be passed
 }
 
@@ -27,7 +28,7 @@ export function getImageAssetId(asset: any) {
 }
 
 export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
-  const { alt, asset, width, height, quality, ...rest } = props;
+  const { alt, asset, width, height, quality, priority, ...rest } = props;
   const imageSource = getImageSource(asset, width, quality);
 
   if (!Boolean(imageSource) || imageSource === undefined) return <></>;
@@ -39,6 +40,7 @@ export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
       height={height}
       src={imageSource}
       {...rest}
+      priority={priority}
     />
   );
 }

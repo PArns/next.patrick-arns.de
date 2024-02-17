@@ -45,6 +45,7 @@ export default function BackgroundImage({
           width={1500}
           height={1500}
           style={bgImage}
+          priority={true}
         />
       )}
     </>

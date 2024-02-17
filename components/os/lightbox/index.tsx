@@ -5,6 +5,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import Image from "next/image";
 import IconXMark from "@/components/icons/x-mark";
+import Loader from "@/components/os/lightbox/loader";
 
 export interface LightboxImage {
   src: string;
@@ -20,6 +21,7 @@ export function showLightBoxImage(image: LightboxImage) {
 export default function Lightbox() {
   const [isOpen, setIsOpen] = useState(false);
   const [image, setImage] = useState<LightboxImage | null>(null);
+  const [loading, setLoading] = useState(true);
 
   function closeModal() {
     setIsOpen(false);
@@ -30,6 +32,7 @@ export default function Lightbox() {
   }
 
   showLightBox.useOnShowLightBoxListener((image) => {
+    setLoading(true);
     setImage(image);
     openModal();
   });
@@ -77,14 +80,24 @@ export default function Lightbox() {
                     </div>
                   </Dialog.Title>
                   <div className="mt-2">
-                    <Image
-                      src={image ? image.src : ""}
-                      width={1980}
-                      height={1980}
-                      alt={image?.title || "Lightbox Image"}
-                      className="max-h-[calc(100vh-100px)] w-full object-contain"
-                      loading="eager"
-                    />
+                    {loading && (
+                      <div className="flex h-max items-center justify-center p-6">
+                        <Loader />
+                      </div>
+                    )}
+                    {image && (
+                      <Image
+                        src={image ? image.src : ""}
+                        width={1200}
+                        height={1200}
+                        alt={image?.title || "Lightbox Image"}
+                        className={`max-h-[calc(100vh-100px)] w-full object-contain rounded-md ${loading ? "hidden" : "visible"}`}
+                        priority={true}
+                        onLoad={(e) => {
+                          setLoading(false);
+                        }}
+                      />
+                    )}
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

@@ -17,6 +17,7 @@ export default function BlogHeader({
         width={800}
         height={800}
         className="absolute bottom-0 left-0 right-0 top-0 h-full w-full object-cover"
+        priority={true}
       />
       <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed">
         <div className="flex h-full items-center justify-center">
