@@ -88,6 +88,7 @@ export default function Lightbox() {
                     </div>
                     <button
                       className="flex h-7 w-7 flex-none items-center justify-center rounded-tr-sm border-0 hover:bg-red-500/50 focus:bg-red-500/50 focus:outline-none"
+                      aria-label="Close"
                       onClick={() => closeModal()}
                     >
                       <IconXMark />
