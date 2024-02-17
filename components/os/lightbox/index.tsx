@@ -69,17 +69,31 @@ export default function Lightbox() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="transform rounded-md border-2 border-sky-500 bg-white/60 p-2 text-left align-middle shadow-md transition-all">
-                  <Dialog.Title as="div" className="flex p-0">
-                    <div className="flex-1">{image?.title}</div>
-                    <div
-                      className="flex h-6 w-6 flex-none items-center justify-center rounded-tr-sm hover:bg-red-500/50"
+                <Dialog.Panel className="transform rounded-md border-2 border-sky-500 bg-white/60 text-left align-middle shadow-md backdrop-blur-sm transition-all">
+                  <Dialog.Title
+                    as="div"
+                    className="flex h-7 border-b bg-white/30"
+                  >
+                    <div className="flex h-7 w-8 flex-none items-center justify-center">
+                      <Image
+                        src="/appicons/picture.png"
+                        width={24}
+                        height={24}
+                        alt={image?.title ?? "Lightbox"}
+                        className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
+                      />
+                    </div>
+                    <div className="vertical-center grow cursor-move justify-center text-center align-middle font-bold px-2 pt-[2px]">
+                      {image?.title}
+                    </div>
+                    <button
+                      className="flex h-7 w-7 flex-none items-center justify-center rounded-tr-sm border-0 hover:bg-red-500/50 focus:bg-red-500/50 focus:outline-none"
                       onClick={() => closeModal()}
                     >
                       <IconXMark />
-                    </div>
+                    </button>
                   </Dialog.Title>
-                  <div className="mt-2">
+                  <div>
                     {loading && (
                       <div className="flex h-max items-center justify-center p-6">
                         <Loader />
@@ -91,7 +105,7 @@ export default function Lightbox() {
                         width={1200}
                         height={1200}
                         alt={image?.title || "Lightbox Image"}
-                        className={`max-h-[calc(100vh-100px)] w-full object-contain rounded-md ${loading ? "hidden" : "visible"}`}
+                        className={`max-h-[calc(100vh-100px)] w-full rounded-b-md object-contain ${loading ? "hidden" : "visible"}`}
                         priority={true}
                         onLoad={(e) => {
                           setLoading(false);

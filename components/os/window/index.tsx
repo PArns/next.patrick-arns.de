@@ -234,12 +234,12 @@ export default function DesktopWindow({
                 />
               </div>
               <div className={windowTitleClass}>{titleState}</div>
-              <div
-                className="flex h-7 w-7 flex-none items-center justify-center rounded-tr-sm hover:bg-red-500/50"
+              <button
+                className="flex h-7 w-7 flex-none items-center justify-center rounded-tr-sm border-0 hover:bg-red-500/50 focus:bg-red-500/50 focus:outline-none"
                 onClick={() => closeWindow()}
               >
                 <IconXMark />
-              </div>
+              </button>
             </div>
             <div
               className="flex w-auto flex-grow overflow-y-auto"
