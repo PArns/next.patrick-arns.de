@@ -7,11 +7,16 @@ import PageBaseConfiguration from "./configuration";
 function getLocale(request: NextRequest) {
   const config = PageBaseConfiguration();
 
-  const acceptedLanguage = request.headers.get("accept-language") ?? undefined;
-  let headers = { "accept-language": acceptedLanguage };
-  let languages = new Negotiator({ headers }).languages();
+  try {
+    const acceptedLanguage =
+      request.headers.get("accept-language") ?? undefined;
+    let headers = { "accept-language": acceptedLanguage };
+    let languages = new Negotiator({ headers }).languages();
 
-  return match(languages, config.supportedLocales, config.defaultLocale);
+    return match(languages, config.supportedLocales, config.defaultLocale);
+  } catch {
+    return config.defaultLocale;
+  }
 }
 
 export async function middleware(request: NextRequest) {
@@ -20,7 +25,8 @@ export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   const pathnameIsMissingLocale = config.supportedLocales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+    (locale) =>
+      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   );
 
   // Redirect if there is no locale
@@ -30,7 +36,7 @@ export async function middleware(request: NextRequest) {
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
     return NextResponse.redirect(
-      new URL(`/${locale}/${pathname}`, request.url)
+      new URL(`/${locale}/${pathname}`, request.url),
     );
   }
 
