@@ -1,6 +1,6 @@
 import BlogIndex, { generateMetadata as metaData } from "./(.)/blog/page";
 
-export function generateMetadata() {
+export async function generateMetadata() {
   return metaData();
 }
 

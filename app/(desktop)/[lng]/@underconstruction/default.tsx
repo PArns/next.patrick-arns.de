@@ -2,7 +2,7 @@ import UnderConstruction, {
   generateMetadata as metaData,
 } from "@/app/(desktop)/[lng]/@underconstruction/(.)/underconstruction/page";
 
-export function generateMetadata() {
+export async function generateMetadata() {
   return metaData();
 }
 
