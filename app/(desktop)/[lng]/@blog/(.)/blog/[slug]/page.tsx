@@ -14,6 +14,8 @@ import Link from "next/link";
 
 import { getImageSource } from "@/components/contentful/image-asset";
 
+import Translate from "@/components/translate";
+
 interface BlogPostPageParams {
   slug: string;
   lng: string;
@@ -119,7 +121,7 @@ export default async function BlogOverlay({
                     />
                   </svg>
                 </div>
-                <div>Back to Blog overview</div>
+                <div><Translate id="back" ns="blog" locale={params.lng} /></div>
               </div>
             </Link>
           </div>
