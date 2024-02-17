@@ -97,7 +97,7 @@ export default function RichTextRenderer({
                   onClick={() => {
                     if (useLightBox) {
                       showLightBoxImage({
-                        src: getImageSource(image, 1980),
+                        src: getImageSource(image, 1200),
                         title: name,
                       });
                     }
@@ -115,7 +115,7 @@ export default function RichTextRenderer({
             fields.images.map((image: any) => {
               galleryImages.push({
                 src: getImageSource(image, 400),
-                lightboxImageSrc: getImageSource(image, 1980),
+                lightboxImageSrc: getImageSource(image, 1200),
                 alt: image.fields.description,
                 title: image.fields.title,
                 width: image.fields.file.details.image.width,
