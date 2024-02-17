@@ -7,6 +7,8 @@ import PageBaseConfiguration from "@/configuration";
 import "./globals.css";
 import { getCurrentLocale } from "@/helper/localization";
 
+import { Analytics } from "@vercel/analytics/react";
+
 const inter = Inter({ subsets: ["latin"] });
 const config = PageBaseConfiguration();
 
@@ -28,6 +30,7 @@ export default function RootLayout({
     <html lang={currentLocale}>
       <body className={classes}>
         {children}
+        <Analytics />
       </body>
     </html>
   );
