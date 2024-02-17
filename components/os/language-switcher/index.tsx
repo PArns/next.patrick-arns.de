@@ -16,8 +16,7 @@ interface langEntry {
 
 export default function LanguageSwitcher() {
   const pathName = usePathname();
-  const config = PageBaseConfiguration();
-
+  
   const [currentLocale, setCurrentLocale] = useState<string>("");
   const [supportedLocales, setSupportedLocales] = useState<Array<langEntry>>(
     [],
@@ -35,6 +34,8 @@ export default function LanguageSwitcher() {
   }
 
   useEffect(() => {
+    const config = PageBaseConfiguration();
+    
     const pathRegEx = /\/[a-z]{2}\/(.*)/gm;
     const match = Array.from(pathName.matchAll(pathRegEx), (m) => m[1]);
 
