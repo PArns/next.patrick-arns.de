@@ -53,7 +53,7 @@ export async function generateMetadata({
 
   return {
     metadataBase: config.baseUrl,
-    title: blogPost.title,
+    title: `${blogPost.title} - ${blogPost.subTitle} `,
     description: blogPost.excerpt,
     openGraph: {
       type: "article",
