@@ -28,7 +28,7 @@ export function getImageAssetId(asset: any) {
 }
 
 export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
-  const { alt, asset, width, height, quality, priority, style, ...rest } = props;
+  const { alt, asset, width, height, quality, priority, ...rest } = props;
   const imageSource = getImageSource(asset, width, quality);
 
   if (!Boolean(imageSource) || imageSource === undefined) return <></>;
@@ -41,7 +41,6 @@ export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
       src={imageSource}
       {...rest}
       priority={priority}
-      style={style ?? {height: "auto"}}
     />
   );
 }
