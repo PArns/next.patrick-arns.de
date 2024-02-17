@@ -115,8 +115,8 @@ export default function LanguageSwitcher() {
                         <div>
                           <Image
                             src={`/flags/${loc.locale}.png`}
-                            width={20}
-                            height={12}
+                            width={26}
+                            height={15}
                             alt={`Language ${loc.locale}`}
                             className="mr-2 mt-[5px]"
                           />
