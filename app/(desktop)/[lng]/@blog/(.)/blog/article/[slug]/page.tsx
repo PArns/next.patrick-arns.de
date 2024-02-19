@@ -58,7 +58,7 @@ export async function generateMetadata({
     openGraph: {
       type: "article",
       publishedTime: blogPost.publishedAt.toISOString(),
-      url: `${config.baseUrl}/${params.lng}/blog/${params.slug}`,
+      url: `${config.baseUrl}/${params.lng}/blog/article/${params.slug}`,
       locale: params.lng,
       images: [
         { url: getImageSource(blogPost.image, 800), width: 800 },
