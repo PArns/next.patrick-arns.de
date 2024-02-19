@@ -5,20 +5,44 @@ import classNames from "classnames";
 import PageBaseConfiguration from "@/configuration";
 
 import "./globals.css";
-import { getCurrentLocale } from "@/helper/localization";
+import {
+  getCurrentRoute,
+  getCurrentLocale,
+  addLocaleToRoute,
+  removeLocaleFromRoute,
+} from "@/helper/localization";
 
 import { Analytics } from "@vercel/analytics/react";
+import { headers } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
-const config = PageBaseConfiguration();
 
-export const metadata: Metadata = {
-  title: {
-     default: config.title,
-     template: "%s - Patrick-Arns.de"
-  },
-  description: config.description,
-};
+export function generateMetadata() {
+  const config = PageBaseConfiguration();
+  const canonicalUrl = removeLocaleFromRoute(getCurrentRoute());
+
+  let languages: any = {};
+
+  config.supportedLocales.forEach((locale) => {
+    languages[locale] = addLocaleToRoute(canonicalUrl, locale);
+  });
+
+  return {
+    title: {
+      default: config.title,
+      template: `%s - ${config.title}`,
+    },
+    description: config.description,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: languages,
+    },
+    generator: "Next.js",
+    creator: "Patrick Arns",
+    publisher: config.publisher,
+    metadataBase: config.baseUrl,
+  };
+}
 
 export default function RootLayout({
   children,
