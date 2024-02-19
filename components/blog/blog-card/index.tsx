@@ -8,7 +8,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
   return (
     <div className="flex rounded-lg drop-shadow-lg">
       <article className="w-full">
-        <Link href={`/${post.locale}/blog/${post.slug}`}>
+        <Link href={`/${post.locale}/blog/article/${post.slug}`}>
           <div className="relative overflow-hidden bg-cover bg-no-repeat p-24">
             <ContentfulImageAsset
               asset={post.image}
@@ -41,7 +41,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           {post.excerpt && <div>{post.excerpt}</div>}
           <div className="mr-1 mt-2 flex w-full flex-nowrap place-content-end text-neutral-800">
             <Link
-              href={`/${post.locale}/blog/${post.slug}`}
+              href={`/${post.locale}/blog/article/${post.slug}`}
               className="rounded bg-sky-500 px-4 py-2 font-semibold text-white transition hover:bg-sky-700"
             >
               <Translate id="more" ns="blog" locale={post.locale} />

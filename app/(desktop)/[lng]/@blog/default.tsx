@@ -1,3 +1,19 @@
-import BlogIndex from "./(.)/blog/page";
+import BlogIndex, {
+  generateMetadata as blogMetaData,
+} from "@/app/(desktop)/[lng]/@blog/(.)/blog/page/[pageNumber]/page";
 
-export default BlogIndex;
+export async function generateMetadata({
+  params,
+}: {
+  params: { lng: string };
+}) {
+  return await blogMetaData({ params: { lng: params.lng, pageNumber: 1 } });
+}
+
+export default async function BlogProxy({
+  params,
+}: {
+  params: { lng: string };
+}) {
+  return await BlogIndex({ params: { lng: params.lng, pageNumber: 1 } });
+}
