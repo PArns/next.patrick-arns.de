@@ -16,11 +16,7 @@ export default function BackgroundImage({
 
   const bgImage: CSSProperties = {
     pointerEvents: "none",
-    position: "absolute",
-    width: "100%",
-    height: "100%",
     objectFit: "cover",
-    zIndex: -1,
     objectPosition: (
       (background?.position || "center") as string
     ).toLowerCase(),
@@ -37,7 +33,7 @@ export default function BackgroundImage({
   }, [backgroundImages]);
 
   return (
-    <div className="w-screen h-screen absolute">
+    <div className="w-screen h-screen absolute top-0 left-0 -z-50">
       {background && (
         <ContentfulImageAsset
           asset={background.image}

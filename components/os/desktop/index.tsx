@@ -34,21 +34,21 @@ export default function Desktop({
   return (
     <>
       <div className="flex h-screen w-screen flex-col">
-        <WindowManager startRoute={startRoute} startLocale={startLocale} />
-        <BackgroundImage backgroundImages={backgroundImages} />
-
         <div className="flex-none">
           <TitleBar pageName={pageName} />
         </div>
         <div className="flex flex-grow">
-          <IconContainer socialMediaLinks={socialMediaLinks} />
           {children}
+          <IconContainer socialMediaLinks={socialMediaLinks} />
         </div>
         <div className="flex-none">
           <Taskbar socialMediaLinks={socialMediaLinks} />
         </div>
       </div>
+
+      <WindowManager startRoute={startRoute} startLocale={startLocale} />
       <Lightbox />
+      <BackgroundImage backgroundImages={backgroundImages} />
     </>
   );
 }
