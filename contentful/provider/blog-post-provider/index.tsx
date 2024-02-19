@@ -7,6 +7,13 @@ import { Document as RichTextDocument } from "@contentful/rich-text-types";
 
 type BlogPostEntry = Entry<TypeBlogPostSkeleton, undefined, string>;
 
+export interface BlogPosts {
+  posts: BlogPost[];
+  total: number;
+  skip: number;
+  limit: number;
+}
+
 export interface BlogPost {
   title: string;
   subTitle: string;
@@ -23,9 +30,18 @@ export interface BlogPost {
 export function parseContentfulBlogPost(
   blogPostEntry?: BlogPostEntry,
   locale?: string,
-): BlogPost | null {
+): BlogPost {
   if (!blogPostEntry) {
-    return null;
+    return {
+      title: "PARSING ERROR",
+      subTitle: "",
+      slug: "",
+      body: null,
+      excerpt: "",
+      image: null,
+      locale: locale || "en",
+      publishedAt: new Date(),
+    };
   }
 
   return {
@@ -40,24 +56,39 @@ export function parseContentfulBlogPost(
   };
 }
 
-export async function GetBlogPostsMeta() {}
-
-export async function GetBlogPosts(locale: LocaleCode) {
+export async function GetBlogPosts(
+  locale: LocaleCode,
+  skip: number = 0,
+  limit: number = 10,
+): Promise<BlogPosts> {
   const res = await client.getEntries<TypeBlogPostSkeleton>({
     content_type: "blogPost",
     order: ["-fields.publishedAt"],
     locale: locale,
-    include: 10,
+    limit: limit,
+    skip: skip,
+    include: 1,
     "fields.listEntry": true,
     "fields.translations": locale.toUpperCase() == "DE" ? "DE" : "EN",
   });
 
-  return res.items.map(
-    (blogPostEntry) => parseContentfulBlogPost(blogPostEntry, locale) as BlogPost
+  const posts = res.items.map(
+    (blogPostEntry) =>
+      parseContentfulBlogPost(blogPostEntry, locale) as BlogPost,
   );
+
+  return {
+    posts: posts,
+    total: res.total,
+    skip: res.skip,
+    limit: res.limit,
+  };
 }
 
-export async function GetBlogPostBySlug(slug: string, locale: string) {
+export async function GetBlogPostBySlug(
+  slug: string,
+  locale: string,
+): Promise<BlogPost> {
   const res = await client.getEntries<TypeBlogPostSkeleton>({
     content_type: "blogPost",
     limit: 1,

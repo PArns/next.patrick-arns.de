@@ -30,9 +30,9 @@ export async function generateStaticParams(): Promise<BlogPostPageParams[]> {
   const entries: BlogPostPageParams[] = [];
 
   config.supportedLocales.forEach(async (locale) => {
-    const blogPosts = await GetBlogPosts(locale);
+    const blogPosts = await GetBlogPosts(locale, 0, 9999);
 
-    blogPosts.forEach((post) => {
+    blogPosts.posts.forEach((post) => {
       entries.push({ slug: post.slug, lng: locale });
     });
   });

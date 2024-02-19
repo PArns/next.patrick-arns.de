@@ -1,5 +1,5 @@
 import {
-  BlogPost,
+  BlogPosts,
   GetBlogPosts,
 } from "@/contentful/provider/blog-post-provider";
 import BlogCard from "@/components/blog/blog-card";
@@ -18,15 +18,15 @@ export default async function BlogIndex({
   params: { lng: string };
 }) {
   const config = PageBaseConfiguration();
-  let posts: BlogPost[] = [];
 
-  if (config.supportedLocales.includes(params.lng))
-    posts = await GetBlogPosts(params.lng);
+  if (!config.supportedLocales.includes(params.lng)) return <></>;
+
+  const posts = await GetBlogPosts(params.lng);
 
   return (
     <div className="container mx-auto">
       <div className="flex flex-col gap-2 p-2">
-        {posts.map((post) => (
+        {posts.posts.map((post) => (
           <BlogCard post={post} key={post.slug} />
         ))}
       </div>
