@@ -1,14 +1,4 @@
-import BlogIndex, {
-  generateMetadata as blogMetaData,
-} from "@/app/(desktop)/[lng]/@blog/(.)/blog/page/[pageNumber]/page";
-
-export async function generateMetadata({
-  params,
-}: {
-  params: { lng: string };
-}) {
-  return await blogMetaData({ params: { lng: params.lng, pageNumber: 1 } });
-}
+import BlogIndex from "@/app/(desktop)/[lng]/@blog/(.)/blog/page/[pageNumber]/page";
 
 export default async function BlogProxy({
   params,

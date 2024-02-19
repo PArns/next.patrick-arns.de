@@ -13,7 +13,10 @@ const inter = Inter({ subsets: ["latin"] });
 const config = PageBaseConfiguration();
 
 export const metadata: Metadata = {
-  title: config.title,
+  title: {
+     default: config.title,
+     template: "%s - Patrick-Arns.de"
+  },
   description: config.description,
 };
 
