@@ -49,7 +49,10 @@ export default function RootLayout({
 }) {
   const currentLocale = getCurrentLocale();
 
-  const classes = classNames(inter.className, "overflow-hidden");
+  const classes = classNames(
+    inter.className,
+    "overflow-hidden overscroll-none",
+  );
 
   return (
     <html lang={currentLocale}>

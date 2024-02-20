@@ -158,7 +158,7 @@ export default function DesktopWindow({
 
     if (self == null || parentSize == null) return;
 
-    let selfSize = { width: self.offsetWidth, height: self.offsetHeight };
+    let selfSize = { width: parentSize.width, height: parentSize.height };
 
     let effectiveWidth = width;
     let effectiveHeight = height;
@@ -210,9 +210,6 @@ export default function DesktopWindow({
             parentSize.height,
           );
         });
-
-        /*
-      console.log("AUTO", parentSize.height, height, selfSize.height);*/
       }
     });
   }, [visibleState, center, width, height, maxWidth]);

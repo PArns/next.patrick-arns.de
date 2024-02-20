@@ -48,7 +48,7 @@ export default function Desktop({
 
       <WindowManager startRoute={startRoute} startLocale={startLocale} />
       <Lightbox />
-      <BackgroundImage backgroundImages={backgroundImages} />
+      <BackgroundImage backgroundImages={backgroundImages} />  
     </>
   );
 }
