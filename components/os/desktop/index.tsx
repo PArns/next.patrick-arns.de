@@ -33,7 +33,7 @@ export default function Desktop({
 
   return (
     <>
-      <div className="flex h-screen w-screen flex-col">
+      <div className="fixed left-0 top-0 flex h-screen w-screen flex-col">
         <div className="flex-none">
           <TitleBar pageName={pageName} />
         </div>
@@ -48,7 +48,7 @@ export default function Desktop({
 
       <WindowManager startRoute={startRoute} startLocale={startLocale} />
       <Lightbox />
-      <BackgroundImage backgroundImages={backgroundImages} />  
+      <BackgroundImage backgroundImages={backgroundImages} />
     </>
   );
 }
