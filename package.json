@@ -14,7 +14,7 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
-    "@vercel/analytics": "^1.2.1",
+    "@vercel/analytics": "^1.2.2",
     "classnames": "^2.5.1",
     "contentful": "^10.6.21",
     "framer-motion": "^10.18.0",
@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20.11.19",
-    "@types/react": "^18.2.56",
+    "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
     "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
