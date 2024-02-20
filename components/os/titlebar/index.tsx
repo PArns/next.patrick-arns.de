@@ -44,7 +44,7 @@ export default function TitleBar({ pageName }: { pageName: string }) {
         </div>
       </div>
       <div className="flex-grow"></div>
-      <div className="flex-none pr-2">
+      <div className="collapse flex-none pr-2 md:visible">
         <Clock timeFormat="hh-mm" />
       </div>
       <div className="flex-none">

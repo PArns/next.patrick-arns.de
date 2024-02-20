@@ -83,13 +83,14 @@ export default function Lightbox() {
                         className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
                       />
                     </div>
-                    <div className="vertical-center grow cursor-move justify-center text-center align-middle font-bold px-2 pt-[2px]">
+                    <div className="vertical-center grow cursor-move justify-center px-2 pt-[2px] text-center align-middle font-bold">
                       {image?.title}
                     </div>
                     <button
                       className="flex h-7 w-7 flex-none items-center justify-center rounded-tr-sm border-0 hover:bg-red-500/50 focus:bg-red-500/50 focus:outline-none"
                       aria-label="Close"
                       onClick={() => closeModal()}
+                      onTouchStart={() => closeModal()}
                     >
                       <IconXMark />
                     </button>
