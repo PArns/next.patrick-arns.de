@@ -46,6 +46,7 @@ export default function DesktopWindow({
   const [activeState, setActiveState] = useState(false);
 
   const rndRef = useRef<Rnd>(null);
+  const childrenRef = useRef<HTMLDivElement>(null);
 
   desktopWindowEvents.updateWindowDetailsEvent.useOnUpdateWindowDetailsListener(
     (windowDetails) => {
@@ -134,6 +135,22 @@ export default function DesktopWindow({
   }, [visibleState, currentWindowDetails]);
 
   useEffect(() => {
+    const setSize = function (
+      width: number,
+      height: number,
+      parentWidth: number,
+      parentHeight: number,
+    ) {
+      rndRef.current?.updateSize({ width: width, height: height });
+
+      if (!(center === undefined ? true : center)) return;
+
+      const left = parentWidth / 2 - width / 2;
+      const top = parentHeight / 2 - height / 2 + 28; // TitleBar;
+
+      rndRef.current?.updatePosition({ x: left, y: top });
+    };
+
     if (!visibleState) return;
 
     const self = rndRef.current?.getSelfElement();
@@ -143,15 +160,25 @@ export default function DesktopWindow({
 
     let selfSize = { width: self.offsetWidth, height: self.offsetHeight };
 
+    let effectiveWidth = width;
+    let effectiveHeight = height;
+
+    // Responsive ...
+    if (parentSize.width < 768) {
+      effectiveWidth = "100%";
+
+      if (height) effectiveHeight = "100%";
+    }
+
     // Height resize bug fix ...
-    if (height?.endsWith("%")) {
-      const heightPercent = parseInt(height.replace("%", ""));
+    if (effectiveHeight?.endsWith("%")) {
+      const heightPercent = parseInt(effectiveHeight.replace("%", ""));
       const heightPx = (heightPercent / 100) * parentSize.height;
       selfSize.height = heightPx;
     }
 
-    if (width?.endsWith("%")) {
-      const widthPercent = parseInt(width.replace("%", ""));
+    if (effectiveWidth?.endsWith("%")) {
+      const widthPercent = parseInt(effectiveWidth.replace("%", ""));
       const widthPx = (widthPercent / 100) * parentSize.width;
 
       selfSize.width = widthPx;
@@ -162,17 +189,32 @@ export default function DesktopWindow({
     }
 
     setTimeout(() => {
-      rndRef.current?.updateSize(selfSize);
+      setSize(
+        selfSize.width,
+        selfSize.height,
+        parentSize.width,
+        parentSize.height,
+      );
+
+      // Auto height
+      if ((!Boolean(height) || height === "auto") && childrenRef.current) {
+        setTimeout(() => {
+          const childHeight = childrenRef.current?.scrollHeight ?? 0;
+
+          if (childHeight == 0 || childHeight >= parentSize.height) return;
+
+          setSize(
+            selfSize.width,
+            childHeight + 32, // + Title & Border
+            parentSize.width,
+            parentSize.height,
+          );
+        });
+
+        /*
+      console.log("AUTO", parentSize.height, height, selfSize.height);*/
+      }
     });
-
-    if (!(center === undefined ? true : center)) return;
-
-    const left = parentSize.width / 2 - selfSize.width / 2;
-    const top = parentSize.height / 2 - selfSize.height / 2;
-
-    setTimeout(() => {
-      rndRef.current?.updatePosition({ x: left, y: top });
-    }, 0);
   }, [visibleState, center, width, height, maxWidth]);
 
   const activateWindow = () => {
@@ -238,15 +280,18 @@ export default function DesktopWindow({
                 className="flex h-7 w-7 flex-none items-center justify-center rounded-tr-sm border-0 hover:bg-red-500/50 focus:bg-red-500/50 focus:outline-none"
                 aria-label="Close"
                 onClick={() => closeWindow()}
+                onTouchStart={() => closeWindow()}
               >
                 <IconXMark />
               </button>
             </div>
             <div
-              className="flex w-auto flex-grow overflow-y-auto"
+              className="grid w-auto overflow-y-auto"
               onClick={handleContainerClick}
             >
-              {children}
+              <div className="h-max" ref={childrenRef}>
+                {children}
+              </div>
             </div>
           </div>
         </Rnd>

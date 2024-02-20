@@ -33,7 +33,7 @@ export default async function AppLayout({
     >
       <DesktopWindow
         width="70%"
-        height="70%"
+        maxWidth={1024}
         route="/welcome"
         title={t("welcome")}
         icon="/appicons/welcome-back.png"
