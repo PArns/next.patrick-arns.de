@@ -11,6 +11,8 @@ import {
 } from "../windowManager";
 import { useState } from "react";
 
+import { isMobile } from "react-device-detect";
+
 export default function Dock({
   socialMediaLinks,
 }: {
@@ -28,8 +30,12 @@ export default function Dock({
 
   return (
     <motion.div
-      onMouseMove={(e) => mouseX.set(e.pageX)}
-      onMouseLeave={() => mouseX.set(Infinity)}
+      onMouseMove={(e) => {
+        if (!isMobile) mouseX.set(e.pageX);
+      }}
+      onMouseLeave={() => {
+        if (!isMobile) mouseX.set(Infinity);
+      }}
       className="mx-auto flex h-16 items-end gap-4 rounded-2xl bg-gray-700/50 px-4 pb-3 backdrop-blur-md"
     >
       {windowsArray.map((window) => (
