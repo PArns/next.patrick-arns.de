@@ -62,7 +62,8 @@ export default function RichTextRenderer({
 
               imageClasses.push("rounded-lg");
               imageClasses.push("xl:w-full");
-              imageClasses.push("md:w-28");
+              imageClasses.push("md:w-60");
+              imageClasses.push("w-40");
             }
 
             if (floatingDirection)
@@ -104,7 +105,9 @@ export default function RichTextRenderer({
                   }}
                 />
                 {showSubtitle && (
-                  <span className="text-sm text-gray-500">{name}</span>
+                  <p className="truncate text-xs text-gray-500 md:text-sm">
+                    {name}
+                  </p>
                 )}
               </div>
             );
@@ -155,32 +158,44 @@ export default function RichTextRenderer({
       },
       [BLOCKS.HEADING_1]: (node: any, children: any) => {
         return (
-          <h1 className="clear-both pb-2 text-6xl text-gray-600">{children}</h1>
+          <h1 className="clear-both pb-2 text-4xl text-gray-600 md:text-6xl">
+            {children}
+          </h1>
         );
       },
       [BLOCKS.HEADING_2]: (node: any, children: any) => {
         return (
-          <h2 className="clear-both pb-2 text-5xl text-gray-600">{children}</h2>
+          <h2 className="clear-both pb-2 text-3xl text-gray-600 md:text-5xl">
+            {children}
+          </h2>
         );
       },
       [BLOCKS.HEADING_3]: (node: any, children: any) => {
         return (
-          <h3 className="clear-both pb-2 text-4xl text-gray-600">{children}</h3>
+          <h3 className="clear-both pb-2 text-2xl text-gray-600 md:text-4xl">
+            {children}
+          </h3>
         );
       },
       [BLOCKS.HEADING_4]: (node: any, children: any) => {
         return (
-          <h4 className="clear-both pb-2 text-3xl text-gray-600">{children}</h4>
+          <h4 className="clear-both pb-2 text-xl text-gray-600 md:text-3xl">
+            {children}
+          </h4>
         );
       },
       [BLOCKS.HEADING_5]: (node: any, children: any) => {
         return (
-          <h5 className="clear-both pb-2 text-2xl text-gray-600">{children}</h5>
+          <h5 className="clear-both pb-2 text-lg text-gray-600 md:text-2xl">
+            {children}
+          </h5>
         );
       },
       [BLOCKS.HEADING_6]: (node: any, children: any) => {
         return (
-          <h6 className="clear-both pb-2 text-xl text-gray-600">{children}</h6>
+          <h6 className="text-md clear-both pb-2 text-gray-600 md:text-xl">
+            {children}
+          </h6>
         );
       },
       [BLOCKS.PARAGRAPH]: (node: any, children: any) => {

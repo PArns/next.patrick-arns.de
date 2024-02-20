@@ -283,7 +283,7 @@ export default function DesktopWindow({
               </button>
             </div>
             <div
-              className="grid w-auto overflow-y-auto"
+              className="flex w-auto overflow-y-auto overflow-x-clip"
               onClick={handleContainerClick}
             >
               <div className="h-max" ref={childrenRef}>

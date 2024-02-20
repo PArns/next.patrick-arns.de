@@ -34,23 +34,21 @@ export default async function BlogIndex({
   const pageCount = Math.ceil(posts.total / postsPerPage);
 
   return (
-    <div className="container mx-auto">
-      <div className="flex flex-col gap-2 p-2">
-        {posts.posts.map((post) => (
-          <BlogCard post={post} key={post.slug} />
-        ))}
+    <div className="flex flex-col gap-2 p-2">
+      {posts.posts.map((post) => (
+        <BlogCard post={post} key={post.slug} />
+      ))}
 
-        {pageCount > 1 && (
-          <div className="flex w-full place-content-end">
-            <Pagination
-              baseUrl={`/${params.lng}/blog`}
-              paginationSlug="page"
-              currentPage={+params.pageNumber}
-              pageCount={pageCount}
-            />
-          </div>
-        )}
-      </div>
+      {pageCount > 1 && (
+        <div className="flex w-full place-content-end">
+          <Pagination
+            baseUrl={`/${params.lng}/blog`}
+            paginationSlug="page"
+            currentPage={+params.pageNumber}
+            pageCount={pageCount}
+          />
+        </div>
+      )}
     </div>
   );
 }
