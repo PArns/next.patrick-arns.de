@@ -5,14 +5,22 @@ import { GetSocialMediaLinks } from "@/contentful/provider/social-media-link-pro
 
 import DesktopWindow from "@/components/os/window";
 import PageBaseConfiguration from "@/configuration";
+import initTranslations from "@/components/translate/i18n";
 
 export default async function AppLayout({
   blog,
-  underconstruction,
+  welcome,
+  params,
 }: {
   blog: React.ReactNode;
-  underconstruction: React.ReactNode;
+  welcome: React.ReactNode;
+  params: { lng: string };
 }) {
+  const { t } = await initTranslations({
+    locale: params.lng,
+    namespaces: ["titles"],
+  });
+
   const config = PageBaseConfiguration();
   const backgroundImages = await GetBackgroundImages();
   const socialMediaLinks = await GetSocialMediaLinks();
@@ -26,13 +34,13 @@ export default async function AppLayout({
       <DesktopWindow
         width="70%"
         height="70%"
-        route="/underconstruction"
-        title="Under Construction"
-        icon="/appicons/bulldozer.png"
+        route="/welcome"
+        title={t("welcome")}
+        icon="/appicons/welcome-back.png"
         isInitiallyOpen={true}
-        id="underconstruction"
+        id="welcome"
       >
-        {underconstruction}
+        {welcome}
       </DesktopWindow>
 
       <DesktopWindow

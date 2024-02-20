@@ -2,17 +2,24 @@ import TranslateSwitch, {
   Translation,
 } from "@/components/translate/translate-switch";
 
-export async function generateMetadata() {
-  return {
-    title: "Under Construction",
-  };
-}
+import initTranslations from "@/components/translate/i18n";
 
-export default async function UnderConstruction({
+export async function generateMetadata({
   params,
 }: {
   params: { lng: string };
 }) {
+  const { t } = await initTranslations({
+    locale: params.lng,
+    namespaces: ["titles"],
+  });
+
+  return {
+    title: t("welcome"),
+  };
+}
+
+export default async function Welcome({ params }: { params: { lng: string } }) {
   return (
     <div className="container mx-auto">
       <article className="m-4 rounded-md bg-white p-4">

@@ -28,6 +28,19 @@ export async function middleware(request: NextRequest) {
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   );
 
+  if (pathname === "/" && config.startRoute && config.startRoute !== "/") {
+    const locale = getLocale(request);
+
+    // e.g. incoming request is /products
+    // The new URL is now /en-US/products
+    return NextResponse.redirect(
+      new URL(
+        `/${locale}/${config.startRoute}`.replaceAll("//", "/"),
+        request.url,
+      ),
+    );
+  }
+
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);

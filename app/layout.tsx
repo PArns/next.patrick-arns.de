@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import classNames from "classnames";
 
@@ -13,7 +12,6 @@ import {
 } from "@/helper/localization";
 
 import { Analytics } from "@vercel/analytics/react";
-import { headers } from "next/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 

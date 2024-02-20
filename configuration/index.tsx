@@ -6,6 +6,7 @@ export default function PageBaseConfiguration() {
     publisher: "Patrick Arns",
     supportedLocales: ["de", "en"],
     defaultLocale: "en",
-    blogPostsPerPage: 5
+    blogPostsPerPage: 5,
+    startRoute: "/welcome"
   };
 }
