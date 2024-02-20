@@ -146,7 +146,7 @@ export default function DesktopWindow({
       if (!(center === undefined ? true : center)) return;
 
       const left = parentWidth / 2 - width / 2;
-      const top = parentHeight / 2 - height / 2 + 28; // TitleBar;
+      const top = parentHeight / 2 - height / 2 + 27; // TitleBar;
 
       rndRef.current?.updatePosition({ x: left, y: top });
     };

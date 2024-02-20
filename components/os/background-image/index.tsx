@@ -33,7 +33,7 @@ export default function BackgroundImage({
   }, [backgroundImages]);
 
   return (
-    <div className="fixed left-0 top-0 -z-50 h-screen w-screen">
+    <div className="fixed inset-0 -z-50">
       {background && (
         <ContentfulImageAsset
           asset={background.image}

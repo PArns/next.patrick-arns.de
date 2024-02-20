@@ -33,7 +33,7 @@ export default function Desktop({
 
   return (
     <>
-      <div className="fixed left-0 top-0 flex h-screen w-screen flex-col">
+      <div className="fixed inset-0 flex flex-col">
         <div className="flex-none">
           <TitleBar pageName={pageName} />
         </div>

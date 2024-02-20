@@ -9,7 +9,7 @@ export interface GalleryPhoto extends Photo {
 
 function NextJsImage({
   photo,
-  imageProps: { alt, title, sizes, className, onClick, onTouchStart },
+  imageProps: { alt, title, sizes, className, onClick, onTouchEnd },
   wrapperStyle,
 }: RenderPhotoProps<GalleryPhoto>) {
   const galleryPhoto = photo as GalleryPhoto;
@@ -25,14 +25,6 @@ function NextJsImage({
         className={imageClasses}
         onClick={(e) => {
           if (onClick) onClick(e);
-
-          showLightBoxImage({
-            src: galleryPhoto.lightboxImageSrc,
-            title: title ? title : alt,
-          });
-        }}
-        onTouchStart={(e) => {
-          if (onTouchStart) onTouchStart(e);
 
           showLightBoxImage({
             src: galleryPhoto.lightboxImageSrc,
