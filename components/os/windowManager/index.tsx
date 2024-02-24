@@ -99,7 +99,7 @@ export function WindowTitle({ id, title }: { id: string; title: string }) {
       }),
     10,
   );
-  
+
   return <></>;
 }
 
@@ -127,9 +127,17 @@ export default function WindowManager({
     const newRoute = addLocaleToRoute(activeWindow?.route ?? "/");
     router.push(newRoute);
 
-    if (activeWindow)
-      document.title = `${activeWindow.title} - ${config.title}`;
-    else document.title = config.title;
+    let newTitle = config.title;
+
+    if (activeWindow) {
+      newTitle = `${activeWindow.title} - ${config.title}`;
+    } else {
+      newTitle = config.title;
+    }
+
+    if (document.title !== newTitle) {
+      document.title = newTitle;
+    }
   };
 
   // ----------------- WindowManager Events ----------------
@@ -198,8 +206,9 @@ export default function WindowManager({
       );
 
       if (windowIndex === -1) return;
-
       const window = registeredWindows[windowIndex];
+
+      if (window.title === changeInformation.newTitle) return;
 
       window.title = changeInformation.newTitle;
 
@@ -208,7 +217,7 @@ export default function WindowManager({
         window,
       );
 
-      //if (window.active) setTitleAndRouteFromActiveWindow(window);
+      if (window.active) setTitleAndRouteFromActiveWindow(window);
     },
   );
 
