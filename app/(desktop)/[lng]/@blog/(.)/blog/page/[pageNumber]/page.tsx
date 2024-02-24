@@ -6,11 +6,14 @@ import { WindowTitle } from "@/components/os/windowManager";
 import Image from "next/image";
 import initTranslations from "@/components/translate/i18n";
 import Translate from "@/components/translate";
+import Tag from "@/components/blog/tag";
+import { notFound } from "next/navigation";
+import Link from "next/link";
 
 export async function generateMetadata({
   params,
 }: {
-  params: { lng: string; pageNumber: number };
+  params: { lng: string; pageNumber: number; tag: string | undefined };
 }) {
   const { t } = await initTranslations({
     locale: params.lng,
@@ -31,7 +34,7 @@ export async function generateMetadata({
 export default async function BlogIndex({
   params,
 }: {
-  params: { lng: string; pageNumber: number };
+  params: { lng: string; pageNumber: number; tag: string | undefined };
 }) {
   const config = PageBaseConfiguration();
 
@@ -49,15 +52,20 @@ export default async function BlogIndex({
     params.lng,
     postsPerPage * (activePage * postsPerPage),
     postsPerPage,
+    params.tag,
   );
+
+  if (posts.posts.length === 0) {
+    notFound();
+  }
 
   const pageCount = Math.ceil(posts.total / postsPerPage);
 
   return (
-    <div className="flex flex-col gap-2 p-2">
+    <div className="flex flex-col p-2">
       <WindowTitle id="blog" title={"Blog"} />
 
-      <div className="relative mb-2 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
+      <div className="relative mb-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
         <Image
           className="absolute bottom-0 left-0 right-0 top-0 h-max w-max object-cover"
           src={"/images/jumbotron/blog.jpg"}
@@ -80,20 +88,62 @@ export default async function BlogIndex({
         </div>
       </div>
 
-      {posts.posts.map((post) => (
-        <BlogCard post={post} key={post.slug} />
-      ))}
+      <div className="flex">
+        <div className="flex flex-col gap-3 lg:w-3/4">
+          {posts.posts.map((post) => (
+            <BlogCard post={post} key={post.slug} />
+          ))}
 
-      {pageCount > 1 && (
-        <div className="flex w-full place-content-end">
-          <Pagination
-            baseUrl={`/${params.lng}/blog`}
-            paginationSlug="page"
-            currentPage={+params.pageNumber}
-            pageCount={pageCount}
-          />
+          {pageCount > 1 && !params.tag && (
+            <div className="flex w-full place-content-end">
+              <Pagination
+                baseUrl={`/${params.lng}/blog`}
+                paginationSlug="page"
+                currentPage={+params.pageNumber}
+                pageCount={pageCount}
+              />
+            </div>
+          )}
         </div>
-      )}
+        <div className="hide flex w-1/4 flex-col gap-2 pl-2 lg:visible">
+          <div className="flex flex-col rounded-lg bg-white p-2 drop-shadow-lg">
+            <div className="pb-2 font-bold">Tag Cloud</div>
+            <div className="flex flex-wrap gap-2">
+              {posts.tags.map((tag) => (
+                <Tag
+                  tag={tag}
+                  key={tag}
+                  locale={params.lng}
+                  href={`/${params.lng}/blog/tag/${tag}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {params.tag && (
+            <div className="flex flex-col rounded-lg bg-white p-2 text-center drop-shadow-lg">
+              <div className="pb-2 font-bold">
+                <Translate id="titleShowingTag" ns="blog" locale={params.lng} />
+              </div>
+              <div className="flex flex-col gap-3">
+                <Tag
+                  tag={params.tag}
+                  key={params.tag}
+                  locale={params.lng}
+                  href={`/${params.lng}/blog/tag/${params.tag}`}
+                />
+
+                <Link
+                  href={`/${params.lng}/blog`}
+                  className="rounded bg-sky-500 px-4 py-2 font-semibold text-white transition hover:bg-sky-700"
+                >
+                  <Translate id="showAll" ns="blog" locale={params.lng} />
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

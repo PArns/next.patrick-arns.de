@@ -37,7 +37,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           </div>
         </Link>
 
-        <div className="rounded-b-lg bg-white/50 p-2">
+        <div className="rounded-b-lg bg-white p-2">
           {post.excerpt && <div>{post.excerpt}</div>}
           <div className="mr-1 mt-2 flex w-full flex-nowrap place-content-end text-neutral-800">
             <Link

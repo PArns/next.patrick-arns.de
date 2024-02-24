@@ -5,10 +5,13 @@ import { TypeBlogPostSkeleton } from "@/contentful/types";
 import { Entry, LocaleCode } from "contentful";
 import { Document as RichTextDocument } from "@contentful/rich-text-types";
 
+import { cache } from "react";
+
 type BlogPostEntry = Entry<TypeBlogPostSkeleton, undefined, string>;
 
 export interface BlogPosts {
   posts: BlogPost[];
+  tags: string[];
   total: number;
   skip: number;
   limit: number;
@@ -56,47 +59,68 @@ export function parseContentfulBlogPost(
   };
 }
 
-export async function GetBlogPosts(
-  locale: LocaleCode,
-  skip: number = 0,
-  limit: number = 10,
-): Promise<BlogPosts> {
-  const res = await client.getEntries<TypeBlogPostSkeleton>({
-    content_type: "blogPost",
-    order: ["-fields.publishedAt"],
-    locale: locale,
-    limit: limit,
-    skip: skip,
-    include: 1,
-    "fields.listEntry": true,
-    "fields.translations": locale.toUpperCase() == "DE" ? "DE" : "EN",
-  });
+export const GetBlogPosts = cache(
+  async (
+    locale: LocaleCode,
+    skip: number = 0,
+    limit: number = 10,
+    tag: string | undefined = undefined,
+  ): Promise<BlogPosts> => {
+    let query: Record<string, any> = {
+      content_type: "blogPost",
+      order: "-fields.publishedAt",
+      locale: locale,
+      limit: tag ? 999 : limit,
+      skip: skip,
+      include: 1,
+      "fields.listEntry": true,
+      "fields.translations": locale.toUpperCase() === "DE" ? "DE" : "EN",
+    };
 
-  const posts = res.items.map(
-    (blogPostEntry) =>
-      parseContentfulBlogPost(blogPostEntry, locale) as BlogPost,
-  );
+    if (tag) {
+      query["query"] = `"${tag}"`;
+    }
 
-  return {
-    posts: posts,
-    total: res.total,
-    skip: res.skip,
-    limit: res.limit,
-  };
-}
+    const res = await client.getEntries<TypeBlogPostSkeleton>(query);
+    const posts = res.items.map(
+      (blogPostEntry) => parseContentfulBlogPost(blogPostEntry, locale) as BlogPost);
+    // Return all tags, starting with the "Blog: " category
+    const tagsRes = await client.getTags();
+    const tags: string[] = tagsRes.items
+      .map((tagEntry) => {
+        const regex = /Blog: (.*)/gm;
 
-export async function GetBlogPostBySlug(
-  slug: string,
-  locale: string,
-): Promise<BlogPost> {
-  const res = await client.getEntries<TypeBlogPostSkeleton>({
-    content_type: "blogPost",
-    limit: 1,
-    include: 10,
-    locale: locale,
-    "fields.slug": slug,
-  });
+        const match = regex.exec(tagEntry.name);
+        if (match) {
+          return match[1];
+        } else {
+          return "";
+        }
+      })
+      .filter((tag_1) => tag_1 !== "");
+      
+    return {
+      posts: posts,
+      tags: tags || [],
+      total: res.total,
+      skip: res.skip,
+      limit: res.limit,
+    };
+  },
+);
 
-  const post = res.items[0];
-  return parseContentfulBlogPost(post);
-}
+export const GetBlogPostBySlug = cache(
+  async (slug: string, locale: string): Promise<BlogPost> => {
+    const res = await client
+      .getEntries<TypeBlogPostSkeleton>({
+        content_type: "blogPost",
+        limit: 1,
+        include: 10,
+        locale: locale,
+        "fields.slug": slug,
+      });
+    const post = res.items[0];
+
+    return parseContentfulBlogPost(post);
+  },
+);
