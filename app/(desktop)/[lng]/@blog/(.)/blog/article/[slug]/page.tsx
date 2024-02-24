@@ -15,6 +15,7 @@ import Link from "next/link";
 import { getImageSource } from "@/components/contentful/image-asset";
 
 import Translate from "@/components/translate";
+import { WindowTitle } from "@/components/os/windowManager";
 
 interface BlogPostPageParams {
   slug: string;
@@ -81,6 +82,7 @@ export default async function BlogOverlay({
 
   return (
     <div className="flex flex-col p-2">
+      <WindowTitle id="blog" title={`${post.title} - ${post.subTitle}`} />
       <BlogHeader
         title={post.title}
         subTitle={post.subTitle}

@@ -2,6 +2,7 @@ import { GetBlogPosts } from "@/contentful/provider/blog-post-provider";
 import BlogCard from "@/components/blog/blog-card";
 import PageBaseConfiguration from "@/configuration";
 import Pagination from "@/components/blog/pagination";
+import { WindowTitle } from "@/components/os/windowManager";
 
 export async function generateMetadata({
   params,
@@ -35,6 +36,7 @@ export default async function BlogIndex({
 
   return (
     <div className="flex flex-col gap-2 p-2">
+      <WindowTitle id="blog" title={"Blog"} />
       {posts.posts.map((post) => (
         <BlogCard post={post} key={post.slug} />
       ))}

@@ -55,6 +55,7 @@ export default function DesktopWindow({
       setActiveState(windowDetails.active);
       setZIndexState(windowDetails.zIndex);
       setVisibleState(windowDetails.visible);
+      setTitleState(windowDetails.title);
     },
   );
 
