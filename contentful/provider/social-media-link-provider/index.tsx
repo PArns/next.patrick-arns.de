@@ -1,11 +1,12 @@
 import client from "@/contentful/client";
+import { cache } from "react";
 
 import {
   TypeSocialMediaLinkFields,
   TypeSocialMediaLinkSkeleton,
 } from "@/contentful/types";
 
-export async function GetSocialMediaLinks() {
+export const GetSocialMediaLinks = cache(async () => {
   const response = await client.getEntries<TypeSocialMediaLinkSkeleton>({
     content_type: "socialMediaLink",
   });
@@ -17,4 +18,4 @@ export async function GetSocialMediaLinks() {
   });
 
   return res;
-}
+});

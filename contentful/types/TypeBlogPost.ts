@@ -4,7 +4,6 @@ export interface TypeBlogPostFields {
     title?: EntryFieldTypes.Symbol;
     slug: EntryFieldTypes.Symbol;
     subTitle?: EntryFieldTypes.Symbol;
-    tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
     publishedAt: EntryFieldTypes.Date;
     translations?: EntryFieldTypes.Array<EntryFieldTypes.Symbol<"DE" | "EN">>;
     listEntry: EntryFieldTypes.Boolean;

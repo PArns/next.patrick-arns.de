@@ -5,5 +5,5 @@ export default async function BlogProxy({
 }: {
   params: { lng: string };
 }) {
-  return await BlogIndex({ params: { lng: params.lng, pageNumber: 1 } });
+  return await BlogIndex({ params: { lng: params.lng, pageNumber: 1, tag: undefined } });
 }
