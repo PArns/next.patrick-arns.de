@@ -23,7 +23,7 @@ export type RegisteredWindows = Array<WindowDetails>;
 export type WindowTitleChangeInformation = {
   windowId: string;
   newTitle: string;
-}
+};
 
 const registeredWindowsChangedEvent = createEvent(
   "onRegisteredWindowsChangedEvent",
@@ -90,9 +90,17 @@ export {
 const registeredWindows: RegisteredWindows = [];
 let currentLocale: string = "";
 
-export function WindowTitle({id, title} : { id: string, title: string}) {
-  setTimeout(() => changeWindowTitleEvent.emitOnChangeWindowTitleEvent({windowId: id, newTitle: title}), 10);
-  return <></>
+export function WindowTitle({ id, title }: { id: string; title: string }) {
+  setTimeout(
+    () =>
+      changeWindowTitleEvent.emitOnChangeWindowTitleEvent({
+        windowId: id,
+        newTitle: title,
+      }),
+    10,
+  );
+  
+  return <></>;
 }
 
 export default function WindowManager({
@@ -111,7 +119,9 @@ export default function WindowManager({
     return registeredWindows.find((window) => window.active === true) ?? null;
   };
 
-  const setTitleAndRouteFromActiveWindow = (activeWindow: WindowDetails | null) => {
+  const setTitleAndRouteFromActiveWindow = (
+    activeWindow: WindowDetails | null,
+  ) => {
     const config = PageBaseConfiguration();
 
     const newRoute = addLocaleToRoute(activeWindow?.route ?? "/");
@@ -119,8 +129,7 @@ export default function WindowManager({
 
     if (activeWindow)
       document.title = `${activeWindow.title} - ${config.title}`;
-    else
-      document.title = config.title;
+    else document.title = config.title;
   };
 
   // ----------------- WindowManager Events ----------------
@@ -182,25 +191,26 @@ export default function WindowManager({
     setTitleAndRouteFromActiveWindow(windowDetails);
   });
 
-  changeWindowTitleEvent.useOnChangeWindowTitleEventListener((changeInformation) => {
-    const windowIndex = registeredWindows.findIndex(
-      (window) => window.id === changeInformation.windowId,
-    );
+  changeWindowTitleEvent.useOnChangeWindowTitleEventListener(
+    (changeInformation) => {
+      const windowIndex = registeredWindows.findIndex(
+        (window) => window.id === changeInformation.windowId,
+      );
 
-    if (windowIndex === -1) return;
+      if (windowIndex === -1) return;
 
-    const window = registeredWindows[windowIndex];
+      const window = registeredWindows[windowIndex];
 
-    window.title = changeInformation.newTitle;
+      window.title = changeInformation.newTitle;
 
-    // Fire the updateWindowDetailsEvent
-    desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
-      window,
-    );
+      // Fire the updateWindowDetailsEvent
+      desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
+        window,
+      );
 
-    if (window.active)
-      setTitleAndRouteFromActiveWindow(window);
-  });
+      if (window.active) setTitleAndRouteFromActiveWindow(window);
+    },
+  );
 
   // -------------------- Window Events --------------------
   events.windowDestroyedEvent.useOnWindowDestroyedListener(
