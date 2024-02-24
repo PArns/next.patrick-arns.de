@@ -208,7 +208,7 @@ export default function WindowManager({
         window,
       );
 
-      if (window.active) setTitleAndRouteFromActiveWindow(window);
+      //if (window.active) setTitleAndRouteFromActiveWindow(window);
     },
   );
 
