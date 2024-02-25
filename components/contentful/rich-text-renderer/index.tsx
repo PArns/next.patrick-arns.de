@@ -141,7 +141,12 @@ export default function RichTextRenderer({
         const uri = node.data.uri;
         const content = node.content[0];
         return (
-          <Link href={uri} target="_blank" rel="noreferrer">
+          <Link
+            href={uri}
+            target="_blank"
+            rel="noreferrer"
+            className="text-sky-600 hover:text-sky-800"
+          >
             {content.value}
           </Link>
         );
