@@ -105,7 +105,7 @@ export default async function BlogIndex({
             </div>
           )}
         </div>
-        <div className="hide flex w-1/4 flex-col gap-2 pl-2 lg:visible">
+        <div className="hidden w-1/4 flex-col gap-2 pl-2 lg:flex">
           <div className="flex flex-col rounded-lg bg-white p-2 drop-shadow-lg">
             <div className="pb-2 font-bold">Tag Cloud</div>
             <div className="flex flex-wrap gap-2">
@@ -121,7 +121,7 @@ export default async function BlogIndex({
           </div>
 
           {params.tag && (
-            <div className="flex flex-col rounded-lg bg-white p-2 text-center drop-shadow-lg">
+            <div className="flex-col rounded-lg bg-white p-2 text-center drop-shadow-lg">
               <div className="pb-2 font-bold">
                 <Translate id="titleShowingTag" ns="blog" locale={params.lng} />
               </div>

@@ -9,8 +9,6 @@ import Image from "next/image";
 import { WindowDetails } from "../windowManager/events";
 import LanguageSwitcher from "../language-switcher";
 
-import classNames from "classnames";
-
 const defaultIcon = "/favicons/favicon-32x32.png";
 
 export default function TitleBar({ pageName }: { pageName: string }) {
