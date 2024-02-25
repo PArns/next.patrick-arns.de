@@ -40,7 +40,7 @@ export default function TitleBar({ pageName }: { pageName: string }) {
               className="pr-1 pt-1 drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
             />
           </div>
-          <div className="truncate w-60 md:w-auto">{title}</div>
+          <div className="w-60 truncate md:w-auto">{title}</div>
         </div>
       </div>
       <div className="flex-grow"></div>
