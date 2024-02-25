@@ -241,7 +241,7 @@ export default function DesktopWindow({
   );
 
   const windowTitleClass = classNames(
-    "grow text-center cursor-move justify-center align-middle vertical-center",
+    "grow text-center cursor-move justify-center align-middle vertical-center truncate px-2",
     {
       "font-bold": activeState,
     },
