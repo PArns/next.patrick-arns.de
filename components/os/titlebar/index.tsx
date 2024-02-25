@@ -9,19 +9,25 @@ import Image from "next/image";
 import { WindowDetails } from "../windowManager/events";
 import LanguageSwitcher from "../language-switcher";
 
+import classNames from "classnames";
+
 const defaultIcon = "/favicons/favicon-32x32.png";
 
 export default function TitleBar({ pageName }: { pageName: string }) {
   const [title, setTitle] = useState<string>(pageName);
+  const [spacer, setSpacer] = useState<string>(" - ");
+
   const [appIcon, setAppIcon] = useState<string>(defaultIcon);
 
   activeWindowChangedEvent.useOnActiveWindowChangedEventListener(
     (window: WindowDetails | null) => {
       if (window) {
-        setTitle(pageName + " - " + window.title);
+        setTitle(window.title);
+        setSpacer(" - ");
         setAppIcon(window.icon);
       } else {
-        setTitle(pageName);
+        setTitle("");
+        setSpacer("");
         setAppIcon(defaultIcon);
       }
     },
@@ -40,7 +46,11 @@ export default function TitleBar({ pageName }: { pageName: string }) {
               className="pr-1 pt-1 drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
             />
           </div>
-          <div className="w-60 truncate md:w-auto">{title}</div>
+          <div className="w-60 truncate md:w-auto">
+            <span className="hidden md:inline">{pageName}</span>
+            <span className="hidden md:inline">{spacer}</span>
+            <span>{title}</span>
+          </div>
         </div>
       </div>
       <div className="flex-grow"></div>
