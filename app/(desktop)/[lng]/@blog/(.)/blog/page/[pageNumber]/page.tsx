@@ -10,7 +10,7 @@ import Tag from "@/components/blog/tag";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
-import BlogJumbotron from "@/public/images/jumbotron/blog.jpg"
+import BlogJumbotron from "@/public/images/jumbotron/blog.jpg";
 
 export async function generateMetadata({
   params,
@@ -73,7 +73,6 @@ export default async function BlogIndex({
           src={BlogJumbotron}
           placeholder="blur"
           fill={true}
-          quality={80}
           alt="Blog Header"
         />
 
