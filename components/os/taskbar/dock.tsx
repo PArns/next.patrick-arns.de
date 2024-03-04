@@ -36,7 +36,7 @@ export default function Dock({
       onMouseLeave={() => {
         if (!isMobile) mouseX.set(Infinity);
       }}
-      className="mx-auto flex h-16 items-end gap-4 rounded-2xl bg-gray-700/50 px-4 pb-3 backdrop-blur-md"
+      className="mx-auto flex h-16 items-end gap-4 rounded-2xl bg-white/50 px-4 pb-3 backdrop-blur-md"
     >
       {windowsArray.map((window) => (
         <AppIcon mouseX={mouseX} window={window} key={window.id} />
