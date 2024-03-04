@@ -10,6 +10,8 @@ import Tag from "@/components/blog/tag";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
+import BlogJumbotron from "@/public/images/jumbotron/blog.jpg"
+
 export async function generateMetadata({
   params,
 }: {
@@ -68,7 +70,8 @@ export default async function BlogIndex({
       <div className="relative mb-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
         <Image
           className="absolute bottom-0 left-0 right-0 top-0 h-max w-max object-cover"
-          src={"/images/jumbotron/blog.jpg"}
+          src={BlogJumbotron}
+          placeholder="blur"
           fill={true}
           quality={80}
           alt="Blog Header"
