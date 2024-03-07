@@ -37,12 +37,12 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           </div>
         </Link>
 
-        <div className="rounded-b-lg bg-white p-2">
+        <div className="rounded-b-lg bg-white p-2 dark:bg-neutral-800">
           {post.excerpt && <div>{post.excerpt}</div>}
           <div className="mr-1 mt-2 flex w-full flex-nowrap place-content-end text-neutral-800">
             <Link
               href={`/${post.locale}/blog/article/${post.slug}`}
-              className="rounded bg-sky-500 px-4 py-2 font-semibold text-white transition hover:bg-sky-700"
+              className="rounded bg-sky-400 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
             >
               <Translate id="more" ns="blog" locale={post.locale} />
             </Link>

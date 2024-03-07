@@ -8,6 +8,7 @@ import Clock from "../clock";
 import Image from "next/image";
 import { WindowDetails } from "../windowManager/events";
 import LanguageSwitcher from "../language-switcher";
+import ThemeSwitcher from "../theme-switch";
 
 const defaultIcon = "/favicons/favicon-32x32.png";
 
@@ -32,7 +33,7 @@ export default function TitleBar({ pageName }: { pageName: string }) {
   );
 
   return (
-    <div className="flex flex-row bg-white/50 px-2 drop-shadow backdrop-blur-lg">
+    <div className="flex flex-row bg-white/50 px-2 drop-shadow backdrop-blur-lg dark:bg-neutral-800/50">
       <div className="flex-none">
         <div className="flex flex-row">
           <div>
@@ -54,6 +55,9 @@ export default function TitleBar({ pageName }: { pageName: string }) {
       <div className="flex-grow"></div>
       <div className="hidden flex-none pr-2 md:block">
         <Clock timeFormat="hh-mm" />
+      </div>
+      <div className="flex-none">
+        <ThemeSwitcher />
       </div>
       <div className="flex-none">
         <LanguageSwitcher />

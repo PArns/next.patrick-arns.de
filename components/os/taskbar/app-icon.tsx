@@ -45,8 +45,8 @@ export default function AppIcon({
   let activeButton = classNames(
     "inline-flex rounded-full h-1.5 w-1.5 shadow-md",
     {
-      "bg-gray-500": !currentWindowStatus.active,
-      "bg-sky-500": currentWindowStatus.active,
+      "bg-gray-500 dark:bg-gray-400": !currentWindowStatus.active,
+      "bg-sky-500 dark:bg-sky-600": currentWindowStatus.active,
       visible: currentWindowStatus.visible,
       invisible: !currentWindowStatus.visible,
     },

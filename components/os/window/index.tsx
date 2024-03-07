@@ -235,8 +235,9 @@ export default function DesktopWindow({
   const windowClasses = classNames(
     "backdrop-blur-sm rounded-md shadow-md border-2",
     {
-      "bg-white/80 border-sky-500": activeState,
-      "bg-white/50 border-gray-100/50": !activeState,
+      "bg-white/80 dark:bg-neutral-700/80 dark:border-sky-600 border-sky-500":
+        activeState,
+      "bg-white/50 dark:bg-neutral-700/50 border-neutral-700/50": !activeState,
     },
   );
 
@@ -263,7 +264,7 @@ export default function DesktopWindow({
           dragHandleClassName="draggable"
         >
           <div className="flex h-full cursor-default flex-col">
-            <div className="draggable flex h-7 border-b bg-white/30">
+            <div className="draggable flex h-7 border-b bg-white/30 dark:border-neutral-600 dark:bg-neutral-800/30">
               <div className="flex h-7 w-8 flex-none items-center justify-center">
                 <Image
                   src={icon}
