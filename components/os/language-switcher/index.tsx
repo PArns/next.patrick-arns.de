@@ -90,7 +90,7 @@ export default function LanguageSwitcher() {
             />
           </Menu.Button>
 
-          <Menu.Items className="absolute right-2 mt-[2px] w-28 origin-top-right divide-y divide-gray-100 rounded-md bg-white/70 ring-1 ring-black/5 drop-shadow-lg focus:outline-none">
+          <Menu.Items className="absolute right-2 mt-[2px] w-28 origin-top-right divide-y divide-gray-100 rounded-md bg-white/80 ring-1 ring-black/5 drop-shadow-lg focus:outline-none dark:bg-neutral-800/80 dark:ring-white/5">
             {supportedLocales.map((loc) => (
               <Menu.Item
                 as="div"
@@ -101,8 +101,10 @@ export default function LanguageSwitcher() {
                   <a
                     href={loc.path}
                     className={`${
-                      active ? "bg-sky-500 text-white" : "text-gray-900"
-                    } group flex w-full items-center rounded-md p-2 text-sm`}
+                      active
+                        ? "bg-sky-500 text-white dark:bg-sky-600 dark:text-black"
+                        : "text-gray-900"
+                    } group flex w-full items-center rounded-md p-2 text-sm dark:text-white`}
                   >
                     <div className="flex flex-row items-center">
                       <div>

@@ -105,7 +105,7 @@ export default function RichTextRenderer({
                   }}
                 />
                 {showSubtitle && (
-                  <p className="truncate text-xs text-gray-500 md:text-sm">
+                  <p className="truncate text-xs text-neutral-500 dark:text-neutral-400 md:text-sm">
                     {name}
                   </p>
                 )}
@@ -145,7 +145,7 @@ export default function RichTextRenderer({
             href={uri}
             target="_blank"
             rel="noreferrer"
-            className="text-sky-600 hover:text-sky-800"
+            className="text-sky-800 hover:text-sky-900 dark:text-sky-500 dark:hover:text-sky-700"
           >
             {content.value}
           </Link>
@@ -163,42 +163,42 @@ export default function RichTextRenderer({
       },
       [BLOCKS.HEADING_1]: (node: any, children: any) => {
         return (
-          <h1 className="clear-both pb-2 text-4xl text-gray-600 md:text-6xl">
+          <h1 className="clear-both pb-2 text-4xl text-neutral-600 dark:text-neutral-400 md:text-6xl">
             {children}
           </h1>
         );
       },
       [BLOCKS.HEADING_2]: (node: any, children: any) => {
         return (
-          <h2 className="clear-both pb-2 text-3xl text-gray-600 md:text-5xl">
+          <h2 className="clear-both pb-2 text-3xl text-neutral-600 dark:text-neutral-400 md:text-5xl">
             {children}
           </h2>
         );
       },
       [BLOCKS.HEADING_3]: (node: any, children: any) => {
         return (
-          <h3 className="clear-both pb-2 text-2xl text-gray-600 md:text-4xl">
+          <h3 className="clear-both pb-2 text-2xl text-neutral-600 dark:text-neutral-400 md:text-4xl">
             {children}
           </h3>
         );
       },
       [BLOCKS.HEADING_4]: (node: any, children: any) => {
         return (
-          <h4 className="clear-both pb-2 text-xl text-gray-600 md:text-3xl">
+          <h4 className="clear-both pb-2 text-xl text-neutral-600 dark:text-neutral-400 md:text-3xl">
             {children}
           </h4>
         );
       },
       [BLOCKS.HEADING_5]: (node: any, children: any) => {
         return (
-          <h5 className="clear-both pb-2 text-lg text-gray-600 md:text-2xl">
+          <h5 className="clear-both pb-2 text-lg text-neutral-600 dark:text-neutral-400 md:text-2xl">
             {children}
           </h5>
         );
       },
       [BLOCKS.HEADING_6]: (node: any, children: any) => {
         return (
-          <h6 className="text-md clear-both pb-2 text-gray-600 md:text-xl">
+          <h6 className="text-md clear-both pb-2 text-neutral-600 dark:text-neutral-400 md:text-xl">
             {children}
           </h6>
         );

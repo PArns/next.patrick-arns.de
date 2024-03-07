@@ -22,7 +22,7 @@ export async function generateMetadata({
 export default async function Welcome({ params }: { params: { lng: string } }) {
   return (
     <div className="container mx-auto">
-      <article className="m-4 rounded-md bg-white p-4">
+      <article className="m-4 rounded-md bg-white p-4 dark:bg-neutral-800">
         <TranslateSwitch locale={params.lng}>
           <Translation lang="de">
             <h1 className="mb-2 text-2xl">Hallo Fremder!</h1>
@@ -64,7 +64,7 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
               Source und bei{" "}
               <a
                 href="https://github.com/PArns/next.patrick-arns.de"
-                className="text-sky-800"
+                className="text-sky-800 hover:text-sky-900 dark:text-sky-500 dark:hover:text-sky-700"
                 target="_blank"
                 rel="noopener noreferrer"
               >

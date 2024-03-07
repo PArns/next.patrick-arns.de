@@ -34,7 +34,7 @@ export default function DesktopIcon({
 
   return (
     <Link
-      className="h-22 w-28 select-none rounded-md border border-transparent p-1 py-2 text-center align-middle text-white transition duration-200 ease-in-out hover:border-sky-100 hover:bg-sky-100/50 hover:backdrop-blur-md dark:hover:border-gray-400 dark:hover:bg-gray-800/50"
+      className="h-22 w-28 select-none rounded-md border border-transparent p-1 py-2 text-center align-middle text-white transition duration-200 ease-in-out hover:border-sky-400 hover:bg-sky-100/50 hover:backdrop-blur-md dark:hover:border-sky-600 dark:hover:bg-neutral-800/50"
       data-te-toggle="tooltip"
       title={title?.toString()}
       href={`${href}`}

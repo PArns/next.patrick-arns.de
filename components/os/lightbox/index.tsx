@@ -69,10 +69,10 @@ export default function Lightbox() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="transform rounded-md border-2 border-sky-500 bg-white/60 text-left align-middle shadow-md backdrop-blur-sm transition-all">
+                <Dialog.Panel className="transform rounded-md border-2 border-sky-500 bg-white/60 text-left align-middle shadow-md backdrop-blur-sm transition-all dark:border-sky-600 dark:bg-neutral-700/60">
                   <Dialog.Title
                     as="div"
-                    className="flex h-7 border-b bg-white/30"
+                    className="flex h-7 border-b bg-white/30 dark:border-neutral-600 dark:bg-neutral-800/30"
                   >
                     <div className="flex h-7 w-8 flex-none items-center justify-center">
                       <Image

@@ -88,7 +88,7 @@ export default async function BlogOverlay({
         subTitle={post.subTitle}
         backgroundImage={post.image}
       />
-      <div className="mt-4 rounded-md bg-white p-4">
+      <div className="mt-4 rounded-md bg-white dark:bg-neutral-800 p-4">
         <h3 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900 dark:text-white lg:text-4xl">
           {post.title}
         </h3>
@@ -103,7 +103,7 @@ export default async function BlogOverlay({
         <div className="mr-1 mt-2 flex flex-nowrap text-neutral-800">
           <Link
             href={`/${params.lng}/blog`}
-            className="mb-2 rounded bg-sky-500 px-4 py-2 font-semibold text-white transition hover:bg-sky-700"
+            className="rounded bg-sky-400 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
           >
             <div className="flex flex-nowrap">
               <div>
