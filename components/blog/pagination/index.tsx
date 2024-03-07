@@ -26,9 +26,9 @@ function PageLink({
   current: boolean;
 }) {
   const className = classNames(
-    "relative inline-flex items-center px-4 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0",
+    "relative inline-flex items-center px-4 py-2 text-sm text-neutral-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0",
     {
-      "bg-sky-500/90 font-bold focus-visible:outline-sky-600 text-gray-100 hover:text-gray-900":
+      "bg-sky-500/90 font-bold focus-visible:outline-sky-600 text-neutral-100 hover:text-neutral-900":
         current,
       "bg-gray-50/60 font-semibold": !current,
     },
@@ -94,7 +94,7 @@ export default function Pagination({
       >
         <Link
           href={previousLink}
-          className="aria-disabled:hover-none relative inline-flex items-center rounded-l-md bg-gray-50/60 px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 aria-disabled:pointer-events-none"
+          className="aria-disabled:hover-none relative inline-flex items-center rounded-l-md bg-gray-50/60 px-2 py-2 text-neutral-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 aria-disabled:pointer-events-none"
           aria-disabled={firstPage}
         >
           <span className="sr-only">Previous</span>
@@ -105,7 +105,7 @@ export default function Pagination({
 
         <Link
           href={nextLink}
-          className="aria-disabled:hover-none relative inline-flex items-center rounded-r-md bg-gray-50/60 px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 aria-disabled:pointer-events-none"
+          className="aria-disabled:hover-none relative inline-flex items-center rounded-r-md bg-gray-50/60 px-2 py-2 text-neutral-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 aria-disabled:pointer-events-none"
           aria-disabled={lastPage}
         >
           <span className="sr-only">Next</span>

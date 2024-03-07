@@ -89,10 +89,10 @@ export default async function BlogOverlay({
         backgroundImage={post.image}
       />
       <div className="mt-4 rounded-md bg-white dark:bg-neutral-800 p-4">
-        <h3 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900 dark:text-white lg:text-4xl">
+        <h3 className="mb-1 text-3xl font-extrabold leading-tight text-neutral-900 dark:text-white lg:text-4xl">
           {post.title}
         </h3>
-        <h4 className="mb-4 text-xl font-semibold leading-tight text-gray-900 dark:text-white lg:text-2xl">
+        <h4 className="mb-4 text-xl font-semibold leading-tight text-neutral-900 dark:text-white lg:text-2xl">
           {post.subTitle}
         </h4>
         <article>

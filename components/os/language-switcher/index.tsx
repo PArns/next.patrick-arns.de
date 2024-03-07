@@ -103,7 +103,7 @@ export default function LanguageSwitcher() {
                     className={`${
                       active
                         ? "bg-sky-500 text-white dark:bg-sky-600 dark:text-black"
-                        : "text-gray-900"
+                        : "text-neutral-900"
                     } group flex w-full items-center rounded-md p-2 text-sm dark:text-white`}
                   >
                     <div className="flex flex-row items-center">
