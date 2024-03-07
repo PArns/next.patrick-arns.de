@@ -3,7 +3,6 @@ import classNames from "classnames";
 
 import PageBaseConfiguration from "@/configuration";
 
-import "./globals.css";
 import {
   getCurrentRoute,
   getCurrentLocale,
@@ -12,6 +11,9 @@ import {
 } from "@/helper/localization";
 
 import { Analytics } from "@vercel/analytics/react";
+import { Providers } from "./providers";
+
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,9 +57,9 @@ export default function RootLayout({
   );
 
   return (
-    <html lang={currentLocale}>
+    <html lang={currentLocale} suppressHydrationWarning>
       <body className={classes}>
-        {children}
+        <Providers>{children}</Providers>
         <Analytics />
       </body>
     </html>
