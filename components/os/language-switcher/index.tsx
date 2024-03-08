@@ -90,7 +90,7 @@ export default function LanguageSwitcher() {
             />
           </Menu.Button>
 
-          <Menu.Items className="absolute right-2 mt-[2px] w-28 origin-top-right divide-y divide-gray-100 rounded-md bg-white/80 ring-1 ring-black/5 drop-shadow-lg focus:outline-none dark:bg-neutral-800/80 dark:ring-white/5">
+          <Menu.Items className="absolute right-2 mt-[2px] w-28 origin-top-right divide-y divide-gray-100 rounded-md bg-white/70 ring-1 ring-black/5 drop-shadow-lg focus:outline-none dark:bg-neutral-700/90 dark:ring-white/5">
             {supportedLocales.map((loc) => (
               <Menu.Item
                 as="div"

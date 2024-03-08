@@ -23,17 +23,12 @@ export function ThemeEntry({
   return (
     <Tab
       className={({ selected }) =>
-        classNames(
-          className,
-          "rounded-lg text-sm font-medium",
-          "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400",
-          {
-            "bg-neutral-800 text-white shadow dark:bg-white dark:text-black":
-              selected,
-            "text-neutral-800 hover:bg-black/[0.12] hover:text-black dark:text-blue-100 dark:hover:bg-white/[0.12] dark:hover:text-white":
-              !selected,
-          },
-        )
+        classNames(className, "rounded-lg text-sm font-medium", {
+          "bg-neutral-800 text-white shadow dark:bg-white dark:text-black":
+            selected,
+          "text-neutral-800 hover:bg-black/[0.12] hover:text-black dark:text-blue-100 dark:hover:bg-white/[0.12] dark:hover:text-white":
+            !selected,
+        })
       }
     >
       <div className="flex w-min gap-1 p-2">{children}</div>
@@ -78,7 +73,7 @@ export function ThemeSwitch() {
   return (
     <div className="w-full">
       <Tab.Group selectedIndex={themeIndex} onChange={setThemeIndex}>
-        <Tab.List className="flex space-x-1 rounded-lg bg-neutral-900/20 p-1">
+        <Tab.List className="flex space-x-1 rounded-lg p-1">
           <ThemeEntry>
             <ComputerDesktopIcon className="h-5 w-5" />
           </ThemeEntry>
@@ -101,7 +96,7 @@ export default function ThemeSwitcher() {
         <LightBulbIcon className="h-5 w-5" />
       </Menu.Button>
 
-      <Menu.Items className="absolute right-2 origin-top-right divide-y divide-gray-100 rounded-md bg-white/80 ring-1 ring-black/5 drop-shadow-lg focus:outline-none dark:bg-neutral-800/80 dark:ring-white/5">
+      <Menu.Items className="absolute right-2 origin-top-right divide-y divide-gray-100 rounded-md bg-white/70 ring-1 ring-black/5 drop-shadow-lg focus:outline-none dark:bg-neutral-700/90 dark:ring-white/5">
         <ThemeSwitch />
       </Menu.Items>
     </Menu>
