@@ -26,7 +26,7 @@ export function ThemeEntry({
         classNames(
           className,
           "rounded-lg text-sm font-medium",
-          "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2",
+          "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400",
           {
             "bg-neutral-800 text-white shadow dark:bg-white dark:text-black":
               selected,
@@ -78,7 +78,7 @@ export function ThemeSwitch() {
   return (
     <div className="w-full">
       <Tab.Group selectedIndex={themeIndex} onChange={setThemeIndex}>
-        <Tab.List className="flex space-x-1 rounded-xl bg-neutral-900/20 p-1">
+        <Tab.List className="flex space-x-1 rounded-lg bg-neutral-900/20 p-1">
           <ThemeEntry>
             <ComputerDesktopIcon className="h-5 w-5" />
           </ThemeEntry>
