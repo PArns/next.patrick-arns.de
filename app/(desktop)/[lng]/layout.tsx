@@ -10,10 +10,12 @@ import initTranslations from "@/components/translate/i18n";
 export default async function AppLayout({
   blog,
   welcome,
+  pictures,
   params,
 }: {
   blog: React.ReactNode;
   welcome: React.ReactNode;
+  pictures: React.ReactNode;
   params: { lng: string };
 }) {
   const { t } = await initTranslations({
@@ -53,6 +55,18 @@ export default async function AppLayout({
         id="blog"
       >
         {blog}
+      </DesktopWindow>
+
+      <DesktopWindow
+        width="80%"
+        height="80%"
+        maxWidth={1600}
+        route="/pictures"
+        title={t("pictures")}
+        icon="/appicons/picture.png"
+        id="pictures"
+      >
+        {pictures}
       </DesktopWindow>
     </Desktop>
   );
