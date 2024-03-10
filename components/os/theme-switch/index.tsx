@@ -68,7 +68,7 @@ export function ThemeSwitch() {
 
   useEffect(() => {
     setTheme(indexToTheme(themeIndex));
-  }, [themeIndex]);
+  }, [themeIndex, setTheme]);
 
   return (
     <div className="w-full">
