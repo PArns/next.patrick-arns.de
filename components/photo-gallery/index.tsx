@@ -1,3 +1,5 @@
+"use client"
+
 import PhotoAlbum, { Photo, RenderPhotoProps } from "react-photo-album";
 import Image from "next/image";
 import { showLightBoxImage } from "../os/lightbox";

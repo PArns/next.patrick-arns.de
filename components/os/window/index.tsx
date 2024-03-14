@@ -285,10 +285,10 @@ export default function DesktopWindow({
               </button>
             </div>
             <div
-              className="flex w-auto overflow-y-auto overflow-x-clip"
+              className="flex overflow-y-auto overflow-x-clip"
               onClick={handleContainerClick}
             >
-              <div className="h-max" ref={childrenRef}>
+              <div className="h-max w-full" ref={childrenRef}>
                 {children}
               </div>
             </div>

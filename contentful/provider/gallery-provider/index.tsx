@@ -31,17 +31,9 @@ export interface ImageGallery {
 export function parseContentfulImageGallery(
   imageGalleryEntry?: ImageGalleryEntry,
   locale?: string,
-): ImageGallery {
+): ImageGallery | null {
   if (!imageGalleryEntry) {
-    return {
-      name: "PARSING ERROR",
-      slug: "",
-      date: new Date(),
-      description: "",
-      locale: locale || "en",
-      teaserImage: null,
-      images: [],
-    };
+    return null;
   }
 
   return {
@@ -84,8 +76,8 @@ export const GetGalleries = cache(
   },
 );
 
-export const GetBlogPostBySlug = cache(
-  async (slug: string, locale: string): Promise<ImageGallery> => {
+export const GetGalleryBySlug = cache(
+  async (slug: string, locale: string): Promise<ImageGallery | null> => {
     const res = await client.getEntries<TypeImageGallerySkeleton>({
       content_type: "imageGallery",
       limit: 1,

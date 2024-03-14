@@ -6,7 +6,7 @@ export default function BlogHeader({
   backgroundImage,
 }: {
   title: string;
-  subTitle: string;
+  subTitle?: string;
   backgroundImage: any;
 }) {
   return (
@@ -25,9 +25,11 @@ export default function BlogHeader({
             <h1 className="mb-2 text-4xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-5xl lg:text-6xl">
               {title}
             </h1>
-            <h2 className="text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-3xl lg:text-4xl">
-              {subTitle}
-            </h2>
+            {subTitle && (
+              <h2 className="text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-3xl lg:text-4xl">
+                {subTitle}
+              </h2>
+            )}
           </div>
         </div>
       </div>

@@ -16,19 +16,12 @@ import { getImageSource } from "@/components/contentful/image-asset";
 
 import Translate from "@/components/translate";
 import { WindowTitle } from "@/components/os/windowManager";
-import {
-  AlternateLinkDescriptor,
-  AlternateURLs,
-} from "next/dist/lib/metadata/types/alternative-urls-types";
+import { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types";
 import { LanguageAlternates } from "@/components/os/language-switcher";
 
 interface BlogPostPageParams {
   slug: string;
   lng: string;
-}
-
-interface BlogPostPageProps {
-  params: BlogPostPageParams;
 }
 
 export async function generateStaticParams(): Promise<BlogPostPageParams[]> {
@@ -48,7 +41,9 @@ export async function generateStaticParams(): Promise<BlogPostPageParams[]> {
 
 export async function generateMetadata({
   params,
-}: BlogPostPageProps): Promise<Metadata> {
+}: {
+  params: { slug: string; lng: string };
+}): Promise<Metadata> {
   const config = PageBaseConfiguration();
   const post = await GetBlogPostBySlug(params.slug, params.lng);
 
@@ -112,7 +107,7 @@ export default async function BlogOverlay({
   }
 
   return (
-    <div className="flex flex-col p-2">
+    <div className="flex w-full flex-col p-2">
       <WindowTitle id="blog" title={`${post.title} - ${post.subTitle}`} />
       <LanguageAlternates alternates={alternates} />
       <BlogHeader

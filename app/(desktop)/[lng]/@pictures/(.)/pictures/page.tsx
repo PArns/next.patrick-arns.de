@@ -58,7 +58,7 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
       </div>
 
       <div className="flex">
-        <div className="flex flex-col gap-3">
+        <div className="flex w-full flex-col gap-3">
           {imageGalleries.galleries.map((gallery) => (
             <GalleryCard gallery={gallery} key={gallery.slug} />
           ))}
