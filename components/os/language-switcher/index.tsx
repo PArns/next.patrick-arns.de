@@ -8,10 +8,37 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Menu } from "@headlessui/react";
 
+import { createEvent } from "react-event-hook";
+
+const setAlternativeLanguages = createEvent("onAlternativeLanguagesAvailable")<
+  Array<alternativeLanguage>
+>();
+
 interface langEntry {
   locale: string;
   language: string;
   path: string;
+}
+
+interface alternativeLanguage {
+  locale: string;
+  path: string;
+}
+
+export function LanguageAlternates({ alternates }: { alternates: any }) {
+  const languages = [];
+
+  for (const lang in alternates) {
+    const entry = {
+      locale: lang as string,
+      path: alternates[lang] as string,
+    };
+
+    languages.push(entry);
+  }
+
+  setAlternativeLanguages.emitOnAlternativeLanguagesAvailable(languages);
+  return null;
 }
 
 export default function LanguageSwitcher() {
@@ -32,6 +59,27 @@ export default function LanguageSwitcher() {
         return "UNKNOWN LANGUAGE!";
     }
   }
+
+  setAlternativeLanguages.useOnAlternativeLanguagesAvailableListener(
+    (alternatives) => {
+      const altEntries: Array<langEntry> = [];
+
+      alternatives.forEach((l) => {
+        const entry = {
+          locale: l.locale,
+          language: getLocaleName(l.locale),
+          path: l.path,
+        };
+
+        altEntries.push(entry);
+      });
+
+      setTimeout(() => {
+        if (altEntries.length !== 0)
+          setSupportedLocales(altEntries);
+      }, 100);
+    },
+  );
 
   useEffect(() => {
     const config = PageBaseConfiguration();

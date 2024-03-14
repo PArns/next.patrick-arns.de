@@ -17,10 +17,12 @@ export interface BlogPosts {
   limit: number;
 }
 
+
 export interface BlogPost {
   title: string;
   subTitle: string;
   slug: string;
+  alternativeSlugs?: any;
   body: RichTextDocument | null;
   excerpt: string;
   image: any;
@@ -33,18 +35,9 @@ export interface BlogPost {
 export function parseContentfulBlogPost(
   blogPostEntry?: BlogPostEntry,
   locale?: string,
-): BlogPost {
+): BlogPost | null {
   if (!blogPostEntry) {
-    return {
-      title: "PARSING ERROR",
-      subTitle: "",
-      slug: "",
-      body: null,
-      excerpt: "",
-      image: null,
-      locale: locale || "en",
-      publishedAt: new Date(),
-    };
+    return null;
   }
 
   return {
@@ -83,7 +76,9 @@ export const GetBlogPosts = cache(
 
     const res = await client.getEntries<TypeBlogPostSkeleton>(query);
     const posts = res.items.map(
-      (blogPostEntry) => parseContentfulBlogPost(blogPostEntry, locale) as BlogPost);
+      (blogPostEntry) =>
+        parseContentfulBlogPost(blogPostEntry, locale) as BlogPost,
+    );
     // Return all tags, starting with the "Blog: " category
     const tagsRes = await client.getTags();
     const tags: string[] = tagsRes.items
@@ -98,7 +93,7 @@ export const GetBlogPosts = cache(
         }
       })
       .filter((tag_1) => tag_1 !== "");
-      
+
     return {
       posts: posts,
       tags: tags || [],
@@ -110,17 +105,27 @@ export const GetBlogPosts = cache(
 );
 
 export const GetBlogPostBySlug = cache(
-  async (slug: string, locale: string): Promise<BlogPost> => {
-    const res = await client
-      .getEntries<TypeBlogPostSkeleton>({
-        content_type: "blogPost",
-        limit: 1,
-        include: 10,
-        locale: locale,
-        "fields.slug": slug,
-      });
-    const post = res.items[0];
+  async (slug: string, locale: string): Promise<BlogPost | null> => {
+    const res = await client.getEntries<TypeBlogPostSkeleton>({
+      content_type: "blogPost",
+      limit: 1,
+      include: 10,
+      locale: locale,
+      "fields.slug": slug,
+    });
 
-    return parseContentfulBlogPost(post);
+    const post = res.items[0];
+    const parsedPost = parseContentfulBlogPost(post);
+
+    if (parsedPost) {
+      const allPostLocales =
+        await client.withAllLocales.withoutLinkResolution.getEntry<TypeBlogPostSkeleton>(
+          res.items[0].sys.id,
+        );
+
+        parsedPost.alternativeSlugs = allPostLocales.fields.slug;
+    }
+
+    return parsedPost;
   },
 );

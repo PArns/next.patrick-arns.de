@@ -16,6 +16,11 @@ import { getImageSource } from "@/components/contentful/image-asset";
 
 import Translate from "@/components/translate";
 import { WindowTitle } from "@/components/os/windowManager";
+import {
+  AlternateLinkDescriptor,
+  AlternateURLs,
+} from "next/dist/lib/metadata/types/alternative-urls-types";
+import { LanguageAlternates } from "@/components/os/language-switcher";
 
 interface BlogPostPageParams {
   slug: string;
@@ -45,25 +50,42 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const config = PageBaseConfiguration();
+  const post = await GetBlogPostBySlug(params.slug, params.lng);
 
-  const blogPost = await GetBlogPostBySlug(params.slug, params.lng);
-
-  if (!blogPost) {
+  if (!post) {
     return notFound();
+  }
+
+  const alternates: AlternateURLs = {
+    languages: {},
+  };
+
+  if (post.alternativeSlugs && alternates.languages) {
+    for (const slugIndex in post.alternativeSlugs) {
+      const slug = post.alternativeSlugs[slugIndex];
+
+      if (slugIndex == "de" || slugIndex == "en")
+        alternates.languages[slugIndex] = `/${slugIndex}/blog/article/${slug}`;
+      else {
+        console.log("WARNING! NON SUPPORTED LANGUAGE FOR ALTERNATIVES!!!");
+      }
+    }
   }
 
   return {
     metadataBase: config.baseUrl,
-    title: `${blogPost.title} - ${blogPost.subTitle} `,
-    description: blogPost.excerpt,
+    title: `${post.title} - ${post.subTitle} `,
+    description: post.excerpt,
+    alternates: alternates,
     openGraph: {
       type: "article",
-      publishedTime: blogPost.publishedAt.toISOString(),
+
+      publishedTime: post.publishedAt.toISOString(),
       url: `${config.baseUrl}/${params.lng}/blog/article/${params.slug}`,
       locale: params.lng,
       images: [
-        { url: getImageSource(blogPost.image, 800), width: 800 },
-        { url: getImageSource(blogPost.image, 1800), width: 1800 },
+        { url: getImageSource(post.image, 800), width: 800 },
+        { url: getImageSource(post.image, 1800), width: 1800 },
       ],
     },
   };
@@ -80,15 +102,25 @@ export default async function BlogOverlay({
     return notFound();
   }
 
+  const alternates: any = {};
+
+  if (post.alternativeSlugs) {
+    for (const slugIndex in post.alternativeSlugs) {
+      const slug = post.alternativeSlugs[slugIndex];
+      alternates[slugIndex as string] = `/${slugIndex}/blog/article/${slug}`;
+    }
+  }
+
   return (
     <div className="flex flex-col p-2">
       <WindowTitle id="blog" title={`${post.title} - ${post.subTitle}`} />
+      <LanguageAlternates alternates={alternates} />
       <BlogHeader
         title={post.title}
         subTitle={post.subTitle}
         backgroundImage={post.image}
       />
-      <div className="mt-4 rounded-md bg-white dark:bg-neutral-800 p-4">
+      <div className="mt-4 rounded-md bg-white p-4 dark:bg-neutral-800">
         <h3 className="mb-1 text-3xl font-extrabold leading-tight text-neutral-900 dark:text-white lg:text-4xl">
           {post.title}
         </h3>

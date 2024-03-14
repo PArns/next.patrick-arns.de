@@ -20,6 +20,10 @@ interface ContentfulImageAssetProps {
 export function getImageSource(asset: any, width: number, quality?: number) {
   const assetSrc = asset?.fields?.file?.url;
 
+  if (!assetSrc) {
+    return "";
+  }
+
   const imageSource = assetSrc.startsWith("//")
     ? "https:" + assetSrc
     : assetSrc;
