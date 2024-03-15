@@ -98,6 +98,12 @@ export default async function GalleryOverlay({
       <BlogHeader title={gallery.name} backgroundImage={gallery.teaserImage} />
 
       <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
+        <h3 className="mb-1 text-3xl font-extrabold leading-tight text-neutral-900 dark:text-white lg:text-4xl">
+          {gallery.name}
+        </h3>
+        <h4 className="mb-4 leading-tight text-neutral-900 dark:text-white">
+          {gallery.description}
+        </h4>
         <PhotoGallery photos={galleryImages} />
       </div>
 
