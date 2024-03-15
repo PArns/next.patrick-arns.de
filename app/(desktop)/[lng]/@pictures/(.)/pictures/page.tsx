@@ -50,7 +50,7 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
                 <Translate id="pictures" locale={params.lng} ns="titles" />
               </h1>
               <h2 className="text-lg font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-xl lg:text-2xl">
-                <Translate id="subTitle" locale={params.lng} ns="blog" />
+                <Translate id="subTitle" locale={params.lng} ns="gallery" />
               </h2>
             </div>
           </div>

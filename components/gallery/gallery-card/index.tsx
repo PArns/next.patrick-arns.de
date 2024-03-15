@@ -44,7 +44,7 @@ export default function GalleryCard({ gallery }: { gallery: ImageGallery }) {
               href={`/${gallery.locale}/pictures/gallery/${gallery.slug}`}
               className="rounded bg-sky-400 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
             >
-              <Translate id="more" ns="blog" locale={gallery.locale} />
+              <Translate id="more" ns="gallery" locale={gallery.locale} />
             </Link>
           </div>
         </div>

@@ -96,7 +96,7 @@ export default async function GalleryOverlay({
               </svg>
             </div>
             <div>
-              <Translate id="back" ns="blog" locale={params.lng} />
+              <Translate id="back" ns="gallery" locale={params.lng} />
             </div>
           </div>
         </Link>
