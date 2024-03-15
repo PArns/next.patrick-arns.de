@@ -19,6 +19,7 @@ export interface ImageGalleries {
 export interface ImageGallery {
   name: string;
   slug: string;
+  alternativeSlugs?: any;
   date: Date;
   description: string;
   locale: string;
@@ -87,6 +88,17 @@ export const GetGalleryBySlug = cache(
     });
     const post = res.items[0];
 
-    return parseContentfulImageGallery(post);
+    const parsedGallery = parseContentfulImageGallery(post);
+
+    if (parsedGallery) {
+      const allPostLocales =
+        await client.withAllLocales.withoutLinkResolution.getEntry<TypeImageGallerySkeleton>(
+          res.items[0].sys.id,
+        );
+
+      parsedGallery.alternativeSlugs = allPostLocales.fields.slug;
+    }
+
+    return parsedGallery;
   },
 );

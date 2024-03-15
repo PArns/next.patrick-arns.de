@@ -1,11 +1,13 @@
 import BlogHeader from "@/components/blog/blog-header";
 import { getImageSource } from "@/components/contentful/image-asset";
+import { LanguageAlternates } from "@/components/os/language-switcher";
 import { WindowTitle } from "@/components/os/windowManager";
 import PhotoGallery, { GalleryPhoto } from "@/components/photo-gallery";
 import Translate from "@/components/translate";
 import PageBaseConfiguration from "@/configuration";
 import { GetGalleryBySlug } from "@/contentful/provider/gallery-provider";
 import { Metadata } from "next";
+import { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -19,6 +21,22 @@ export async function generateMetadata({
 
   if (!gallery) {
     return notFound();
+  }
+
+  const alternates: AlternateURLs = {
+    languages: {},
+  };
+
+  if (gallery.alternativeSlugs && alternates.languages) {
+    for (const slugIndex in gallery.alternativeSlugs) {
+      const slug = gallery.alternativeSlugs[slugIndex];
+
+      if (slugIndex == "de" || slugIndex == "en")
+        alternates.languages[slugIndex] = `/${slugIndex}/blog/article/${slug}`;
+      else {
+        console.log("WARNING! NON SUPPORTED LANGUAGE FOR ALTERNATIVES!!!");
+      }
+    }
   }
 
   return {
@@ -50,6 +68,15 @@ export default async function GalleryOverlay({
     return notFound();
   }
 
+  const alternates: any = {};
+
+  if (gallery.alternativeSlugs) {
+    for (const slugIndex in gallery.alternativeSlugs) {
+      const slug = gallery.alternativeSlugs[slugIndex];
+      alternates[slugIndex as string] =
+        `/${slugIndex}/pictures/gallery/${slug}`;
+    }
+  }
 
   let galleryImages: GalleryPhoto[] = [];
 
@@ -67,6 +94,7 @@ export default async function GalleryOverlay({
   return (
     <div className="flex w-full flex-col p-2">
       <WindowTitle id="pictures" title={`${gallery.name}`} />
+      <LanguageAlternates alternates={alternates} />
       <BlogHeader title={gallery.name} backgroundImage={gallery.teaserImage} />
 
       <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
