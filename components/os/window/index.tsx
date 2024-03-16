@@ -232,7 +232,7 @@ export default function DesktopWindow({
     events.windowRouteChanged.emitOnWindowRouteChanged(currentWindow);
   };
 
-  const windowClasses = classNames(" ounded-md shadow-md border-2", {
+  const windowClasses = classNames("rounded-md shadow-md border-2", {
     "bg-white/80 dark:bg-neutral-700/80 dark:border-sky-600 border-sky-500 backdrop-blur-md":
       activeState,
     "bg-white/50 dark:bg-neutral-700/50 border-neutral-700/50 backdrop-blur-sm":
