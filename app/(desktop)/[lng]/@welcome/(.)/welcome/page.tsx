@@ -64,9 +64,8 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
               Source und bei{" "}
               <a
                 href="https://github.com/PArns/next.patrick-arns.de"
-                className="text-sky-800 hover:text-sky-900 dark:text-sky-500 dark:hover:text-sky-700"
+                className="external"
                 target="_blank"
-                rel="noopener noreferrer"
               >
                 GitHub zu finden
               </a>
@@ -110,9 +109,8 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
               explicitly open source and can be found on{" "}
               <a
                 href="https://github.com/PArns/next.patrick-arns.de"
-                className="text-sky-800"
+                className="external"
                 target="_blank"
-                rel="noopener noreferrer"
               >
                 GitHub
               </a>
