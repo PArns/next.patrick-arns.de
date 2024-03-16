@@ -10,7 +10,7 @@ import Tag from "@/components/blog/tag";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
-import BlogJumbotron from "@/public/images/jumbotron/blog.jpg";
+import BlogJumbotron from "@/public/jumbotron/blog.jpg";
 
 export async function generateMetadata({
   params,
@@ -28,7 +28,7 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale: params.lng,
-      images: "/images/jumbotron/blog.jpg",
+      images: "/jumbotron/blog.jpg",
     },
   };
 }

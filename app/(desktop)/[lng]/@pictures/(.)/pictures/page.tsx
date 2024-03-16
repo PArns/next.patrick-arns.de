@@ -5,7 +5,7 @@ import initTranslations from "@/components/translate/i18n";
 import { GetGalleries } from "@/contentful/provider/gallery-provider";
 import Image from "next/image";
 
-import PicturesJumbotron from "@/public/images/jumbotron/pictures.jpg";
+import PicturesJumbotron from "@/public/jumbotron/pictures.jpg";
 
 export async function generateMetadata({
   params,
