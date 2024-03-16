@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+a.external {
+  @apply text-sky-800 hover:text-sky-900 dark:text-sky-500 dark:hover:text-sky-700;
+}

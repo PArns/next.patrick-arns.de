@@ -11,6 +11,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 
 import BlogJumbotron from "@/public/jumbotron/blog.jpg";
+import ProfilePic from "@/public/images/profilePic.jpg";
+import TranslateSwitch, {
+  Translation,
+} from "@/components/translate/translate-switch";
 
 export async function generateMetadata({
   params,
@@ -108,6 +112,86 @@ export default async function BlogIndex({
           )}
         </div>
         <div className="hidden w-1/4 flex-col gap-2 pl-2 lg:flex">
+          <div className="flex flex-col rounded-lg bg-white p-2 drop-shadow-lg dark:bg-neutral-800">
+            <div className="pb-2 text-xl font-bold">
+              <Translate id="aboutAuthor" locale={params.lng} ns="blog" />
+            </div>
+            <Image
+              className="mx-auto h-32 w-32 rounded-full"
+              src={ProfilePic}
+              alt="Profile picture"
+            />
+            <h2 className="mt-3 text-center text-2xl font-semibold">
+              Patrick Arns
+            </h2>
+            <p className="text-center">Software Engineer</p>
+
+            <div className="mt-2">
+              <TranslateSwitch locale={params.lng}>
+                <Translation lang="de">
+                  Patrick schrieb die ersten Zeilen Code für{" "}
+                  <a
+                    href="https://cyberghostvpn.com"
+                    className="external"
+                    target="_blank"
+                  >
+                    CyberGhost
+                  </a>{" "}
+                  im Jahr 2003 und arbeitet für die{" "}
+                  <a
+                    href="https://kape.com"
+                    className="external"
+                    target="_blank"
+                  >
+                    Kape PLC
+                  </a>
+                  , zu der{" "}
+                  <a
+                    href="https://cyberghostvpn.com"
+                    className="external"
+                    target="_blank"
+                  >
+                    CyberGhost
+                  </a>{" "}
+                  mittlerweile gehört.
+                </Translation>
+                <Translation lang="en">
+                  Patrick wrote the first lines of code for{" "}
+                  <a
+                    href="https://cyberghostvpn.com"
+                    className="external"
+                    target="_blank"
+                  >
+                    CyberGhost
+                  </a>{" "}
+                  in 2003 and works for{" "}
+                  <a
+                    href="https://kape.com"
+                    className="external"
+                    target="_blank"
+                  >
+                    Kape PLC
+                  </a>
+                  , which{" "}
+                  <a
+                    href="https://cyberghostvpn.com"
+                    className="external"
+                    target="_blank"
+                  >
+                    CyberGhost
+                  </a>{" "}
+                  is now part of.
+                </Translation>
+              </TranslateSwitch>
+            </div>
+
+            <div className="mt-1 w-full pr-2 text-right">
+              <Link href={`/${params.lng}/about-me`}>
+                <Translate id="profileMore" locale={params.lng} ns="blog" />
+              </Link>
+            </div>
+          </div>
+
           <div className="flex flex-col rounded-lg bg-white p-2 drop-shadow-lg dark:bg-neutral-800">
             <div className="pb-2 font-bold">Tag Cloud</div>
             <div className="flex flex-wrap gap-2">
