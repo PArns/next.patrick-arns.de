@@ -118,6 +118,8 @@ export default async function BlogIndex({
             </div>
             <Image
               className="mx-auto h-32 w-32 rounded-full"
+              width={128}
+              height={128}
               src={ProfilePic}
               alt="Profile picture"
             />
