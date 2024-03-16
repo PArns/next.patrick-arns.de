@@ -34,13 +34,13 @@ export default function DesktopIcon({
 
   return (
     <Link
-      className="h-22 w-28 select-none rounded-md border border-transparent p-1 py-2 text-center align-middle text-white transition duration-200 ease-in-out hover:border-sky-400 hover:bg-sky-100/50 hover:backdrop-blur-md dark:hover:border-sky-600 dark:hover:bg-neutral-800/50"
+      className="w-28 select-none rounded-md border border-transparent p-1 py-2 text-center align-middle text-white transition duration-200 ease-in-out hover:border-sky-400 hover:bg-sky-100/50 hover:backdrop-blur-md dark:hover:border-sky-600 dark:hover:bg-neutral-800/50"
       data-te-toggle="tooltip"
       title={title?.toString()}
       href={`${href}`}
       onClick={handleMouseEvent}
     >
-      <div className="mb-1 flex items-center justify-center">
+      <div className="mb-1 flex h-12 items-center justify-center">
         {icon && (
           <Image
             src={icon}
@@ -60,7 +60,7 @@ export default function DesktopIcon({
           />
         )}
       </div>
-      <div className="items-center justify-center">
+      <div className="items-end justify-center">
         <p className="rop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] overflow-hidden text-ellipsis">
           {name?.toString()}
         </p>
