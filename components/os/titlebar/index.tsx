@@ -33,7 +33,7 @@ export default function TitleBar({ pageName }: { pageName: string }) {
   );
 
   return (
-    <div className="flex flex-row bg-white/50 px-2 drop-shadow backdrop-blur-lg dark:bg-neutral-800/50">
+    <div className="flex flex-row bg-white/50 px-1 drop-shadow backdrop-blur-lg dark:bg-neutral-800/50">
       <div className="flex-none">
         <div className="flex flex-row">
           <div>

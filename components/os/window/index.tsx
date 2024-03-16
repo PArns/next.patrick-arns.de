@@ -263,11 +263,11 @@ export default function DesktopWindow({
         >
           <div className="flex h-full cursor-default flex-col">
             <div className="draggable flex h-7 border-b bg-white/30 dark:border-neutral-600 dark:bg-neutral-800/30">
-              <div className="flex h-7 w-8 flex-none items-center justify-center">
+              <div className="flex flex-none items-center justify-center pl-1">
                 <Image
                   src={icon}
-                  width={24}
-                  height={24}
+                  width={20}
+                  height={20}
                   alt={title}
                   className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
                 />
