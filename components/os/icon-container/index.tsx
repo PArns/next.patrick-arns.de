@@ -28,29 +28,32 @@ const IconContainer: React.FC<IconContainerContract> = ({
   );
 
   return (
-    <div className="absolute m-4 flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
-      {windowArray.map((window) => (
-        <DesktopIcon
-          icon={window.icon}
-          name={window.title}
-          key={window.id}
-          href={`/${currentLocale}${window.startRoute}`}
-          click={() => {
-            makeWindowActiveEvent.emitOnMakeWindowActiveEvent(window);
-          }}
-        />
-      ))}
-
-      {socialMediaLinks &&
-        socialMediaLinks.map((link) => (
+    <div className="absolute m-4 flex h-screen flex-row flex-wrap content-start gap-2 pb-16">
+      <div className="flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
+        {windowArray.map((window) => (
           <DesktopIcon
-            contentfulIcon={link.icon}
-            name={link.name}
-            title={link.title}
-            key={link.name?.toString() as string}
-            href={link.link}
+            icon={window.icon}
+            name={window.title}
+            key={window.id}
+            href={`/${currentLocale}${window.startRoute}`}
+            click={() => {
+              makeWindowActiveEvent.emitOnMakeWindowActiveEvent(window);
+            }}
           />
         ))}
+        <div className="flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
+          {socialMediaLinks &&
+            socialMediaLinks.map((link) => (
+              <DesktopIcon
+                contentfulIcon={link.icon}
+                name={link.name}
+                title={link.title}
+                key={link.name?.toString() as string}
+                href={link.link}
+              />
+            ))}
+        </div>
+      </div>
     </div>
   );
 };
