@@ -1,11 +1,8 @@
 import client from "@/contentful/client";
-
 import { TypeImageGallerySkeleton } from "@/contentful/types";
-
 import { Entry, LocaleCode } from "contentful";
-import { Document as RichTextDocument } from "@contentful/rich-text-types";
-
 import { cache } from "react";
+import { isValidLocale } from "@/helper/localization";
 
 type ImageGalleryEntry = Entry<TypeImageGallerySkeleton, undefined, string>;
 
@@ -53,7 +50,9 @@ export const GetGalleries = cache(
     locale: LocaleCode,
     skip: number = 0,
     limit: number = 10,
-  ): Promise<ImageGalleries> => {
+  ): Promise<ImageGalleries | null> => {
+    if (!isValidLocale(locale)) return null;
+
     let query: Record<string, any> = {
       content_type: "imageGallery",
       order: "-fields.date",

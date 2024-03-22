@@ -29,6 +29,7 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
   });
 
   const imageGalleries = await GetGalleries(params.lng);
+  if (!imageGalleries) return null;
 
   return (
     <div className="flex flex-col p-2">

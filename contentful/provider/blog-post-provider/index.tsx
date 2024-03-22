@@ -6,6 +6,7 @@ import { Entry, LocaleCode } from "contentful";
 import { Document as RichTextDocument } from "@contentful/rich-text-types";
 
 import { cache } from "react";
+import { isValidLocale } from "@/helper/localization";
 
 type BlogPostEntry = Entry<TypeBlogPostSkeleton, undefined, string>;
 
@@ -16,7 +17,6 @@ export interface BlogPosts {
   skip: number;
   limit: number;
 }
-
 
 export interface BlogPost {
   title: string;
@@ -58,7 +58,9 @@ export const GetBlogPosts = cache(
     skip: number = 0,
     limit: number = 10,
     tag: string | undefined = undefined,
-  ): Promise<BlogPosts> => {
+  ): Promise<BlogPosts | null> => {
+    if (!isValidLocale(locale)) return null;
+
     let query: Record<string, any> = {
       content_type: "blogPost",
       order: "-fields.publishedAt",
@@ -123,7 +125,7 @@ export const GetBlogPostBySlug = cache(
           res.items[0].sys.id,
         );
 
-        parsedPost.alternativeSlugs = allPostLocales.fields.slug;
+      parsedPost.alternativeSlugs = allPostLocales.fields.slug;
     }
 
     return parsedPost;

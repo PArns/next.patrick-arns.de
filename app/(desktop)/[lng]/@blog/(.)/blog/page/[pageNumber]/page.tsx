@@ -61,6 +61,8 @@ export default async function BlogIndex({
     params.tag,
   );
 
+  if (!posts) return null;
+
   if (posts.posts.length === 0) {
     notFound();
   }
