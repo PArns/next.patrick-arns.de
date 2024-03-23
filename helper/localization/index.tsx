@@ -49,10 +49,7 @@ const addLocaleToRoute = (
 
 const isValidLocale = (locale: string): boolean => {
   const config = PageBaseConfiguration();
-
-  return config.supportedLocales.every(
-    (supportedLocale: string) => supportedLocale === locale,
-  );
+  return config.supportedLocales.includes(locale);
 };
 
 export {
