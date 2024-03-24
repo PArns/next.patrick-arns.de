@@ -11,11 +11,13 @@ export default async function AppLayout({
   blog,
   welcome,
   pictures,
+  me,
   params,
 }: {
   blog: React.ReactNode;
   welcome: React.ReactNode;
   pictures: React.ReactNode;
+  me: React.ReactNode;
   params: { lng: string };
 }) {
   const { t } = await initTranslations({
@@ -43,6 +45,18 @@ export default async function AppLayout({
         id="welcome"
       >
         {welcome}
+      </DesktopWindow>
+
+      <DesktopWindow
+        width="70%"
+        maxWidth={1024}
+        route="/me"
+        title={t("aboutMe")}
+        icon="/appicons/welcome-back.png"
+        isInitiallyOpen={true}
+        id="me"
+      >
+        {me}
       </DesktopWindow>
 
       <DesktopWindow
