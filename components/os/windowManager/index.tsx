@@ -25,6 +25,8 @@ export type WindowTitleChangeInformation = {
   newTitle: string;
 };
 
+let initialActiveWindowSet: boolean = false;
+
 const registeredWindowsChangedEvent = createEvent(
   "onRegisteredWindowsChangedEvent",
 )<RegisteredWindows>();
@@ -134,9 +136,9 @@ export default function WindowManager({
     activeWindow: WindowDetails | null,
   ) => {
     const config = PageBaseConfiguration();
-
     const newRoute = addLocaleToRoute(activeWindow?.route ?? "/");
-    router.push(newRoute);
+
+    if (newRoute !== window.location.pathname) router.push(newRoute);
 
     let newTitle = config.title;
 
@@ -149,6 +151,8 @@ export default function WindowManager({
     if (document.title !== newTitle) {
       document.title = newTitle;
     }
+
+    activeWindowChangedEvent.emitOnActiveWindowChangedEvent(activeWindow);
   };
 
   // ----------------- WindowManager Events ----------------
@@ -202,7 +206,7 @@ export default function WindowManager({
       window.title = changeInformation.newTitle;
 
       // Fire the updateWindowDetailsEvent
-     desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
+      desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
         window,
       );
 
@@ -314,11 +318,14 @@ export default function WindowManager({
         registeredWindows,
       );
 
-      const activeWindow = getActiveWindow();
+      if (!windowDetails.visible || !windowDetails.active) {
+        const activeWindow = getActiveWindow();
 
-      if (!activeWindow) {
-        activeWindowChangedEvent.emitOnActiveWindowChangedEvent(null);
-        router.push(`/${currentLocale}`);
+        if (activeWindow) initialActiveWindowSet = true;
+
+        if (initialActiveWindowSet && !activeWindow) {
+          setTitleAndRouteFromActiveWindow(null);
+        }
       }
     }
   };
