@@ -64,7 +64,9 @@ export default function DesktopWindow({
     (windowDetails) => {
       if (windowDetails.id !== id) return;
 
-      setRouteState(windowDetails.route);
+      setTimeout(() => {
+        setRouteState(windowDetails.route);
+      });
     },
   );
 

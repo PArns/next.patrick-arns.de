@@ -89,6 +89,10 @@ const getWindowById = (id: string): WindowDetails | null => {
   return registeredWindows[existingWindowIndex];
 };
 
+const getActiveWindow = (): WindowDetails | null => {
+  return registeredWindows.find((window) => window.active === true) ?? null;
+};
+
 export {
   registeredWindowsChangedEvent,
   makeWindowActiveEvent,
@@ -104,14 +108,12 @@ const registeredWindows: RegisteredWindows = [];
 let currentLocale: string = "";
 
 export function WindowTitle({ id, title }: { id: string; title: string }) {
-  setTimeout(
-    () =>
-      changeWindowTitleEvent.emitOnChangeWindowTitleEvent({
-        windowId: id,
-        newTitle: title,
-      }),
-    100,
-  );
+  setTimeout(() => {
+    changeWindowTitleEvent.emitOnChangeWindowTitleEvent({
+      windowId: id,
+      newTitle: title,
+    });
+  }, 100);
 
   return null;
 }
@@ -128,17 +130,15 @@ export default function WindowManager({
 
   currentLocale = startLocale ?? config.defaultLocale;
 
-  const getActiveWindow = (): WindowDetails | null => {
-    return registeredWindows.find((window) => window.active === true) ?? null;
-  };
-
   const setTitleAndRouteFromActiveWindow = (
     activeWindow: WindowDetails | null,
   ) => {
     const config = PageBaseConfiguration();
     const newRoute = addLocaleToRoute(activeWindow?.route ?? "/");
 
-    if (newRoute !== window.location.pathname) router.push(newRoute);
+    if (newRoute !== window.location.pathname) {
+      router.push(newRoute);
+    }
 
     let newTitle = config.title;
 
@@ -195,14 +195,9 @@ export default function WindowManager({
 
   changeWindowTitleEvent.useOnChangeWindowTitleEventListener(
     (changeInformation) => {
-      const windowIndex = registeredWindows.findIndex(
-        (window) => window.id === changeInformation.windowId,
-      );
+      const window = getWindowById(changeInformation.windowId);
+      if (!window || window.title === changeInformation.newTitle) return;
 
-      if (windowIndex === -1) return;
-      const window = registeredWindows[windowIndex];
-
-      if (window.title === changeInformation.newTitle) return;
       window.title = changeInformation.newTitle;
 
       // Fire the updateWindowDetailsEvent
@@ -235,32 +230,34 @@ export default function WindowManager({
   );
 
   events.windowRegisteredEvent.useOnWindowRegisteredListener((newWindow) => {
-    updateWindowDetails(newWindow);
-
     // Set startup window, once it's registered ...
-    if (!startRoute) return;
+    if (startRoute) {
+      startRoute = removeLocaleFromRoute(startRoute, currentLocale);
 
-    startRoute = removeLocaleFromRoute(startRoute, currentLocale);
+      if (startRoute != "/" && startRoute.startsWith(newWindow.startRoute)) {
+        // correct route of the app to the given URL ...
+        if (startRoute !== newWindow.route) {
+          newWindow.route = startRoute;
+          events.windowStartRouteChanged.emitOnWindowStartRouteChanged(
+            newWindow,
+          );
+        }
 
-    if (startRoute != "/" && startRoute.startsWith(newWindow.startRoute)) {
-      // correct route of the app to the given URL ...
-      if (startRoute !== newWindow.route) {
-        newWindow.route = startRoute;
-        events.windowStartRouteChanged.emitOnWindowStartRouteChanged(newWindow);
+        // ... and make it active
+        setTimeout(
+          () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
+          1000,
+        );
+      } else if (startRoute == "/" && newWindow.isInitiallyOpen) {
+        // If the app is initially open, make it active
+        setTimeout(
+          () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
+          1000,
+        );
       }
-
-      // ... and make it active
-      setTimeout(
-        () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
-        100,
-      );
-    } else if (startRoute == "/" && newWindow.isInitiallyOpen) {
-      // If the app is initially open, make it active
-      setTimeout(
-        () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
-        100,
-      );
     }
+
+    updateWindowDetails(newWindow);
   });
 
   events.windowActivatedEvent.useOnWindowActivatedListener(
