@@ -98,7 +98,7 @@ export {
   getWindowById,
 };
 
-export const registeredWindows: RegisteredWindows = [];
+const registeredWindows: RegisteredWindows = [];
 let currentLocale: string = "";
 
 export function WindowTitle({ id, title }: { id: string; title: string }) {
@@ -108,10 +108,10 @@ export function WindowTitle({ id, title }: { id: string; title: string }) {
         windowId: id,
         newTitle: title,
       }),
-    10,
+    100,
   );
 
-  return <></>;
+  return null;
 }
 
 export default function WindowManager({
@@ -183,29 +183,8 @@ export default function WindowManager({
 
     // Update the registeredWindows array
     newWindowOrder.forEach((newWindow) => {
-      const registeredWindowIndex = registeredWindows.findIndex(
-        (window) => window.id === newWindow.id,
-      );
-
-      if (registeredWindowIndex !== -1) {
-        const registeredWindow = registeredWindows[registeredWindowIndex];
-
-        if (JSON.stringify(registeredWindow) !== JSON.stringify(newWindow)) {
-          // Update the registeredWindow
-          registeredWindows[registeredWindowIndex] = newWindow;
-
-          // Fire the updateWindowDetailsEvent
-          desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
-            newWindow,
-          );
-        }
-      }
+      updateWindowDetails(newWindow);
     });
-
-    activeWindowChangedEvent.emitOnActiveWindowChangedEvent(windowDetails);
-    registeredWindowsChangedEvent.emitOnRegisteredWindowsChangedEvent(
-      registeredWindows,
-    );
 
     setTitleAndRouteFromActiveWindow(windowDetails);
   });
@@ -220,11 +199,10 @@ export default function WindowManager({
       const window = registeredWindows[windowIndex];
 
       if (window.title === changeInformation.newTitle) return;
-
       window.title = changeInformation.newTitle;
 
       // Fire the updateWindowDetailsEvent
-      desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
+     desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
         window,
       );
 
@@ -345,5 +323,5 @@ export default function WindowManager({
     }
   };
 
-  return <></>;
+  return null;
 }

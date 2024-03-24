@@ -56,6 +56,7 @@ export default function DesktopWindow({
       setZIndexState(windowDetails.zIndex);
       setVisibleState(windowDetails.visible);
       setTitleState(windowDetails.title);
+      setRouteState(windowDetails.route);
     },
   );
 
@@ -80,10 +81,6 @@ export default function DesktopWindow({
 
     if (href) {
       setRouteState(href);
-
-      const currentWindow = currentWindowDetails();
-      currentWindow.route = href;
-      events.windowRouteChanged.emitOnWindowRouteChanged(currentWindow);
     }
   };
 

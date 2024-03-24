@@ -24,9 +24,9 @@ export default function AppLink({
 
     setTimeout(() => {
       const windowDetails = getWindowById(id);
-      const localeLink = addLocaleToRoute(href);
-
       if (windowDetails === null) return;
+
+      const localeLink = addLocaleToRoute(href);
 
       if (addLocaleToRoute(windowDetails.route) !== localeLink)
         windowDetails.route = localeLink;
