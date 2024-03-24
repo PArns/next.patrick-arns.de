@@ -45,7 +45,7 @@ export default function TitleBar({ pageName }: { pageName: string }) {
               className="pr-1 pt-1 drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
             />
           </div>
-          <div className="w-96 truncate md:w-auto md:max-w-[500px] lg:max-w-none">
+          <div className="w-96 truncate md:w-auto md:max-w-[500px] lg:max-w-none pt-[1px]">
             <span className="hidden md:inline">{pageName}</span>
             <span className="hidden md:inline">{spacer}</span>
             <span>{title}</span>
@@ -53,7 +53,7 @@ export default function TitleBar({ pageName }: { pageName: string }) {
         </div>
       </div>
       <div className="flex-grow"></div>
-      <div className="hidden flex-none pr-2 md:block">
+      <div className="hidden flex-none pr-2 md:block pt-[1px]">
         <Clock timeFormat="hh-mm" />
       </div>
       <div className="flex-none">
