@@ -43,16 +43,6 @@ export async function middleware(request: NextRequest) {
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);
 
-    // Directly redirect bad requests to a 404
-    if (
-      badPathExtensions.some((s) => pathname.endsWith(s)) ||
-      badPathStarts.some((s) => pathname.startsWith(`/${s}`))
-    )
-      return NextResponse.rewrite(
-        new URL(`/${locale}${pathname}`, request.url),
-        { status: 404 },
-      );
-
     return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
   }
 
@@ -72,10 +62,6 @@ export async function middleware(request: NextRequest) {
     },
   });
 }
-
-export const badPathExtensions = [".php", ".env"];
-
-export const badPathStarts = ["wp-", ".", "cgi-"];
 
 export const config = {
   matcher: [
