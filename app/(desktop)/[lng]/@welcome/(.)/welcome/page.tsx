@@ -19,7 +19,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Welcome({ params }: { params: { lng: string } }) {
+export default function Welcome({ params }: { params: { lng: string } }) {
   return (
     <div className="container mx-auto">
       <article className="m-4 rounded-md bg-white p-4 dark:bg-neutral-800">

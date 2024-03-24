@@ -53,7 +53,6 @@ export default async function AppLayout({
         route="/me"
         title={t("aboutMe")}
         icon="/appicons/ausweis.png"
-        isInitiallyOpen={true}
         id="me"
       >
         {me}
