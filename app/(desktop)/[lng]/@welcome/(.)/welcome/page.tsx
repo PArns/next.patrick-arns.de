@@ -3,6 +3,7 @@ import TranslateSwitch, {
 } from "@/components/translate/translate-switch";
 
 import initTranslations from "@/components/translate/i18n";
+import BlogTeaser from "@/components/blog/blog-teaser";
 
 export async function generateMetadata({
   params,
@@ -118,6 +119,8 @@ export default function Welcome({ params }: { params: { lng: string } }) {
             </p>
           </Translation>
         </TranslateSwitch>
+
+        <BlogTeaser locale={params.lng} maxEntries={1} />
       </article>
     </div>
   );
