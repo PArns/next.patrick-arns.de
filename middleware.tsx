@@ -31,8 +31,6 @@ export async function middleware(request: NextRequest) {
   if (pathname === "/" && config.startRoute && config.startRoute !== "/") {
     const locale = getLocale(request);
 
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
     return NextResponse.redirect(
       new URL(
         `/${locale}/${config.startRoute}`.replaceAll("//", "/"),
@@ -45,17 +43,22 @@ export async function middleware(request: NextRequest) {
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);
 
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
-    return NextResponse.redirect(
-      new URL(`/${locale}/${pathname}`, request.url),
-    );
+    // Directly redirect bad requests to a 404
+    if (
+      badPathExtensions.some((s) => pathname.endsWith(s)) ||
+      badPathStarts.some((s) => pathname.startsWith(`/${s}`))
+    )
+      return NextResponse.rewrite(
+        new URL(`/${locale}${pathname}`, request.url),
+        { status: 404 },
+      );
+
+    return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
   }
 
-  const pathName = request.nextUrl.pathname;
   const pathRegEx = /\/([a-z]{2})\/{0,1}(.*)/gm;
 
-  const match = Array.from(pathName.matchAll(pathRegEx), (m) => m[1]);
+  const match = Array.from(pathname.matchAll(pathRegEx), (m) => m[1]);
   let locale = "";
 
   if (match != null && match.length == 1) locale = match[0];
@@ -63,15 +66,19 @@ export async function middleware(request: NextRequest) {
   return NextResponse.next({
     request: {
       headers: new Headers({
-        "x-url": pathName,
+        "x-url": pathname,
         "x-locale": locale,
       }),
     },
   });
 }
 
+export const badPathExtensions = [".php", ".env"];
+
+export const badPathStarts = ["wp-", ".", "cgi-"];
+
 export const config = {
   matcher: [
-    "/((?!api|_next|favicon.ico|appicons|favicons|flags|assets|.*\\..*).*)",
+    "/((?!api|_next|favicon.ico|appicons|favicons|flags|images|jumbotron|assets).*)",
   ],
 };
