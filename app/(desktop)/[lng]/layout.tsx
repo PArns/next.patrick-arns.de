@@ -52,7 +52,7 @@ export default async function AppLayout({
         maxWidth={1024}
         route="/me"
         title={t("aboutMe")}
-        icon="/appicons/welcome-back.png"
+        icon="/appicons/ausweis.png"
         isInitiallyOpen={true}
         id="me"
       >

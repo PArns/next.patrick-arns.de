@@ -24,6 +24,7 @@ export default function DesktopIcon({
 }) {
   const handleMouseEvent = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    e.stopPropagation();
 
     if (click) {
       click();

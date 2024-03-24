@@ -9,12 +9,14 @@ import Translate from "@/components/translate";
 import Tag from "@/components/blog/tag";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import AppLink from "@/components/os/app-link";
 
-import BlogJumbotron from "@/public/jumbotron/blog.jpg";
-import ProfilePic from "@/public/images/profilePic.jpg";
 import TranslateSwitch, {
   Translation,
 } from "@/components/translate/translate-switch";
+
+import BlogJumbotron from "@/public/jumbotron/blog.jpg";
+import ProfilePic from "@/public/images/profilePic.jpg";
 
 export async function generateMetadata({
   params,
@@ -190,9 +192,9 @@ export default async function BlogIndex({
             </div>
 
             <div className="mt-1 w-full pr-2 text-right">
-              <Link href={`/${params.lng}/about-me`}>
+              <AppLink href={`/${params.lng}/me`} id="me">
                 <Translate id="profileMore" locale={params.lng} ns="blog" />
-              </Link>
+              </AppLink>
             </div>
           </div>
 

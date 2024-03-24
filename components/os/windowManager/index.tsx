@@ -77,6 +77,16 @@ const addLocaleToRoute = (
   return `/${localeToBeAdded}${removedLocale}`;
 };
 
+const getWindowById = (id: string): WindowDetails | null => {
+  const existingWindowIndex = registeredWindows.findIndex(
+    (window) => window.id === id,
+  );
+
+  if (existingWindowIndex === -1) return null;
+
+  return registeredWindows[existingWindowIndex];
+};
+
 export {
   registeredWindowsChangedEvent,
   makeWindowActiveEvent,
@@ -85,9 +95,10 @@ export {
   getCurrentLocale,
   removeLocaleFromRoute,
   addLocaleToRoute,
+  getWindowById,
 };
 
-const registeredWindows: RegisteredWindows = [];
+export const registeredWindows: RegisteredWindows = [];
 let currentLocale: string = "";
 
 export function WindowTitle({ id, title }: { id: string; title: string }) {

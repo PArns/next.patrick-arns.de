@@ -39,6 +39,8 @@ export default function AppIcon({
 
   const handleMouseEvent = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    e.stopPropagation();
+
     makeWindowActiveEvent.emitOnMakeWindowActiveEvent(currentWindowStatus);
   };
 
