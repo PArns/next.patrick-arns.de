@@ -18,6 +18,9 @@ import Translate from "@/components/translate";
 import { WindowTitle } from "@/components/os/windowManager";
 import { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types";
 import { LanguageAlternates } from "@/components/os/language-switcher";
+import DateRenderer from "@/components/date-renderer";
+
+import { ClockIcon } from "@heroicons/react/20/solid";
 
 interface BlogPostPageParams {
   slug: string;
@@ -120,9 +123,17 @@ export default async function BlogOverlay({
         <h3 className="mb-1 text-3xl font-extrabold leading-tight text-neutral-900 dark:text-white lg:text-4xl">
           {post.title}
         </h3>
-        <h4 className="mb-4 text-xl font-semibold leading-tight text-neutral-900 dark:text-white lg:text-2xl">
+        <h4 className="mb-2 text-xl font-semibold leading-tight text-neutral-900 dark:text-white lg:text-2xl">
           {post.subTitle}
         </h4>
+        <h5 className="text-regular mb-2 font-semibold leading-tight text-neutral-900 dark:text-white flex flex-row">
+          <ClockIcon className="h-5 w-5 mr-2" />
+          <DateRenderer
+            date={post.publishedAt}
+            format="long"
+            locale={params.lng}
+          />
+        </h5>
         <article>
           <RichTextRenderer document={post.body} />
         </article>
