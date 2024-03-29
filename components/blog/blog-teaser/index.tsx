@@ -4,8 +4,27 @@ import AppLink from "@/components/os/app-link";
 import Translate from "@/components/translate";
 import {
   BlogPost,
+  GetBlogPostById,
   GetBlogPosts,
 } from "@/contentful/provider/blog-post-provider";
+
+export async function BlogTeaserSpecific({
+  locale,
+  postId,
+}: {
+  locale: string;
+  postId: string;
+}) {
+  const post = await GetBlogPostById(postId, locale);
+
+  if (!post) return null;
+
+  return (
+    <div className="flex flex-col gap-2">
+      <BlogTeaserCard post={post} key={post.slug} />
+    </div>
+  );
+}
 
 export default async function BlogTeaser({
   locale,

@@ -117,7 +117,7 @@ export const GetBlogPostBySlug = cache(
     });
 
     const post = res.items[0];
-    const parsedPost = parseContentfulBlogPost(post);
+    const parsedPost = parseContentfulBlogPost(post, locale);
 
     if (parsedPost) {
       const allPostLocales =
@@ -128,6 +128,17 @@ export const GetBlogPostBySlug = cache(
       parsedPost.alternativeSlugs = allPostLocales.fields.slug;
     }
 
+    return parsedPost;
+  },
+);
+
+export const GetBlogPostById = cache(
+  async (postId: string, locale: string): Promise<BlogPost | null> => {
+    const res = await client.getEntry<TypeBlogPostSkeleton>(postId, {
+      locale: locale,
+    });
+
+    const parsedPost = parseContentfulBlogPost(res, locale);
     return parsedPost;
   },
 );
