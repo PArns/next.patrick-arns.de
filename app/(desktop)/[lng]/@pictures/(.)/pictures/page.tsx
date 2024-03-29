@@ -6,6 +6,7 @@ import { GetGalleries } from "@/contentful/provider/gallery-provider";
 import Image from "next/image";
 
 import PicturesJumbotron from "@/public/jumbotron/pictures.jpg";
+import AboutAuthor from "@/parts/about-author";
 
 export async function generateMetadata({
   params,
@@ -59,10 +60,14 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
       </div>
 
       <div className="flex">
-        <div className="flex w-full flex-col gap-3">
+        <div className="flex flex-col gap-3 lg:w-3/4">
           {imageGalleries.galleries.map((gallery) => (
             <GalleryCard gallery={gallery} key={gallery.slug} />
           ))}
+        </div>
+
+        <div className="hidden w-1/4 flex-col gap-2 pl-2 lg:flex">
+          <AboutAuthor lng={params.lng} />
         </div>
       </div>
     </div>
