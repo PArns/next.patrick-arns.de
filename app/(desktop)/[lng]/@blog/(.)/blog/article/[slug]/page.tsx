@@ -76,7 +76,6 @@ export async function generateMetadata({
     alternates: alternates,
     openGraph: {
       type: "article",
-
       publishedTime: post.publishedAt.toISOString(),
       url: `${config.baseUrl}/${params.lng}/blog/article/${params.slug}`,
       locale: params.lng,
