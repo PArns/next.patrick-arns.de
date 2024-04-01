@@ -60,7 +60,7 @@ export const GetBlogPosts = cache(
     tag: string | undefined = undefined,
   ): Promise<BlogPosts | null> => {
     if (!isValidLocale(locale)) return null;
-
+    
     let query: Record<string, any> = {
       content_type: "blogPost",
       order: "-fields.publishedAt",
@@ -116,6 +116,8 @@ export const GetBlogPostBySlug = cache(
       "fields.slug": slug,
     });
 
+    if (!isValidLocale(locale)) return null;
+
     const post = res.items[0];
     const parsedPost = parseContentfulBlogPost(post, locale);
 
@@ -138,6 +140,7 @@ export const GetBlogPostById = cache(
       locale: locale,
     });
 
+    if (!isValidLocale(locale)) return null;
     const parsedPost = parseContentfulBlogPost(res, locale);
     return parsedPost;
   },

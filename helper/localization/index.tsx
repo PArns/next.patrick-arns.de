@@ -49,7 +49,9 @@ const addLocaleToRoute = (
 
 const isValidLocale = (locale: string): boolean => {
   const config = PageBaseConfiguration();
-  return config.supportedLocales.includes(locale);
+  return (
+    locale !== null && locale !== "" && config.supportedLocales.includes(locale)
+  );
 };
 
 export {
@@ -57,5 +59,5 @@ export {
   getCurrentLocale,
   removeLocaleFromRoute,
   addLocaleToRoute,
-  isValidLocale
+  isValidLocale,
 };
