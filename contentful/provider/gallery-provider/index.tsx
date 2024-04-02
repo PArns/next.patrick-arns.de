@@ -78,6 +78,8 @@ export const GetGalleries = cache(
 
 export const GetGalleryBySlug = cache(
   async (slug: string, locale: string): Promise<ImageGallery | null> => {
+    if (!isValidLocale(locale)) return null;
+
     const res = await client.getEntries<TypeImageGallerySkeleton>({
       content_type: "imageGallery",
       limit: 1,

@@ -108,6 +108,8 @@ export const GetBlogPosts = cache(
 
 export const GetBlogPostBySlug = cache(
   async (slug: string, locale: string): Promise<BlogPost | null> => {
+    if (!isValidLocale(locale)) return null;
+
     const res = await client.getEntries<TypeBlogPostSkeleton>({
       content_type: "blogPost",
       limit: 1,
@@ -115,8 +117,6 @@ export const GetBlogPostBySlug = cache(
       locale: locale,
       "fields.slug": slug,
     });
-
-    if (!isValidLocale(locale)) return null;
 
     const post = res.items[0];
     const parsedPost = parseContentfulBlogPost(post, locale);
@@ -136,11 +136,12 @@ export const GetBlogPostBySlug = cache(
 
 export const GetBlogPostById = cache(
   async (postId: string, locale: string): Promise<BlogPost | null> => {
+    if (!isValidLocale(locale)) return null;
+
     const res = await client.getEntry<TypeBlogPostSkeleton>(postId, {
       locale: locale,
     });
 
-    if (!isValidLocale(locale)) return null;
     const parsedPost = parseContentfulBlogPost(res, locale);
     return parsedPost;
   },
