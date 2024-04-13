@@ -6,10 +6,10 @@ import Translate from "@/components/translate";
 
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (
-    <div className="flex rounded-lg drop-shadow-lg">
+    <div className="@container/card flex w-full rounded-lg drop-shadow-lg">
       <article className="w-full">
         <Link href={`/${post.locale}/blog/article/${post.slug}`}>
-          <div className="relative overflow-hidden bg-cover bg-no-repeat p-24">
+          <div className="@lg/card:p-24 relative overflow-hidden bg-cover bg-no-repeat p-20">
             <ContentfulImageAsset
               asset={post.image}
               alt={post.title}
@@ -20,10 +20,10 @@ export default function BlogCard({ post }: { post: BlogPost }) {
 
             <div className="absolute left-2 top-2 overflow-hidden">
               <div className="text-white">
-                <h1 className="text-4xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                <h1 className="@lg/card:text-4xl text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                   {post.title}
                 </h1>
-                <h2 className="text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                <h2 className="@lg/card:text-2xl text-xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                   {post.subTitle}
                 </h2>
               </div>
@@ -42,7 +42,7 @@ export default function BlogCard({ post }: { post: BlogPost }) {
           <div className="mr-1 mt-2 flex w-full flex-nowrap place-content-end text-neutral-800">
             <Link
               href={`/${post.locale}/blog/article/${post.slug}`}
-              className="rounded bg-sky-400 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
+              className="@lg/card:px-4 rounded bg-sky-400 px-2 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
             >
               <Translate id="more" ns="blog" locale={post.locale} />
             </Link>

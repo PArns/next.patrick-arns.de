@@ -23,13 +23,13 @@ export async function generateMetadata({
 
 export default function AboutMe({ params }: { params: { lng: string } }) {
   return (
-    <div className="container mx-auto p-4">
+    <div className="@container mx-auto p-4">
       <div className="relative flex flex-row">
         <div className="flex w-full items-center justify-center">
           <div>
-            <h1 className="w-96 text-2xl font-bold lg:text-5xl">
+            <h1 className="@xl:text-5xl @md:text-3xl text-xl font-bold">
               <div>Life is simple</div>
-              <div className="width-32text-clip mt-3 text-sky-500">
+              <div className="width-32text-clip @md:mt-3 text-sky-500">
                 <TypeWriter
                   words={[
                     "Eat,",
@@ -49,7 +49,7 @@ export default function AboutMe({ params }: { params: { lng: string } }) {
             </h1>
           </div>
         </div>
-        <div className="w-max pr-4">
+        <div className="@md:pr-4 w-max">
           <Image
             src={JumbotronPic}
             alt="Patrick"

@@ -38,7 +38,7 @@ export default async function BlogTeaser({
   if (!posts) return null;
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="@container flex flex-col gap-2">
       {posts.posts.map((post) => (
         <BlogTeaserCard post={post} key={post.slug} />
       ))}
@@ -51,7 +51,7 @@ function BlogTeaserCard({ post }: { post: BlogPost }) {
     <div className="flex rounded-lg drop-shadow-lg">
       <article className="w-full">
         <AppLink href={`/${post.locale}/blog/article/${post.slug}`} id="blog">
-          <div className="relative overflow-hidden bg-cover bg-no-repeat p-24">
+          <div className="@lg:p-24 relative overflow-hidden bg-cover bg-no-repeat p-16">
             <ContentfulImageAsset
               asset={post.image}
               alt={post.title}
@@ -62,10 +62,10 @@ function BlogTeaserCard({ post }: { post: BlogPost }) {
 
             <div className="absolute left-2 top-2 overflow-hidden">
               <div className="text-white">
-                <h1 className="text-4xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                <h1 className="@lg:text-4xl text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                   {post.title}
                 </h1>
-                <h2 className="text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                <h2 className="@lg:text-2xl text-xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                   {post.subTitle}
                 </h2>
               </div>
@@ -85,7 +85,7 @@ function BlogTeaserCard({ post }: { post: BlogPost }) {
             <AppLink
               href={`/${post.locale}/blog/article/${post.slug}`}
               id="blog"
-              className="rounded bg-sky-400 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
+              className="@lg:px-4 rounded bg-sky-400 px-2 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
             >
               <Translate id="more" ns="blog" locale={post.locale} />
             </AppLink>

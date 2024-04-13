@@ -72,7 +72,7 @@ export default async function BlogIndex({
   const pageCount = Math.ceil(posts.total / postsPerPage);
 
   return (
-    <div className="flex flex-col p-2">
+    <div className="@container flex flex-col p-2">
       <WindowTitle id="blog" title={"Blog"} />
 
       <div className="relative mb-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
@@ -84,13 +84,13 @@ export default async function BlogIndex({
           alt="Blog Header"
         />
 
-        <div className="py-8 md:py-14 lg:py-20">
+        <div className="@lg:py-20 @md:py-14 py-8">
           <div className="flex h-full items-center justify-center">
             <div className="text-white">
-              <h1 className="mb-4 text-5xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] lg:text-7xl">
+              <h1 className="@lg:text-7xl mb-4 text-5xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                 Blog
               </h1>
-              <h2 className="text-lg font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-xl lg:text-2xl">
+              <h2 className="@md:text-xl @lg:text-2xl text-lg font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                 <Translate id="subTitle" locale={params.lng} ns="blog" />
               </h2>
             </div>
@@ -99,7 +99,7 @@ export default async function BlogIndex({
       </div>
 
       <div className="flex">
-        <div className="flex flex-col gap-3 lg:w-3/4">
+        <div className="@3xl:w-3/4 flex flex-col gap-3 w-full">
           {posts.posts.map((post) => (
             <BlogCard post={post} key={post.slug} />
           ))}
@@ -115,7 +115,8 @@ export default async function BlogIndex({
             </div>
           )}
         </div>
-        <div className="hidden w-1/4 flex-col gap-2 pl-2 lg:flex">
+        
+        <div className="@3xl:flex hidden w-1/4 flex-col gap-2 pl-2">
           <AboutAuthor lng={params.lng} />
 
           <div className="flex flex-col rounded-lg bg-white p-2 drop-shadow-lg dark:bg-neutral-800">
@@ -147,7 +148,7 @@ export default async function BlogIndex({
 
                 <Link
                   href={`/${params.lng}/blog`}
-                  className="rounded bg-sky-500 px-4 py-2 font-semibold text-white transition hover:bg-sky-700"
+                  className="@lg:px-4 rounded bg-sky-500 px-2 py-2 font-semibold text-white transition hover:bg-sky-700"
                 >
                   <Translate id="showAll" ns="blog" locale={params.lng} />
                 </Link>
