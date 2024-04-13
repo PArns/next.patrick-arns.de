@@ -1,5 +1,7 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 import {
@@ -14,6 +16,8 @@ import ContentfulImageAsset, { getImageSource } from "../image-asset";
 
 import { showLightBoxImage } from "@/components/os/lightbox";
 import PhotoGallery, { GalleryPhoto } from "@/components/photo-gallery";
+
+const ReactPlayer = dynamic(() => import("react-player"));
 
 export default function RichTextRenderer({
   document,
@@ -127,6 +131,14 @@ export default function RichTextRenderer({
             });
 
             return <PhotoGallery photos={galleryImages} />;
+          }
+          case "blogPostVideo": {
+            return (
+              <div className="flex w-auto flex-col items-center justify-center text-center">
+                <ReactPlayer url={fields.videoUrl} />
+                {fields.title}
+              </div>
+            );
           }
           default: {
             return (
