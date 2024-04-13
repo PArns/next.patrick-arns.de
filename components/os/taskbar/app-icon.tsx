@@ -74,7 +74,7 @@ export default function AppIcon({
             className="object-contain drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
           />
         </div>
-        <div className="-mt-2 h-1">
+        <div className="-mt-1.5 h-1">
           <span className={activeButton}></span>
         </div>
       </div>
