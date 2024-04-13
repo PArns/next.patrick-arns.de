@@ -36,14 +36,14 @@ export default function Dock({
       onMouseLeave={() => {
         if (!isMobile) mouseX.set(Infinity);
       }}
-      className="mx-auto flex h-16 items-end gap-4 rounded-2xl bg-white/50 dark:bg-neutral-800/50 px-4 pb-3 backdrop-blur-md"
+      className="mx-auto flex h-16 items-end gap-4 rounded-2xl bg-white/50 px-4 pb-3 backdrop-blur-md dark:bg-neutral-800/50"
     >
       {windowsArray.map((window) => (
         <AppIcon mouseX={mouseX} window={window} key={window.id} />
       ))}
 
       {socialMediaLinks && socialMediaLinks.length && (
-        <div className="-m-2 mx-[0px] h-full w-[1px] bg-slate-500"></div>
+        <div className="-m-2 mx-[0px] hidden h-full w-[1px] bg-slate-500 md:block" />
       )}
 
       {socialMediaLinks &&
@@ -55,6 +55,7 @@ export default function Dock({
             href={link.link}
             name={link.name}
             key={link.name?.toString() as string}
+            className="hidden md:block"
           />
         ))}
     </motion.div>

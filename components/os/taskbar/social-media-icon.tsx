@@ -5,6 +5,7 @@ import { useRef, MouseEvent } from "react";
 
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import { EntryFieldTypes } from "contentful/dist/types/types/entry";
+import classNames from "classnames";
 
 export default function SocialMediaIcon({
   mouseX,
@@ -13,6 +14,7 @@ export default function SocialMediaIcon({
   name,
   alt,
   contentfulAsset,
+  className,
 }: {
   mouseX: MotionValue;
   click?: Function;
@@ -20,7 +22,10 @@ export default function SocialMediaIcon({
   name?: string | EntryFieldTypes.Symbol;
   alt?: string | EntryFieldTypes.Symbol;
   contentfulAsset: any;
+  className?: string;
 }) {
+  const classes = classNames(className, "aspect-square w-10");
+
   let ref = useRef<HTMLAnchorElement>(null);
 
   let distance = useTransform(mouseX, (val) => {
@@ -47,7 +52,7 @@ export default function SocialMediaIcon({
       ref={ref}
       href={href?.toString()}
       style={{ width }}
-      className="aspect-square w-10"
+      className={classes}
       onClick={handleMouseEvent}
       data-te-toggle="tooltip"
       title={name?.toString()}
