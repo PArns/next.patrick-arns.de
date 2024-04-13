@@ -1,3 +1,7 @@
+import { redirect } from "next/navigation";
+import { Metadata } from "next";
+import Link from "next/link";
+
 import BlogHeader from "@/components/blog/blog-header";
 import { getImageSource } from "@/components/contentful/image-asset";
 import { LanguageAlternates } from "@/components/os/language-switcher";
@@ -6,10 +10,8 @@ import PhotoGallery, { GalleryPhoto } from "@/components/photo-gallery";
 import Translate from "@/components/translate";
 import PageBaseConfiguration from "@/configuration";
 import { GetGalleryBySlug } from "@/contentful/provider/gallery-provider";
-import { Metadata } from "next";
+
 import { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types";
-import Link from "next/link";
-import { notFound } from "next/navigation";
 
 export async function generateMetadata({
   params,
@@ -60,7 +62,7 @@ export default async function GalleryOverlay({
   params: { slug: string; lng: string };
 }) {
   const gallery = await GetGalleryBySlug(params.slug, params.lng);
-  if (!gallery) notFound();
+  if (!gallery) redirect(`/${params.lng}/pictures`);
 
   const alternates: any = {};
 

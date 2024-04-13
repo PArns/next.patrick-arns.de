@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { redirect, notFound } from "next/navigation";
 import { Metadata } from "next";
 
 import {
@@ -93,7 +93,7 @@ export default async function BlogOverlay({
   params: { slug: string; lng: string };
 }) {
   const post = await GetBlogPostBySlug(params.slug, params.lng);
-  if (!post) notFound();
+  if (!post) redirect(`/${params.lng}/blog`);
 
   const alternates: any = {};
 
