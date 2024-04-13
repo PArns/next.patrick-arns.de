@@ -27,20 +27,19 @@ export default function AboutMe({ params }: { params: { lng: string } }) {
       <div className="flex flex-row relative">
         <div className="w-full flex items-center justify-center">
           <div>
-            <h1 className="lg:text-5xl text-2xl font-bold">
-              Life is simple
-              <br />
-              <span className="text-sky-500">
+            <h1 className="lg:text-5xl text-2xl font-bold w-96">
+              <div>Life is simple</div>
+              <div className="text-sky-500 mt-2 width-32text-clip">
                 <TypeWriter
                   words={["Eat,", "Sleep,", "Code,", "Amusement Parks", "& Repeat!"]}
                   loop={true}
                   cursor
-                  cursorStyle="_"
+                  cursorStyle="|"
                   typeSpeed={100}
                   deleteSpeed={50}
                   delaySpeed={1500}
                 />
-              </span>
+              </div>
             </h1>
           </div>
         </div>
@@ -48,7 +47,7 @@ export default function AboutMe({ params }: { params: { lng: string } }) {
           <Image
             src={JumbotronPic}
             alt="Patrick"
-            height={500}
+            height={400}
             placeholder="blur"
           />
         </div>
