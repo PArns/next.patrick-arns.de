@@ -58,7 +58,7 @@ export default function AppIcon({
     <motion.a
       ref={ref}
       style={{ width }}
-      className="aspect-square w-10 text-center"
+      className="aspect-square text-center"
       onClick={handleMouseEvent}
       href={addLocaleToRoute(currentWindowStatus.route)}
       data-te-toggle="tooltip"
