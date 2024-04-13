@@ -18,10 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const config = PageBaseConfiguration();
   const gallery = await GetGalleryBySlug(params.slug, params.lng);
-
-  if (!gallery) {
-    return notFound();
-  }
+  if (!gallery) return {};
 
   const alternates: AlternateURLs = {
     languages: {},
@@ -63,10 +60,7 @@ export default async function GalleryOverlay({
   params: { slug: string; lng: string };
 }) {
   const gallery = await GetGalleryBySlug(params.slug, params.lng);
-
-  if (!gallery) {
-    return notFound();
-  }
+  if (!gallery) notFound();
 
   const alternates: any = {};
 

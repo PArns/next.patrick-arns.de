@@ -51,10 +51,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const config = PageBaseConfiguration();
   const post = await GetBlogPostBySlug(params.slug, params.lng);
-
-  if (!post) {
-    return notFound();
-  }
+  if (!post) return {};
 
   const alternates: AlternateURLs = {
     languages: {},
@@ -96,10 +93,7 @@ export default async function BlogOverlay({
   params: { slug: string; lng: string };
 }) {
   const post = await GetBlogPostBySlug(params.slug, params.lng);
-
-  if (!post) {
-    return notFound();
-  }
+  if (!post) notFound();
 
   const alternates: any = {};
 
@@ -126,8 +120,8 @@ export default async function BlogOverlay({
         <h4 className="mb-2 text-xl font-semibold leading-tight text-neutral-900 dark:text-white lg:text-2xl">
           {post.subTitle}
         </h4>
-        <h5 className="text-regular mb-2 font-semibold leading-tight text-neutral-900 dark:text-white flex flex-row">
-          <ClockIcon className="h-5 w-5 mr-2" />
+        <h5 className="text-regular mb-2 flex flex-row font-semibold leading-tight text-neutral-900 dark:text-white">
+          <ClockIcon className="mr-2 h-5 w-5" />
           <DateRenderer
             date={post.publishedAt}
             format="long"
