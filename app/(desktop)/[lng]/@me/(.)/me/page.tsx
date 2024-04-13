@@ -24,14 +24,20 @@ export async function generateMetadata({
 export default function AboutMe({ params }: { params: { lng: string } }) {
   return (
     <div className="container mx-auto p-4">
-      <div className="flex flex-row relative">
-        <div className="w-full flex items-center justify-center">
+      <div className="relative flex flex-row">
+        <div className="flex w-full items-center justify-center">
           <div>
-            <h1 className="lg:text-5xl text-2xl font-bold w-96">
+            <h1 className="w-96 text-2xl font-bold lg:text-5xl">
               <div>Life is simple</div>
-              <div className="text-sky-500 mt-2 width-32text-clip">
+              <div className="width-32text-clip mt-3 text-sky-500">
                 <TypeWriter
-                  words={["Eat,", "Sleep,", "Code,", "Amusement Parks", "& Repeat!"]}
+                  words={[
+                    "Eat,",
+                    "Sleep,",
+                    "Code,",
+                    "Amusement Parks",
+                    "& Repeat!",
+                  ]}
                   loop={true}
                   cursor
                   cursorStyle="|"
@@ -43,11 +49,11 @@ export default function AboutMe({ params }: { params: { lng: string } }) {
             </h1>
           </div>
         </div>
-        <div className="w-full pr-4">
+        <div className="w-max pr-4">
           <Image
             src={JumbotronPic}
             alt="Patrick"
-            height={400}
+            height={500}
             placeholder="blur"
           />
         </div>
