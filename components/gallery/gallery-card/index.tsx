@@ -6,13 +6,13 @@ import Link from "next/link";
 
 export default function GalleryCard({ gallery }: { gallery: ImageGallery }) {
   return (
-    <div className="flex rounded-lg drop-shadow-lg">
-      <article className="w-full">
+    <div className="flex w-full rounded-lg drop-shadow-lg @container/card">
+      <article>
         <Link
           href={`/${gallery.locale}/pictures/gallery/${gallery.slug}`}
           className="w-full"
         >
-          <div className="relative overflow-hidden bg-cover bg-no-repeat p-24">
+          <div className="relative overflow-hidden bg-cover bg-no-repeat p-20 @lg/card:p-24">
             <ContentfulImageAsset
               asset={gallery.teaserImage}
               alt={gallery.name}
@@ -23,7 +23,7 @@ export default function GalleryCard({ gallery }: { gallery: ImageGallery }) {
 
             <div className="absolute left-2 top-2 overflow-hidden">
               <div className="text-white">
-                <h1 className="text-4xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                <h1 className="text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @lg/card:text-4xl">
                   {gallery.name}
                 </h1>
               </div>
@@ -42,7 +42,7 @@ export default function GalleryCard({ gallery }: { gallery: ImageGallery }) {
           <div className="mr-1 mt-2 flex flex-nowrap place-content-end text-neutral-800">
             <Link
               href={`/${gallery.locale}/pictures/gallery/${gallery.slug}`}
-              className="rounded bg-sky-400 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
+              className="rounded bg-sky-400 px-2 py-2 font-semibold text-white transition hover:bg-sky-700 @lg/card:px-4 dark:bg-sky-600 dark:hover:bg-sky-700"
             >
               <Translate id="more" ns="gallery" locale={gallery.locale} />
             </Link>
