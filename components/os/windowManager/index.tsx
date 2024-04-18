@@ -3,6 +3,7 @@
 import events, { WindowDetails, desktopWindowEvents } from "./events";
 import { createEvent } from "react-event-hook";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 import PageBaseConfiguration from "@/configuration";
 
@@ -45,6 +46,18 @@ const changeWindowTitleEvent = createEvent(
 
 const getCurrentLocale = (): string => {
   return currentLocale;
+};
+
+const getLocaleFromRoute = (route: string): string | null => {
+  const trimmedRoute = route.startsWith("/") ? route.slice(1) : route;
+  const routeParts = trimmedRoute.split("/");
+
+  if (routeParts.length > 0) {
+    const locale = routeParts[0];
+    return locale;
+  }
+
+  return null;
 };
 
 const removeLocaleFromRoute = (
@@ -101,6 +114,7 @@ export {
   getCurrentLocale,
   removeLocaleFromRoute,
   addLocaleToRoute,
+  getLocaleFromRoute,
   getWindowById,
 };
 
@@ -118,17 +132,13 @@ export function WindowTitle({ id, title }: { id: string; title: string }) {
   return null;
 }
 
-export default function WindowManager({
-  startRoute,
-  startLocale,
-}: {
-  startRoute: string | null;
-  startLocale: string | null;
-}) {
+export default function WindowManager() {
   const router = useRouter();
+  const pathName = usePathname();
   const config = PageBaseConfiguration();
 
-  currentLocale = startLocale ?? config.defaultLocale;
+  const localeFromRoute = getLocaleFromRoute(pathName);
+  currentLocale = localeFromRoute ?? config.defaultLocale;
 
   const setTitleAndRouteFromActiveWindow = (
     activeWindow: WindowDetails | null,
@@ -231,8 +241,8 @@ export default function WindowManager({
 
   events.windowRegisteredEvent.useOnWindowRegisteredListener((newWindow) => {
     // Set startup window, once it's registered ...
-    if (startRoute) {
-      startRoute = removeLocaleFromRoute(startRoute, currentLocale);
+    if (pathName) {
+      const startRoute = removeLocaleFromRoute(pathName, currentLocale);
 
       if (startRoute != "/" && startRoute.startsWith(newWindow.startRoute)) {
         // correct route of the app to the given URL ...

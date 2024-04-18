@@ -46,25 +46,11 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
   }
 
-  const pathRegEx = /\/([a-z]{2})\/{0,1}(.*)/gm;
-
-  const match = Array.from(pathname.matchAll(pathRegEx), (m) => m[1]);
-  let locale = "";
-
-  if (match != null && match.length == 1) locale = match[0];
-
-  return NextResponse.next({
-    request: {
-      headers: new Headers({
-        "x-url": pathname,
-        "x-locale": locale,
-      }),
-    },
-  });
+  return NextResponse.next();
 }
 
 export const config = {
   matcher: [
-    "/((?!api|_next|favicon.ico|robots.txt|appicons|favicons|flags|images|jumbotron|assets).*)",
+    "/((?!api|_next|favicon.ico|robots.txt|appicons|favicons|flags|images|jumbotron|assets|de/|en/).*)",
   ],
 };

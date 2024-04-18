@@ -3,13 +3,6 @@ import classNames from "classnames";
 
 import PageBaseConfiguration from "@/configuration";
 
-import {
-  getCurrentRoute,
-  getCurrentLocale,
-  addLocaleToRoute,
-  removeLocaleFromRoute,
-} from "@/helper/localization";
-
 import { Analytics } from "@vercel/analytics/react";
 import { Providers } from "./providers";
 
@@ -19,13 +12,6 @@ const inter = Inter({ subsets: ["latin"] });
 
 export function generateMetadata() {
   const config = PageBaseConfiguration();
-  const canonicalUrl = removeLocaleFromRoute(getCurrentRoute());
-
-  let languages: any = {};
-
-  config.supportedLocales.forEach((locale) => {
-    languages[locale] = addLocaleToRoute(canonicalUrl, locale);
-  });
 
   return {
     title: {
@@ -33,10 +19,6 @@ export function generateMetadata() {
       template: `%s - ${config.title}`,
     },
     description: config.description,
-    alternates: {
-      canonical: canonicalUrl,
-      languages: languages,
-    },
     generator: "Next.js",
     creator: "Patrick Arns",
     publisher: config.publisher,
@@ -49,15 +31,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const currentLocale = getCurrentLocale();
-
   const classes = classNames(
     inter.className,
     "overflow-hidden overscroll-none",
   );
 
   return (
-    <html lang={currentLocale} suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <body className={classes}>
         <Providers>{children}</Providers>
         <Analytics />
