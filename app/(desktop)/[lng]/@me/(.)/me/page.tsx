@@ -5,11 +5,12 @@ import initTranslations from "@/components/translate/i18n";
 import TypeWriter from "@/components/type-writer";
 
 import JumbotronPic from "@/public/images/profilePic-exempt.png";
+import { getPageAlternates } from "@/helper/localization";
 
 export async function generateMetadata({
   params,
 }: {
-  params: { lng: string };
+  params: { lng: string; pageNumber: number; tag: string | undefined };
 }) {
   const { t } = await initTranslations({
     locale: params.lng,
@@ -18,18 +19,23 @@ export async function generateMetadata({
 
   return {
     title: t("aboutMe"),
+    alternates: getPageAlternates("me"),
+    openGraph: {
+      type: "website",
+      locale: params.lng,
+    },
   };
 }
 
 export default function AboutMe({ params }: { params: { lng: string } }) {
   return (
-    <div className="@container mx-auto p-4">
+    <div className="mx-auto p-4 @container">
       <div className="relative flex flex-row">
         <div className="flex w-full items-center justify-center">
           <div>
-            <h1 className="@xl:text-5xl @md:text-3xl text-xl font-bold">
+            <h1 className="text-xl font-bold @md:text-3xl @xl:text-5xl">
               <div>Life is simple</div>
-              <div className="width-32text-clip @md:mt-3 text-sky-500">
+              <div className="width-32text-clip text-sky-500 @md:mt-3">
                 <TypeWriter
                   words={[
                     "Eat,",
@@ -49,7 +55,7 @@ export default function AboutMe({ params }: { params: { lng: string } }) {
             </h1>
           </div>
         </div>
-        <div className="@md:pr-4 w-max">
+        <div className="w-max @md:pr-4">
           <Image
             src={JumbotronPic}
             alt="Patrick"

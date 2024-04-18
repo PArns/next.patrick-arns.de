@@ -31,7 +31,8 @@ export async function generateMetadata({
       const slug = gallery.alternativeSlugs[slugIndex];
 
       if (slugIndex == "de" || slugIndex == "en")
-        alternates.languages[slugIndex] = `/${slugIndex}/blog/article/${slug}`;
+        alternates.languages[slugIndex] =
+          `/${slugIndex}/pictures/gallery/${slug}`;
       else {
         console.log("WARNING! NON SUPPORTED LANGUAGE FOR ALTERNATIVES!!!");
       }
@@ -40,8 +41,9 @@ export async function generateMetadata({
 
   return {
     metadataBase: config.baseUrl,
-    title: `${gallery.name} `,
+    title: gallery.name,
     description: gallery.description,
+    alternates: alternates,
     openGraph: {
       type: "article",
 

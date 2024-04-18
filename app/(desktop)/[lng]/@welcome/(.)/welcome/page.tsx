@@ -4,11 +4,12 @@ import TranslateSwitch, {
 
 import initTranslations from "@/components/translate/i18n";
 import BlogTeaser from "@/components/blog/blog-teaser";
+import { getPageAlternates } from "@/helper/localization";
 
 export async function generateMetadata({
   params,
 }: {
-  params: { lng: string };
+  params: { lng: string; pageNumber: number; tag: string | undefined };
 }) {
   const { t } = await initTranslations({
     locale: params.lng,
@@ -17,6 +18,11 @@ export async function generateMetadata({
 
   return {
     title: t("welcome"),
+    alternates: getPageAlternates("welcome"),
+    openGraph: {
+      type: "website",
+      locale: params.lng,
+    },
   };
 }
 

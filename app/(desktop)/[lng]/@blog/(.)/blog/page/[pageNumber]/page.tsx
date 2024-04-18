@@ -9,14 +9,11 @@ import Translate from "@/components/translate";
 import Tag from "@/components/blog/tag";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import AppLink from "@/components/os/app-link";
-
-import TranslateSwitch, {
-  Translation,
-} from "@/components/translate/translate-switch";
 
 import BlogJumbotron from "@/public/jumbotron/blog.jpg";
 import AboutAuthor from "@/parts/about-author";
+
+import { getPageAlternates } from "@/helper/localization";
 
 export async function generateMetadata({
   params,
@@ -28,9 +25,18 @@ export async function generateMetadata({
     namespaces: ["blog"],
   });
 
+  var baseRoute = "blog";
+
+  if (params.pageNumber > 1) {
+    baseRoute = `blog/page/${params.pageNumber}`;
+  } else if (params.tag) {
+    baseRoute = `blog/tag/${params.tag}`;
+  }
+
   return {
     title: "Blog",
     description: t("subTitle"),
+    alternates: getPageAlternates(baseRoute),
     openGraph: {
       type: "website",
       locale: params.lng,
@@ -72,7 +78,7 @@ export default async function BlogIndex({
   const pageCount = Math.ceil(posts.total / postsPerPage);
 
   return (
-    <div className="@container flex flex-col p-2">
+    <div className="flex flex-col p-2 @container">
       <WindowTitle id="blog" title={"Blog"} />
 
       <div className="relative mb-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
@@ -84,13 +90,13 @@ export default async function BlogIndex({
           alt="Blog Header"
         />
 
-        <div className="@lg:py-20 @md:py-14 py-8">
+        <div className="py-8 @md:py-14 @lg:py-20">
           <div className="flex h-full items-center justify-center">
             <div className="text-white">
-              <h1 className="@lg:text-7xl mb-4 text-5xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+              <h1 className="mb-4 text-5xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @lg:text-7xl">
                 Blog
               </h1>
-              <h2 className="@md:text-xl @lg:text-2xl text-lg font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+              <h2 className="text-lg font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @md:text-xl @lg:text-2xl">
                 <Translate id="subTitle" locale={params.lng} ns="blog" />
               </h2>
             </div>
@@ -99,7 +105,7 @@ export default async function BlogIndex({
       </div>
 
       <div className="flex">
-        <div className="@3xl:w-3/4 flex flex-col gap-3 w-full">
+        <div className="flex w-full flex-col gap-3 @3xl:w-3/4">
           {posts.posts.map((post) => (
             <BlogCard post={post} key={post.slug} />
           ))}
@@ -115,8 +121,8 @@ export default async function BlogIndex({
             </div>
           )}
         </div>
-        
-        <div className="@3xl:flex hidden w-1/4 flex-col gap-2 pl-2">
+
+        <div className="hidden w-1/4 flex-col gap-2 pl-2 @3xl:flex">
           <AboutAuthor lng={params.lng} />
 
           <div className="flex flex-col rounded-lg bg-white p-2 drop-shadow-lg dark:bg-neutral-800">
@@ -148,7 +154,7 @@ export default async function BlogIndex({
 
                 <Link
                   href={`/${params.lng}/blog`}
-                  className="@lg:px-4 rounded bg-sky-500 px-2 py-2 font-semibold text-white transition hover:bg-sky-700"
+                  className="rounded bg-sky-500 px-2 py-2 font-semibold text-white transition hover:bg-sky-700 @lg:px-4"
                 >
                   <Translate id="showAll" ns="blog" locale={params.lng} />
                 </Link>

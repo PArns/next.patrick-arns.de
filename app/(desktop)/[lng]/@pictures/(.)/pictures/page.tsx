@@ -7,19 +7,26 @@ import Image from "next/image";
 
 import PicturesJumbotron from "@/public/jumbotron/pictures.jpg";
 import AboutAuthor from "@/parts/about-author";
+import { getPageAlternates } from "@/helper/localization";
 
 export async function generateMetadata({
   params,
 }: {
-  params: { lng: string };
+  params: { lng: string; pageNumber: number; tag: string | undefined };
 }) {
   const { t } = await initTranslations({
     locale: params.lng,
-    namespaces: ["titles"],
+    namespaces: ["gallery"],
   });
 
   return {
-    title: t("pictures"),
+    title: t("title"),
+    description: t("subTitle"),
+    alternates: getPageAlternates("pictures"),
+    openGraph: {
+      type: "website",
+      locale: params.lng,
+    },
   };
 }
 
@@ -33,7 +40,7 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
   if (!imageGalleries) return null;
 
   return (
-    <div className="@container flex flex-col p-2">
+    <div className="flex flex-col p-2 @container">
       <WindowTitle id="pictures" title={t("pictures")} />
 
       <div className="relative mb-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
@@ -45,13 +52,13 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
           alt="Gallery Header"
         />
 
-        <div className="@md:py-14 @lg:py-20 py-8">
+        <div className="py-8 @md:py-14 @lg:py-20">
           <div className="flex h-full items-center justify-center">
             <div className="text-white">
-              <h1 className="@lg:text-7xl mb-4 text-5xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+              <h1 className="mb-4 text-5xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @lg:text-7xl">
                 <Translate id="pictures" locale={params.lng} ns="titles" />
               </h1>
-              <h2 className="@md:text-xl @lg:text-2xl text-lg font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+              <h2 className="text-lg font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @md:text-xl @lg:text-2xl">
                 <Translate id="subTitle" locale={params.lng} ns="gallery" />
               </h2>
             </div>
@@ -60,13 +67,13 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
       </div>
 
       <div className="flex">
-        <div className="@3xl:w-3/4 flex w-full flex-col gap-3">
+        <div className="flex w-full flex-col gap-3 @3xl:w-3/4">
           {imageGalleries.galleries.map((gallery) => (
             <GalleryCard gallery={gallery} key={gallery.slug} />
           ))}
         </div>
 
-        <div className="@3xl:flex hidden w-1/4 flex-col gap-2 pl-2">
+        <div className="hidden w-1/4 flex-col gap-2 pl-2 @3xl:flex">
           <AboutAuthor lng={params.lng} />
         </div>
       </div>
