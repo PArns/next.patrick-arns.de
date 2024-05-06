@@ -25,7 +25,6 @@ export function getImageSource(asset: any, width: number, quality?: number) {
   }
 
   if (!assetSrc) {
-    console.log("SRC", asset);
     return "";
   }
 
