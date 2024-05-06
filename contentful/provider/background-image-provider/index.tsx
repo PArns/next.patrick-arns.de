@@ -1,21 +1,22 @@
-import client from "@/contentful/client";
-import { cache } from "react";
+import { fetchGraphQL } from "@/contentful/client";
 
-import {
-  TypeBackgroundImagesFields,
-  TypeBackgroundImagesSkeleton,
-} from "@/contentful/types";
+export async function GetBackgroundImages() {
+  const data = await fetchGraphQL(
+    `query {
+      backgroundImagesCollection {
+          items {
+            name
+            position
+            image {
+              url
+              width
+              height
+            }
+          }
+        }
+      }`
+  );
 
-export const GetBackgroundImages = cache(async () => {
-  const response = await client
-    .getEntries<TypeBackgroundImagesSkeleton>({
-      content_type: "backgroundImages",
-    });
-  let res = Array<TypeBackgroundImagesFields>();
-  
-  response.items.map((item) => {
-    res.push(item.fields as unknown as TypeBackgroundImagesFields);
-  });
-
-  return res;
-});
+  const collection = data.data.backgroundImagesCollection;
+  return collection.items;
+}
