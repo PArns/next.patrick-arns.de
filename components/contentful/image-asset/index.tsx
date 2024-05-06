@@ -18,7 +18,11 @@ interface ContentfulImageAssetProps {
 }
 
 export function getImageSource(asset: any, width: number, quality?: number) {
-  const assetSrc = asset?.fields?.file?.url;
+  let assetSrc = asset?.fields?.file?.url;
+
+  if (!assetSrc) {
+    assetSrc = asset?.url;
+  }
 
   if (!assetSrc) {
     return "";

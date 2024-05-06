@@ -1,10 +1,6 @@
-import client from "@/contentful/client";
-import { TypeImageGallerySkeleton } from "@/contentful/types";
-import { Entry, LocaleCode } from "contentful";
-import { cache } from "react";
+import { fetchGraphQL } from "@/contentful/client";
+import { LocaleCode } from "contentful";
 import { isValidLocale } from "@/helper/localization";
-
-type ImageGalleryEntry = Entry<TypeImageGallerySkeleton, undefined, string>;
 
 export interface ImageGalleries {
   galleries: ImageGallery[];
@@ -24,82 +20,109 @@ export interface ImageGallery {
   images: any[];
 }
 
-// A function to transform a Contentful image gallery
-// into our own ImageGallery object.
-export function parseContentfulImageGallery(
-  imageGalleryEntry?: ImageGalleryEntry,
-  locale?: string,
-): ImageGallery | null {
-  if (!imageGalleryEntry) {
-    return null;
-  }
+export async function GetGalleries(
+  locale: LocaleCode,
+  skip: number = 0,
+  limit: number = 10,
+): Promise<ImageGalleries | null> {
+  if (!isValidLocale(locale)) return null;
+
+  const data = await fetchGraphQL(
+    `query($limit: Int!, $skip: Int!, $locale: String!) {
+      imageGalleryCollection(order: date_DESC, limit: $limit, skip: $skip, locale: $locale) {
+          total
+          skip
+          limit
+          items {
+            name
+            slug
+            date
+            description
+            teaserImage {
+              url
+            }
+          }
+        }
+      }`,
+    { limit: limit, skip: skip, locale: locale },
+  );
+
+  const collection = data.data.imageGalleryCollection;
+
+  const galleries: ImageGallery[] = collection.items.map(
+    (galleryEntry: any) => {
+      return {
+        name: galleryEntry.name,
+        slug: galleryEntry.slug,
+        date: new Date(galleryEntry.date),
+        description: galleryEntry.description,
+        locale: locale,
+        teaserImage: galleryEntry.teaserImage,
+      };
+    },
+  );
 
   return {
-    name: imageGalleryEntry.fields.name || "",
-    slug: imageGalleryEntry.fields.slug || "",
-    date: new Date(imageGalleryEntry.fields.date ?? ""),
-    description: imageGalleryEntry.fields.description || "",
-    locale: locale || "en",
-    teaserImage: imageGalleryEntry.fields.teaserImage || null,
-    images: imageGalleryEntry.fields.images || [],
+    total: collection.total,
+    skip: collection.skip,
+    limit: collection.limit,
+    galleries: galleries,
   };
 }
 
-export const GetGalleries = cache(
-  async (
-    locale: LocaleCode,
-    skip: number = 0,
-    limit: number = 10,
-  ): Promise<ImageGalleries | null> => {
-    if (!isValidLocale(locale)) return null;
+export async function GetGalleryBySlug(
+  slug: string,
+  locale: string,
+): Promise<ImageGallery | null> {
+  if (!isValidLocale(locale)) return null;
 
-    let query: Record<string, any> = {
-      content_type: "imageGallery",
-      order: "-fields.date",
-      locale: locale,
-      skip: skip,
-      include: 1,
-    };
+  const query = `query($slug: String!, $locale: String!) {
+    imageGalleryCollection(where: {slug: $slug}, locale: $locale, limit: 1) {
+        items {
+          sys {
+            id
+          }
+          name
+          slug
+          slugDE: slug(locale: "de")
+          slugEN: slug(locale: "en")
+          date
+          description
+          teaserImage {
+            url
+          }
+          imagesCollection {
+            items {
+              title
+              description
+              url
+              width
+              height
+            }
+          }
+        }
+      }
+    }`;
 
-    const res = await client.getEntries<TypeImageGallerySkeleton>(query);
-    const galleries = res.items.map(
-      (galleryEntry) =>
-        parseContentfulImageGallery(galleryEntry, locale) as ImageGallery,
-    );
+  const variables = { slug: slug, locale: locale };
+  const data = await fetchGraphQL(query, variables);
+  const postData = data?.data?.imageGalleryCollection?.items[0];
 
-    return {
-      galleries: galleries,
-      total: res.total,
-      skip: res.skip,
-      limit: res.limit,
-    };
-  },
-);
+  if (!postData) return null;
 
-export const GetGalleryBySlug = cache(
-  async (slug: string, locale: string): Promise<ImageGallery | null> => {
-    if (!isValidLocale(locale)) return null;
+  const gallery: ImageGallery = {
+    name: postData.name,
+    slug: postData.slug,
+    date: new Date(postData.date),
+    description: postData.description,
+    locale: locale,
+    teaserImage: postData.teaserImage,
+    images: postData.imagesCollection.items,
+    alternativeSlugs: {
+      de: postData.slugDE,
+      en: postData.slugEN,
+    },
+  };
 
-    const res = await client.getEntries<TypeImageGallerySkeleton>({
-      content_type: "imageGallery",
-      limit: 1,
-      include: 10,
-      locale: locale,
-      "fields.slug": slug,
-    });
-    const post = res.items[0];
-
-    const parsedGallery = parseContentfulImageGallery(post);
-
-    if (parsedGallery) {
-      const allPostLocales =
-        await client.withAllLocales.withoutLinkResolution.getEntry<TypeImageGallerySkeleton>(
-          res.items[0].sys.id,
-        );
-
-      parsedGallery.alternativeSlugs = allPostLocales.fields.slug;
-    }
-
-    return parsedGallery;
-  },
-);
+  return gallery;
+}

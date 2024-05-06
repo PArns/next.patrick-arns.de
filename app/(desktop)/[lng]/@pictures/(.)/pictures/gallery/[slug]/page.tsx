@@ -82,10 +82,10 @@ export default async function GalleryOverlay({
     galleryImages.push({
       src: getImageSource(image, 400),
       lightboxImageSrc: getImageSource(image, 1200),
-      alt: image.fields.description,
-      title: image.fields.title,
-      width: image.fields.file.details.image.width,
-      height: image.fields.file.details.image.height,
+      alt: image.description,
+      title: image.title,
+      width: image.width,
+      height: image.height,
     });
   });
 
