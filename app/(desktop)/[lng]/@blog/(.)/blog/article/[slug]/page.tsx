@@ -105,7 +105,7 @@ export default async function BlogOverlay({
   }
 
   return (
-    <div className="@container flex w-full flex-col p-2">
+    <div className="flex w-full flex-col p-2 @container">
       <WindowTitle id="blog" title={`${post.title} - ${post.subTitle}`} />
       <LanguageAlternates alternates={alternates} />
       <BlogHeader
@@ -114,10 +114,10 @@ export default async function BlogOverlay({
         backgroundImage={post.image}
       />
       <div className="mt-4 rounded-md bg-white p-4 dark:bg-neutral-800">
-        <h3 className="mb-1 text-3xl font-extrabold leading-tight text-neutral-900 dark:text-white @lg:text-4xl">
+        <h3 className="mb-1 text-3xl font-extrabold leading-tight text-neutral-900 @lg:text-4xl dark:text-white">
           {post.title}
         </h3>
-        <h4 className="mb-2 text-xl font-semibold leading-tight text-neutral-900 dark:text-white @lg:text-2xl">
+        <h4 className="mb-2 text-xl font-semibold leading-tight text-neutral-900 @lg:text-2xl dark:text-white">
           {post.subTitle}
         </h4>
         <h5 className="text-regular mb-2 flex flex-row font-semibold leading-tight text-neutral-900 dark:text-white">

@@ -4,11 +4,7 @@ import dynamic from "next/dynamic";
 
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-import {
-  BLOCKS,
-  INLINES,
-  Document as RichTextDocument,
-} from "@contentful/rich-text-types";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 
 import classNames from "classnames";
 import Link from "next/link";
@@ -19,22 +15,32 @@ import PhotoGallery, { GalleryPhoto } from "@/components/photo-gallery";
 
 const ReactPlayer = dynamic(() => import("react-player"));
 
-export default function RichTextRenderer({
-  document,
-}: {
-  document: RichTextDocument | null;
-}) {
-  if (!document) return null;
+function renderOptions(links: any) {
+  const assetMap = new Map();
+  const entryMap = new Map();
 
-  const renderOptions = {
+  for (const asset of links.assets.block) {
+    assetMap.set(asset.sys.id, asset);
+  }
+
+  for (const entry of links.entries.block) {
+    entryMap.set(entry.sys.id, entry);
+  }
+
+  for (const entry of links.entries.inline) {
+    entryMap.set(entry.sys.id, entry);
+  }
+
+  return {
     renderNode: {
       [INLINES.EMBEDDED_ENTRY]: (node: any) => {
         if (!node.data.target) return <b>UNKNOWN TARGET!</b>;
-        const contentType = node.data.target.sys.contentType.sys.id as string;
-        const fields = node.data.target.fields;
 
-        switch (contentType) {
-          case "blogPostImage": {
+        // find the entry in the entryMap by ID
+        const entry = entryMap.get(node.data.target.sys.id);
+
+        switch (entry.__typename) {
+          case "BlogPostImage": {
             let {
               useDefaultStyle,
               floatingDirection,
@@ -46,7 +52,7 @@ export default function RichTextRenderer({
               useLightBox,
               image,
               name,
-            } = fields;
+            } = entry;
 
             const styleObject = styles
               ? JSON.parse(styles.internal.content)
@@ -116,34 +122,34 @@ export default function RichTextRenderer({
               </div>
             );
           }
-          case "imageGallery": {
+          case "ImageGallery": {
             let galleryImages: GalleryPhoto[] = [];
 
-            fields.images.map((image: any) => {
+            entry.imagesCollection.items.map((image: any) => {
               galleryImages.push({
                 src: getImageSource(image, 400),
                 lightboxImageSrc: getImageSource(image, 1200),
-                alt: image.fields.description,
-                title: image.fields.title,
-                width: image.fields.file.details.image.width,
-                height: image.fields.file.details.image.height,
+                alt: image.description,
+                title: image.title,
+                width: image.width,
+                height: image.height,
               });
             });
 
             return <PhotoGallery photos={galleryImages} />;
           }
-          case "blogPostVideo": {
+          case "BlogPostVideo": {
             return (
               <div className="flex w-auto flex-col items-center justify-center text-center">
-                <ReactPlayer url={fields.videoUrl} />
-                {fields.title}
+                <ReactPlayer url={entry.videoUrl} />
+                {entry.title}
               </div>
             );
           }
           default: {
             return (
               <b className="mr-2 bg-red-500">
-                UNKNOWN EMBEDDED TYPE {contentType}
+                UNKNOWN EMBEDDED TYPE {entry.__typename}
               </b>
             );
           }
@@ -215,6 +221,17 @@ export default function RichTextRenderer({
       },
     },
   };
+}
 
-  return <>{documentToReactComponents(document, renderOptions)}</>;
+export default function RichTextRenderer({
+  document,
+}: {
+  document: any | null;
+}) {
+  if (!document) return null;
+  return (
+    <>
+      {documentToReactComponents(document.json, renderOptions(document.links))}
+    </>
+  );
 }

@@ -79,9 +79,6 @@ export async function GetGalleryBySlug(
   const query = `query($slug: String!, $locale: String!) {
     imageGalleryCollection(where: {slug: $slug}, locale: $locale, limit: 1) {
         items {
-          sys {
-            id
-          }
           name
           slug
           slugDE: slug(locale: "de")

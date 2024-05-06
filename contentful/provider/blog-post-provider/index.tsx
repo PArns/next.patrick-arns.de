@@ -1,11 +1,6 @@
-import client from "@/contentful/client";
-
+import { fetchGraphQL } from "@/contentful/client";
 import { TypeBlogPostSkeleton } from "@/contentful/types";
-
 import { Entry, LocaleCode } from "contentful";
-import { Document as RichTextDocument } from "@contentful/rich-text-types";
-
-import { cache } from "react";
 import { isValidLocale } from "@/helper/localization";
 
 type BlogPostEntry = Entry<TypeBlogPostSkeleton, undefined, string>;
@@ -23,7 +18,7 @@ export interface BlogPost {
   subTitle: string;
   slug: string;
   alternativeSlugs?: any;
-  body: RichTextDocument | null;
+  body?: any;
   excerpt: string;
   image: any;
   locale: string;
@@ -52,97 +47,236 @@ export function parseContentfulBlogPost(
   };
 }
 
-export const GetBlogPosts = cache(
-  async (
-    locale: LocaleCode,
-    skip: number = 0,
-    limit: number = 10,
-    tag: string | undefined = undefined,
-  ): Promise<BlogPosts | null> => {
-    if (!isValidLocale(locale)) return null;
-    
-    let query: Record<string, any> = {
-      content_type: "blogPost",
-      order: "-fields.publishedAt",
-      locale: locale,
-      limit: tag ? 999 : limit,
-      skip: skip,
-      include: 1,
-      "fields.listEntry": true,
-      "fields.translations": locale.toUpperCase() === "DE" ? "DE" : "EN",
-    };
+export async function GetBlogPosts(
+  locale: LocaleCode,
+  skip: number = 0,
+  limit: number = 10,
+  tag: string | undefined = undefined,
+): Promise<BlogPosts | null> {
+  if (!isValidLocale(locale)) return null;
 
-    if (tag) {
-      query["query"] = `"${tag}"`;
-    }
+  const query = `query($limit: Int!, $skip: Int!, $locale: String!) {
+    blogPostCollection(
+        order: publishedAt_DESC, 
+        where: { listEntry: true }, 
+        limit: $limit, 
+        skip: $skip, 
+        locale: $locale) {
+          total
+          skip
+          limit
+          items {
+            title
+            subTitle
+            slug
+            publishedAt
+            excerpt
+            image {
+              url
+            }
+            contentfulMetadata {
+              tags {
+                  id
+                  name
+              }
+            }
+          }
+        }
+    }`;
 
-    const res = await client.getEntries<TypeBlogPostSkeleton>(query);
-    const posts = res.items.map(
-      (blogPostEntry) =>
-        parseContentfulBlogPost(blogPostEntry, locale) as BlogPost,
-    );
-    // Return all tags, starting with the "Blog: " category
-    const tagsRes = await client.getTags();
-    const tags: string[] = tagsRes.items
-      .map((tagEntry) => {
-        const regex = /Blog: (.*)/gm;
+  const variables = { locale: locale, limit: tag ? 999 : limit, skip: skip };
+  const data = await fetchGraphQL(query, variables);
+  const collection = data.data.blogPostCollection;
 
+  const regex = /Blog: (.*)/gm;
+
+  const availableTags: string[] = [];
+
+  const posts: BlogPost[] = collection.items.map((postEntry: any) => {
+    const tags = postEntry.contentfulMetadata.tags;
+
+    if (tags) {
+      tags.map((tagEntry: any) => {
         const match = regex.exec(tagEntry.name);
         if (match) {
-          return match[1];
-        } else {
-          return "";
+          availableTags.push(match[1]);
         }
-      })
-      .filter((tag_1) => tag_1 !== "");
+      });
 
-    return {
-      posts: posts,
-      tags: tags || [],
-      total: res.total,
-      skip: res.skip,
-      limit: res.limit,
-    };
-  },
-);
-
-export const GetBlogPostBySlug = cache(
-  async (slug: string, locale: string): Promise<BlogPost | null> => {
-    if (!isValidLocale(locale)) return null;
-
-    const res = await client.getEntries<TypeBlogPostSkeleton>({
-      content_type: "blogPost",
-      limit: 1,
-      include: 10,
-      locale: locale,
-      "fields.slug": slug,
-    });
-
-    const post = res.items[0];
-    const parsedPost = parseContentfulBlogPost(post, locale);
-
-    if (parsedPost) {
-      const allPostLocales =
-        await client.withAllLocales.withoutLinkResolution.getEntry<TypeBlogPostSkeleton>(
-          res.items[0].sys.id,
-        );
-
-      parsedPost.alternativeSlugs = allPostLocales.fields.slug;
+      return {
+        title: postEntry.title,
+        subTitle: postEntry.subTitle,
+        slug: postEntry.slug,
+        excerpt: postEntry.excerpt,
+        image: postEntry.image,
+        locale: locale,
+        publishedAt: new Date(postEntry.publishedAt),
+      };
     }
+  });
 
-    return parsedPost;
-  },
-);
+  return {
+    posts: posts,
+    tags: Array.from(new Set(availableTags)),
+    total: collection.total,
+    skip: collection.skip,
+    limit: collection.limit,
+  };
+}
 
-export const GetBlogPostById = cache(
-  async (postId: string, locale: string): Promise<BlogPost | null> => {
-    if (!isValidLocale(locale)) return null;
+const BLOG_POST_DATA = `title
+subTitle
+slug
+slugDE: slug(locale: "de")
+slugEN: slug(locale: "en")
+publishedAt
+excerpt
+body { 
+  json
+  links {
+    entries {
+      inline {
+        sys {
+          id
+        }
+        __typename
+        ... on BlogPostImage {
+          useDefaultStyle
+          floatingDirection
+          maxWidth
+          classes
+          imageClasses
+          styles
+          showSubtitle
+          useLightBox
+          image {
+            url
+          }
+          name
+        }
+        ... on ImageGallery {
+          imagesCollection {
+            items {
+              url
+              width
+              height
+              description
+              title
+            }
+          }
+        }
+        ... on BlogPostVideo {
+          title
+          videoUrl
+        }
+      }
+      block {
+        sys {
+          id
+        }
+        __typename
+      }
+    }
+    assets {
+      block {
+        sys {
+          id
+        }
+        url
+        title
+        width
+        height
+        description
+      }
+    }
+  }
+}
+image {
+  url
+}
+contentfulMetadata {
+  tags {
+      id
+      name
+  }
+}`;
 
-    const res = await client.getEntry<TypeBlogPostSkeleton>(postId, {
-      locale: locale,
-    });
+export async function GetBlogPostBySlug(
+  slug: string,
+  locale: string,
+): Promise<BlogPost | null> {
+  if (!isValidLocale(locale)) return null;
 
-    const parsedPost = parseContentfulBlogPost(res, locale);
-    return parsedPost;
-  },
-);
+  const query = `query($slug: String!, $locale: String!) {
+    blogPostCollection(where: {slug: $slug}, locale: $locale, limit: 1) {
+        items {
+          ${BLOG_POST_DATA}
+        } 
+      }
+    }`;
+
+  const variables = { slug: slug, locale: locale };
+  const data = await fetchGraphQL(query, variables);
+
+  const postEntry = data?.data?.blogPostCollection?.items[0];
+
+  if (!postEntry) return null;
+
+  const post: BlogPost = {
+    title: postEntry.title,
+    subTitle: postEntry.subTitle,
+    slug: postEntry.slug,
+    excerpt: postEntry.excerpt,
+    image: postEntry.image,
+    locale: locale,
+    body: postEntry.body,
+    publishedAt: new Date(postEntry.publishedAt),
+    alternativeSlugs: {
+      de: postEntry.slugDE,
+      en: postEntry.slugEN,
+    },
+  };
+
+  return post;
+}
+
+export async function GetBlogPostById(
+  postId: string,
+  locale: string,
+): Promise<BlogPost | null> {
+  if (!isValidLocale(locale)) return null;
+
+  if (!isValidLocale(locale)) return null;
+
+  const query = `query($id: String!, $locale: String!) {
+    blogPostCollection(id: $id, locale: $locale, limit: 1) {
+        items {
+          ${BLOG_POST_DATA}
+        } 
+      }
+    }`;
+
+  const variables = { id: postId, locale: locale };
+  const data = await fetchGraphQL(query, variables);
+
+  const postEntry = data?.data?.blogPostCollection?.items[0];
+
+  if (!postEntry) return null;
+
+  const post: BlogPost = {
+    title: postEntry.title,
+    subTitle: postEntry.subTitle,
+    slug: postEntry.slug,
+    excerpt: postEntry.excerpt,
+    image: postEntry.image,
+    locale: locale,
+    body: postEntry.body,
+    publishedAt: new Date(postEntry.publishedAt),
+    alternativeSlugs: {
+      de: postEntry.slugDE,
+      en: postEntry.slugEN,
+    },
+  };
+
+  return post;
+}
