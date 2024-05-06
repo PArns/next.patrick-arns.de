@@ -7,10 +7,9 @@ import Link from "next/link";
 export default function GalleryCard({ gallery }: { gallery: ImageGallery }) {
   return (
     <div className="flex w-full rounded-lg drop-shadow-lg @container/card">
-      <article>
+      <article className="w-full">
         <Link
           href={`/${gallery.locale}/pictures/gallery/${gallery.slug}`}
-          className="w-full"
         >
           <div className="relative overflow-hidden bg-cover bg-no-repeat p-20 @lg/card:p-24">
             <ContentfulImageAsset

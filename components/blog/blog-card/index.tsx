@@ -7,7 +7,7 @@ import Translate from "@/components/translate";
 export default function BlogCard({ post }: { post: BlogPost }) {
   return (
     <div className="flex w-full rounded-lg drop-shadow-lg @container/card">
-      <article>
+      <article className="w-full">
         <Link href={`/${post.locale}/blog/article/${post.slug}`}>
           <div className="relative overflow-hidden bg-cover bg-no-repeat p-20 @lg/card:p-24">
             <ContentfulImageAsset
