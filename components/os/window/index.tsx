@@ -245,6 +245,13 @@ export default function DesktopWindow({
     },
   );
 
+  const contentClass = classNames(
+    "h-max w-full transition-all duration-300 delay-150",
+    {
+      grayscale: !activeState,
+    },
+  );
+
   return (
     <>
       {visibleState && (
@@ -285,7 +292,7 @@ export default function DesktopWindow({
               className="flex overflow-y-auto overflow-x-clip"
               onClick={handleContainerClick}
             >
-              <div className="h-max w-full" ref={childrenRef}>
+              <div className={contentClass} ref={childrenRef}>
                 {children}
               </div>
             </div>
