@@ -1,9 +1,6 @@
 import { fetchGraphQL } from "@/contentful/client";
-import { TypeBlogPostSkeleton } from "@/contentful/types";
-import { Entry, LocaleCode } from "contentful";
+import { LocaleCode } from "contentful";
 import { isValidLocale } from "@/helper/localization";
-
-type BlogPostEntry = Entry<TypeBlogPostSkeleton, undefined, string>;
 
 export interface BlogPosts {
   posts: BlogPost[];
@@ -23,28 +20,6 @@ export interface BlogPost {
   image: any;
   locale: string;
   publishedAt: Date;
-}
-
-// A function to transform a Contentful blog post
-// into our own BlogPost object.
-export function parseContentfulBlogPost(
-  blogPostEntry?: BlogPostEntry,
-  locale?: string,
-): BlogPost | null {
-  if (!blogPostEntry) {
-    return null;
-  }
-
-  return {
-    title: blogPostEntry.fields.title || "",
-    subTitle: blogPostEntry.fields.subTitle || "",
-    slug: blogPostEntry.fields.slug,
-    body: blogPostEntry.fields.body || null,
-    excerpt: blogPostEntry.fields.excerpt || "",
-    image: blogPostEntry.fields.image || null,
-    locale: locale || "en",
-    publishedAt: new Date(blogPostEntry.fields.publishedAt),
-  };
 }
 
 export async function GetBlogPosts(
