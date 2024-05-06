@@ -1,21 +1,22 @@
-import client from "@/contentful/client";
-import { cache } from "react";
+import { fetchGraphQL } from "@/contentful/client";
 
-import {
-  TypeSocialMediaLinkFields,
-  TypeSocialMediaLinkSkeleton,
-} from "@/contentful/types";
+export async function GetSocialMediaLinks() {
+  const data = await fetchGraphQL(
+    `query {
+      socialMediaLinkCollection {
+          items {
+            name
+            title
+            icon {
+              url
+            }
+            link
+            order
+          }
+        }
+      }`
+  );
 
-export const GetSocialMediaLinks = cache(async () => {
-  const response = await client.getEntries<TypeSocialMediaLinkSkeleton>({
-    content_type: "socialMediaLink",
-  });
-
-  let res = Array<TypeSocialMediaLinkFields>();
-
-  response.items.map((item) => {
-    res.push(item.fields as unknown as TypeSocialMediaLinkFields);
-  });
-
-  return res;
-});
+  const collection = data.data.socialMediaLinkCollection;
+  return collection.items;
+}
