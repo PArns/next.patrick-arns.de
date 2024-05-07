@@ -44,6 +44,7 @@ export default function DesktopWindow({
   const [zIndexState, setZIndexState] = useState(0);
   const [visibleState, setVisibleState] = useState(false);
   const [activeState, setActiveState] = useState(false);
+  const [initDoneState, setInitDoneState] = useState(false);
 
   const rndRef = useRef<Rnd>(null);
   const childrenRef = useRef<HTMLDivElement>(null);
@@ -209,7 +210,11 @@ export default function DesktopWindow({
             parentSize.width,
             parentSize.height,
           );
+
+          setInitDoneState(true);
         });
+      } else {
+        setInitDoneState(true);
       }
     });
   }, [visibleState, center, width, height, maxWidth]);
@@ -236,6 +241,7 @@ export default function DesktopWindow({
       activeState,
     "bg-white/50 dark:bg-neutral-700/50 border-neutral-700/50 backdrop-blur-sm":
       !activeState,
+    "opacity-0": !initDoneState,
   });
 
   const windowTitleClass = classNames(
