@@ -230,6 +230,7 @@ export default function DesktopWindow({
     setVisibleState(false);
     setActiveState(false);
     setRouteState(route);
+    setInitDoneState(false);
 
     const currentWindow = currentWindowDetails();
     currentWindow.route = route;
