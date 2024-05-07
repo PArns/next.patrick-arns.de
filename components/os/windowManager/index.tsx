@@ -256,13 +256,13 @@ export default function WindowManager() {
         // ... and make it active
         setTimeout(
           () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
-          1000,
+          0,
         );
       } else if (startRoute == "/" && newWindow.isInitiallyOpen) {
         // If the app is initially open, make it active
         setTimeout(
           () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
-          1000,
+          0,
         );
       }
     }
