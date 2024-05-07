@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import PhotoAlbum, { Photo, RenderPhotoProps } from "react-photo-album";
 import Image from "next/image";
@@ -15,7 +15,10 @@ function NextJsImage({
   wrapperStyle,
 }: RenderPhotoProps<GalleryPhoto>) {
   const galleryPhoto = photo as GalleryPhoto;
-  const imageClasses = classNames(className, "cursor-zoom-in");
+  const imageClasses = classNames(
+    className,
+    "cursor-zoom-in opacity-0 transition-opacity",
+  );
 
   return (
     <div style={{ ...wrapperStyle, position: "relative" }}>
@@ -32,6 +35,9 @@ function NextJsImage({
             src: galleryPhoto.lightboxImageSrc,
             title: title ? title : alt,
           });
+        }}
+        onLoadingComplete={(image: any) => {
+          image.classList.remove("opacity-0");
         }}
         style={{ objectFit: "cover", width: "100%", height: "100%" }}
       />
