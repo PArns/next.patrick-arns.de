@@ -10,6 +10,7 @@ import {
   RegisteredWindows,
   getCurrentLocale,
 } from "../windowManager";
+import classNames from "classnames";
 
 export type IconContainerContract = {
   socialMediaLinks?: TypeSocialMediaLinkFields[];
@@ -27,8 +28,15 @@ const IconContainer: React.FC<IconContainerContract> = ({
     },
   );
 
+  const mainIconDivClasses = classNames(
+    "absolute m-4 flex h-screen flex-row flex-wrap content-start gap-2 pb-16",
+    {
+      "opacity-0": windowArray.length === 0,
+    },
+  );
+
   return (
-    <div className="absolute m-4 flex h-screen flex-row flex-wrap content-start gap-2 pb-16">
+    <div className={mainIconDivClasses}>
       <div className="flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
         {windowArray.map((window) => (
           <DesktopIcon
