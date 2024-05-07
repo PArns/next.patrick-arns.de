@@ -224,17 +224,14 @@ export async function GetBlogPostById(
   if (!isValidLocale(locale)) return null;
 
   const query = `query($id: String!, $locale: String!) {
-    blogPostCollection(id: $id, locale: $locale, limit: 1) {
-        items {
-          ${BLOG_POST_DATA}
-        } 
+    blogPost(id: $id , locale: $locale) {
+        ${BLOG_POST_DATA}
       }
     }`;
 
   const variables = { id: postId, locale: locale };
   const data = await fetchGraphQL(query, variables);
-
-  const postEntry = data?.data?.blogPostCollection?.items[0];
+  const postEntry = data?.data?.blogPost;
 
   if (!postEntry) return null;
 
