@@ -202,7 +202,10 @@ export default function DesktopWindow({
         setTimeout(() => {
           const childHeight = childrenRef.current?.scrollHeight ?? 0;
 
-          if (childHeight == 0 || childHeight >= parentSize.height) return;
+          if (childHeight == 0 || childHeight >= parentSize.height) {
+            setInitDoneState(true);
+            return;
+          }
 
           setSize(
             selfSize.width,
