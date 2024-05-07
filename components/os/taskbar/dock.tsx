@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 
 import { isMobile } from "react-device-detect";
+import classNames from "classnames";
 
 export default function Dock({
   socialMediaLinks,
@@ -19,12 +20,18 @@ export default function Dock({
   socialMediaLinks?: TypeSocialMediaLinkFields[];
 }) {
   let mouseX = useMotionValue(Infinity);
-
   const [windowsArray, setWindowsArray] = useState<RegisteredWindows>([]);
 
   registeredWindowsChangedEvent.useOnRegisteredWindowsChangedEventListener(
     (newWindowArray) => {
       setWindowsArray(newWindowArray);
+    },
+  );
+
+  const mainDivClasses = classNames(
+    "mx-auto flex h-16 items-end gap-3 rounded-2xl bg-white/50 px-2.5 pb-3 backdrop-blur-md transition-transform dark:bg-neutral-800/50 md:gap-4",
+    {
+      "translate-y-16": windowsArray.length == 0,
     },
   );
 
@@ -36,7 +43,7 @@ export default function Dock({
       onMouseLeave={() => {
         if (!isMobile) mouseX.set(Infinity);
       }}
-      className="mx-auto flex h-16 items-end gap-3 rounded-2xl bg-white/50 px-2.5 pb-3 backdrop-blur-md dark:bg-neutral-800/50 md:gap-4"
+      className={mainDivClasses}
     >
       {windowsArray.map((window) => (
         <AppIcon mouseX={mouseX} window={window} key={window.id} />
