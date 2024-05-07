@@ -29,7 +29,7 @@ const IconContainer: React.FC<IconContainerContract> = ({
   );
 
   const mainIconDivClasses = classNames(
-    "absolute m-4 flex h-screen flex-row flex-wrap content-start gap-2 pb-16",
+    "absolute m-4 flex h-screen flex-row flex-wrap content-start gap-2 pb-16 transition-opacity",
     {
       "opacity-0": windowArray.length === 0,
     },
