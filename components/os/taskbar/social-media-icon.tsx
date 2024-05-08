@@ -5,7 +5,7 @@ import { useRef, MouseEvent } from "react";
 
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import { EntryFieldTypes } from "contentful/dist/types/types/entry";
-import classNames from "classnames";
+import clsx from 'clsx';
 
 export default function SocialMediaIcon({
   mouseX,
@@ -24,7 +24,7 @@ export default function SocialMediaIcon({
   contentfulAsset: any;
   className?: string;
 }) {
-  const classes = classNames(className, "aspect-square w-10");
+  const classes = clsx(className, "aspect-square w-10");
 
   let ref = useRef<HTMLAnchorElement>(null);
 

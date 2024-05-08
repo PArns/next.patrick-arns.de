@@ -3,7 +3,7 @@
 import PhotoAlbum, { Photo, RenderPhotoProps } from "react-photo-album";
 import Image from "next/image";
 import { showLightBoxImage } from "../os/lightbox";
-import classNames from "classnames";
+import clsx from 'clsx';
 
 export interface GalleryPhoto extends Photo {
   lightboxImageSrc: string;
@@ -15,7 +15,7 @@ function NextJsImage({
   wrapperStyle,
 }: RenderPhotoProps<GalleryPhoto>) {
   const galleryPhoto = photo as GalleryPhoto;
-  const imageClasses = classNames(
+  const imageClasses = clsx(
     className,
     "cursor-zoom-in opacity-0 transition-opacity",
   );

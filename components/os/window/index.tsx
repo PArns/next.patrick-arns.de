@@ -3,7 +3,7 @@
 import React, { useEffect, useCallback, useState, useRef } from "react";
 import { Rnd } from "react-rnd";
 
-import classNames from "classnames";
+import clsx from 'clsx';
 import Image from "next/image";
 
 import { makeWindowActiveEvent } from "../windowManager";
@@ -240,7 +240,7 @@ export default function DesktopWindow({
     events.windowRouteChanged.emitOnWindowRouteChanged(currentWindow);
   };
 
-  const windowClasses = classNames("rounded-md shadow-md border-2", {
+  const windowClasses = clsx("rounded-md shadow-md border-2", {
     "bg-white/80 dark:bg-neutral-700/80 dark:border-sky-600 border-sky-500 backdrop-blur-md":
       activeState,
     "bg-white/50 dark:bg-neutral-700/50 border-neutral-700/50 backdrop-blur-sm":
@@ -248,14 +248,14 @@ export default function DesktopWindow({
     "opacity-0": !initDoneState,
   });
 
-  const windowTitleClass = classNames(
+  const windowTitleClass = clsx(
     "grow text-center cursor-move justify-center align-middle vertical-center truncate px-2 pt-[1px]",
     {
       "font-bold": activeState,
     },
   );
 
-  const contentClass = classNames(
+  const contentClass = clsx(
     "h-max w-full transition-all duration-300 delay-150",
     {
       grayscale: !activeState,

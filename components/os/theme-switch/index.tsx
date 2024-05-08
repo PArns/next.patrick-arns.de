@@ -11,7 +11,7 @@ import {
   LightBulbIcon,
 } from "@heroicons/react/24/outline";
 
-import classNames from "classnames";
+import clsx from 'clsx';
 
 export function ThemeEntry({
   children,
@@ -23,7 +23,7 @@ export function ThemeEntry({
   return (
     <Tab
       className={({ selected }) =>
-        classNames(className, "rounded-lg text-sm font-medium", {
+        clsx(className, "rounded-lg text-sm font-medium", {
           "bg-neutral-800 text-white shadow dark:bg-white dark:text-black":
             selected,
           "text-neutral-800 hover:bg-black/[0.12] hover:text-black dark:text-blue-100 dark:hover:bg-white/[0.12] dark:hover:text-white":

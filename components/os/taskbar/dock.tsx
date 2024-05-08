@@ -12,7 +12,7 @@ import {
 import { useState } from "react";
 
 import { isMobile } from "react-device-detect";
-import classNames from "classnames";
+import clsx from 'clsx';
 
 export default function Dock({
   socialMediaLinks,
@@ -28,7 +28,7 @@ export default function Dock({
     },
   );
 
-  const mainDivClasses = classNames(
+  const mainDivClasses = clsx(
     "mx-auto flex h-16 items-end gap-3 rounded-2xl bg-white/50 px-2.5 pb-3 backdrop-blur-md transition-transform dark:bg-neutral-800/50 md:gap-4",
     {
       "translate-y-16": windowsArray.length == 0,

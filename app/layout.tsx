@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import classNames from "classnames";
+import clsx from 'clsx';
 
 import PageBaseConfiguration from "@/configuration";
 
@@ -31,7 +31,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const classes = classNames(
+  const classes = clsx(
     inter.className,
     "overflow-hidden overscroll-none",
   );

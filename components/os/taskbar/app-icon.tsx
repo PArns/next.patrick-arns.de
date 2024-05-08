@@ -4,7 +4,7 @@ import { MotionValue, motion, useSpring, useTransform } from "framer-motion";
 import { useRef, useState, MouseEvent } from "react";
 
 import Image from "next/image";
-import classNames from "classnames";
+import clsx from 'clsx';
 import { WindowDetails, desktopWindowEvents } from "../windowManager/events";
 import { makeWindowActiveEvent, addLocaleToRoute } from "../windowManager";
 
@@ -44,7 +44,7 @@ export default function AppIcon({
     makeWindowActiveEvent.emitOnMakeWindowActiveEvent(currentWindowStatus);
   };
 
-  let activeButton = classNames(
+  let activeButton = clsx(
     "inline-flex rounded-full h-1.5 w-1.5 shadow-md",
     {
       "bg-gray-500 dark:bg-gray-400": !currentWindowStatus.active,

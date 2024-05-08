@@ -10,7 +10,7 @@ import {
   RegisteredWindows,
   getCurrentLocale,
 } from "../windowManager";
-import classNames from "classnames";
+import clsx from 'clsx';
 
 export type IconContainerContract = {
   socialMediaLinks?: TypeSocialMediaLinkFields[];
@@ -28,7 +28,7 @@ const IconContainer: React.FC<IconContainerContract> = ({
     },
   );
 
-  const mainIconDivClasses = classNames(
+  const mainIconDivClasses = clsx(
     "absolute m-4 flex h-screen flex-row flex-wrap content-start gap-2 pb-16 transition-opacity",
     {
       "opacity-0": windowArray.length === 0,

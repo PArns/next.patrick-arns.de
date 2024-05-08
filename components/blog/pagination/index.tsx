@@ -1,5 +1,5 @@
 import Link from "next/link";
-import classNames from "classnames";
+import clsx from 'clsx';
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 
@@ -25,7 +25,7 @@ function PageLink({
   pageNumber: number;
   current: boolean;
 }) {
-  const className = classNames(
+  const className = clsx(
     "relative inline-flex items-center px-4 py-2 text-sm text-neutral-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0",
     {
       "bg-sky-500/90 font-bold focus-visible:outline-sky-600 text-neutral-100 hover:text-neutral-900":

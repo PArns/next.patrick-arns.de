@@ -1,6 +1,6 @@
 "use client";
 
-import classNames from "classnames";
+import clsx from 'clsx';
 import ContentfulImageAsset, { getImageSource } from "../image-asset";
 import { showLightBoxImage } from "@/components/os/lightbox";
 
@@ -43,7 +43,7 @@ export default function BlogPostImage({ imageData }: { imageData: any }) {
 
   if (maxWidth && maxWidth > 0) styleObject["maxWidth"] = `${maxWidth}px`;
 
-  const subTitleClasses = classNames(
+  const subTitleClasses = clsx(
     "flex flex-col text-center items-center justify-center w-auto",
     {
       "float-left": classes.indexOf("float-left") > -1,
