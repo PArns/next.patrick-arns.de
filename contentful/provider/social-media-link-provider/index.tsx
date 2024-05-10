@@ -14,7 +14,7 @@ export async function GetSocialMediaLinks() {
             order
           }
         }
-      }`
+      }`,
   );
 
   const collection = data.data.socialMediaLinkCollection;

@@ -221,8 +221,6 @@ export async function GetBlogPostById(
 ): Promise<BlogPost | null> {
   if (!isValidLocale(locale)) return null;
 
-  if (!isValidLocale(locale)) return null;
-
   const query = `query($id: String!, $locale: String!) {
     blogPost(id: $id , locale: $locale) {
         ${BLOG_POST_DATA}
@@ -251,4 +249,37 @@ export async function GetBlogPostById(
   };
 
   return post;
+}
+
+export interface BlogPostSlug {
+  slugDE: String;
+  slugEN: String;
+  publishedAt: Date;
+}
+
+export async function GetAllBlogPostSlugs(): Promise<BlogPostSlug[]> {
+  const query = `query {
+    blogPostCollection(
+        order: publishedAt_DESC, 
+        where: { listEntry: true }) {
+          items {
+            slugDE: slug(locale: "de")
+            slugEN: slug(locale: "en")
+            publishedAt
+          }
+        }
+    }`;
+
+  const data = await fetchGraphQL(query);
+  const collection = data.data.blogPostCollection;
+
+  const posts: BlogPostSlug[] = collection.items.map((postEntry: any) => {
+    return {
+      slugDE: postEntry.slugDE,
+      slugEN: postEntry.slugEN,
+      publishedAt: new Date(postEntry.publishedAt),
+    };
+  });
+
+  return posts;
 }
