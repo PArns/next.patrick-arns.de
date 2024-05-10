@@ -19,4 +19,3 @@ export async function GetSocialMediaLinks() {
 
   const collection = data.data.socialMediaLinkCollection;
   return collection.items;
-}

@@ -123,3 +123,35 @@ export async function GetGalleryBySlug(
 
   return gallery;
 }
+
+export interface GallerySlug {
+  slugDE: String;
+  slugEN: String;
+  publishedAt: Date;
+}
+
+export async function GetAllGallerySlugs(): Promise<GallerySlug[]> {
+  const query = `query {
+    imageGalleryCollection(
+        order: date_DESC) {
+          items {
+            slugDE: slug(locale: "de")
+            slugEN: slug(locale: "en")
+            date
+          }
+        }
+    }`;
+
+  const data = await fetchGraphQL(query);
+  const collection = data.data.imageGalleryCollection;
+
+  const posts: GallerySlug[] = collection.items.map((postEntry: any) => {
+    return {
+      slugDE: postEntry.slugDE,
+      slugEN: postEntry.slugEN,
+      publishedAt: new Date(postEntry.date),
+    };
+  });
+
+  return posts;
+}
