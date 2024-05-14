@@ -3,6 +3,8 @@ import PageBaseConfiguration from "@/configuration";
 import { GetAllBlogPostSlugs } from "@/contentful/provider/blog-post-provider";
 import { GetAllGallerySlugs } from "@/contentful/provider/gallery-provider";
 
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const config = PageBaseConfiguration();
   const baseUrl = config.baseUrl;
