@@ -6,10 +6,9 @@ import TypeWriter from "@/components/type-writer";
 
 import JumbotronPic from "@/public/images/profilePic-exempt.png";
 import { getPageAlternates } from "@/helper/localization";
-import {
-  RideStatistic,
-  fetchCoasterStats,
-} from "@/data-provider/coastercloud/provider/ride-statistics-provider";
+
+import { fetchCoasterStats } from "@/data-provider/coastercloud/provider/ride-statistics-provider";
+import { RideStatistic } from "@/data-provider/coastercloud/types/TypeRideStatistics";
 
 export async function generateMetadata({
   params,
