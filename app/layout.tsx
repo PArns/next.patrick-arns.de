@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import clsx from 'clsx';
+import clsx from "clsx";
 
 import PageBaseConfiguration from "@/configuration";
 
@@ -33,7 +33,7 @@ export default function RootLayout({
 }) {
   const classes = clsx(
     inter.className,
-    "overflow-hidden overscroll-none",
+    "overflow-hidden overscroll-none bg-neutral-200 dark:bg-neutral-900",
   );
 
   return (
