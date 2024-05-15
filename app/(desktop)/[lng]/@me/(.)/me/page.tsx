@@ -6,6 +6,10 @@ import TypeWriter from "@/components/type-writer";
 
 import JumbotronPic from "@/public/images/profilePic-exempt.png";
 import { getPageAlternates } from "@/helper/localization";
+import {
+  RideStatistic,
+  fetchCoasterStats,
+} from "@/data-provider/coastercloud/provider/ride-statistics-provider";
 
 export async function generateMetadata({
   params,
@@ -27,7 +31,16 @@ export async function generateMetadata({
   };
 }
 
-export default function AboutMe({ params }: { params: { lng: string } }) {
+export function getCount(stats: RideStatistic | null, key: String): Number {
+  if (stats === null) return 0;
+
+  const count = stats.counts.find((item) => item.key === key);
+  return count ? count.value : 0;
+}
+
+export default async function AboutMe({ params }: { params: { lng: string } }) {
+  const coasterStats = await fetchCoasterStats();
+
   return (
     <div className="mx-auto p-4 @container">
       <div className="relative flex flex-row">
@@ -72,6 +85,13 @@ export default function AboutMe({ params }: { params: { lng: string } }) {
           locale={params.lng}
           postId="3L8OVL4Eq4SRF2DPRcGvcR"
         />
+
+        <h2>Coaster Stats</h2>
+        <div className="flex flex-col">
+          <div>Parks: {`${getCount(coasterStats, "totalParks")}`}</div>
+          <div>Rides: {`${getCount(coasterStats, "totalRides")}`}</div>
+          <div>Visits: {`${getCount(coasterStats, "totalVisits")}`}</div>
+        </div>
       </article>
     </div>
   );
