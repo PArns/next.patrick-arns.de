@@ -1,7 +1,7 @@
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import DateRenderer from "@/components/date-renderer";
 import Translate from "@/components/translate";
-import { ImageGallery } from "@/contentful/provider/gallery-provider";
+import { ImageGallery } from "@/data-provider/contentful/provider/gallery-provider";
 import Link from "next/link";
 
 export default function GalleryCard({ gallery }: { gallery: ImageGallery }) {

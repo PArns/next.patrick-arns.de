@@ -1,4 +1,4 @@
-import { GetBlogPosts } from "@/contentful/provider/blog-post-provider";
+import { GetBlogPosts } from "@/data-provider/contentful/provider/blog-post-provider";
 import BlogCard from "@/components/blog/blog-card";
 import PageBaseConfiguration from "@/configuration";
 import Pagination from "@/components/blog/pagination";

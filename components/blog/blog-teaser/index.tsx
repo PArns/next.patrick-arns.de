@@ -6,7 +6,7 @@ import {
   BlogPost,
   GetBlogPostById,
   GetBlogPosts,
-} from "@/contentful/provider/blog-post-provider";
+} from "@/data-provider/contentful/provider/blog-post-provider";
 
 export async function BlogTeaserSpecific({
   locale,

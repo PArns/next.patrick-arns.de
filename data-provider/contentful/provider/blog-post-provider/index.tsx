@@ -1,4 +1,4 @@
-import { fetchGraphQL } from "@/contentful/client";
+import { fetchGraphQL } from "@/data-provider/contentful/client";
 import { LocaleCode } from "contentful";
 import { isValidLocale } from "@/helper/localization";
 

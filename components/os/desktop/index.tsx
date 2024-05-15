@@ -1,7 +1,7 @@
 import {
   TypeBackgroundImagesFields,
   TypeSocialMediaLinkFields,
-} from "@/contentful/types";
+} from "@/data-provider/contentful/types";
 
 import Taskbar from "../taskbar";
 import TitleBar from "../titlebar";

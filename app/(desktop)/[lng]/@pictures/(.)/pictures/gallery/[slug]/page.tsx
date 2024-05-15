@@ -9,7 +9,7 @@ import { WindowTitle } from "@/components/os/windowManager";
 import PhotoGallery, { GalleryPhoto } from "@/components/photo-gallery";
 import Translate from "@/components/translate";
 import PageBaseConfiguration from "@/configuration";
-import { GetGalleryBySlug } from "@/contentful/provider/gallery-provider";
+import { GetGalleryBySlug } from "@/data-provider/contentful/provider/gallery-provider";
 
 import { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types";
 

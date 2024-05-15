@@ -2,7 +2,7 @@ import GalleryCard from "@/components/gallery/gallery-card";
 import { WindowTitle } from "@/components/os/windowManager";
 import Translate from "@/components/translate";
 import initTranslations from "@/components/translate/i18n";
-import { GetGalleries } from "@/contentful/provider/gallery-provider";
+import { GetGalleries } from "@/data-provider/contentful/provider/gallery-provider";
 import Image from "next/image";
 
 import PicturesJumbotron from "@/public/jumbotron/pictures.jpg";

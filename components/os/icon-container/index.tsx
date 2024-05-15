@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import DesktopIcon from "./desktop-icon";
-import { TypeSocialMediaLinkFields } from "@/contentful/types";
+import { TypeSocialMediaLinkFields } from "@/data-provider/contentful/types";
 
 import {
   registeredWindowsChangedEvent,

@@ -1,7 +1,7 @@
 import Desktop from "@/components/os/desktop";
 
-import { GetBackgroundImages } from "@/contentful/provider/background-image-provider";
-import { GetSocialMediaLinks } from "@/contentful/provider/social-media-link-provider";
+import { GetBackgroundImages } from "@/data-provider/contentful/provider/background-image-provider";
+import { GetSocialMediaLinks } from "@/data-provider/contentful/provider/social-media-link-provider";
 
 import DesktopWindow from "@/components/os/window";
 import PageBaseConfiguration from "@/configuration";

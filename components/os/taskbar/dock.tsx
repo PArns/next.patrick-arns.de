@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useMotionValue } from "framer-motion";
-import { TypeSocialMediaLinkFields } from "@/contentful/types";
+import { TypeSocialMediaLinkFields } from "@/data-provider/contentful/types";
 
 import AppIcon from "./app-icon";
 import SocialMediaIcon from "./social-media-icon";

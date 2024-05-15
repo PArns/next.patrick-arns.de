@@ -1,4 +1,4 @@
-import { GetBlogPostBySlug } from "@/contentful/provider/blog-post-provider";
+import { GetBlogPostBySlug } from "@/data-provider/contentful/provider/blog-post-provider";
 import { permanentRedirect, notFound } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
