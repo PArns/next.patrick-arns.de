@@ -40,7 +40,6 @@ export default function BackgroundImage({
           fill={true}
           alt={background.name || "Background"}
           style={bgImage}
-          usePlaceholder={true}
           className="opacity-0 transition-all duration-500"
           onLoadingComplete={(image: any) => {
             image.classList.remove("opacity-0");

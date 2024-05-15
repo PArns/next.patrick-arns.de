@@ -10,7 +10,6 @@ interface ContentfulImageAssetProps {
   quality?: number;
   priority?: boolean;
   fill?: boolean;
-  usePlaceholder?: boolean;
   maxImageWidth?: number;
   style?: CSSProperties;
   sizes?: string;
@@ -58,10 +57,6 @@ export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
   } = props;
 
   const imageSource = getImageSource(asset, width ?? maxImageWidth ?? 1980);
-  let previewImageSource: string | undefined = undefined;
-
-  if (usePlaceholder) previewImageSource = getImageSource(asset, 100, 10);
-
   if (!Boolean(imageSource) || imageSource === undefined) return <></>;
 
   return (
@@ -70,9 +65,7 @@ export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
       width={width}
       height={height}
       src={imageSource}
-      blurDataURL={previewImageSource}
       priority={priority}
-      placeholder={usePlaceholder ? "blur" : undefined}
       fill={fill}
       quality={quality}
       style={style}
