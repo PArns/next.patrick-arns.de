@@ -193,11 +193,8 @@ export default function WindowManager() {
       if (window.active) {
         window.visible = true;
       }
-    });
 
-    // Update the registeredWindows array
-    newWindowOrder.forEach((newWindow) => {
-      updateWindowDetails(newWindow);
+      updateWindowDetails(window);
     });
 
     setTitleAndRouteFromActiveWindow(windowDetails);

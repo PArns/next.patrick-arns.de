@@ -22,17 +22,15 @@ export default function AppLink({
     e.preventDefault();
     e.stopPropagation();
 
-    setTimeout(() => {
-      const windowDetails = getWindowById(id);
-      if (windowDetails === null) return;
+    const windowDetails = getWindowById(id);
+    if (windowDetails === null) return;
 
-      const localeLink = addLocaleToRoute(href);
+    const localeLink = addLocaleToRoute(href);
 
-      if (addLocaleToRoute(windowDetails.route) !== localeLink)
-        windowDetails.route = localeLink;
+    if (addLocaleToRoute(windowDetails.route) !== localeLink)
+      windowDetails.route = localeLink;
 
-      makeWindowActiveEvent.emitOnMakeWindowActiveEvent(windowDetails);
-    });
+    makeWindowActiveEvent.emitOnMakeWindowActiveEvent(windowDetails);
   };
 
   return (
