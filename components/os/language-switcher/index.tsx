@@ -77,7 +77,7 @@ export default function LanguageSwitcher() {
       setTimeout(() => {
         if (altEntries.length !== 0)
           setSupportedLocales(altEntries);
-      }, 100);
+      });
     },
   );
 

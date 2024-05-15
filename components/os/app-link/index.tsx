@@ -32,7 +32,7 @@ export default function AppLink({
         windowDetails.route = localeLink;
 
       makeWindowActiveEvent.emitOnMakeWindowActiveEvent(windowDetails);
-    }, 100);
+    });
   };
 
   return (

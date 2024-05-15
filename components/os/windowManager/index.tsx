@@ -127,7 +127,7 @@ export function WindowTitle({ id, title }: { id: string; title: string }) {
       windowId: id,
       newTitle: title,
     });
-  }, 100);
+  });
 
   return null;
 }
@@ -254,15 +254,13 @@ export default function WindowManager() {
         }
 
         // ... and make it active
-        setTimeout(
-          () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
-          0,
+        setTimeout(() =>
+          makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
         );
       } else if (startRoute == "/" && newWindow.isInitiallyOpen) {
         // If the app is initially open, make it active
-        setTimeout(
-          () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
-          0,
+        setTimeout(() =>
+          makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
         );
       }
     }
