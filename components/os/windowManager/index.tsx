@@ -202,19 +202,21 @@ export default function WindowManager() {
 
   changeWindowTitleEvent.useOnChangeWindowTitleEventListener(
     (changeInformation) => {
-      const window = getWindowById(changeInformation.windowId);
-      if (!window || window.title === changeInformation.newTitle) return;
+      const updateWindow = getWindowById(changeInformation.windowId);
+      if (!updateWindow || updateWindow.title === changeInformation.newTitle)
+        return;
 
-      window.title = changeInformation.newTitle;
+      updateWindow.title = changeInformation.newTitle;
 
       // Fire the updateWindowDetailsEvent
       desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
-        window,
+        updateWindow,
       );
 
-      if (window.active) {
-        activeWindowChangedEvent.emitOnActiveWindowChangedEvent(window);
-        setTitleAndRouteFromActiveWindow(window);
+      if (updateWindow.active) {
+        setTimeout(() => {
+          setTitleAndRouteFromActiveWindow(updateWindow);
+        });
       }
     },
   );
@@ -251,13 +253,15 @@ export default function WindowManager() {
         }
 
         // ... and make it active
-        setTimeout(() =>
-          makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
+        setTimeout(
+          () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
+          100, // Don't remove this timeout here! Otherwise the update function here will overwrite the current route!
         );
       } else if (startRoute == "/" && newWindow.isInitiallyOpen) {
         // If the app is initially open, make it active
-        setTimeout(() =>
-          makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
+        setTimeout(
+          () => makeWindowActiveEvent.emitOnMakeWindowActiveEvent(newWindow),
+          100, // Don't remove this timeout here! Otherwise the update function here will overwrite the current route!
         );
       }
     }
