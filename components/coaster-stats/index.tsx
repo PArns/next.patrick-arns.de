@@ -60,7 +60,7 @@ export default async function CoasterStats({ lng }: { lng: string }) {
     "d466eaf7-4e89-4112-b4b2-1ad4584a62ce",
   );
 
-  const locale = lng == "en" ? "en-US" : "de-DE"
+  const locale = lng == "en" ? "en-US" : "de-DE";
 
   return (
     <div className="relative">
@@ -113,7 +113,7 @@ export default async function CoasterStats({ lng }: { lng: string }) {
             title={getAttractionImage(mausAuChocolat?.attraction).copyright}
             width={250}
             height={190}
-            className="rounded-lg"
+            className="h-28 rounded-lg object-cover"
           />
           <div
             className="absolute left-0 top-0 flex h-full w-full items-center justify-center"
@@ -142,7 +142,7 @@ export default async function CoasterStats({ lng }: { lng: string }) {
             }
             width={250}
             height={190}
-            className="rounded-lg"
+            className="h-28 rounded-lg object-cover"
           />
           <div
             className="absolute left-0 top-0 flex h-full w-full items-center justify-center"
