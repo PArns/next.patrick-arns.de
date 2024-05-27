@@ -78,6 +78,10 @@ export default async function CoasterStats({ lng }: { lng: string }) {
             <td>{`${getCount(coasterStats, "totalParks")}`}</td>
           </tr>
           <tr>
+            <td>{t("counts")}:</td>
+            <td>{`${getCount(coasterStats, "totalCoasterAttractions")}`}</td>
+          </tr>
+          <tr>
             <td>{t("rides")}:</td>
             <td>{`${getCount(coasterStats, "totalRides")}`}</td>
           </tr>
