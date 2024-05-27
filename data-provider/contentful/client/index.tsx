@@ -22,6 +22,7 @@ export const fetchGraphQL = async function (
         }`,
       },
       body: JSON.stringify(requestBody),
+      cache: "force-cache",
       next: { tags: ["articles"] },
     },
   ).then((response) => response.json());
