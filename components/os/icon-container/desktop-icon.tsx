@@ -62,7 +62,7 @@ export default function DesktopIcon({
         )}
       </div>
       <div className="items-end justify-center">
-        <p className="rop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] overflow-hidden text-ellipsis">
+        <p className="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] overflow-hidden text-ellipsis">
           {name?.toString()}
         </p>
       </div>
