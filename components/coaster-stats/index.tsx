@@ -113,7 +113,10 @@ export default async function CoasterStats({ lng }: { lng: string }) {
             height={190}
             className="rounded-lg"
           />
-          <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
+          <div
+            className="absolute left-0 top-0 flex h-full w-full items-center justify-center"
+            title={getAttractionImage(mausAuChocolat?.attraction).copyright}
+          >
             <div className="text-4xl font-bold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
               {mausAuChocolat?.highScore?.toLocaleString()}
             </div>
@@ -139,7 +142,12 @@ export default async function CoasterStats({ lng }: { lng: string }) {
             height={190}
             className="rounded-lg"
           />
-          <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
+          <div
+            className="absolute left-0 top-0 flex h-full w-full items-center justify-center"
+            title={
+              getAttractionImage(coasterWithHighestCount?.attraction).copyright
+            }
+          >
             <div className="text-4xl font-bold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
               {coasterWithHighestCount?.totalRides.toLocaleString()}
             </div>
@@ -156,7 +164,7 @@ export default async function CoasterStats({ lng }: { lng: string }) {
         className="absolute -bottom-2 -right-2 flex w-full place-content-end pt-2 text-xs text-neutral-500"
         href="https://coaster.cloud"
         target="_blank"
-        title="coaster.cloud"
+        title="Powered by coaster.cloud"
       >
         <div>Powered by</div>
         <div>
