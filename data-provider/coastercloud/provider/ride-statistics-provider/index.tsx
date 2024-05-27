@@ -47,7 +47,7 @@ export async function fetchCoasterStats(): Promise<RideStatistic | null> {
     redirect: "follow",
     cache: "force-cache",
     next: {
-      revalidate: 60 * 60 * 24, // 24H Cache Time
+      revalidate: 60 * 60 * 6, // 6H Cache Time
       tags: ["coaster"],
     },
   };
