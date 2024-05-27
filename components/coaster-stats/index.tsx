@@ -60,6 +60,8 @@ export default async function CoasterStats({ lng }: { lng: string }) {
     "d466eaf7-4e89-4112-b4b2-1ad4584a62ce",
   );
 
+  const locale = lng == "en" ? "en-US" : "de-DE"
+
   return (
     <div className="relative">
       <h2 className="pb-1 text-xl">{t("coasterStats")}</h2>
@@ -118,7 +120,7 @@ export default async function CoasterStats({ lng }: { lng: string }) {
             title={getAttractionImage(mausAuChocolat?.attraction).copyright}
           >
             <div className="text-4xl font-bold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-              {mausAuChocolat?.highScore?.toLocaleString()}
+              {mausAuChocolat?.highScore?.toLocaleString(locale)}
             </div>
           </div>
         </div>
@@ -149,7 +151,7 @@ export default async function CoasterStats({ lng }: { lng: string }) {
             }
           >
             <div className="text-4xl font-bold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-              {coasterWithHighestCount?.totalRides.toLocaleString()}
+              {coasterWithHighestCount?.totalRides.toLocaleString(locale)}
             </div>
           </div>
         </div>
