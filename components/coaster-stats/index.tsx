@@ -62,6 +62,10 @@ export default async function CoasterStats({ lng }: { lng: string }) {
             <td>{t("length")}:</td>
             <td>{`${getRideFact(coasterStats, "totalRideLength")}`}</td>
           </tr>
+          <tr>
+            <td>{t("time")}:</td>
+            <td>{`${getRideFact(coasterStats, "totalDuration")}`}</td>
+          </tr>
         </tbody>
       </table>
 
