@@ -3,9 +3,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       { hostname: "images.ctfassets.net" },
-      { hostname: "source.unsplash.com" },
+      { hostname: "media.coaster.cloud" },
     ],
-    minimumCacheTTL: 86400
+    minimumCacheTTL: 86400,
   },
 };
 
