@@ -2,13 +2,14 @@ import Image from "next/image";
 
 import { fetchCoasterStats } from "@/data-provider/coastercloud/provider/ride-statistics-provider";
 import {
-  Attraction,
   AttractionRide,
   RideStatistic,
 } from "@/data-provider/coastercloud/types/TypeRideStatistics";
 
 import CoasterCloudLogo from "@/public/images/CoasterCloud.png";
 import initTranslations from "../translate/i18n";
+import ScoreCard from "./score-card";
+import AppLink from "../os/app-link";
 
 export function getCount(stats: RideStatistic | null, key: string): Number {
   if (stats === null) return 0;
@@ -33,19 +34,6 @@ export function getAttractionStats(
   return stats.attractionRides.items.find((item) => item.attraction.id === id);
 }
 
-export function getAttractionImage(attraction: Attraction | undefined) {
-  if (!attraction)
-    return {
-      url: "",
-      copyright: "",
-    };
-
-  return {
-    url: attraction.images[0].url.replaceAll("square80", "square500"),
-    copyright: `(c) ${attraction.images[0].license.name} - ${attraction.images[0].contributor.username}`,
-  };
-}
-
 export default async function CoasterStats({ lng }: { lng: string }) {
   const { t } = await initTranslations({
     locale: lng,
@@ -65,100 +53,58 @@ export default async function CoasterStats({ lng }: { lng: string }) {
   return (
     <div className="relative">
       <h2 className="pb-1 text-xl">{t("coasterStats")}</h2>
-      <table className="min-w-full">
-        <tbody>
-          <tr>
-            <td>{t("visits")}:</td>
-            <td>{`${getCount(coasterStats, "totalVisits")}`}</td>
-          </tr>
-          <tr>
-            <td>{t("countries")}:</td>
-            <td>{`${getCount(coasterStats, "totalCountries")}`}</td>
-          </tr>
-          <tr>
-            <td>{t("parks")}:</td>
-            <td>{`${getCount(coasterStats, "totalParks")}`}</td>
-          </tr>
-          <tr>
-            <td>{t("counts")}:</td>
-            <td>{`${getCount(coasterStats, "totalCoasterAttractions")}`}</td>
-          </tr>
-          <tr>
-            <td>{t("rides")}:</td>
-            <td>{`${getCount(coasterStats, "totalRides")}`}</td>
-          </tr>
-          <tr>
-            <td>{t("inversions")}:</td>
-            <td>{`${getRideFact(coasterStats, "totalRideInversions")}`}</td>
-          </tr>
-          <tr>
-            <td>{t("length")}:</td>
-            <td>{`${getRideFact(coasterStats, "totalRideLength")}`}</td>
-          </tr>
-          <tr>
-            <td>{t("time")}:</td>
-            <td>{`${getRideFact(coasterStats, "totalDuration")}`}</td>
-          </tr>
-        </tbody>
-      </table>
+      <AppLink href={`/${lng}/coaster`} id="coaster">
+        <table className="min-w-full">
+          <tbody>
+            <tr>
+              <td>{t("visits")}:</td>
+              <td>{`${getCount(coasterStats, "totalVisits")}`}</td>
+            </tr>
+            <tr>
+              <td>{t("countries")}:</td>
+              <td>{`${getCount(coasterStats, "totalCountries")}`}</td>
+            </tr>
+            <tr>
+              <td>{t("parks")}:</td>
+              <td>{`${getCount(coasterStats, "totalParks")}`}</td>
+            </tr>
+            <tr>
+              <td>{t("counts")}:</td>
+              <td>{`${getCount(coasterStats, "totalCoasterAttractions")}`}</td>
+            </tr>
+            <tr>
+              <td>{t("rides")}:</td>
+              <td>{`${getCount(coasterStats, "totalRides")}`}</td>
+            </tr>
+            <tr>
+              <td>{t("inversions")}:</td>
+              <td>{`${getRideFact(coasterStats, "totalRideInversions")}`}</td>
+            </tr>
+            <tr>
+              <td>{t("length")}:</td>
+              <td>{`${getRideFact(coasterStats, "totalRideLength")}`}</td>
+            </tr>
+            <tr>
+              <td>{t("time")}:</td>
+              <td>{`${getRideFact(coasterStats, "totalDuration")}`}</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <div className="mt-2 flex flex-col">
-        <div>
-          <h3 className="mb-1">{t("mausAuChocolatScore")}</h3>
-        </div>
-        <div className="relative">
-          <Image
-            src={getAttractionImage(mausAuChocolat?.attraction).url}
-            alt={mausAuChocolat?.attraction.name || "Coaster"}
-            title={getAttractionImage(mausAuChocolat?.attraction).copyright}
-            width={250}
-            height={190}
-            className="h-28 rounded-lg object-cover"
-          />
-          <div
-            className="absolute left-0 top-0 flex h-full w-full items-center justify-center"
-            title={getAttractionImage(mausAuChocolat?.attraction).copyright}
-          >
-            <div className="text-4xl font-bold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-              {mausAuChocolat?.highScore?.toLocaleString(locale)}
-            </div>
-          </div>
-        </div>
-        <div className="w-full text-center text-sm text-neutral-700 dark:text-neutral-300">
-          {mausAuChocolat?.attraction.name}
-        </div>
-      </div>
+        <ScoreCard
+          title={t("mausAuChocolatScore")}
+          attraction={mausAuChocolat?.attraction}
+          score={mausAuChocolat?.highScore?.toLocaleString(locale)}
+          className="mt-2"
+        />
 
-      <div className="mt-2 flex flex-col">
-        <div>
-          <h3 className="mb-1">{t("mostCounts")}</h3>
-        </div>
-        <div className="relative">
-          <Image
-            src={getAttractionImage(coasterWithHighestCount?.attraction).url}
-            alt={coasterWithHighestCount?.attraction.name || "Coaster"}
-            title={
-              getAttractionImage(coasterWithHighestCount?.attraction).copyright
-            }
-            width={250}
-            height={190}
-            className="h-28 rounded-lg object-cover"
-          />
-          <div
-            className="absolute left-0 top-0 flex h-full w-full items-center justify-center"
-            title={
-              getAttractionImage(coasterWithHighestCount?.attraction).copyright
-            }
-          >
-            <div className="text-4xl font-bold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-              {coasterWithHighestCount?.totalRides.toLocaleString(locale)}
-            </div>
-          </div>
-        </div>
-        <div className="w-full text-center text-sm text-neutral-700 dark:text-neutral-300">
-          {coasterWithHighestCount?.attraction.name}
-        </div>
-      </div>
+        <ScoreCard
+          title={t("mostCounts")}
+          attraction={coasterWithHighestCount?.attraction}
+          score={coasterWithHighestCount?.totalRides.toLocaleString(locale)}
+          className="mt-2"
+        />
+      </AppLink>
 
       <div className="mb-5" />
 
