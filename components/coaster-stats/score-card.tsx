@@ -105,6 +105,14 @@ export default async function ScoreCard({
     },
   );
 
+  const scoreValueClassNames = clsx(
+    "font-bold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]",
+    {
+      "text-3xl": isParkVisit(attraction),
+      "text-4xl": !isParkVisit(attraction),
+    },
+  );
+
   let scoreValue: any = score;
   let name: any = getAttractionName(attraction);
 
@@ -137,9 +145,7 @@ export default async function ScoreCard({
           className="absolute left-0 top-0 flex h-full w-full items-center justify-center"
           title={getAttractionImage(attraction).copyright}
         >
-          <div className="text-3xl font-bold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-            {scoreValue}
-          </div>
+          <div className={scoreValueClassNames}>{scoreValue}</div>
         </div>
       </div>
       <div className={attractionNameClassNames}>{name}</div>
