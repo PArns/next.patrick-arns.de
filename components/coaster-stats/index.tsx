@@ -10,6 +10,7 @@ import CoasterCloudLogo from "@/public/images/CoasterCloud.png";
 import initTranslations from "../translate/i18n";
 import ScoreCard from "./score-card";
 import AppLink from "../os/app-link";
+import PoweredByCoasterCloud from "./powered-by";
 
 export function getCount(stats: RideStatistic | null, key: string): Number {
   if (stats === null) return 0;
@@ -53,7 +54,7 @@ export default async function CoasterStats({ lng }: { lng: string }) {
   return (
     <div className="relative">
       <h2 className="pb-1 text-xl">{t("coasterStats")}</h2>
-      <AppLink href={`/${lng}/coasters`} id="coasters">
+      <AppLink href={`/${lng}/coaster`} id="coaster">
         <table className="min-w-full">
           <tbody>
             <tr>
@@ -106,24 +107,7 @@ export default async function CoasterStats({ lng }: { lng: string }) {
         />
       </AppLink>
 
-      <div className="mb-5" />
-
-      <a
-        className="absolute -bottom-2 -right-2 flex w-full place-content-end pt-2 text-xs text-neutral-500"
-        href="https://coaster.cloud"
-        target="_blank"
-        title="Powered by coaster.cloud"
-      >
-        <div>Powered by</div>
-        <div>
-          <Image
-            src={CoasterCloudLogo}
-            alt="coaster.cloud Logo"
-            width={20}
-            className="-mt-1 ml-1 grayscale"
-          />
-        </div>
-      </a>
+      <PoweredByCoasterCloud />
     </div>
   );
 }

@@ -46,9 +46,8 @@ export async function generateMetadata({
     alternates: alternates,
     openGraph: {
       type: "article",
-
       publishedTime: gallery.date.toISOString(),
-      url: `${config.baseUrl}/${params.lng}/pictures/gallery/${params.slug}`,
+      url: `${config.baseUrl}${params.lng}/pictures/gallery/${params.slug}`,
       locale: params.lng,
       images: [
         { url: getImageSource(gallery.teaserImage, 800), width: 800 },
