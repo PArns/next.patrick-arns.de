@@ -8,7 +8,7 @@ export default async function DefaultRedirect({
 }: {
   params: { catchAll: string; lng: string };
 }) {
-  let slug = Array.isArray(params.catchAll)
+  const slug = Array.isArray(params.catchAll)
     ? params.catchAll[0]
     : params.catchAll;
 
