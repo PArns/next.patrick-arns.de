@@ -38,7 +38,7 @@ export function getAttractionStats(
 export default async function CoasterStats({ lng }: { lng: string }) {
   const { t } = await initTranslations({
     locale: lng,
-    namespaces: ["coasterStats"],
+    namespaces: ["coaster"],
   });
 
   const coasterStats = await fetchCoasterStats();

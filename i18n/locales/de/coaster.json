@@ -1,5 +1,23 @@
 {
   "title": "Freizeitparks",
   "subTitle": "Meine große Leidenschaft",
-  "statistics": "Meine Freizeitpark Statistik"
+  "statistics": "Meine Freizeitpark Statistik",
+  "coasterStats": "Achterbahnen",
+  "visits": "Besuche",
+  "countries": "Länder",
+  "parks": "Parks",
+  "rides": "Fahrten",
+  "counts": "Counts",
+  "inversions": "Inversionen",
+  "length": "Länge",
+  "mostCounts": "Meiste Fahrten",
+  "time": "Fahrzeit",
+  "mausAuChocolatScore": "Highscore",
+  "fastestAttraction": "Schnellste Bahn",
+  "longestRide": "Längste Bahn",
+  "highestRide": "Höchste Fahrt",
+  "strongestRide": "Intensivste Fahrt",
+  "pos1": "Platz 1",
+  "pos2": "Platz 2",
+  "pos3": "Platz 3"
 }

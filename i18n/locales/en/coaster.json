@@ -1,5 +1,19 @@
 {
   "title": "Theme Parks",
   "subTitle": "My big passion",
-  "statistics": "My theme park statistics"
+  "statistics": "My theme park statistics",
+  "coasterStats": "Coaster Count",
+  "visits": "Visits",
+  "countries": "Countries",
+  "parks": "Parks",
+  "rides": "Rides",
+  "counts": "Counts",
+  "inversions": "Inversions",
+  "length": "Length",
+  "mostCounts": "Most Counts",
+  "time": "Ride Time",
+  "mausAuChocolatScore": "Highscore",
+  "pos1": "Position 1",
+  "pos2": "Position 2",
+  "pos3": "Position 3"
 }
