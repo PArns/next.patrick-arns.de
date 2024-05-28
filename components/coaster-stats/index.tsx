@@ -53,7 +53,7 @@ export default async function CoasterStats({ lng }: { lng: string }) {
   return (
     <div className="relative">
       <h2 className="pb-1 text-xl">{t("coasterStats")}</h2>
-      <AppLink href={`/${lng}/coaster`} id="coaster">
+      <AppLink href={`/${lng}/coasters`} id="coasters">
         <table className="min-w-full">
           <tbody>
             <tr>

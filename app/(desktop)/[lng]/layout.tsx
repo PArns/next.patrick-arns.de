@@ -8,12 +8,14 @@ import PageBaseConfiguration from "@/configuration";
 import initTranslations from "@/components/translate/i18n";
 
 export default async function AppLayout({
+  coasters,
   blog,
   welcome,
   pictures,
   me,
   params,
 }: {
+  coasters: React.ReactNode;
   blog: React.ReactNode;
   welcome: React.ReactNode;
   pictures: React.ReactNode;
@@ -80,6 +82,18 @@ export default async function AppLayout({
         id="pictures"
       >
         {pictures}
+      </DesktopWindow>
+
+      <DesktopWindow
+        width="80%"
+        height="80%"
+        maxWidth={1600}
+        route="/coasters"
+        title={t("coaster")}
+        icon="/appicons/coaster.png"
+        id="coasters"
+      >
+        {coasters}
       </DesktopWindow>
     </Desktop>
   );

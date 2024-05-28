@@ -99,6 +99,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
       },
     },
+    {
+      url: `${baseUrl}coasters`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+      alternates: {
+        languages: {
+          de: `${baseUrl}de/coasters`,
+          en: `${baseUrl}en/coasters`,
+        },
+      },
+    },
   ];
 
   var allPages = pages.concat(blogPostEntries);
