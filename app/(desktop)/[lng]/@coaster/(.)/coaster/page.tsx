@@ -36,10 +36,11 @@ export async function generateMetadata({
     title: t("title"),
     description: t("subTitle"),
     openGraph: {
-      type: "article",
+      type: "website",
       url: `${config.baseUrl}${params.lng}/coaster`,
+      description: t("subTitle"),
       locale: params.lng,
-      images: "/public/jumbotron/coaster.jpg",
+      images: "/jumbotron/coaster.jpg",
     },
   };
 }
@@ -122,10 +123,11 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
           <Translation lang="en">
             <div className="mb-4">
               A theme park nerd is, of course, only a true nerd if they also
-              count their &quot;counts&quot;. A &quot;count&quot; is, according to the official
-              coaster standard, every single roller coaster that one has ridden.
-              Only roller coasters that have a complete track and make a full
-              circuit or follow a defined route are allowed to be counted.
+              count their &quot;counts&quot;. A &quot;count&quot; is, according
+              to the official coaster standard, every single roller coaster that
+              one has ridden. Only roller coasters that have a complete track
+              and make a full circuit or follow a defined route are allowed to
+              be counted.
             </div>
             <div className="mb-4">
               Therefore, here you will find all my current park statistics –

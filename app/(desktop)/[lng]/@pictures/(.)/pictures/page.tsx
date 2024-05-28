@@ -25,6 +25,7 @@ export async function generateMetadata({
     alternates: getPageAlternates("pictures"),
     openGraph: {
       type: "website",
+      description: t("subTitle"),
       locale: params.lng,
     },
   };

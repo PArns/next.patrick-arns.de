@@ -39,6 +39,7 @@ export async function generateMetadata({
     alternates: getPageAlternates(baseRoute),
     openGraph: {
       type: "website",
+      description: t("subTitle"),
       locale: params.lng,
       images: "/jumbotron/blog.jpg",
     },
