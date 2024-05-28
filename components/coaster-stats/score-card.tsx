@@ -84,7 +84,7 @@ export default async function ScoreCard({
   });
 
   const attractionImage = getAttractionImage(attraction);
-  const classNames = clsx("flex flex-col w-max", className);
+  const classNames = clsx("flex flex-col", className);
 
   const imageClassNames = clsx(
     "rounded-lg object-cover drop-shadow-lg border border-neutral-500",
