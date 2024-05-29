@@ -1,0 +1,1463 @@
+{
+  "rideStatistic": {
+    "image": "https://data.coaster.cloud/ride-statistic-image/eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjb2FzdGVyLmNsb3VkIiwiYXVkIjoiY29hc3Rlci5jbG91ZCIsImp0aSI6IjVhMDAzMjYxLTVkN2YtNGFmZC1hNjc4LWM5ZmI2MjMzNTFkNCIsImlhdCI6MTcxNTgwNzU5Ni40NDI0MjYsImZpbHRlcnMiOnsiYWNjb3VudCI6WyJlNDc2N2Y4ZS1mZTY0LTRiYmQtYjUzOS02YThjOTMzNjBjZGIiXX0sImxvY2FsZSI6ImVuIiwic3lzdGVtT2ZVbml0cyI6WyJraWxvbWV0ZXJzX3Blcl9ob3VyIiwiY2Vsc2l1cyIsImNlbnRpbWV0ZXIiLCJtZXRlciIsImtpbG9tZXRlciIsInNxdWFyZV9tZXRlciIsImhlY3RhciJdfQ.RkwlnbU3EUZzEVHMq8wNlpCdCjcJilUOenh8uLBW6qM",
+    "facets": [
+      {
+        "key": "ATTRACTION_CATEGORY",
+        "terms": [
+          {
+            "key": "coaster",
+            "label": "Rollercoaster",
+            "quantity": 295
+          },
+          {
+            "key": "show",
+            "label": "Show",
+            "quantity": 18
+          },
+          {
+            "key": "walk_trough",
+            "label": "Walk-Through",
+            "quantity": 14
+          },
+          {
+            "key": "maze",
+            "label": "Maze",
+            "quantity": 1
+          },
+          {
+            "key": "scare_zone",
+            "label": "Scare Zone",
+            "quantity": 3
+          },
+          {
+            "key": "theme_ride",
+            "label": "Theme ride",
+            "quantity": 88
+          },
+          {
+            "key": "waterride",
+            "label": "Water ride",
+            "quantity": 9
+          },
+          {
+            "key": "flat_ride",
+            "label": "Flat ride",
+            "quantity": 50
+          },
+          {
+            "key": "point_of_interest",
+            "label": "Point of interest",
+            "quantity": 2
+          }
+        ]
+      },
+      {
+        "key": "PARK_CATEGORY",
+        "terms": [
+          {
+            "key": "themepark",
+            "label": "Themepark",
+            "quantity": 387
+          },
+          {
+            "key": "amusement_park",
+            "label": "Amusement park",
+            "quantity": 17
+          }
+        ]
+      },
+      {
+        "key": "PARK",
+        "terms": [
+          {
+            "key": "1e9d6114-1f82-43f5-9b38-9b3e98efa223",
+            "label": "Attractiepark Toverland",
+            "quantity": 3
+          },
+          {
+            "key": "49f00560-9b8d-4c11-a3ed-f548192ef5d9",
+            "label": "Efteling",
+            "quantity": 4
+          },
+          {
+            "key": "5323f689-0b9b-42f6-95db-3450d73c246f",
+            "label": "Walibi Holland",
+            "quantity": 2
+          },
+          {
+            "key": "58ea4da0-7b30-40db-8cb4-445de22c818d",
+            "label": "Walt Disney Studios Park",
+            "quantity": 2
+          },
+          {
+            "key": "a5fb81f1-cc4e-4a7e-8419-98cc523487e3",
+            "label": "Movie Park Germany",
+            "quantity": 4
+          },
+          {
+            "key": "c1895471-2098-4813-934a-df65f17caa5e",
+            "label": "Bobbejaanland",
+            "quantity": 2
+          },
+          {
+            "key": "d540427b-2d2f-4281-bd4a-7c05bf86ae5f",
+            "label": "Europa-Park",
+            "quantity": 6
+          },
+          {
+            "key": "def7ed26-2e18-41b0-b82c-0f0e81bcc57c",
+            "label": "Walibi Belgium",
+            "quantity": 4
+          },
+          {
+            "key": "ecb0f2f1-693c-48f9-a9c7-97027d4655a1",
+            "label": "Disneyland Park",
+            "quantity": 2
+          },
+          {
+            "key": "f7328b4a-3308-4823-b4b6-58fb9a254199",
+            "label": "Phantasialand",
+            "quantity": 18
+          }
+        ]
+      },
+      {
+        "key": "COUNTRY",
+        "terms": [
+          {
+            "key": "BE",
+            "label": "Belgium",
+            "quantity": 6
+          },
+          {
+            "key": "DE",
+            "label": "Germany",
+            "quantity": 28
+          },
+          {
+            "key": "FR",
+            "label": "France",
+            "quantity": 4
+          },
+          {
+            "key": "NL",
+            "label": "Netherlands",
+            "quantity": 9
+          }
+        ]
+      },
+      {
+        "key": "MANUFACTURER",
+        "terms": [
+          {
+            "key": "071c6f6e-9eeb-4a31-8b70-7f9880a0d8f9",
+            "label": "S&S Sansei Technologies",
+            "quantity": 1
+          },
+          {
+            "key": "089a2e0f-d39f-4c60-803a-da7738c0ae23",
+            "label": "Walt Disney Imagineering",
+            "quantity": 8
+          },
+          {
+            "key": "0d266b7a-1b67-4e3f-a432-14c799c66bf7",
+            "label": "Brogent",
+            "quantity": 4
+          },
+          {
+            "key": "0fd8eb39-6765-4fb4-b0bd-82c7aa4877d1",
+            "label": "Garmendale Engineering",
+            "quantity": 1
+          },
+          {
+            "key": "14a415bf-6bfc-4d0b-9795-e945b1d6f26d",
+            "label": "Rocky Mountain Construction",
+            "quantity": 4
+          },
+          {
+            "key": "1adb4f39-ba3a-41d8-b801-4560d639b34d",
+            "label": "Schwarzkopf GmbH",
+            "quantity": 13
+          },
+          {
+            "key": "1fa945a4-3cc5-4e9d-ba90-db62ad0a7344",
+            "label": "IMAscore GbR",
+            "quantity": 4
+          },
+          {
+            "key": "20bcee14-27bf-48b7-a5d2-54426d2d15c3",
+            "label": "Ingenieurbüro Stengel GmbH",
+            "quantity": 6
+          },
+          {
+            "key": "2b369071-1b8f-4b9e-b25d-0bed2fcbecee",
+            "label": "Maurer Rides GmbH",
+            "quantity": 23
+          },
+          {
+            "key": "2b9bc68b-e711-4ce3-85d2-4043d0ab0ef9",
+            "label": "Giovanola",
+            "quantity": 1
+          },
+          {
+            "key": "318bd460-0abe-4da7-b1ed-2f5ab5049f45",
+            "label": "Gerstlauer Amusement Rides GmbH",
+            "quantity": 14
+          },
+          {
+            "key": "32bb69bf-4a86-4bfc-b6db-fd40952cbdb3",
+            "label": "Premier Rides Inc.",
+            "quantity": 2
+          },
+          {
+            "key": "3b76c7e9-1160-4294-8f3e-c934e5a4fb54",
+            "label": "Holovis",
+            "quantity": 1
+          },
+          {
+            "key": "3bc7392a-4508-418c-bc2e-26d90ce3e9fa",
+            "label": "Vekoma",
+            "quantity": 103
+          },
+          {
+            "key": "3ebe23f0-3ee7-48f8-98f6-5b460dababa0",
+            "label": "Otis Elevator Company",
+            "quantity": 1
+          },
+          {
+            "key": "45081740-ce03-41df-9c28-35d00f4f86b4",
+            "label": "ETF Ride System",
+            "quantity": 35
+          },
+          {
+            "key": "4a6b47f6-3da6-4cbc-b5d9-4a540de85b9b",
+            "label": "Metallbau Emmeln GmbH & Co. KG",
+            "quantity": 1
+          },
+          {
+            "key": "572f6487-6d82-414b-b363-e6765e0ada00",
+            "label": "Ride Construction Service Worldwide GmbH",
+            "quantity": 3
+          },
+          {
+            "key": "642468b6-c993-46b3-a9a4-3e34ba0a279c",
+            "label": "Mack Media & Brands",
+            "quantity": 4
+          },
+          {
+            "key": "686ca4f9-aa32-4913-8090-ba0063b54079",
+            "label": "Ambient Entertainment",
+            "quantity": 4
+          },
+          {
+            "key": "6df09dd1-5e1b-4c34-89dd-35b5a1cf4a3e",
+            "label": "Alterface",
+            "quantity": 27
+          },
+          {
+            "key": "71510a63-e8d4-45b3-a753-6ae6efaf617e",
+            "label": "Sally Corporation",
+            "quantity": 4
+          },
+          {
+            "key": "7f6549bc-71ab-4e05-8dca-5f46b45aa889",
+            "label": "KumbaK",
+            "quantity": 4
+          },
+          {
+            "key": "833f977d-27c2-40a1-ac39-b306932c4deb",
+            "label": "Heimotion",
+            "quantity": 10
+          },
+          {
+            "key": "a75ff585-d9ce-4430-9232-82b888342224",
+            "label": "Roller Coaster Corporation Of America",
+            "quantity": 2
+          },
+          {
+            "key": "a8fac55c-88dc-4941-8c91-b3474fe80cae",
+            "label": "Ride Trade",
+            "quantity": 2
+          },
+          {
+            "key": "aa26ad60-9949-4017-b748-579e4a12aac1",
+            "label": "Kraftwerk Living Technologies",
+            "quantity": 4
+          },
+          {
+            "key": "abe9f833-f871-488f-b460-e774e8c8faf5",
+            "label": "Zamperla",
+            "quantity": 1
+          },
+          {
+            "key": "b08a663e-b870-4118-a3a5-f31aa0bde9a3",
+            "label": "ZIERER Karussell- und Spezialmaschinenbau GmbH & Co. KG",
+            "quantity": 11
+          },
+          {
+            "key": "b71c73b8-5427-4445-987d-cb7fb1cf5a74",
+            "label": "Efteling",
+            "quantity": 4
+          },
+          {
+            "key": "bd3f0622-2f95-453b-b309-c079ef76ba45",
+            "label": "SBF Visa",
+            "quantity": 1
+          },
+          {
+            "key": "c77ea128-a5f5-4732-8d57-46b8dbb14410",
+            "label": "Great Coasters International",
+            "quantity": 8
+          },
+          {
+            "key": "c786d076-93d5-4f41-b4c4-243c769f1cf5",
+            "label": "Peter Clerx",
+            "quantity": 3
+          },
+          {
+            "key": "cb1b7023-0667-437b-b2e7-37859a1dc76c",
+            "label": "Jora Vision",
+            "quantity": 4
+          },
+          {
+            "key": "cb8f6ccd-bfa4-41dd-83f5-6231c2f2dc97",
+            "label": "Bolliger & Mabillard",
+            "quantity": 37
+          },
+          {
+            "key": "d53c12d0-13bc-4119-8dec-baaf97d1ec76",
+            "label": "Preston & Barbieri",
+            "quantity": 4
+          },
+          {
+            "key": "e6779527-0a84-4aa4-bb50-23921276afb6",
+            "label": "HAFEMA Water Rides",
+            "quantity": 2
+          },
+          {
+            "key": "e6efcf9f-0a38-4f1a-9e27-1520d94661b7",
+            "label": "Huss Rides",
+            "quantity": 11
+          },
+          {
+            "key": "ea2ca8c1-cc8b-4919-ac68-26e3158b9473",
+            "label": "Leisure Expert Group B.V.",
+            "quantity": 3
+          },
+          {
+            "key": "ebebf60e-3733-4b0b-a4b0-681db1dad58d",
+            "label": "Intamin Amusement Rides",
+            "quantity": 69
+          },
+          {
+            "key": "f79e53f8-acae-43bf-a383-168cb3a6b36b",
+            "label": "MACK Rides GmbH & Co KG",
+            "quantity": 89
+          },
+          {
+            "key": "fbb25550-2065-4fc0-9204-0168cf5e3fdd",
+            "label": "MK Themed Attractions",
+            "quantity": 3
+          }
+        ]
+      }
+    ],
+    "parkVisits": {
+      "pagination": {
+        "totalItems": 10
+      },
+      "items": [
+        {
+          "park": {
+            "id": "f7328b4a-3308-4823-b4b6-58fb9a254199",
+            "name": "Phantasialand",
+            "slug": "f7328b4a-phantasialand",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/parks/HT/GA/HTGAeguahWjchjLdQHPhAo.jpg?class=square80",
+                "social": "https://media.coaster.cloud/parks/HT/GA/HTGAeguahWjchjLdQHPhAo.jpg?class=large",
+                "contributor": {
+                  "username": "mika",
+                  "slug": "mika"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2021-09-06"
+                }
+              }
+            ]
+          },
+          "totalVisits": 18,
+          "totalRides": 183
+        },
+        {
+          "park": {
+            "id": "d540427b-2d2f-4281-bd4a-7c05bf86ae5f",
+            "name": "Europa-Park",
+            "slug": "d540427b-europa-park",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/parks/Gw/ix/GwixPqA8XtWJ5zWkyX7CNL.jpg?class=square80",
+                "social": "https://media.coaster.cloud/parks/Gw/ix/GwixPqA8XtWJ5zWkyX7CNL.jpg?class=large",
+                "contributor": {
+                  "username": "VR999",
+                  "slug": "vr999"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2019-06-13"
+                }
+              }
+            ]
+          },
+          "totalVisits": 6,
+          "totalRides": 67
+        },
+        {
+          "park": {
+            "id": "49f00560-9b8d-4c11-a3ed-f548192ef5d9",
+            "name": "Efteling",
+            "slug": "49f00560-efteling",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/parks/Ur/yz/Uryzz6fJErv5ZiB6wBYNiS.jpg?class=square80",
+                "social": "https://media.coaster.cloud/parks/Ur/yz/Uryzz6fJErv5ZiB6wBYNiS.jpg?class=large",
+                "contributor": {
+                  "username": "den_miseler",
+                  "slug": "den-miseler"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2020-04-30"
+                }
+              }
+            ]
+          },
+          "totalVisits": 4,
+          "totalRides": 55
+        },
+        {
+          "park": {
+            "id": "def7ed26-2e18-41b0-b82c-0f0e81bcc57c",
+            "name": "Walibi Belgium",
+            "slug": "def7ed26-walibi-belgium",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/parks/S7/Zn/S7ZnWtfiPSEMHHCxxcmS9n.jpg?class=square80",
+                "social": "https://media.coaster.cloud/parks/S7/Zn/S7ZnWtfiPSEMHHCxxcmS9n.jpg?class=large",
+                "contributor": {
+                  "username": "Louis",
+                  "slug": "louis"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2021-12-04"
+                }
+              }
+            ]
+          },
+          "totalVisits": 4,
+          "totalRides": 35
+        },
+        {
+          "park": {
+            "id": "a5fb81f1-cc4e-4a7e-8419-98cc523487e3",
+            "name": "Movie Park Germany",
+            "slug": "a5fb81f1-movie-park-germany",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/parks/AH/u2/AHu2nAS2yUszqHX4kVpXYr.jpg?class=square80",
+                "social": "https://media.coaster.cloud/parks/AH/u2/AHu2nAS2yUszqHX4kVpXYr.jpg?class=large",
+                "contributor": {
+                  "username": "Clanfamily",
+                  "slug": "clanfamily"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2018-12-21"
+                }
+              }
+            ]
+          },
+          "totalVisits": 4,
+          "totalRides": 28
+        }
+      ]
+    },
+    "attractionRides": {
+      "pagination": {
+        "totalItems": 156
+      },
+      "items": [
+        {
+          "attraction": {
+            "id": "81d663fc-ef37-40fe-b1c7-dc768a5a57f8",
+            "name": "Taron",
+            "slug": "81d663fc-taron",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/WM/kw/WMkwyG3EkWVaMo3WZX8Mji.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/WM/kw/WMkwyG3EkWVaMo3WZX8Mji.jpg?class=large",
+                "contributor": {
+                  "username": "den_miseler",
+                  "slug": "den-miseler"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2020-04-30"
+                }
+              }
+            ],
+            "category": {
+              "label": "Rollercoaster"
+            },
+            "scoringSystem": null
+          },
+          "totalRides": 26,
+          "highScore": null
+        },
+        {
+          "attraction": {
+            "id": "1c7aa52f-1cb9-4ac2-9688-165e2c5a28ee",
+            "name": "F.L.Y.",
+            "slug": "1c7aa52f-f-l-y",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/QJ/yD/QJyDcrQzXr813JPaDxrJu6.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/QJ/yD/QJyDcrQzXr813JPaDxrJu6.jpg?class=large",
+                "contributor": {
+                  "username": "CoasterHunter",
+                  "slug": "coasterhunter"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2020-09-24"
+                }
+              }
+            ],
+            "category": {
+              "label": "Rollercoaster"
+            },
+            "scoringSystem": null
+          },
+          "totalRides": 25,
+          "highScore": null
+        },
+        {
+          "attraction": {
+            "id": "d466eaf7-4e89-4112-b4b2-1ad4584a62ce",
+            "name": "Maus au Chocolat",
+            "slug": "d466eaf7-maus-au-chocolat",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/Bt/WZ/BtWZfvQpVjCwjm2RBeK2wK.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/Bt/WZ/BtWZfvQpVjCwjm2RBeK2wK.jpg?class=large",
+                "contributor": {
+                  "username": "den_miseler",
+                  "slug": "den-miseler"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2020-04-30"
+                }
+              }
+            ],
+            "category": {
+              "label": "Theme ride"
+            },
+            "scoringSystem": {
+              "label": "Score",
+              "scale": 0
+            }
+          },
+          "totalRides": 23,
+          "highScore": 537350
+        },
+        {
+          "attraction": {
+            "id": "6eff41b1-abae-4225-85c3-1f0aba4c3c34",
+            "name": "Colorado Adventure",
+            "slug": "6eff41b1-colorado-adventure",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/P2/Yg/P2YgrrEew4NX9tSa28PL4F.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/P2/Yg/P2YgrrEew4NX9tSa28PL4F.jpg?class=large",
+                "contributor": {
+                  "username": "airtimeaddicted",
+                  "slug": "airtimeaddicted"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2018-12-31"
+                }
+              }
+            ],
+            "category": {
+              "label": "Rollercoaster"
+            },
+            "scoringSystem": null
+          },
+          "totalRides": 18,
+          "highScore": null
+        },
+        {
+          "attraction": {
+            "id": "2424ede1-08fd-4e13-9548-4c59519e8178",
+            "name": "Winjas Fear",
+            "slug": "2424ede1-winjas-fear",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/4t/6a/4t6anT1cRYppWEimMorxWs.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/4t/6a/4t6anT1cRYppWEimMorxWs.jpg?class=large",
+                "contributor": {
+                  "username": "CoasterHunter",
+                  "slug": "coasterhunter"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2019-05-29"
+                }
+              }
+            ],
+            "category": {
+              "label": "Rollercoaster"
+            },
+            "scoringSystem": null
+          },
+          "totalRides": 17,
+          "highScore": null
+        }
+      ]
+    },
+    "manufacturerRides": {
+      "pagination": {
+        "totalItems": 42
+      },
+      "items": [
+        {
+          "manufacturer": {
+            "id": "3bc7392a-4508-418c-bc2e-26d90ce3e9fa",
+            "name": "Vekoma",
+            "slug": "3bc7392a-vekoma"
+          },
+          "totalRides": 103,
+          "totalUniqueRides": 28
+        },
+        {
+          "manufacturer": {
+            "id": "f79e53f8-acae-43bf-a383-168cb3a6b36b",
+            "name": "MACK Rides GmbH & Co KG",
+            "slug": "f79e53f8-mack-rides-gmbh-co-kg"
+          },
+          "totalRides": 89,
+          "totalUniqueRides": 23
+        },
+        {
+          "manufacturer": {
+            "id": "ebebf60e-3733-4b0b-a4b0-681db1dad58d",
+            "name": "Intamin Amusement Rides",
+            "slug": "ebebf60e-intamin-amusement-rides"
+          },
+          "totalRides": 69,
+          "totalUniqueRides": 21
+        },
+        {
+          "manufacturer": {
+            "id": "cb8f6ccd-bfa4-41dd-83f5-6231c2f2dc97",
+            "name": "Bolliger & Mabillard",
+            "slug": "cb8f6ccd-bolliger-mabillard"
+          },
+          "totalRides": 37,
+          "totalUniqueRides": 4
+        },
+        {
+          "manufacturer": {
+            "id": "45081740-ce03-41df-9c28-35d00f4f86b4",
+            "name": "ETF Ride System",
+            "slug": "45081740-etf-ride-system"
+          },
+          "totalRides": 35,
+          "totalUniqueRides": 4
+        }
+      ]
+    },
+    "parkTrips": {
+      "pagination": {
+        "totalItems": 47
+      },
+      "items": [
+        {
+          "park": {
+            "id": "def7ed26-2e18-41b0-b82c-0f0e81bcc57c",
+            "name": "Walibi Belgium",
+            "slug": "def7ed26-walibi-belgium",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/parks/S7/Zn/S7ZnWtfiPSEMHHCxxcmS9n.jpg?class=square80",
+                "social": "https://media.coaster.cloud/parks/S7/Zn/S7ZnWtfiPSEMHHCxxcmS9n.jpg?class=large",
+                "contributor": {
+                  "username": "Louis",
+                  "slug": "louis"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2021-12-04"
+                }
+              }
+            ]
+          },
+          "date": {
+            "format": "YYYY-MM-DD",
+            "value": "2024-05-09"
+          }
+        },
+        {
+          "park": {
+            "id": "f7328b4a-3308-4823-b4b6-58fb9a254199",
+            "name": "Phantasialand",
+            "slug": "f7328b4a-phantasialand",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/parks/HT/GA/HTGAeguahWjchjLdQHPhAo.jpg?class=square80",
+                "social": "https://media.coaster.cloud/parks/HT/GA/HTGAeguahWjchjLdQHPhAo.jpg?class=large",
+                "contributor": {
+                  "username": "mika",
+                  "slug": "mika"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2021-09-06"
+                }
+              }
+            ]
+          },
+          "date": {
+            "format": "YYYY-MM-DD",
+            "value": "2024-04-07"
+          }
+        },
+        {
+          "park": {
+            "id": "a5fb81f1-cc4e-4a7e-8419-98cc523487e3",
+            "name": "Movie Park Germany",
+            "slug": "a5fb81f1-movie-park-germany",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/parks/AH/u2/AHu2nAS2yUszqHX4kVpXYr.jpg?class=square80",
+                "social": "https://media.coaster.cloud/parks/AH/u2/AHu2nAS2yUszqHX4kVpXYr.jpg?class=large",
+                "contributor": {
+                  "username": "Clanfamily",
+                  "slug": "clanfamily"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2018-12-21"
+                }
+              }
+            ]
+          },
+          "date": {
+            "format": "YYYY-MM-DD",
+            "value": "2024-03-31"
+          }
+        },
+        {
+          "park": {
+            "id": "d540427b-2d2f-4281-bd4a-7c05bf86ae5f",
+            "name": "Europa-Park",
+            "slug": "d540427b-europa-park",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/parks/Gw/ix/GwixPqA8XtWJ5zWkyX7CNL.jpg?class=square80",
+                "social": "https://media.coaster.cloud/parks/Gw/ix/GwixPqA8XtWJ5zWkyX7CNL.jpg?class=large",
+                "contributor": {
+                  "username": "VR999",
+                  "slug": "vr999"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2019-06-13"
+                }
+              }
+            ]
+          },
+          "date": {
+            "format": "YYYY-MM-DD",
+            "value": "2024-03-21"
+          }
+        },
+        {
+          "park": {
+            "id": "d540427b-2d2f-4281-bd4a-7c05bf86ae5f",
+            "name": "Europa-Park",
+            "slug": "d540427b-europa-park",
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/parks/Gw/ix/GwixPqA8XtWJ5zWkyX7CNL.jpg?class=square80",
+                "social": "https://media.coaster.cloud/parks/Gw/ix/GwixPqA8XtWJ5zWkyX7CNL.jpg?class=large",
+                "contributor": {
+                  "username": "VR999",
+                  "slug": "vr999"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2019-06-13"
+                }
+              }
+            ]
+          },
+          "date": {
+            "format": "YYYY-MM-DD",
+            "value": "2024-03-20"
+          }
+        }
+      ]
+    },
+    "accountRankingParks": {
+      "pagination": {
+        "totalItems": 1
+      },
+      "items": [
+        {
+          "account": {
+            "id": "e4767f8e-fe64-4bbd-b539-6a8c93360cdb",
+            "username": "Parnzival",
+            "slug": "parnzival"
+          },
+          "totalParks": 10,
+          "totalAttractions": 156,
+          "totalRides": 480,
+          "position": 1
+        }
+      ]
+    },
+    "accountRankingAttractions": {
+      "pagination": {
+        "totalItems": 1
+      },
+      "items": [
+        {
+          "account": {
+            "id": "e4767f8e-fe64-4bbd-b539-6a8c93360cdb",
+            "username": "Parnzival",
+            "slug": "parnzival"
+          },
+          "totalParks": 10,
+          "totalAttractions": 156,
+          "totalRides": 480,
+          "position": 1
+        }
+      ]
+    },
+    "accountRankingRides": {
+      "pagination": {
+        "totalItems": 1
+      },
+      "items": [
+        {
+          "account": {
+            "id": "e4767f8e-fe64-4bbd-b539-6a8c93360cdb",
+            "username": "Parnzival",
+            "slug": "parnzival"
+          },
+          "totalParks": 10,
+          "totalAttractions": 156,
+          "totalRides": 480,
+          "position": 1
+        }
+      ]
+    },
+    "fastestRide": {
+      "items": [
+        {
+          "attraction": {
+            "id": "4a5dbd7f-6df8-4834-b06c-37fd35060807",
+            "name": "Silver Star",
+            "slug": "4a5dbd7f-silver-star",
+            "attribute": {
+              "valueAsString": "127 km/h"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/9p/yk/9pykBit9rfYXyQJfag65VV.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/9p/yk/9pykBit9rfYXyQJfag65VV.jpg?class=large",
+                "contributor": {
+                  "username": "VR999",
+                  "slug": "vr999"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2020-08-24"
+                }
+              }
+            ]
+          },
+          "totalRides": 10
+        },
+        {
+          "attraction": {
+            "id": "81d663fc-ef37-40fe-b1c7-dc768a5a57f8",
+            "name": "Taron",
+            "slug": "81d663fc-taron",
+            "attribute": {
+              "valueAsString": "117 km/h"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/WM/kw/WMkwyG3EkWVaMo3WZX8Mji.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/WM/kw/WMkwyG3EkWVaMo3WZX8Mji.jpg?class=large",
+                "contributor": {
+                  "username": "den_miseler",
+                  "slug": "den-miseler"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2020-04-30"
+                }
+              }
+            ]
+          },
+          "totalRides": 26
+        },
+        {
+          "attraction": {
+            "id": "668a5ec5-8a88-4dd5-8241-87c51197a4d4",
+            "name": "Kondaa",
+            "slug": "668a5ec5-kondaa",
+            "attribute": {
+              "valueAsString": "113 km/h"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/Mh/b5/Mhb5E6NEwzYucWzFMcQExq.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/Mh/b5/Mhb5E6NEwzYucWzFMcQExq.jpg?class=large",
+                "contributor": {
+                  "username": "Steffen",
+                  "slug": "steffen"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2021-05-08"
+                }
+              }
+            ]
+          },
+          "totalRides": 7
+        }
+      ]
+    },
+    "longestRide": {
+      "items": [
+        {
+          "attraction": {
+            "id": "4a5dbd7f-6df8-4834-b06c-37fd35060807",
+            "name": "Silver Star",
+            "slug": "4a5dbd7f-silver-star",
+            "attribute": {
+              "valueAsString": "1,620.00 m"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/9p/yk/9pykBit9rfYXyQJfag65VV.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/9p/yk/9pykBit9rfYXyQJfag65VV.jpg?class=large",
+                "contributor": {
+                  "username": "VR999",
+                  "slug": "vr999"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2020-08-24"
+                }
+              }
+            ]
+          },
+          "totalRides": 10
+        },
+        {
+          "attraction": {
+            "id": "81d663fc-ef37-40fe-b1c7-dc768a5a57f8",
+            "name": "Taron",
+            "slug": "81d663fc-taron",
+            "attribute": {
+              "valueAsString": "1,320.00 m"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/WM/kw/WMkwyG3EkWVaMo3WZX8Mji.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/WM/kw/WMkwyG3EkWVaMo3WZX8Mji.jpg?class=large",
+                "contributor": {
+                  "username": "den_miseler",
+                  "slug": "den-miseler"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2020-04-30"
+                }
+              }
+            ]
+          },
+          "totalRides": 26
+        },
+        {
+          "attraction": {
+            "id": "6eff41b1-abae-4225-85c3-1f0aba4c3c34",
+            "name": "Colorado Adventure",
+            "slug": "6eff41b1-colorado-adventure",
+            "attribute": {
+              "valueAsString": "1,280.00 m"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/P2/Yg/P2YgrrEew4NX9tSa28PL4F.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/P2/Yg/P2YgrrEew4NX9tSa28PL4F.jpg?class=large",
+                "contributor": {
+                  "username": "airtimeaddicted",
+                  "slug": "airtimeaddicted"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2018-12-31"
+                }
+              }
+            ]
+          },
+          "totalRides": 18
+        }
+      ]
+    },
+    "highestRide": {
+      "items": [
+        {
+          "attraction": {
+            "id": "4281a77e-d729-4a5f-a189-666702417170",
+            "name": "Dalton Terror",
+            "slug": "4281a77e-dalton-terror",
+            "attribute": {
+              "valueAsString": "77.00 m"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/42/Wh/42Wh8B9vHBaFscXiuzWXyB.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/42/Wh/42Wh8B9vHBaFscXiuzWXyB.jpg?class=large",
+                "contributor": {
+                  "username": "Brookfield",
+                  "slug": "brookfield"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2019-06-26"
+                }
+              }
+            ]
+          },
+          "totalRides": 1
+        },
+        {
+          "attraction": {
+            "id": "4a5dbd7f-6df8-4834-b06c-37fd35060807",
+            "name": "Silver Star",
+            "slug": "4a5dbd7f-silver-star",
+            "attribute": {
+              "valueAsString": "73.00 m"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/9p/yk/9pykBit9rfYXyQJfag65VV.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/9p/yk/9pykBit9rfYXyQJfag65VV.jpg?class=large",
+                "contributor": {
+                  "username": "VR999",
+                  "slug": "vr999"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2020-08-24"
+                }
+              }
+            ]
+          },
+          "totalRides": 10
+        },
+        {
+          "attraction": {
+            "id": "86325b83-c7af-4f2a-aead-89ab144ceb48",
+            "name": "Mystery Castle",
+            "slug": "86325b83-mystery-castle",
+            "attribute": {
+              "valueAsString": "65.00 m"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/8f/Jn/8fJnYmCQkzD3LcUbL59N9m.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/8f/Jn/8fJnYmCQkzD3LcUbL59N9m.jpg?class=large",
+                "contributor": {
+                  "username": "airtimeaddicted",
+                  "slug": "airtimeaddicted"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2019-01-06"
+                }
+              }
+            ]
+          },
+          "totalRides": 5
+        }
+      ]
+    },
+    "strongestRide": {
+      "items": [
+        {
+          "attraction": {
+            "id": "49f6061c-ca08-486f-bc16-aed2d60e96d2",
+            "name": "Cobra",
+            "slug": "49f6061c-cobra",
+            "attribute": {
+              "valueAsString": "5.20 g"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/C1/ff/C1ffwdLfSz8uimbh5yV25v.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/C1/ff/C1ffwdLfSz8uimbh5yV25v.jpg?class=large",
+                "contributor": {
+                  "username": "Brookfield",
+                  "slug": "brookfield"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2019-06-26"
+                }
+              }
+            ]
+          },
+          "totalRides": 3
+        },
+        {
+          "attraction": {
+            "id": "e794c92e-5d03-401e-8ebf-8710dcffa221",
+            "name": "Speed of Sound",
+            "slug": "e794c92e-speed-of-sound",
+            "attribute": {
+              "valueAsString": "5.20 g"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/JH/n4/JHn4EWAFbSZPQaB6bJWnSx.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/JH/n4/JHn4EWAFbSZPQaB6bJWnSx.jpg?class=large",
+                "contributor": {
+                  "username": "Clanfamily",
+                  "slug": "clanfamily"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2022-06-17"
+                }
+              }
+            ]
+          },
+          "totalRides": 5
+        },
+        {
+          "attraction": {
+            "id": "4089c8b3-5eb7-41eb-b78c-3fefe1b97538",
+            "name": "Fēnix",
+            "slug": "4089c8b3-fenix",
+            "attribute": {
+              "valueAsString": "5.00 g"
+            },
+            "images": [
+              {
+                "url": "https://media.coaster.cloud/attractions/6W/N8/6WN8QujwCoqbPCB6D3LaJ4.jpg?class=square80",
+                "social": "https://media.coaster.cloud/attractions/6W/N8/6WN8QujwCoqbPCB6D3LaJ4.jpg?class=large",
+                "contributor": {
+                  "username": "Clanfamily",
+                  "slug": "clanfamily"
+                },
+                "customCopyrightName": null,
+                "customCopyrightUrl": null,
+                "license": {
+                  "name": "CC BY-NC-ND 4.0",
+                  "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode"
+                },
+                "date": {
+                  "value": "2019-08-02"
+                }
+              }
+            ]
+          },
+          "totalRides": 4
+        }
+      ]
+    },
+    "counts": [
+      {
+        "key": "totalAttractions",
+        "label": "Attractions",
+        "value": 156
+      },
+      {
+        "key": "totalThemeRideAttractions",
+        "label": "Theme rides",
+        "value": 27
+      },
+      {
+        "key": "totalCoasterAttractions",
+        "label": "Rollercoasters",
+        "value": 63
+      },
+      {
+        "key": "totalShowAttractions",
+        "label": "Shows",
+        "value": 14
+      },
+      {
+        "key": "totalPointOfInterestAttractions",
+        "label": "Point of interests",
+        "value": 2
+      },
+      {
+        "key": "totalScareZoneAttractions",
+        "label": "Scare zones",
+        "value": 3
+      },
+      {
+        "key": "totalFlatRideAttractions",
+        "label": "Flat rides",
+        "value": 25
+      },
+      {
+        "key": "totalMazeAttractions",
+        "label": "Mazes",
+        "value": 1
+      },
+      {
+        "key": "totalWalkTroughAttractions",
+        "label": "Walk-throughs",
+        "value": 14
+      },
+      {
+        "key": "totalWaterrideAttractions",
+        "label": "Water rides",
+        "value": 7
+      },
+      {
+        "key": "totalParks",
+        "label": "Parks",
+        "value": 10
+      },
+      {
+        "key": "totalCountries",
+        "label": "Countries",
+        "value": 4
+      },
+      {
+        "key": "totalRides",
+        "label": "Rides",
+        "value": 480
+      },
+      {
+        "key": "totalVisits",
+        "label": "Park visits",
+        "value": 47
+      }
+    ],
+    "rideFacts": [
+      {
+        "key": "totalRideLength",
+        "label": "Distance covered",
+        "value": 274012.49999999994,
+        "valueAsString": "274.01 km"
+      },
+      {
+        "key": "averageRideLength",
+        "label": "Average ride length",
+        "value": 740.5743243243242,
+        "valueAsString": "740.57 m"
+      },
+      {
+        "key": "totalRideHeight",
+        "label": "Altitude covered",
+        "value": 8601.199999999997,
+        "valueAsString": "8,601.20 m"
+      },
+      {
+        "key": "averageRideHeight",
+        "label": "Average ride height",
+        "value": 26.064242424242416,
+        "valueAsString": "26.06 m"
+      },
+      {
+        "key": "averageRideSpeed",
+        "label": "Average ride speed",
+        "value": 68.88888888888889,
+        "valueAsString": "68.89 km/h"
+      },
+      {
+        "key": "totalDuration",
+        "label": "Total duration",
+        "value": 103193,
+        "valueAsString": "28:39:53"
+      },
+      {
+        "key": "averageDuration",
+        "label": "Average duration",
+        "value": 235.0637813211845,
+        "valueAsString": "00:03:55"
+      },
+      {
+        "key": "totalAirtime",
+        "label": "Total airtime",
+        "value": 199,
+        "valueAsString": "199.00 sec."
+      },
+      {
+        "key": "averageAirtime",
+        "label": "Average airtime",
+        "value": 3.685185185185185,
+        "valueAsString": "3.69 sec."
+      },
+      {
+        "key": "totalRideInversions",
+        "label": "Inversions",
+        "value": 338,
+        "valueAsString": "338"
+      },
+      {
+        "key": "averageRideInversions",
+        "label": "Average inversions per ride",
+        "value": 0.7041666666666667,
+        "valueAsString": "0.70"
+      }
+    ]
+  }
+}

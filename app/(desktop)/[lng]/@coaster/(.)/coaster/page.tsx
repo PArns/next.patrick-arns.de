@@ -67,6 +67,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
           alt={t("title")}
           fill={true}
           quality={80}
+          placeholder="blur"
           className="absolute bottom-0 left-0 right-0 top-0 h-max w-max object-cover"
         />
         <div className="py-10 @md/header:py-20 @lg/header:py-28">
