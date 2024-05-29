@@ -42,14 +42,6 @@ export default async function CoasterStats({ lng }: { lng: string }) {
   });
 
   const coasterStats = await fetchCoasterStats();
-  const coasterWithHighestCount = coasterStats?.attractionRides.items[0];
-
-  const mausAuChocolat = getAttractionStats(
-    coasterStats,
-    "d466eaf7-4e89-4112-b4b2-1ad4584a62ce",
-  );
-
-  const locale = lng == "en" ? "en-US" : "de-DE";
 
   return (
     <div className="relative">
@@ -77,32 +69,13 @@ export default async function CoasterStats({ lng }: { lng: string }) {
               <td>{t("rides")}:</td>
               <td>{`${getCount(coasterStats, "totalRides")}`}</td>
             </tr>
-            <tr>
-              <td>{t("inversions")}:</td>
-              <td>{`${getRideFact(coasterStats, "totalRideInversions")}`}</td>
-            </tr>
-            <tr>
-              <td>{t("length")}:</td>
-              <td>{`${getRideFact(coasterStats, "totalRideLength")}`}</td>
-            </tr>
-            <tr>
-              <td>{t("time")}:</td>
-              <td>{`${getRideFact(coasterStats, "totalDuration")}`}</td>
-            </tr>
           </tbody>
         </table>
 
         <ScoreCard
           title={t("mausAuChocolatScore")}
-          attraction={mausAuChocolat?.attraction}
-          score={mausAuChocolat?.highScore?.toLocaleString(locale)}
-          className="mt-2"
-        />
-
-        <ScoreCard
-          title={t("mostCounts")}
-          attraction={coasterWithHighestCount?.attraction}
-          score={coasterWithHighestCount?.totalRides.toLocaleString(locale)}
+          attraction={coasterStats?.parkVisits.items[0]}
+          lng={lng}
           className="mt-2"
         />
       </AppLink>
