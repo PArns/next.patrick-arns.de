@@ -1,6 +1,11 @@
 import { RideStatistic } from "../../types/TypeRideStatistics";
 
 export async function fetchCoasterStats(): Promise<RideStatistic | null> {
+
+  if (process.env.COASTERCLOUD_AUTH_TOKEN == undefined || 
+    process.env.COASTERCLOUD_USER_ID == undefined)
+    return null;
+
   // You can get your UserID & AuthToken from the official coaster.cloud website!
   // Just login, grab your cookie and URLDecode it
   const requestHeaders = new Headers();
