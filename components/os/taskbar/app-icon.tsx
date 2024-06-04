@@ -4,7 +4,7 @@ import { MotionValue, motion, useSpring, useTransform } from "framer-motion";
 import { useRef, useState, MouseEvent } from "react";
 
 import Image from "next/image";
-import clsx from 'clsx';
+import clsx from "clsx";
 import { WindowDetails, desktopWindowEvents } from "../windowManager/events";
 import { makeWindowActiveEvent, addLocaleToRoute } from "../windowManager";
 
@@ -35,7 +35,7 @@ export default function AppIcon({
   });
 
   let widthSync = useTransform(distance, [-150, 0, 150], [40, 100, 40]);
-  let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
+  let width = useSpring(widthSync, { mass: 0.1, stiffness: 200, damping: 10 });
 
   const handleMouseEvent = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -44,15 +44,12 @@ export default function AppIcon({
     makeWindowActiveEvent.emitOnMakeWindowActiveEvent(currentWindowStatus);
   };
 
-  let activeButton = clsx(
-    "inline-flex rounded-full h-1.5 w-1.5 shadow-md",
-    {
-      "bg-gray-500 dark:bg-gray-400": !currentWindowStatus.active,
-      "bg-sky-500 dark:bg-sky-600": currentWindowStatus.active,
-      visible: currentWindowStatus.visible,
-      invisible: !currentWindowStatus.visible,
-    },
-  );
+  let activeButton = clsx("inline-flex rounded-full h-1.5 w-1.5 shadow-md", {
+    "bg-gray-500 dark:bg-gray-400": !currentWindowStatus.active,
+    "bg-sky-500 dark:bg-sky-600": currentWindowStatus.active,
+    visible: currentWindowStatus.visible,
+    invisible: !currentWindowStatus.visible,
+  });
 
   return (
     <motion.a

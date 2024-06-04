@@ -29,7 +29,7 @@ export default function Dock({
   );
 
   const mainDivClasses = clsx(
-    "mx-auto flex h-16 items-end rounded-2xl bg-white/50 px-2.5 pb-3 backdrop-blur-md transition-transform dark:bg-neutral-600/50 gap-3 border border-neutral-400/90",
+    "mx-auto flex h-16 items-end rounded-2xl bg-white/50 px-2.5 pb-3 backdrop-blur-md transition-transform dark:bg-neutral-700/50 gap-3 border border-neutral-400 dark:border-neutral-600",
     {
       "translate-y-16": windowsArray.length == 0,
     },
@@ -50,7 +50,7 @@ export default function Dock({
       ))}
 
       {socialMediaLinks && socialMediaLinks.length && (
-        <div className="-m-2 mx-[0px] hidden h-full w-[1px] bg-neutral-400/90 md:block" />
+        <div className="-m-1.5 mx-[0px] hidden h-full w-[1px] bg-neutral-400 dark:bg-neutral-600 md:block" />
       )}
 
       {socialMediaLinks &&

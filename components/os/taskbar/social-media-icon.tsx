@@ -5,7 +5,7 @@ import { useRef, MouseEvent } from "react";
 
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import { EntryFieldTypes } from "contentful/dist/types/types/entry";
-import clsx from 'clsx';
+import clsx from "clsx";
 
 export default function SocialMediaIcon({
   mouseX,
@@ -35,7 +35,7 @@ export default function SocialMediaIcon({
   });
 
   let widthSync = useTransform(distance, [-150, 0, 150], [40, 100, 40]);
-  let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
+  let width = useSpring(widthSync, { mass: 0.1, stiffness: 200, damping: 10 });
 
   const handleMouseEvent = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
