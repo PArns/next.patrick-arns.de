@@ -106,7 +106,7 @@ export default async function ScoreCard({
   );
 
   const scoreValueClassNames = clsx(
-    "font-bold text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]",
+    "font-bold text-white text-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]",
     {
       "text-3xl": isParkVisit(attraction) && big,
       "text-4xl": !isParkVisit(attraction) && big,
