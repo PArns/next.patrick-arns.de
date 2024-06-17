@@ -1,7 +1,7 @@
 "use client";
 
 import { createEvent } from "react-event-hook";
-import { Dialog, Transition } from "@headlessui/react";
+import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import Image from "next/image";
 import IconXMark from "@/components/icons/x-mark";
@@ -46,7 +46,7 @@ export default function Lightbox() {
           style={{ zIndex: 999 }}
           onClose={closeModal}
         >
-          <Transition.Child
+          <TransitionChild
             as={Fragment}
             enter="ease-out duration-300"
             enterFrom="opacity-0"
@@ -56,11 +56,11 @@ export default function Lightbox() {
             leaveTo="opacity-0"
           >
             <div className="fixed inset-0 bg-black/80 backdrop-blur-md" />
-          </Transition.Child>
+          </TransitionChild>
 
           <div className="overflow-none fixed inset-0 h-96">
             <div className="flex items-center justify-center pt-6 text-center">
-              <Transition.Child
+              <TransitionChild
                 as={Fragment}
                 enter="ease-out duration-300"
                 enterFrom="opacity-0 scale-95"
@@ -69,8 +69,8 @@ export default function Lightbox() {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="transform rounded-md border-2 border-sky-500 bg-white/60 text-left align-middle shadow-md backdrop-blur-sm transition-all dark:border-sky-600 dark:bg-neutral-700/60">
-                  <Dialog.Title
+                <DialogPanel className="transform rounded-md border-2 border-sky-500 bg-white/60 text-left align-middle shadow-md backdrop-blur-sm transition-all dark:border-sky-600 dark:bg-neutral-700/60">
+                  <DialogTitle
                     as="div"
                     className="flex h-7 border-b bg-white/30 dark:border-neutral-600 dark:bg-neutral-800/30"
                   >
@@ -94,7 +94,7 @@ export default function Lightbox() {
                     >
                       <IconXMark />
                     </button>
-                  </Dialog.Title>
+                  </DialogTitle>
                   <div>
                     {loading && (
                       <div className="flex h-max items-center justify-center p-6">
@@ -115,8 +115,8 @@ export default function Lightbox() {
                       />
                     )}
                   </div>
-                </Dialog.Panel>
-              </Transition.Child>
+                </DialogPanel>
+              </TransitionChild>
             </div>
           </div>
         </Dialog>

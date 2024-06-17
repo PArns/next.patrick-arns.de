@@ -36,8 +36,8 @@ function NextJsImage({
             title: title ? title : alt,
           });
         }}
-        onLoadingComplete={(image: any) => {
-          image.classList.remove("opacity-0");
+        onLoad={(image: any) => {
+          image.currentTarget.classList.remove("opacity-0");
         }}
         style={{ objectFit: "cover", width: "100%", height: "100%" }}
       />

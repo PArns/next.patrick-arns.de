@@ -41,8 +41,8 @@ export default function BackgroundImage({
           alt={background.name || "Background"}
           style={bgImage}
           className="opacity-0 transition-all duration-500"
-          onLoadingComplete={(image: any) => {
-            image.classList.remove("opacity-0");
+          onLoad={(image: any) => {
+            image.currentTarget.classList.remove("opacity-0");
           }}
         />
       )}
