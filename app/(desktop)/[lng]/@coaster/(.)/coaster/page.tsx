@@ -153,6 +153,14 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
             title={t("counts")}
             count={getCount(coasterStats, "totalCoasterAttractions").toString()}
           />
+          <ScoreStat
+            title={t("attractions")}
+            count={getCount(coasterStats, "totalAttractions").toString()}
+          />
+          <ScoreStat
+            title={t("rides")}
+            count={getCount(coasterStats, "totalRides").toString()}
+          />
         </div>
 
         <div className="flex-rows flex flex-wrap place-content-center gap-6 pb-6">
