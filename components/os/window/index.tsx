@@ -3,7 +3,7 @@
 import React, { useEffect, useCallback, useState, useRef } from "react";
 import { Rnd } from "react-rnd";
 
-import clsx from 'clsx';
+import clsx from "clsx";
 import Image from "next/image";
 
 import { makeWindowActiveEvent } from "../windowManager";
@@ -240,11 +240,10 @@ export default function DesktopWindow({
     events.windowRouteChanged.emitOnWindowRouteChanged(currentWindow);
   };
 
-  const windowClasses = clsx("rounded-md shadow-md border-2", {
-    "bg-white/80 dark:bg-neutral-700/80 dark:border-sky-600 border-sky-500 backdrop-blur-md":
+  const windowClasses = clsx("rounded-md shadow-md border-2 relative", {
+    "bg-white/80 dark:bg-neutral-700/80 dark:border-sky-600 border-sky-500":
       activeState,
-    "bg-white/50 dark:bg-neutral-700/50 border-neutral-700/50 backdrop-blur-sm":
-      !activeState,
+    "bg-white/50 dark:bg-neutral-700/50 border-neutral-700/50": !activeState,
     "opacity-0": !initDoneState,
   });
 
@@ -277,6 +276,7 @@ export default function DesktopWindow({
           ref={rndRef}
           dragHandleClassName="draggable"
         >
+          <div className="absolute inset-0 -z-10 rounded-md backdrop-blur-md"></div>
           <div className="flex h-full cursor-default flex-col">
             <div className="draggable flex h-7 border-b bg-white/30 dark:border-neutral-600 dark:bg-neutral-800/30">
               <div className="flex flex-none items-center justify-center pl-1">
