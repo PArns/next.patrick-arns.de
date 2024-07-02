@@ -23,6 +23,7 @@ import ScoreCard from "@/components/coaster-stats/score-card";
 import ScoreStat from "@/components/coaster-stats/score-stat";
 import { GetTopParks } from "@/data-provider/contentful/provider/coaster-provider";
 import TopParkEntry from "@/components/coaster/top-item";
+import AppLink from "@/components/os/app-link";
 
 export async function generateMetadata({
   params,
@@ -134,9 +135,13 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
 
             <div className="mb-4">
               Auf dieser Seite findet ihr eine Zusammenfassung meines
-              &quot;Freizeitparklebens&quot;. Schaut auch in meinen Blog, wo ich
-              ausf&uuml;hrlicher &uuml;ber meine Besuche in den verschiedenen
-              Parks schreibe.
+              &quot;Freizeitparklebens&quot; in Fakten und Zahlen, seit Sommer
+              2022. Schaut auch in{" "}
+              <AppLink href="/de/blog" id="blog" className="external">
+                meinen Blog
+              </AppLink>
+              , wo ich ausf&uuml;hrlicher &uuml;ber meine Besuche in den
+              verschiedenen Parks schreibe.
             </div>
             <div>
               Solltet ihr mich mit meinem Pixelrucksack in einem Park sehen,
@@ -178,8 +183,11 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
 
             <div className="mb-4">
               On this page, you&apos;ll find a summary of my &quot;amusement
-              park life.&quot; Also, check out my blog where I write more
-              extensively about my visits to various parks.
+              park life.&quot; Also, check out{" "}
+              <AppLink href="/en/blog" id="blog" className="external">
+                my blog
+              </AppLink>{" "}
+              where I write more extensively about my visits to various parks.
             </div>
             <div>
               If you see me with my pixel backpack at a park, just come up and
