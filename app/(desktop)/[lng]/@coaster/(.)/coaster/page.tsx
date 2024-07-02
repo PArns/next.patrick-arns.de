@@ -95,6 +95,99 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
         <h3 className="mb-1 text-3xl font-extrabold leading-tight text-neutral-900 dark:text-white lg:text-4xl">
           {t("title")}
         </h3>
+
+        <TranslateSwitch locale={params.lng}>
+          <Translation lang="de">
+            <div className="mb-4">
+              Irgendwie weigere ich mich, erwachsen zu werden - zumindest sagen
+              das viele, die mich kennen.
+            </div>
+
+            <div className="mb-4">
+              Wer verbringt schon seine Wochenenden und einen Großteil seiner
+              Ferien in Freizeitparks? Wird das nicht irgendwann langweilig?
+            </div>
+
+            <div className="mb-4">
+              Nein, &uuml;berhaupt nicht! Ganz und gar nicht ...
+            </div>
+
+            <div className="mb-4">
+              Freizeitparks sind aus meinem Leben nicht mehr wegzudenken. Seit
+              meinem ersten Besuch in einem Freizeitpark, als ich ungef&auml;hr
+              sechs Jahre alt war, schl&auml;gt mein Herz f&uuml;r diese
+              magischen Orte! Ein Besuch in einem Freizeitpark ist f&uuml;r mich
+              wie das Eintauchen in eine andere Welt. Es geht nicht um das
+              &uuml;bliche &quot;h&ouml;her, schneller, weiter&quot;, sondern um
+              das Eintauchen in fantastische Welten - sei es Steampunk, eine
+              versunkene Stadt oder ein Bergdorf, durch das eine Achterbahn
+              rast.
+            </div>
+
+            <div className="mb-4">
+              Freizeitparks begleiten mich seit vielen Jahren als nicht ganz
+              billiges Hobby. Seit Sommer 2022 z&auml;hle ich mich auch zu den
+              Achterbahnfreunden, die m&ouml;glichst viele verschiedene
+              Achterbahnen fahren und entsprechend &quot;z&auml;hlen&quot;
+              wollen.
+            </div>
+
+            <div className="mb-4">
+              Auf dieser Seite findet ihr eine Zusammenfassung meines
+              &quot;Freizeitparklebens&quot;. Schaut auch in meinen Blog, wo ich
+              ausf&uuml;hrlicher &uuml;ber meine Besuche in den verschiedenen
+              Parks schreibe.
+            </div>
+            <div>
+              Solltet ihr mich mit meinem Pixelrucksack in einem Park sehen,
+              sprecht mich einfach an. Ich freue mich &uuml;ber jeden neuen
+              Suchti, mit dem ich meine Leidenschaft f&uuml;r Freizeitparks
+              teilen kann!
+            </div>
+          </Translation>
+          <Translation lang="en">
+            <div className="mb-4">
+              Somehow, I refuse to grow up - at least that&apos;s what many
+              people who know me say.
+            </div>
+
+            <div className="mb-4">
+              Who spends their weekends and most of their holidays at amusement
+              parks? Doesn&apos;t that get boring eventually?
+            </div>
+
+            <div className="mb-4">No, not at all! Absolutely not...</div>
+
+            <div className="mb-4">
+              Amusement parks have become an irreplaceable part of my life.
+              Since my first visit to an amusement park when I was about six
+              years old, my heart has beaten for these magical places! A visit
+              to an amusement park is like diving into another world for me.
+              It&apos;s not about the usual &quot;higher, faster, further,&quot;
+              but about immersing myself in fantastic worlds - whether it&apos;s
+              steampunk, a sunken city, or a mountain village with a roller
+              coaster racing through it.
+            </div>
+
+            <div className="mb-4">
+              Amusement parks have been my not-so-cheap hobby for many years.
+              Since summer 2022, I also count myself among the roller coaster
+              enthusiasts who aim to ride and &quot;count&quot; as many
+              different roller coasters as possible.
+            </div>
+
+            <div className="mb-4">
+              On this page, you&apos;ll find a summary of my &quot;amusement
+              park life.&quot; Also, check out my blog where I write more
+              extensively about my visits to various parks.
+            </div>
+            <div>
+              If you see me with my pixel backpack at a park, just come up and
+              say hi. I look forward to meeting every new enthusiast with whom I
+              can share my passion for amusement parks!
+            </div>
+          </Translation>
+        </TranslateSwitch>
       </div>
 
       <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
