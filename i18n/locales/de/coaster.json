@@ -1,7 +1,8 @@
 {
   "title": "Freizeitparks",
   "subTitle": "Meine große Leidenschaft",
-  "statistics": "Meine Freizeitpark Statistik",
+  "sectionTopParks": "Meine persönlichen Top 3 Freizeitparks",
+  "sectionStatistics": "Meine Freizeitpark Statistik",
   "coasterStats": "Achterbahnen",
   "visits": "Besuche",
   "countries": "Länder",
@@ -20,5 +21,6 @@
   "strongestRide": "Intensivste Fahrt",
   "pos1": "Platz 1",
   "pos2": "Platz 2",
-  "pos3": "Platz 3"
+  "pos3": "Platz 3",
+  "pos": "Platz"
 }

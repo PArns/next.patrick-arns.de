@@ -5,3 +5,4 @@ export type { TypeBlogPostVideo, TypeBlogPostVideoFields, TypeBlogPostVideoSkele
 export type { TypeImageGallery, TypeImageGalleryFields, TypeImageGallerySkeleton } from "./TypeImageGallery";
 export type { TypeProject, TypeProjectFields, TypeProjectSkeleton } from "./TypeProject";
 export type { TypeSocialMediaLink, TypeSocialMediaLinkFields, TypeSocialMediaLinkSkeleton } from "./TypeSocialMediaLink";
+export type { TypeTopParks, TypeTopParksFields, TypeTopParksSkeleton } from "./TypeTopParks";

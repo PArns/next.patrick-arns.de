@@ -69,6 +69,7 @@ export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
       fill={fill}
       quality={quality}
       style={style}
+      sizes={sizes}
       {...rest}
     />
   );

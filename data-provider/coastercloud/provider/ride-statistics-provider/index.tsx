@@ -1,11 +1,6 @@
-import { RideStatistic } from "../../types/TypeRideStatistics";
+import { ParkVisit, RideStatistic } from "../../types/TypeRideStatistics";
 
-export async function fetchCoasterStats(): Promise<RideStatistic | null> {
-
-  if (process.env.COASTERCLOUD_AUTH_TOKEN == undefined || 
-    process.env.COASTERCLOUD_USER_ID == undefined)
-    return null;
-
+function getAuthHeaders(): Headers {
   // You can get your UserID & AuthToken from the official coaster.cloud website!
   // Just login, grab your cookie and URLDecode it
   const requestHeaders = new Headers();
@@ -18,6 +13,16 @@ export async function fetchCoasterStats(): Promise<RideStatistic | null> {
     "X-AUTH-TOKEN",
     process.env.COASTERCLOUD_AUTH_TOKEN || "",
   );
+
+  return requestHeaders;
+}
+
+export async function fetchCoasterStats(): Promise<RideStatistic | null> {
+  if (
+    process.env.COASTERCLOUD_AUTH_TOKEN == undefined ||
+    process.env.COASTERCLOUD_USER_ID == undefined
+  )
+    return null;
 
   const raw = JSON.stringify({
     query: "730c08c5-6a03-4c50-8544-2b97754161aa",
@@ -47,7 +52,52 @@ export async function fetchCoasterStats(): Promise<RideStatistic | null> {
 
   const requestOptions: RequestInit = {
     method: "POST",
-    headers: requestHeaders,
+    headers: getAuthHeaders(),
+    body: raw,
+    redirect: "follow",
+    next: {
+      revalidate: process.env.NODE_ENV === "development" ? 10 : 60 * 60 * 6, // 6H Cache Time
+      tags: ["coaster"],
+    },
+  };
+
+  try {
+    const response = await fetch(
+      "https://data.coaster.cloud/v1",
+      requestOptions,
+    );
+
+    const result = await response.json();
+    const statistics = result.data.entity.rideStatistic;
+
+    return statistics;
+  } catch (error) {
+    console.error("Error fetching coaster stats:", error);
+    return null;
+  }
+}
+
+export async function fetchParkVisits(): Promise<ParkVisit[] | null> {
+  if (
+    process.env.COASTERCLOUD_AUTH_TOKEN == undefined ||
+    process.env.COASTERCLOUD_USER_ID == undefined
+  )
+    return null;
+
+  const raw = JSON.stringify({
+    query: "8eea5c5d-6651-4455-bca3-c9942a102dc1",
+    variables: {
+      id: process.env.COASTERCLOUD_USER_ID,
+      locale: "en",
+      itemsPerPage: 20,
+      page: 1,
+      filter: {},
+    },
+  });
+
+  const requestOptions: RequestInit = {
+    method: "POST",
+    headers: getAuthHeaders(),
     body: raw,
     redirect: "follow",
     next: {
@@ -63,7 +113,8 @@ export async function fetchCoasterStats(): Promise<RideStatistic | null> {
     );
 
     const result = await response.json();
-    const statistics = result.data.entity.rideStatistic;
+    const statistics = result.data.entity.rideStatistic?.parkVisits?.items;
+
     return statistics;
   } catch (error) {
     console.error("Error fetching coaster stats:", error);

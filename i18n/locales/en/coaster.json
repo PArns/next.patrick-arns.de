@@ -1,7 +1,8 @@
 {
   "title": "Theme Parks",
   "subTitle": "My big passion",
-  "statistics": "My theme park statistics",
+  "sectionTopParks": "My personal top 3 theme parks",
+  "sectionStatistics": "My theme park statistics",
   "coasterStats": "Coaster Count",
   "visits": "Visits",
   "countries": "Countries",
@@ -20,5 +21,6 @@
   "strongestRide": "Strongest Ride",
   "pos1": "Position 1",
   "pos2": "Position 2",
-  "pos3": "Position 3"
+  "pos3": "Position 3",
+  "pos": "Rank"
 }

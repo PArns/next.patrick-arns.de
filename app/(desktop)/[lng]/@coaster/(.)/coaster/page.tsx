@@ -4,7 +4,10 @@ import { Metadata } from "next";
 
 import PageBaseConfiguration from "@/configuration";
 
-import { fetchCoasterStats } from "@/data-provider/coastercloud/provider/ride-statistics-provider";
+import {
+  fetchCoasterStats,
+  fetchParkVisits,
+} from "@/data-provider/coastercloud/provider/ride-statistics-provider";
 
 import CoasterImage from "@/public/jumbotron/coaster.jpg";
 import PoweredByCoasterCloud from "@/components/coaster-stats/powered-by";
@@ -18,6 +21,8 @@ import {
 } from "@/components/coaster-stats";
 import ScoreCard from "@/components/coaster-stats/score-card";
 import ScoreStat from "@/components/coaster-stats/score-stat";
+import { GetTopParks } from "@/data-provider/contentful/provider/coaster-provider";
+import TopParkEntry from "@/components/coaster/top-item";
 
 export async function generateMetadata({
   params,
@@ -51,7 +56,9 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
     namespaces: ["coaster"],
   });
 
+  const topParks = await GetTopParks({ locale: params.lng });
   const coasterStats = await fetchCoasterStats();
+  const parkVisits = await fetchParkVisits();
 
   const coasterWithHighestCount = coasterStats?.attractionRides.items[0];
   const mausAuChocolat = getAttractionStats(
@@ -92,7 +99,62 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
 
       <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
         <h3 className="mb-1 text-2xl font-extrabold leading-tight text-neutral-900 dark:text-white lg:text-3xl">
-          {t("statistics")}
+          {t("sectionTopParks")}
+        </h3>
+
+        <TranslateSwitch locale={params.lng}>
+          <Translation lang="de">
+            <div className="mb-4">
+              Zwar bin ich mit meinen immerhin{" "}
+              {getCount(coasterStats, "totalParks").toString()} besuchten
+              verschiedenen Parks weltweit und{" "}
+              {getCount(coasterStats, "totalVisits").toString()} Parkbesuchen
+              insg. immer noch relativ weit unten in der Liste der Coaster
+              Junkies, dennoch möchte ich euch <b>meine persönliche Top 3</b>{" "}
+              der Freizeitparks auflisten, die ich bis jetzt besucht habe.
+            </div>
+            <div className="mb-4">
+              Diese Liste spiegelt nur meine eigene Meinung dar und beruht nur
+              auf Parks, die ich auch selbst bereits besucht habe! Die Liste
+              kann und wird sich also zwangsläufig über die Zeit immer einmal
+              wieder ändern ;)
+            </div>
+          </Translation>
+          <Translation lang="en">
+            <div className="mb-4">
+              Although I have visited{" "}
+              {getCount(coasterStats, "totalParks").toString()} different parks
+              worldwide and have a total of{" "}
+              {getCount(coasterStats, "totalVisits").toString()} park visits, I
+              am still relatively low on the list of coaster junkies.
+              Nevertheless, I would like to share with you{" "}
+              <b>my personal top 3</b> theme parks that I have visited so far.
+            </div>
+            <div className="mb-4">
+              This list reflects only my own opinion and is based only on parks
+              that I have personally visited! The list can and will inevitably
+              change over time ;)
+            </div>
+          </Translation>
+        </TranslateSwitch>
+
+        <div className="flex flex-col gap-4">
+          {topParks &&
+            parkVisits &&
+            topParks.parks.map((park) => (
+              <TopParkEntry
+                park={park}
+                locale={params.lng}
+                parkVisits={parkVisits}
+                key={park.name}
+              />
+            ))}
+        </div>
+      </div>
+
+      <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
+        <h3 className="mb-1 text-2xl font-extrabold leading-tight text-neutral-900 dark:text-white lg:text-3xl">
+          {t("sectionStatistics")}
         </h3>
 
         <TranslateSwitch locale={params.lng}>
@@ -117,7 +179,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
               >
                 Coaster.Cloud
               </a>
-              , überhaupt angefangen habe, meine Counts zu zählen.
+              , überhaupt angefangen habe, meine Parkbesuche zu zählen.
             </div>
           </Translation>
 
