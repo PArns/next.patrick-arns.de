@@ -110,7 +110,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
             </div>
 
             <div className="mb-4">
-              Nein, &uuml;berhaupt nicht! Ganz und gar nicht ...
+              Nein, &uuml;berhaupt nicht! Ganz im Gegenteil ...
             </div>
 
             <div className="mb-4">
@@ -128,7 +128,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
             <div className="mb-4">
               Freizeitparks begleiten mich seit vielen Jahren als nicht ganz
               billiges Hobby. Seit Sommer 2022 z&auml;hle ich mich auch zu den
-              Achterbahnfreunden, die m&ouml;glichst viele verschiedene
+              Achterbahnjunkeys, die m&ouml;glichst viele verschiedene
               Achterbahnen fahren und entsprechend &quot;z&auml;hlen&quot;
               wollen.
             </div>
