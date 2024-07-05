@@ -38,16 +38,16 @@ export default async function TopParkEntry({
   return (
     <div className="relative mx-2 @container/park">
       <div className="hidden h-8 @2xl/park:block"></div>
-      <div className="left-0 top-4 z-10 flex w-full shadow-lg @2xl/park:absolute @2xl/park:h-full @2xl/park:w-[290px]">
+      <div className="left-0 top-4 z-10 flex w-full drop-shadow-lg @2xl/park:absolute @2xl/park:h-full @2xl/park:w-[290px]">
         <ContentfulImageAsset
           asset={park.image}
           alt={park.name}
           fill
           className="rounded-lg object-cover"
-          sizes="(min-width: 1024px) 16rem, 8rem"
+          sizes="(min-width: 1024px) 17rem"
         />
       </div>
-      <div className="flex rounded-lg border border-neutral-400 bg-neutral-100/40 backdrop-blur-sm @2xl/park:backdrop-blur-lg dark:bg-neutral-900/40">
+      <div className="flex rounded-lg border border-neutral-400 bg-neutral-100/40 drop-shadow-lg backdrop-blur-sm @2xl/park:backdrop-blur-lg dark:bg-neutral-900/40">
         <div className="hidden w-[285px] flex-none @2xl/park:block" />
         <div className="m-4 grow">
           <h2 className="pb-2 text-2xl font-semibold">
