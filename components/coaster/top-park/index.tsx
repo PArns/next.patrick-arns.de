@@ -38,7 +38,7 @@ export default async function TopParkEntry({
   return (
     <div className="relative mx-2 @container/park">
       <div className="hidden h-8 @2xl/park:block"></div>
-      <div className="left-0 top-4 z-10 flex w-full drop-shadow-lg @2xl/park:absolute @2xl/park:h-full @2xl/park:w-[290px]">
+      <div className="left-0 @2xl/park:top-4 flex w-full h-full drop-shadow-lg absolute @2xl/park:h-full @2xl/park:w-[290px] @2xl/park:z-10">
         <ContentfulImageAsset
           asset={park.image}
           alt={park.name}

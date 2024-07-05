@@ -8,7 +8,6 @@ import { TopCoaster } from "@/data-provider/contentful/provider/coaster-provider
 export function getCount(counts: Count[] | null, key: string): Number {
   if (counts === null || counts.length === 0) return 0;
 
-  console.log("COUNTS", counts);
   const count = counts.find((item) => item.key === key);
   return count ? count.value : 0;
 }
@@ -32,7 +31,7 @@ export default async function TopCoasterEntry({
   return (
     <div className="relative mx-2 @container/park">
       <div className="hidden h-8 @2xl/park:block"></div>
-      <div className="left-0 top-4 z-10 flex w-full drop-shadow-lg @2xl/park:absolute @2xl/park:h-full @2xl/park:w-[290px]">
+      <div className="absolute left-0 flex h-full w-full drop-shadow-lg @2xl/park:top-4 @2xl/park:z-10 @2xl/park:h-full @2xl/park:w-[290px]">
         <ContentfulImageAsset
           asset={coaster.image}
           alt={coaster.name}
