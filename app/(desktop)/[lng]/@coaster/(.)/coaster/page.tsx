@@ -311,7 +311,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
         </TranslateSwitch>
       </div>
 
-      <div className="flex-rows flex flex-wrap place-content-center gap-6 py-6">
+      <div className="flex-rows flex flex-wrap place-content-center gap-6 py-4">
         <ScoreStat
           title={t("counts")}
           count={getCount(coasterStats, "totalCoasterAttractions").toString()}
@@ -326,7 +326,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
         />
       </div>
 
-      <div className="flex-rows flex flex-wrap place-content-center gap-6 pb-6">
+      <div className="flex-rows mb-6 flex flex-wrap place-content-center gap-6">
         <ScoreStat
           title={t("visits")}
           count={getCount(coasterStats, "totalVisits").toString()}
@@ -434,7 +434,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
           big={true}
         />
       </div>
-      <div className="pr-4 pb-4">
+      <div className="pb-4 pr-4">
         <PoweredByCoasterCloud />
       </div>
     </div>
