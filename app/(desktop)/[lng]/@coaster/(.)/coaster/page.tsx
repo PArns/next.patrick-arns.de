@@ -238,19 +238,19 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
             </div>
           </Translation>
         </TranslateSwitch>
+      </div>
 
-        <div className="flex flex-col gap-4">
-          {topParks &&
-            parkVisits &&
-            topParks.parks.map((park) => (
-              <TopParkEntry
-                park={park}
-                locale={params.lng}
-                parkVisits={parkVisits}
-                key={park.name}
-              />
-            ))}
-        </div>
+      <div className="mb-4 mt-6 flex flex-col gap-6 @2xl:mb-6 @2xl:mt-0">
+        {topParks &&
+          parkVisits &&
+          topParks.parks.map((park) => (
+            <TopParkEntry
+              park={park}
+              locale={params.lng}
+              parkVisits={parkVisits}
+              key={park.name}
+            />
+          ))}
       </div>
 
       <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
@@ -309,131 +309,132 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
             </div>
           </Translation>
         </TranslateSwitch>
-        <hr className="mb-4" />
+      </div>
 
-        <div className="flex-rows flex flex-wrap place-content-center gap-6 pb-6">
-          <ScoreStat
-            title={t("counts")}
-            count={getCount(coasterStats, "totalCoasterAttractions").toString()}
-          />
-          <ScoreStat
-            title={t("attractions")}
-            count={getCount(coasterStats, "totalAttractions").toString()}
-          />
-          <ScoreStat
-            title={t("rides")}
-            count={getCount(coasterStats, "totalRides").toString()}
-          />
-        </div>
+      <div className="flex-rows flex flex-wrap place-content-center gap-6 py-6">
+        <ScoreStat
+          title={t("counts")}
+          count={getCount(coasterStats, "totalCoasterAttractions").toString()}
+        />
+        <ScoreStat
+          title={t("attractions")}
+          count={getCount(coasterStats, "totalAttractions").toString()}
+        />
+        <ScoreStat
+          title={t("rides")}
+          count={getCount(coasterStats, "totalRides").toString()}
+        />
+      </div>
 
-        <div className="flex-rows flex flex-wrap place-content-center gap-6 pb-6">
-          <ScoreStat
-            title={t("visits")}
-            count={getCount(coasterStats, "totalVisits").toString()}
-          />
+      <div className="flex-rows flex flex-wrap place-content-center gap-6 pb-6">
+        <ScoreStat
+          title={t("visits")}
+          count={getCount(coasterStats, "totalVisits").toString()}
+        />
 
-          <ScoreStat
-            title={t("countries")}
-            count={getCount(coasterStats, "totalCountries").toString()}
-          />
+        <ScoreStat
+          title={t("countries")}
+          count={getCount(coasterStats, "totalCountries").toString()}
+        />
 
-          <ScoreStat
-            title={t("parks")}
-            count={getCount(coasterStats, "totalParks").toString()}
-          />
+        <ScoreStat
+          title={t("parks")}
+          count={getCount(coasterStats, "totalParks").toString()}
+        />
 
-          <ScoreStat
-            title={t("inversions")}
-            count={getRideFact(coasterStats, "totalRideInversions")}
-          />
+        <ScoreStat
+          title={t("inversions")}
+          count={getRideFact(coasterStats, "totalRideInversions")}
+        />
 
-          <ScoreStat
-            title={t("length")}
-            count={getRideFact(coasterStats, "totalRideLength")}
-          />
+        <ScoreStat
+          title={t("length")}
+          count={getRideFact(coasterStats, "totalRideLength")}
+        />
 
-          <ScoreStat
-            title={t("time")}
-            count={getRideFact(coasterStats, "totalDuration")}
-          />
-        </div>
+        <ScoreStat
+          title={t("time")}
+          count={getRideFact(coasterStats, "totalDuration")}
+        />
+      </div>
 
-        <div className="flex-rows flex flex-wrap place-content-center gap-6">
-          <ScoreCard
-            title={t("pos1")}
-            attraction={coasterStats?.parkVisits.items[0]}
-            big={true}
-            lng={params.lng}
-          />
+      <div className="flex-rows flex flex-wrap place-content-center gap-6">
+        <ScoreCard
+          title={t("pos1")}
+          attraction={coasterStats?.parkVisits.items[0]}
+          big={true}
+          lng={params.lng}
+        />
 
-          <ScoreCard
-            title={t("pos2")}
-            attraction={coasterStats?.parkVisits.items[1]}
-            big={true}
-            lng={params.lng}
-          />
+        <ScoreCard
+          title={t("pos2")}
+          attraction={coasterStats?.parkVisits.items[1]}
+          big={true}
+          lng={params.lng}
+        />
 
-          <ScoreCard
-            title={t("pos3")}
-            attraction={coasterStats?.parkVisits.items[2]}
-            big={true}
-            lng={params.lng}
-          />
+        <ScoreCard
+          title={t("pos3")}
+          attraction={coasterStats?.parkVisits.items[2]}
+          big={true}
+          lng={params.lng}
+        />
 
-          <ScoreCard
-            title={t("mausAuChocolatScore")}
-            attraction={mausAuChocolat?.attraction}
-            score={mausAuChocolat?.highScore?.toLocaleString("en-US")}
-            big={true}
-          />
+        <ScoreCard
+          title={t("mausAuChocolatScore")}
+          attraction={mausAuChocolat?.attraction}
+          score={mausAuChocolat?.highScore?.toLocaleString("en-US")}
+          big={true}
+        />
 
-          <ScoreCard
-            title={t("mostCounts")}
-            attraction={coasterWithHighestCount?.attraction}
-            score={coasterWithHighestCount?.totalRides.toLocaleString("en-US")}
-            big={true}
-          />
+        <ScoreCard
+          title={t("mostCounts")}
+          attraction={coasterWithHighestCount?.attraction}
+          score={coasterWithHighestCount?.totalRides.toLocaleString("en-US")}
+          big={true}
+        />
 
-          <ScoreCard
-            title={t("fastestAttraction")}
-            attraction={coasterStats?.fastestRide.items[0].attraction}
-            score={
-              coasterStats?.fastestRide.items[0].attraction.attribute
-                .valueAsString
-            }
-            big={true}
-          />
+        <ScoreCard
+          title={t("fastestAttraction")}
+          attraction={coasterStats?.fastestRide.items[0].attraction}
+          score={
+            coasterStats?.fastestRide.items[0].attraction.attribute
+              .valueAsString
+          }
+          big={true}
+        />
 
-          <ScoreCard
-            title={t("longestRide")}
-            attraction={coasterStats?.longestRide.items[0].attraction}
-            score={
-              coasterStats?.longestRide.items[0].attraction.attribute
-                .valueAsString
-            }
-            big={true}
-          />
+        <ScoreCard
+          title={t("longestRide")}
+          attraction={coasterStats?.longestRide.items[0].attraction}
+          score={
+            coasterStats?.longestRide.items[0].attraction.attribute
+              .valueAsString
+          }
+          big={true}
+        />
 
-          <ScoreCard
-            title={t("highestRide")}
-            attraction={coasterStats?.highestRide.items[0].attraction}
-            score={
-              coasterStats?.highestRide.items[0].attraction.attribute
-                .valueAsString
-            }
-            big={true}
-          />
+        <ScoreCard
+          title={t("highestRide")}
+          attraction={coasterStats?.highestRide.items[0].attraction}
+          score={
+            coasterStats?.highestRide.items[0].attraction.attribute
+              .valueAsString
+          }
+          big={true}
+        />
 
-          <ScoreCard
-            title={t("strongestRide")}
-            attraction={coasterStats?.strongestRide.items[0].attraction}
-            score={
-              coasterStats?.strongestRide.items[0].attraction.attribute
-                .valueAsString
-            }
-            big={true}
-          />
-        </div>
+        <ScoreCard
+          title={t("strongestRide")}
+          attraction={coasterStats?.strongestRide.items[0].attraction}
+          score={
+            coasterStats?.strongestRide.items[0].attraction.attribute
+              .valueAsString
+          }
+          big={true}
+        />
+      </div>
+      <div className="pr-4 pb-4">
         <PoweredByCoasterCloud />
       </div>
     </div>
