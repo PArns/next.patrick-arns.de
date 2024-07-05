@@ -21,9 +21,13 @@ import {
 } from "@/components/coaster-stats";
 import ScoreCard from "@/components/coaster-stats/score-card";
 import ScoreStat from "@/components/coaster-stats/score-stat";
-import { GetTopParks } from "@/data-provider/contentful/provider/coaster-provider";
-import TopParkEntry from "@/components/coaster/top-item";
+import {
+  GetTopCoasters,
+  GetTopParks,
+} from "@/data-provider/contentful/provider/coaster-provider";
+import TopParkEntry from "@/components/coaster/top-park";
 import AppLink from "@/components/os/app-link";
+import TopCoasterEntry from "@/components/coaster/top-coaster";
 
 export async function generateMetadata({
   params,
@@ -58,6 +62,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
   });
 
   const topParks = await GetTopParks({ locale: params.lng });
+  const topCoasters = await GetTopCoasters({ locale: params.lng });
   const coasterStats = await fetchCoasterStats();
   const parkVisits = await fetchParkVisits();
 
@@ -249,6 +254,62 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
               locale={params.lng}
               parkVisits={parkVisits}
               key={park.name}
+            />
+          ))}
+      </div>
+
+      <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
+        <h3 className="mb-1 text-2xl font-extrabold leading-tight text-neutral-900 dark:text-white lg:text-3xl">
+          {t("sectionTopCoaster")}
+        </h3>
+
+        <TranslateSwitch locale={params.lng}>
+          <Translation lang="de">
+            <div className="mb-4">
+              Mit bis jetzt insgesamt{" "}
+              {getCount(coasterStats, "totalRides").toString()} Fahrten auf
+              immerhin {getCount(coasterStats, "totalAttractions").toString()}{" "}
+              verschiedenen Attraktionen habe ich doch schon{" "}
+              {getRideFact(coasterStats, "totalDuration").toString()} Stunden
+              verbracht. Mehr noch in Warteschlangen, von unzähligen Stunden im
+              Auto und Flugzeug einmal gar nicht zu reden, und dennoch war es
+              jede Sekunde wert! Damit nicht nur meine Lieblingsparks ein Dasein
+              haben, findet ihr hier auch <b>meine persönlichen Top 3</b> meiner
+              für mich besten Achterbahnen.
+            </div>
+            <div className="mb-4">
+              Hier gilt ebenfalls: Ihr findet in dieser Liste nur Achterbahnen,
+              die ich selbstverständlich selbst gefahren bin.
+            </div>
+          </Translation>
+          <Translation lang="en">
+            <div className="mb-4">
+              So far, I have logged{" "}
+              {getCount(coasterStats, "totalRides").toString()} rides on{" "}
+              {getCount(coasterStats, "totalAttractions").toString()} different
+              attractions, spending a total of{" "}
+              {getRideFact(coasterStats, "totalDuration").toString()} hours. Not
+              to mention countless hours in queues, in the car, and on planes,
+              but it was worth every second! Not just my favorite parks have a
+              place here; you will also find <b>my personal Top 3</b> of the
+              best roller coasters for me.
+            </div>
+            <div className="mb-4">
+              Here, too, only roller coasters that I have personally ridden are
+              listed.
+            </div>
+          </Translation>
+        </TranslateSwitch>
+      </div>
+
+      <div className="mb-4 mt-6 flex flex-col gap-6 @2xl:mb-6 @2xl:mt-0">
+        {topCoasters &&
+          parkVisits &&
+          topCoasters.coaster.map((coaster) => (
+            <TopCoasterEntry
+              coaster={coaster}
+              locale={params.lng}
+              key={coaster.name}
             />
           ))}
       </div>

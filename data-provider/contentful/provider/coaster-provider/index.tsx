@@ -85,3 +85,91 @@ export async function GetTopParks({
     limit: parks.limit,
   };
 }
+
+export interface TopCoasters {
+  coaster: TopCoaster[];
+  total: number;
+  limit: number;
+}
+
+export interface TopCoaster {
+  name: string;
+  rank: string;
+  description: any;
+  image: any;
+  coasterCloudId: string;
+}
+
+export async function GetTopCoasters({
+  locale,
+}: {
+  locale: LocaleCode;
+}): Promise<TopCoasters | null> {
+  const data = await fetchGraphQL(
+    `query ($limit: Int!, $locale: String!) {
+  topCoasterCollection(order: rank_ASC, limit: $limit, locale: $locale) {
+    total
+    limit
+    items {
+      name
+      rank
+      coasterCloudId
+      description {
+        json
+        links {
+          entries {
+            inline {
+              sys {
+                id
+              }
+            }
+            block {
+              sys {
+                id
+              }
+              __typename
+            }
+          }
+          assets {
+            block {
+              sys {
+                id
+              }
+              url
+              title
+              width
+              height
+              description
+            }
+          }
+        }
+      }
+      image {
+        url
+      }
+    }
+  }
+}`,
+    { limit: 3, locale: locale },
+  );
+
+  const coaster = data?.data?.topCoasterCollection;
+
+  if (!coaster) return null;
+
+  const coasterList: TopCoaster[] = coaster.items.map((coasterEntry: any) => {
+    return {
+      name: coasterEntry.name,
+      rank: coasterEntry.rank,
+      description: coasterEntry.description,
+      image: coasterEntry.image,
+      coasterCloudId: coasterEntry.coasterCloudId,
+    };
+  });
+
+  return {
+    coaster: coasterList,
+    total: coaster.total,
+    limit: coaster.limit,
+  };
+}

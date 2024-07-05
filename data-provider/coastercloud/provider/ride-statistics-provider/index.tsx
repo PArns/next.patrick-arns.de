@@ -1,4 +1,8 @@
-import { ParkVisit, RideStatistic } from "../../types/TypeRideStatistics";
+import {
+  Count,
+  ParkVisit,
+  RideStatistic,
+} from "../../types/TypeRideStatistics";
 
 function getAuthHeaders(): Headers {
   // You can get your UserID & AuthToken from the official coaster.cloud website!
@@ -114,6 +118,61 @@ export async function fetchParkVisits(): Promise<ParkVisit[] | null> {
 
     const result = await response.json();
     const statistics = result.data.entity.rideStatistic?.parkVisits?.items;
+
+    return statistics;
+  } catch (error) {
+    console.error("Error fetching coaster stats:", error);
+    return null;
+  }
+}
+
+export async function getAttractionCountsById(
+  attractionId: string,
+): Promise<Count[] | null> {
+  if (
+    process.env.COASTERCLOUD_AUTH_TOKEN == undefined ||
+    process.env.COASTERCLOUD_USER_ID == undefined ||
+    !attractionId
+  )
+    return null;
+
+  const raw = JSON.stringify({
+    query: "4c521737-f7e2-4c61-87e6-faef049b45c9",
+    variables: {
+      attractionId: attractionId,
+      locale: "en",
+      systemOfUnits: [
+        "kilometers_per_hour",
+        "celsius",
+        "centimeter",
+        "meter",
+        "kilometer",
+        "square_meter",
+        "hectar",
+      ],
+      withRideStatistic: true,
+    },
+  });
+
+  const requestOptions: RequestInit = {
+    method: "POST",
+    headers: getAuthHeaders(),
+    body: raw,
+    redirect: "follow",
+    next: {
+      revalidate: 60 * 60 * 6, // 6H Cache Time
+      tags: ["coaster"],
+    },
+  };
+
+  try {
+    const response = await fetch(
+      "https://data.coaster.cloud/v1",
+      requestOptions,
+    );
+
+    const result = await response.json();
+    const statistics = result.data.myAccount?.rideStatistic?.counts;
 
     return statistics;
   } catch (error) {
