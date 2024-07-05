@@ -22,8 +22,10 @@ export const fetchGraphQL = async function (
         }`,
       },
       body: JSON.stringify(requestBody),
-      cache: "force-cache",
-      next: { tags: ["articles"] },
+      next: {
+        revalidate: process.env.NODE_ENV === "development" ? 10 : 60 * 60 * 6, // 6H Cache Time
+        tags: ["contentful"],
+      },
     },
   ).then((response) => response.json());
 };
