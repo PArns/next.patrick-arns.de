@@ -31,7 +31,7 @@ export default async function TopCoasterEntry({
   return (
     <div className="relative mx-2 @container/park">
       <div className="hidden h-8 @2xl/park:block"></div>
-      <div className="absolute left-0 flex h-full w-full drop-shadow-lg @2xl/park:top-4 @2xl/park:z-10 @2xl/park:h-full @2xl/park:w-[290px]">
+      <div className="absolute left-0 flex h-full w-full drop-shadow-lg @2xl/park:top-4 @2xl/park:z-10 @2xl/park:h-full @2xl/park:w-[290px] @4xl/park:w-[390px]">
         <ContentfulImageAsset
           asset={coaster.image}
           alt={coaster.name}
@@ -41,7 +41,7 @@ export default async function TopCoasterEntry({
         />
       </div>
       <div className="flex rounded-lg border border-neutral-400 bg-neutral-100/40 drop-shadow-lg backdrop-blur-sm @2xl/park:backdrop-blur-lg dark:bg-neutral-900/40">
-        <div className="hidden w-[285px] flex-none @2xl/park:block" />
+        <div className="hidden flex-none @2xl/park:block @2xl:w-[285px] @4xl:w-[385px]" />
         <div className="m-4 grow">
           <h2 className="pb-2 text-2xl font-semibold">
             {t("pos")} {coaster.rank}: {coaster.name}
