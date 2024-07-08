@@ -3,6 +3,7 @@ import RichTextRenderer from "@/components/contentful/rich-text-renderer";
 import initTranslations from "@/components/translate/i18n";
 import { ParkVisit } from "@/data-provider/coastercloud/types/TypeRideStatistics";
 import { TopPark } from "@/data-provider/contentful/provider/coaster-provider";
+import clsx from "clsx";
 
 function getParkVisitsByParkName(
   visits: ParkVisit[],
@@ -35,10 +36,25 @@ export default async function TopParkEntry({
 
   const parkVisit = getParkVisitsByParkName(parkVisits, park.name);
 
+  const imageClass = clsx(
+    "@2xl/park:top-4 flex w-full h-full drop-shadow-lg absolute @2xl/park:h-full @2xl/park:w-[290px] @4xl/park:w-[390px] @2xl/park:z-10",
+    { "left-0": +park.rank % 2 !== 0, "right-0": +park.rank % 2 === 0 },
+  );
+
+  const spacerClassLeft = clsx("hidden", {
+    "flex-none @2xl/park:block @2xl:w-[285px] @4xl:w-[385px]":
+      +park.rank % 2 !== 0,
+  });
+
+  const spacerClassRight = clsx("hidden", {
+    "flex-none @2xl/park:block @2xl:w-[285px] @4xl:w-[385px]":
+      +park.rank % 2 === 0,
+  });
+
   return (
     <div className="relative mx-2 @container/park">
       <div className="hidden h-8 @2xl/park:block"></div>
-      <div className="left-0 @2xl/park:top-4 flex w-full h-full drop-shadow-lg absolute @2xl/park:h-full @2xl/park:w-[290px] @4xl/park:w-[390px] @2xl/park:z-10">
+      <div className={imageClass}>
         <ContentfulImageAsset
           asset={park.image}
           alt={park.name}
@@ -48,7 +64,7 @@ export default async function TopParkEntry({
         />
       </div>
       <div className="flex rounded-lg border border-neutral-400 bg-neutral-100/40 drop-shadow-lg backdrop-blur-sm @2xl/park:backdrop-blur-lg dark:bg-neutral-900/40">
-        <div className="hidden @2xl:w-[285px] @4xl:w-[385px] flex-none @2xl/park:block" />
+        <div className={spacerClassLeft} />
         <div className="m-4 grow">
           <h2 className="pb-2 text-2xl font-semibold">
             {t("pos")} {park.rank}: {park.name}
@@ -62,6 +78,7 @@ export default async function TopParkEntry({
             </div>
           )}
         </div>
+        <div className={spacerClassRight} />
       </div>
     </div>
   );

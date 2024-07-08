@@ -212,12 +212,12 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
           <Translation lang="de">
             <div className="mb-4">
               Zwar bin ich mit meinen immerhin{" "}
+              {getCount(coasterStats, "totalVisits").toString()} Parkbesuchen in{" "}
               {getCount(coasterStats, "totalParks").toString()} besuchten
-              verschiedenen Parks weltweit und{" "}
-              {getCount(coasterStats, "totalVisits").toString()} Parkbesuchen
-              insg. immer noch relativ weit unten in der Liste der Coaster
-              Junkies, dennoch möchte ich euch <b>meine persönliche Top 3</b>{" "}
-              der Freizeitparks auflisten, die ich bis jetzt besucht habe.
+              verschiedenen Parks weltweit und insg. immer noch relativ weit
+              unten in der Liste der Coaster Junkies, dennoch möchte ich euch{" "}
+              <b>meine persönliche Top 3</b> der Freizeitparks auflisten, die
+              ich bis jetzt besucht habe.
             </div>
             <div className="mb-4">
               Diese Liste spiegelt nur meine eigene Meinung dar und beruht nur
@@ -228,13 +228,13 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
           </Translation>
           <Translation lang="en">
             <div className="mb-4">
-              Although I have visited{" "}
+              Although I have {getCount(coasterStats, "totalVisits").toString()}{" "}
+              park visits within{" "}
               {getCount(coasterStats, "totalParks").toString()} different parks
-              worldwide and have a total of{" "}
-              {getCount(coasterStats, "totalVisits").toString()} park visits, I
-              am still relatively low on the list of coaster junkies.
-              Nevertheless, I would like to share with you{" "}
-              <b>my personal top 3</b> theme parks that I have visited so far.
+              worldwide and have a total of, I am still relatively low on the
+              list of coaster junkies. Nevertheless, I would like to share with
+              you <b>my personal top 3</b> theme parks that I have visited so
+              far.
             </div>
             <div className="mb-4">
               This list reflects only my own opinion and is based only on parks
