@@ -125,9 +125,9 @@ export default function Welcome({ params }: { params: { lng: string } }) {
             </p>
           </Translation>
         </TranslateSwitch>
-
-        <BlogTeaser locale={params.lng} maxEntries={1} />
       </article>
+
+      <BlogTeaser locale={params.lng} maxEntries={1} className="m-4" />
     </div>
   );
 }

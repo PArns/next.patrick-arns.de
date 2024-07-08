@@ -29,19 +29,23 @@ export async function BlogTeaserSpecific({
 export default async function BlogTeaser({
   locale,
   maxEntries,
+  className,
 }: {
   locale: string;
   maxEntries: number;
+  className?: string;
 }) {
   const posts = await GetBlogPosts(locale, 0, maxEntries);
 
   if (!posts) return null;
 
   return (
-    <div className="@container flex flex-col gap-2">
-      {posts.posts.map((post) => (
-        <BlogTeaserCard post={post} key={post.slug} />
-      ))}
+    <div className={className}>
+      <div className="flex flex-col gap-2 @container">
+        {posts.posts.map((post) => (
+          <BlogTeaserCard post={post} key={post.slug} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -51,7 +55,7 @@ function BlogTeaserCard({ post }: { post: BlogPost }) {
     <div className="flex rounded-lg drop-shadow-lg">
       <article className="w-full">
         <AppLink href={`/${post.locale}/blog/article/${post.slug}`} id="blog">
-          <div className="@lg:p-24 relative overflow-hidden bg-cover bg-no-repeat p-16">
+          <div className="relative overflow-hidden bg-cover bg-no-repeat p-16 @lg:p-24">
             <ContentfulImageAsset
               asset={post.image}
               alt={post.title}
@@ -62,10 +66,10 @@ function BlogTeaserCard({ post }: { post: BlogPost }) {
 
             <div className="absolute left-2 top-2 overflow-hidden">
               <div className="text-white">
-                <h1 className="@lg:text-4xl text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                <h1 className="text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @lg:text-4xl">
                   {post.title}
                 </h1>
-                <h2 className="@lg:text-2xl text-xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                <h2 className="text-xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @lg:text-2xl">
                   {post.subTitle}
                 </h2>
               </div>
@@ -85,7 +89,7 @@ function BlogTeaserCard({ post }: { post: BlogPost }) {
             <AppLink
               href={`/${post.locale}/blog/article/${post.slug}`}
               id="blog"
-              className="@lg:px-4 rounded bg-sky-400 px-2 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
+              className="rounded bg-sky-400 px-2 py-2 font-semibold text-white transition hover:bg-sky-700 @lg:px-4 dark:bg-sky-600 dark:hover:bg-sky-700"
             >
               <Translate id="more" ns="blog" locale={post.locale} />
             </AppLink>
