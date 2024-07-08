@@ -59,7 +59,7 @@ export default async function TopParkEntry({
           asset={park.image}
           alt={park.name}
           fill
-          className="rounded-lg object-cover"
+          className="rounded-lg object-cover drop-shadow-[0_1.5px_1.5px_rgba(0,0,0,0.6)]"
           sizes="(min-width: 1024px) 17rem"
         />
       </div>
