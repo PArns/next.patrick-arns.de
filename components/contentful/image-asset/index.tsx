@@ -1,8 +1,10 @@
 import { EntryFieldTypes } from "contentful/dist/types/types/entry";
 import Image from "next/image";
 import { CSSProperties } from "react";
+import ClientImage from "./client-image";
+import clsx from "clsx";
 
-interface ContentfulImageAssetProps {
+export interface ContentfulImageAssetProps {
   asset: any;
   alt: string | EntryFieldTypes.Symbol;
   width?: number;
@@ -13,6 +15,7 @@ interface ContentfulImageAssetProps {
   maxImageWidth?: number;
   style?: CSSProperties;
   sizes?: string;
+  lightbox?: boolean;
   [key: string]: any; // For other props that might be passed
 }
 
@@ -53,11 +56,35 @@ export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
     style,
     usePlaceholder,
     sizes,
+    lightbox,
+    className,
     ...rest
   } = props;
 
   const imageSource = getImageSource(asset, width ?? maxImageWidth ?? 1980);
   if (!Boolean(imageSource) || imageSource === undefined) return <></>;
+
+  if (lightbox) {
+    const classes = clsx(className, "cursor-zoom-in");
+
+    return (
+      <ClientImage
+        alt={alt.toString()}
+        asset={asset}
+        width={width}
+        height={height}
+        src={imageSource}
+        priority={priority}
+        fill={fill}
+        quality={quality}
+        style={style}
+        sizes={sizes}
+        lightbox={true}
+        className={classes}
+        {...rest}
+      />
+    );
+  }
 
   return (
     <Image

@@ -61,6 +61,7 @@ export default async function TopParkEntry({
           fill
           className="rounded-lg object-cover drop-shadow-[0_1.5px_1.5px_rgba(0,0,0,0.6)]"
           sizes="(min-width: 1024px) 17rem"
+          lightbox={true}
         />
       </div>
       <div className="flex rounded-lg border border-neutral-400 bg-neutral-100/40 drop-shadow-lg backdrop-blur-sm @2xl/park:backdrop-blur-lg dark:bg-neutral-900/40">

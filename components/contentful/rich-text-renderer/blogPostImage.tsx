@@ -69,7 +69,7 @@ export default function BlogPostImage({ imageData }: { imageData: any }) {
         onClick={() => {
           if (useLightBox) {
             showLightBoxImage({
-              src: getImageSource(image, 1200),
+              src: getImageSource(image, 1980),
               title: name,
             });
           }
