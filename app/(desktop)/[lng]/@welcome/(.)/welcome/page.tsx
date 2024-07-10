@@ -66,7 +66,7 @@ export default function Welcome({ params }: { params: { lng: string } }) {
               überwiegend im englischen Bereich arbeite und ungern deutsche
               Seiten verlinkt habe.
             </p>
-            <p className="mb-4">
+            <p>
               Zudem ist das Framework und der Inhalt der Seite nun explizit Open
               Source und bei{" "}
               <a
@@ -111,7 +111,7 @@ export default function Welcome({ params }: { params: { lng: string } }) {
               not least because I primarily work in the English-speaking domain
               and prefer not to link to German sites.
             </p>
-            <p className="mb-4">
+            <p>
               Furthermore, the framework and content of the site are now
               explicitly open source and can be found on{" "}
               <a
