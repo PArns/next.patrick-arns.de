@@ -216,8 +216,8 @@ export default function DesktopWindow({
             parentSize.height,
           );
 
-          setMaxHeight(childHeight + 32);
           setInitDoneState(true);
+          calculateMaxHeight();
         }, 10);
       } else {
         setInitDoneState(true);
@@ -241,6 +241,29 @@ export default function DesktopWindow({
     currentWindow.visible = false;
 
     events.windowRouteChanged.emitOnWindowRouteChanged(currentWindow);
+  };
+
+  const resizeWindow = () => {
+    activateWindow();
+    calculateMaxHeight();
+  };
+
+  const calculateMaxHeight = () => {
+    const parentSize = rndRef.current?.getParentSize();
+    if (
+      (!Boolean(height) || height === "auto") &&
+      childrenRef.current &&
+      parentSize
+    ) {
+      const childHeight =
+        childrenRef.current?.getBoundingClientRect().height ?? 0;
+
+      if (childHeight == 0 || childHeight >= parentSize.height - 32) {
+        return;
+      }
+
+      setMaxHeight(childHeight + 32);
+    }
   };
 
   const windowClasses = clsx("rounded-md shadow-md border-2 relative", {
@@ -276,7 +299,7 @@ export default function DesktopWindow({
           maxHeight={maxHeight}
           style={{ zIndex: zIndexState }}
           onMouseDown={() => activateWindow()}
-          onResize={() => activateWindow()}
+          onResize={() => resizeWindow()}
           ref={rndRef}
           dragHandleClassName="draggable"
         >
