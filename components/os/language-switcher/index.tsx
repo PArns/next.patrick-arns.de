@@ -9,6 +9,7 @@ import Image from "next/image";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
 import { createEvent } from "react-event-hook";
+import clsx from "clsx";
 
 const setAlternativeLanguages = createEvent("onAlternativeLanguagesAvailable")<
   Array<alternativeLanguage>
@@ -128,13 +129,19 @@ export default function LanguageSwitcher() {
       {currentLocale && (
         <Menu>
           <MenuButton>
-            <Image
-              src={`/flags/${currentLocale}.png`}
-              width={26}
-              height={15}
-              alt="Language"
-              className="pt-[5px] opacity-70 hover:opacity-90"
-            />
+            {({ active }) => (
+              <Image
+                src={`/flags/${currentLocale}.png`}
+                width={26}
+                height={15}
+                alt="Language"
+                className={clsx(
+                  "pt-[5px] hover:opacity-90",
+                  active && "opacity-90",
+                  !active && "opacity-70",
+                )}
+              />
+            )}
           </MenuButton>
 
           <MenuItems

@@ -97,8 +97,16 @@ export function ThemeSwitch() {
 export default function ThemeSwitcher() {
   return (
     <Menu>
-      <MenuButton className="mr-2 h-full w-5 opacity-70 hover:opacity-90">
-        <LightBulbIcon className="h-5 w-5" />
+      <MenuButton className="mr-2 h-full w-5">
+        {({ active }) => (
+          <LightBulbIcon
+            className={clsx(
+              "h-5 w-5 hover:opacity-90",
+              active && "opacity-90",
+              !active && "opacity-70",
+            )}
+          />
+        )}
       </MenuButton>
 
       <MenuItems
