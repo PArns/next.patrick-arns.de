@@ -45,6 +45,7 @@ export default function DesktopWindow({
   const [visibleState, setVisibleState] = useState(false);
   const [activeState, setActiveState] = useState(false);
   const [initDoneState, setInitDoneState] = useState(false);
+  const [maxHeight, setMaxHeight] = useState(9999);
 
   const rndRef = useRef<Rnd>(null);
   const childrenRef = useRef<HTMLDivElement>(null);
@@ -200,7 +201,8 @@ export default function DesktopWindow({
       // Auto height
       if ((!Boolean(height) || height === "auto") && childrenRef.current) {
         setTimeout(() => {
-          const childHeight = childrenRef.current?.scrollHeight ?? 0;
+          const childHeight =
+            childrenRef.current?.getBoundingClientRect().height ?? 0;
 
           if (childHeight == 0 || childHeight >= parentSize.height - 32) {
             setInitDoneState(true);
@@ -214,8 +216,10 @@ export default function DesktopWindow({
             parentSize.height,
           );
 
+          console.log(childHeight);
+          setMaxHeight(childHeight + 32);
           setInitDoneState(true);
-        });
+        }, 10);
       } else {
         setInitDoneState(true);
       }
@@ -270,6 +274,7 @@ export default function DesktopWindow({
           minHeight={300}
           minWidth={400}
           maxWidth={maxWidth}
+          maxHeight={maxHeight}
           style={{ zIndex: zIndexState }}
           onMouseDown={() => activateWindow()}
           onResize={() => activateWindow()}
