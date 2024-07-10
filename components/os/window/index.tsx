@@ -266,12 +266,15 @@ export default function DesktopWindow({
     }
   };
 
-  const windowClasses = clsx("rounded-md shadow-md border-2 relative", {
-    "bg-white/80 dark:bg-neutral-700/80 dark:border-sky-600 border-sky-500":
-      activeState,
-    "bg-white/50 dark:bg-neutral-700/50 border-neutral-700/50": !activeState,
-    "opacity-0": !initDoneState,
-  });
+  const windowClasses = clsx(
+    "rounded-md shadow-md border-2 relative transition-colors",
+    {
+      "bg-white/60 dark:bg-neutral-800/60 dark:border-sky-600 border-sky-500":
+        activeState,
+      "bg-white/20 dark:bg-neutral-800/20 border-neutral-800/50": !activeState,
+      "opacity-0": !initDoneState,
+    },
+  );
 
   const windowTitleClass = clsx(
     "grow text-center cursor-move justify-center align-middle vertical-center truncate px-2 pt-[1px]",
