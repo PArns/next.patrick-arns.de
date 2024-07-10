@@ -6,7 +6,7 @@ import PageBaseConfiguration from "@/configuration";
 import { useEffect, useState } from "react";
 
 import Image from "next/image";
-import { Menu } from "@headlessui/react";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
 import { createEvent } from "react-event-hook";
 
@@ -75,8 +75,7 @@ export default function LanguageSwitcher() {
       });
 
       setTimeout(() => {
-        if (altEntries.length !== 0)
-          setSupportedLocales(altEntries);
+        if (altEntries.length !== 0) setSupportedLocales(altEntries);
       });
     },
   );
@@ -128,7 +127,7 @@ export default function LanguageSwitcher() {
     <>
       {currentLocale && (
         <Menu>
-          <Menu.Button>
+          <MenuButton>
             <Image
               src={`/flags/${currentLocale}.png`}
               width={26}
@@ -136,21 +135,24 @@ export default function LanguageSwitcher() {
               alt="Language"
               className="pt-[5px] opacity-70 hover:opacity-90"
             />
-          </Menu.Button>
+          </MenuButton>
 
-          <Menu.Items className="absolute right-2 mt-[2px] w-28 origin-top-right divide-y divide-gray-100 rounded-md bg-white/70 ring-1 ring-black/5 drop-shadow-lg focus:outline-none dark:bg-neutral-700/90 dark:ring-white/5">
+          <MenuItems
+            className="mt-[7px] origin-top-right divide-y divide-gray-100/50 rounded-md bg-white/50 ring-1 ring-black/5 drop-shadow-lg backdrop-blur-lg focus:outline-none dark:bg-neutral-800/50 dark:ring-white/5"
+            anchor={"bottom"}
+          >
             {supportedLocales.map((loc) => (
-              <Menu.Item
+              <MenuItem
                 as="div"
                 key={loc.locale}
                 className="ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-white ui-not-active:text-black p-1"
               >
-                {({ active }) => (
+                {({ focus }) => (
                   <a
                     href={loc.path}
                     className={`${
-                      active
-                        ? "bg-sky-500 text-white dark:bg-sky-600 dark:text-black"
+                      focus
+                        ? "bg-sky-500/70 text-white dark:bg-sky-600/70 dark:text-black"
                         : "text-neutral-900"
                     } group flex w-full items-center rounded-md p-2 text-sm dark:text-white`}
                   >
@@ -168,9 +170,9 @@ export default function LanguageSwitcher() {
                     </div>
                   </a>
                 )}
-              </Menu.Item>
+              </MenuItem>
             ))}
-          </Menu.Items>
+          </MenuItems>
         </Menu>
       )}
     </>

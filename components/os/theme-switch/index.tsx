@@ -1,7 +1,14 @@
 import * as React from "react";
 
 import { useTheme } from "next-themes";
-import { Menu, Tab } from "@headlessui/react";
+import {
+  Menu,
+  MenuButton,
+  MenuItems,
+  Tab,
+  TabGroup,
+  TabList,
+} from "@headlessui/react";
 import { useState, useEffect } from "react";
 
 import {
@@ -11,7 +18,7 @@ import {
   LightBulbIcon,
 } from "@heroicons/react/24/outline";
 
-import clsx from 'clsx';
+import clsx from "clsx";
 
 export function ThemeEntry({
   children,
@@ -72,8 +79,8 @@ export function ThemeSwitch() {
 
   return (
     <div className="w-full">
-      <Tab.Group selectedIndex={themeIndex} onChange={setThemeIndex}>
-        <Tab.List className="flex space-x-1 rounded-lg p-1">
+      <TabGroup selectedIndex={themeIndex} onChange={setThemeIndex}>
+        <TabList className="flex space-x-1 rounded-lg p-1">
           <ThemeEntry>
             <ComputerDesktopIcon className="h-5 w-5" />
           </ThemeEntry>
@@ -83,8 +90,8 @@ export function ThemeSwitch() {
           <ThemeEntry>
             <MoonIcon className="h-5 w-5" />
           </ThemeEntry>
-        </Tab.List>
-      </Tab.Group>
+        </TabList>
+      </TabGroup>
     </div>
   );
 }
@@ -92,13 +99,16 @@ export function ThemeSwitch() {
 export default function ThemeSwitcher() {
   return (
     <Menu>
-      <Menu.Button className="mr-2 h-full w-5 opacity-70 hover:opacity-90">
+      <MenuButton className="mr-2 h-full w-5 opacity-70 hover:opacity-90">
         <LightBulbIcon className="h-5 w-5" />
-      </Menu.Button>
+      </MenuButton>
 
-      <Menu.Items className="absolute right-2 origin-top-right divide-y divide-gray-100 rounded-md bg-white/70 ring-1 ring-black/5 drop-shadow-lg focus:outline-none dark:bg-neutral-700/90 dark:ring-white/5">
+      <MenuItems
+        anchor={"bottom"}
+        className="mt-[1px] origin-top-right divide-y divide-gray-100/50 rounded-md bg-white/50 ring-1 ring-black/5 drop-shadow-lg backdrop-blur-lg focus:outline-none dark:bg-neutral-800/50 dark:ring-white/5"
+      >
         <ThemeSwitch />
-      </Menu.Items>
+      </MenuItems>
     </Menu>
   );
 }
