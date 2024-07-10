@@ -216,7 +216,6 @@ export default function DesktopWindow({
             parentSize.height,
           );
 
-          console.log(childHeight);
           setMaxHeight(childHeight + 32);
           setInitDoneState(true);
         }, 10);
