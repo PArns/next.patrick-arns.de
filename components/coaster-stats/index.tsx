@@ -1,12 +1,9 @@
-import Image from "next/image";
-
 import { fetchCoasterStats } from "@/data-provider/coastercloud/provider/ride-statistics-provider";
 import {
   AttractionRide,
   RideStatistic,
 } from "@/data-provider/coastercloud/types/TypeRideStatistics";
 
-import CoasterCloudLogo from "@/public/images/CoasterCloud.png";
 import initTranslations from "../translate/i18n";
 import ScoreCard from "./score-card";
 import AppLink from "../os/app-link";
@@ -44,23 +41,11 @@ export default async function CoasterStats({ lng }: { lng: string }) {
   const coasterStats = await fetchCoasterStats();
 
   return (
-    <div className="relative">
+    <div className="relative flex-col rounded-lg bg-white p-2 drop-shadow-lg dark:bg-neutral-800">
       <h2 className="pb-1 text-xl">{t("coasterStats")}</h2>
       <AppLink href={`/${lng}/coaster`} id="coaster">
         <table className="min-w-full">
           <tbody>
-            <tr>
-              <td>{t("visits")}:</td>
-              <td>{`${getCount(coasterStats, "totalVisits")}`}</td>
-            </tr>
-            <tr>
-              <td>{t("countries")}:</td>
-              <td>{`${getCount(coasterStats, "totalCountries")}`}</td>
-            </tr>
-            <tr>
-              <td>{t("parks")}:</td>
-              <td>{`${getCount(coasterStats, "totalParks")}`}</td>
-            </tr>
             <tr>
               <td>{t("counts")}:</td>
               <td>{`${getCount(coasterStats, "totalCoasterAttractions")}`}</td>
@@ -68,6 +53,10 @@ export default async function CoasterStats({ lng }: { lng: string }) {
             <tr>
               <td>{t("rides")}:</td>
               <td>{`${getCount(coasterStats, "totalRides")}`}</td>
+            </tr>
+            <tr>
+              <td>{t("visits")}:</td>
+              <td>{`${getCount(coasterStats, "totalVisits")}`}</td>
             </tr>
           </tbody>
         </table>
@@ -80,7 +69,9 @@ export default async function CoasterStats({ lng }: { lng: string }) {
         />
       </AppLink>
 
-      <PoweredByCoasterCloud />
+      <div className="pb-2 pr-2">
+        <PoweredByCoasterCloud />
+      </div>
     </div>
   );
 }

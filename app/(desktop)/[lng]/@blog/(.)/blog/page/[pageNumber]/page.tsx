@@ -14,6 +14,7 @@ import BlogJumbotron from "@/public/jumbotron/blog.jpg";
 import AboutAuthor from "@/parts/about-author";
 
 import { getPageAlternates } from "@/helper/localization";
+import CoasterStats from "@/components/coaster-stats";
 
 export async function generateMetadata({
   params,
@@ -162,6 +163,8 @@ export default async function BlogIndex({
               </div>
             </div>
           )}
+
+          <CoasterStats lng={params.lng} />
         </div>
       </div>
     </div>

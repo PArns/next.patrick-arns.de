@@ -8,6 +8,7 @@ import Image from "next/image";
 import PicturesJumbotron from "@/public/jumbotron/pictures.jpg";
 import AboutAuthor from "@/parts/about-author";
 import { getPageAlternates } from "@/helper/localization";
+import CoasterStats from "@/components/coaster-stats";
 
 export async function generateMetadata({
   params,
@@ -76,6 +77,7 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
 
         <div className="hidden w-1/4 flex-col gap-2 pl-2 @3xl:flex">
           <AboutAuthor lng={params.lng} />
+          <CoasterStats lng={params.lng} />
         </div>
       </div>
     </div>
