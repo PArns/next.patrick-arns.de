@@ -269,9 +269,9 @@ export default function DesktopWindow({
   const windowClasses = clsx(
     "rounded-md shadow-md border-2 relative transition-colors",
     {
-      "bg-white/60 dark:bg-neutral-800/60 dark:border-sky-600 border-sky-500":
+      "bg-white/40 dark:bg-neutral-600/50 dark:border-sky-600 border-sky-500":
         activeState,
-      "bg-white/20 dark:bg-neutral-800/20 border-neutral-800/50": !activeState,
+      "bg-white/20 dark:bg-neutral-600/20 border-neutral-800/50": !activeState,
       "opacity-0": !initDoneState,
     },
   );
