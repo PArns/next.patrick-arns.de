@@ -16,7 +16,7 @@ export function generateMetadata() {
   return {
     title: {
       default: config.title,
-      template: `%s - ${config.title}`,
+      template: `%s | ${config.title}`,
     },
     description: config.description,
     generator: "Next.js",

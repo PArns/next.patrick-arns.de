@@ -1,6 +1,6 @@
 export default function PageBaseConfiguration() {
   return {
-    title: "Patrick-Arns.de",
+    title: "Patrick Arns",
     description: "Coming soon ...",
     baseUrl: new URL("https://patrick-arns.de"),
     publisher: "Patrick Arns",

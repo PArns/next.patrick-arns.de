@@ -153,7 +153,7 @@ export default function WindowManager() {
     let newTitle = config.title;
 
     if (activeWindow) {
-      newTitle = `${activeWindow.title} - ${config.title}`;
+      newTitle = `${activeWindow.title} | ${config.title}`;
     } else {
       newTitle = config.title;
     }
