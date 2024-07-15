@@ -349,7 +349,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
 
             <div>
               Here you can find the list of my most recent 5 visits. If a
-              weekend is missing, the parks are surely closed or I'm just
+              weekend is missing, the parks are surely closed or I&apos;m just
               relaxing at the beach for a change.
             </div>
           </Translation>
