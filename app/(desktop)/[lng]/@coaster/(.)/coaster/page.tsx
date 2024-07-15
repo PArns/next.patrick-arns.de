@@ -364,6 +364,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
               attraction={trip}
               score={new Date(trip.date.value).toLocaleDateString(dateLocale)}
               big={true}
+              key={trip.date.value}
             />
           ))}
       </div>
