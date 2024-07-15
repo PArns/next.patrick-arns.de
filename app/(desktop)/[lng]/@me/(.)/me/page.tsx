@@ -8,7 +8,6 @@ import JumbotronPic from "@/public/images/profilePic-exempt.png";
 import { getPageAlternates } from "@/helper/localization";
 
 import { WindowTitle } from "@/components/os/windowManager";
-import CoasterStats from "@/components/coaster-stats";
 
 export async function generateMetadata({
   params,
@@ -77,20 +76,13 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
       </div>
 
       <div className="flex gap-2">
-        <div className="flex w-full flex-col rounded-md bg-white p-4 @3xl:w-3/4 dark:bg-neutral-800">
+        <div className="flex w-full flex-col rounded-md bg-white p-4 dark:bg-neutral-800">
           <h1 className="mb-2 text-2xl">More to come!</h1>
           <p>This page is under construction ...</p>
-          <br />
-          <BlogTeaserSpecific
-            locale={params.lng}
-            postId="3L8OVL4Eq4SRF2DPRcGvcR"
-          />
-        </div>
-
-        <div className="hidden h-min w-1/4 flex-col rounded-md bg-white p-4 @3xl:flex dark:bg-neutral-800">
-          <CoasterStats lng={params.lng} />
         </div>
       </div>
+
+      <BlogTeaserSpecific locale={params.lng} postId="3L8OVL4Eq4SRF2DPRcGvcR" className="pt-4" />
     </div>
   );
 }

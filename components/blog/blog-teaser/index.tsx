@@ -7,20 +7,23 @@ import {
   GetBlogPostById,
   GetBlogPosts,
 } from "@/data-provider/contentful/provider/blog-post-provider";
+import clsx from "clsx";
 
 export async function BlogTeaserSpecific({
   locale,
   postId,
+  className,
 }: {
   locale: string;
   postId: string;
+  className?: string;
 }) {
   const post = await GetBlogPostById(postId, locale);
 
   if (!post) return null;
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className={clsx("flex flex-col gap-2", className)}>
       <BlogTeaserCard post={post} key={post.slug} />
     </div>
   );
@@ -40,7 +43,7 @@ export default async function BlogTeaser({
   if (!posts) return null;
 
   return (
-    <div className={className}>
+    <div className={clsx(className)}>
       <div className="flex flex-col gap-2 @container">
         {posts.posts.map((post) => (
           <BlogTeaserCard post={post} key={post.slug} />
