@@ -75,8 +75,8 @@ export default function AboutAuthor({ lng }: { lng: string }) {
         </TranslateSwitch>
       </div>
 
-      <div className="mt-1 w-full pr-2 text-right">
-        <AppLink href={`/${lng}/me`} id="me">
+      <div className="mt-2">
+        <AppLink href={`/${lng}/me`} id="me" className="text-sky-500">
           <Translate id="profileMore" locale={lng} ns="blog" />
         </AppLink>
       </div>
