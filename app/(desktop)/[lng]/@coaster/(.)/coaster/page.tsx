@@ -65,6 +65,8 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
   const topCoasters = await GetTopCoasters({ locale: params.lng });
   const coasterStats = await fetchCoasterStats();
   const parkVisits = await fetchParkVisits();
+  const parkTrips = coasterStats?.parkTrips?.items.slice(0, 5);
+  const dateLocale = params.lng == "de" ? "de-DE" : "en-US";
 
   const coasterWithHighestCount = coasterStats?.attractionRides.items[0];
   const mausAuChocolat = getAttractionStats(
@@ -316,6 +318,58 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
 
       <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
         <h3 className="mb-1 text-2xl font-extrabold leading-tight text-neutral-900 dark:text-white lg:text-3xl">
+          {t("sectionVisits")}
+        </h3>
+
+        <TranslateSwitch locale={params.lng}>
+          <Translation lang="de">
+            <div className="mb-4">
+              In den Sommermonaten, aber auch im Winter, ist mein Ziel am
+              Wochenende meistens ein Freizeitpark! Immerhin komme ich derzeit
+              auf {getCount(coasterStats, "totalVisits").toString()} Besuche mit
+              insgesamt {getCount(coasterStats, "totalRides").toString()}{" "}
+              Fahrten.
+            </div>
+
+            <div>
+              Hier findet ihr die Liste meiner aktuell letzten 5 Besuche. Sollte
+              mal ein Wochenende fehlen, dann haben die Parks sicher geschlossen
+              oder ich liege zur Abwechslung mal am Strand.
+            </div>
+          </Translation>
+
+          <Translation lang="en">
+            <div className="mb-4">
+              During the summer months, but also in winter, my weekend
+              destination is usually an amusement park! After all, I currently
+              have {getCount(coasterStats, "totalVisits").toString()} visits
+              with a total of {getCount(coasterStats, "totalRides").toString()}{" "}
+              rides.
+            </div>
+
+            <div>
+              Here you can find the list of my most recent 5 visits. If a
+              weekend is missing, the parks are surely closed or I'm just
+              relaxing at the beach for a change.
+            </div>
+          </Translation>
+        </TranslateSwitch>
+      </div>
+
+      <div className="flex flex-row flex-wrap place-content-center gap-6 py-6">
+        {parkTrips &&
+          parkTrips.map((trip) => (
+            <ScoreCard
+              title={trip.park.name}
+              attraction={trip}
+              score={new Date(trip.date.value).toLocaleDateString(dateLocale)}
+              big={true}
+            />
+          ))}
+      </div>
+
+      <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
+        <h3 className="mb-1 text-2xl font-extrabold leading-tight text-neutral-900 dark:text-white lg:text-3xl">
           {t("sectionStatistics")}
         </h3>
 
@@ -495,6 +549,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
           big={true}
         />
       </div>
+
       <div className="pb-4 pr-4">
         <PoweredByCoasterCloud />
       </div>

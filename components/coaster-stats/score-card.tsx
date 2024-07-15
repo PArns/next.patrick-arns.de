@@ -4,6 +4,7 @@ import {
   FastestAttraction,
   HighestAttraction,
   LongestAttraction,
+  ParkTrip,
   ParkVisit,
   StrongestAttraction,
 } from "@/data-provider/coastercloud/types/TypeRideStatistics";
@@ -19,6 +20,14 @@ function isParkVisit(attraction: any): attraction is ParkVisit {
   );
 }
 
+function isParkTrip(attraction: any): attraction is ParkTrip {
+  return (
+    typeof attraction === "object" &&
+    "park" in attraction &&
+    "date" in attraction
+  );
+}
+
 export function getAttractionImage(
   attraction:
     | Attraction
@@ -26,9 +35,10 @@ export function getAttractionImage(
     | HighestAttraction
     | StrongestAttraction
     | LongestAttraction
-    | ParkVisit,
+    | ParkVisit
+    | ParkTrip,
 ) {
-  if (isParkVisit(attraction)) {
+  if (isParkVisit(attraction) || isParkTrip(attraction)) {
     return {
       url: attraction.park.images[0].url.replaceAll("square80", "square500"),
       copyright: `(c) ${attraction.park.images[0].license.name} - ${attraction.park.images[0].contributor.username}`,
@@ -48,9 +58,11 @@ export function getAttractionName(
     | HighestAttraction
     | StrongestAttraction
     | LongestAttraction
-    | ParkVisit,
+    | ParkVisit
+    | ParkTrip,
 ) {
   if (isParkVisit(attraction)) return attraction.park.name;
+  else if (isParkTrip(attraction)) return "";
   return attraction.name;
 }
 
@@ -70,6 +82,7 @@ export default async function ScoreCard({
     | StrongestAttraction
     | LongestAttraction
     | ParkVisit
+    | ParkTrip
     | undefined;
   score?: string;
   className?: string;
@@ -110,7 +123,7 @@ export default async function ScoreCard({
     {
       "text-3xl": isParkVisit(attraction) && big,
       "text-4xl": !isParkVisit(attraction) && big,
-      "text-xl": isParkVisit(attraction) && !big
+      "text-xl": isParkVisit(attraction) && !big,
     },
   );
 
