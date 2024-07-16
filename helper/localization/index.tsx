@@ -13,6 +13,7 @@ const getPageAlternates = (baseRoute: string): AlternateURLs => {
 
   const alternates: AlternateURLs = {
     languages: {},
+    canonical: `/${baseRoute}`
   };
 
   if (alternates.languages) {

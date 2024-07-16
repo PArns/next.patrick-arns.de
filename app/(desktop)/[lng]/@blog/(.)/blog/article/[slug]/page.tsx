@@ -55,6 +55,7 @@ export async function generateMetadata({
 
   const alternates: AlternateURLs = {
     languages: {},
+    canonical: `/blog/article/${params.slug}`,
   };
 
   if (post.alternativeSlugs && alternates.languages) {

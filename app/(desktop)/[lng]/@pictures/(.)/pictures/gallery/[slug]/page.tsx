@@ -24,6 +24,7 @@ export async function generateMetadata({
 
   const alternates: AlternateURLs = {
     languages: {},
+    canonical: `/pictures/gallery/${params.slug}`
   };
 
   if (gallery.alternativeSlugs && alternates.languages) {
