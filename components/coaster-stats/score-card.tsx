@@ -111,7 +111,7 @@ export default async function ScoreCard({
   });
 
   const attractionNameClassNames = clsx(
-    "w-full text-center text-neutral-700 dark:text-neutral-300",
+    "w-full text-center text-neutral-900 dark:text-neutral-300",
     {
       "text-sm": !big,
       "text-md pt-1": big,
