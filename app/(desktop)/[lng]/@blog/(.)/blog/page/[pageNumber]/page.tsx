@@ -14,7 +14,7 @@ import BlogJumbotron from "@/public/jumbotron/blog.jpg";
 import AboutAuthor from "@/parts/about-author";
 
 import { getPageAlternates } from "@/helper/localization";
-import CoasterStats from "@/components/coaster-stats";
+import CoasterStats from "@/components/coaster/coaster-stats";
 
 export async function generateMetadata({
   params,

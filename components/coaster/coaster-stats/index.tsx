@@ -4,10 +4,10 @@ import {
   RideStatistic,
 } from "@/data-provider/coastercloud/types/TypeRideStatistics";
 
-import initTranslations from "../translate/i18n";
 import ScoreCard from "./score-card";
-import AppLink from "../os/app-link";
 import PoweredByCoasterCloud from "./powered-by";
+import initTranslations from "@/components/translate/i18n";
+import AppLink from "@/components/os/app-link";
 
 export function getCount(stats: RideStatistic | null, key: string): Number {
   if (stats === null) return 0;
@@ -61,12 +61,14 @@ export default async function CoasterStats({ lng }: { lng: string }) {
           </tbody>
         </table>
 
-        <ScoreCard
-          title={t("mausAuChocolatScore")}
-          attraction={coasterStats?.parkVisits.items[0]}
-          lng={lng}
-          className="mt-2"
-        />
+        <div className="flex place-content-center">
+          <ScoreCard
+            title={t("mausAuChocolatScore")}
+            attraction={coasterStats?.parkVisits.items[0]}
+            lng={lng}
+            className="mt-2"
+          />
+        </div>
       </AppLink>
 
       <div className="pb-2 pr-2">

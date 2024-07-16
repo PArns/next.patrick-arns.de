@@ -8,7 +8,7 @@ import Image from "next/image";
 import PicturesJumbotron from "@/public/jumbotron/pictures.jpg";
 import AboutAuthor from "@/parts/about-author";
 import { getPageAlternates } from "@/helper/localization";
-import CoasterStats from "@/components/coaster-stats";
+import CoasterStats from "@/components/coaster/coaster-stats";
 
 export async function generateMetadata({
   params,

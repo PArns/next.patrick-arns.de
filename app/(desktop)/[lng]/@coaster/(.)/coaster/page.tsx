@@ -10,7 +10,7 @@ import {
 } from "@/data-provider/coastercloud/provider/ride-statistics-provider";
 
 import CoasterImage from "@/public/jumbotron/coaster.jpg";
-import PoweredByCoasterCloud from "@/components/coaster-stats/powered-by";
+import PoweredByCoasterCloud from "@/components/coaster/coaster-stats/powered-by";
 import TranslateSwitch, {
   Translation,
 } from "@/components/translate/translate-switch";
@@ -18,9 +18,9 @@ import {
   getAttractionStats,
   getCount,
   getRideFact,
-} from "@/components/coaster-stats";
-import ScoreCard from "@/components/coaster-stats/score-card";
-import ScoreStat from "@/components/coaster-stats/score-stat";
+} from "@/components/coaster/coaster-stats";
+import ScoreCard from "@/components/coaster/coaster-stats/score-card";
+import ScoreStat from "@/components/coaster/coaster-stats/score-stat";
 import {
   GetTopCoasters,
   GetTopParks,

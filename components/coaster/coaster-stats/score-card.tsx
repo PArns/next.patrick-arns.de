@@ -9,7 +9,7 @@ import {
   StrongestAttraction,
 } from "@/data-provider/coastercloud/types/TypeRideStatistics";
 import clsx from "clsx";
-import initTranslations from "../translate/i18n";
+import initTranslations from "@/components/translate/i18n";
 
 function isParkVisit(attraction: any): attraction is ParkVisit {
   return (
@@ -142,27 +142,29 @@ export default async function ScoreCard({
   }
 
   return (
-    <div className={classNames}>
-      <div>
-        <h3 className={headerClassNames}>{title}</h3>
-      </div>
-      <div className="relative">
-        <Image
-          src={attractionImage.url}
-          alt={getAttractionName(attraction)}
-          title={attractionImage.copyright}
-          width={250}
-          height={190}
-          className={imageClassNames}
-        />
-        <div
-          className="absolute left-0 top-0 flex h-full w-full items-center justify-center"
-          title={getAttractionImage(attraction).copyright}
-        >
-          <div className={scoreValueClassNames}>{scoreValue}</div>
+    <div className="flex">
+      <div className={classNames}>
+        <div>
+          <h3 className={headerClassNames}>{title}</h3>
         </div>
+        <div className="relative">
+          <Image
+            src={attractionImage.url}
+            alt={getAttractionName(attraction)}
+            title={attractionImage.copyright}
+            width={250}
+            height={190}
+            className={imageClassNames}
+          />
+          <div
+            className="absolute left-0 top-0 flex h-full w-full items-center justify-center"
+            title={getAttractionImage(attraction).copyright}
+          >
+            <div className={scoreValueClassNames}>{scoreValue}</div>
+          </div>
+        </div>
+        <div className={attractionNameClassNames}>{name}</div>
       </div>
-      <div className={attractionNameClassNames}>{name}</div>
     </div>
   );
 }
