@@ -40,12 +40,16 @@ export function getAttractionImage(
 ) {
   if (isParkVisit(attraction) || isParkTrip(attraction)) {
     return {
-      url: attraction.park.images[0].url.replaceAll("square80", "square500"),
+      url: attraction.park.images[0].url
+        .replaceAll("square80", "square500")
+        .replaceAll("square100", "square500"),
       copyright: `(c) ${attraction.park.images[0].license.name} - ${attraction.park.images[0].contributor.username}`,
     };
   } else {
     return {
-      url: attraction.images[0].url.replaceAll("square80", "square500"),
+      url: attraction.images[0].url
+        .replaceAll("square80", "square500")
+        .replaceAll("square100", "square500"),
       copyright: `(c) ${attraction.images[0].license.name} - ${attraction.images[0].contributor.username}`,
     };
   }
