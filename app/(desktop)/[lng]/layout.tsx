@@ -51,7 +51,7 @@ export default async function AppLayout({
 
       <DesktopWindow
         width="70%"
-        maxWidth={1024}
+        maxWidth={1600}
         route="/me"
         title={t("aboutMe")}
         icon="/appicons/ausweis.png"
