@@ -62,7 +62,7 @@ export default async function AppLayout({
 
       <DesktopWindow
         width="80%"
-        height="80%"
+        height="95%"
         maxWidth={1600}
         route="/blog"
         title="Blog"
@@ -74,7 +74,7 @@ export default async function AppLayout({
 
       <DesktopWindow
         width="80%"
-        height="80%"
+        height="95%"
         maxWidth={1600}
         route="/pictures"
         title={t("pictures")}
@@ -86,7 +86,7 @@ export default async function AppLayout({
 
       <DesktopWindow
         width="80%"
-        height="80%"
+        height="95%"
         maxWidth={1600}
         route="/coaster"
         title={t("coaster")}
