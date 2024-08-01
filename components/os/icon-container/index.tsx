@@ -10,7 +10,7 @@ import {
   RegisteredWindows,
   getCurrentLocale,
 } from "../windowManager";
-import clsx from 'clsx';
+import clsx from "clsx";
 
 export type IconContainerContract = {
   socialMediaLinks?: TypeSocialMediaLinkFields[];
@@ -37,7 +37,7 @@ const IconContainer: React.FC<IconContainerContract> = ({
 
   return (
     <div className={mainIconDivClasses}>
-      <div className="flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
+      <nav className="flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
         {windowArray.map((window) => (
           <DesktopIcon
             icon={window.icon}
@@ -49,18 +49,18 @@ const IconContainer: React.FC<IconContainerContract> = ({
             }}
           />
         ))}
-        <div className="flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
-          {socialMediaLinks &&
-            socialMediaLinks.map((link) => (
-              <DesktopIcon
-                contentfulIcon={link.icon}
-                name={link.name}
-                title={link.title}
-                key={link.name?.toString() as string}
-                href={link.link}
-              />
-            ))}
-        </div>
+      </nav>
+      <div className="flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
+        {socialMediaLinks &&
+          socialMediaLinks.map((link) => (
+            <DesktopIcon
+              contentfulIcon={link.icon}
+              name={link.name}
+              title={link.title}
+              key={link.name?.toString() as string}
+              href={link.link}
+            />
+          ))}
       </div>
     </div>
   );
