@@ -150,6 +150,23 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
               , wo ich ausf&uuml;hrlicher &uuml;ber meine Besuche in den
               verschiedenen Parks schreibe.
             </div>
+
+            <div className="mb-4">
+              Übrigens: Alle Statistiken auf dieser Seite sind leider erst ab
+              dem 26. Juli 2022 aktuell und werden mit der iOS & Android App{" "}
+              <a
+                href="https://coaster.cloud"
+                className="external"
+                target="_blank"
+              >
+                Coaster.Cloud
+              </a>{" "}
+              getrackt. Seit August 2024 bin ich zudem Mitglied des{" "}
+              <a href="https://fkfev.de/" className="external" target="_blank">
+                Freundeskreis Kirmes und Freizeitparks e.V.
+              </a>
+            </div>
+
             <div>
               Solltet ihr mich mit meinem Pixelrucksack in einem Park sehen,
               sprecht mich einfach an. Ich freue mich &uuml;ber jeden neuen
@@ -196,6 +213,23 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
               </AppLink>{" "}
               where I write more extensively about my visits to various parks.
             </div>
+
+            <div className="mb-4">
+              By the way: All statistics on this page are only current as of
+              July 26, 2022, and are tracked using the iOS & Android app{" "}
+              <a
+                href="https://coaster.cloud"
+                className="external"
+                target="_blank"
+              >
+                Coaster.Cloud
+              </a>
+              . Since August 2024, I have also been a member of the{" "}
+              <a href="https://fkfev.de/" className="external" target="_blank">
+                Freundeskreis Kirmes und Freizeitparks e.V.
+              </a>
+            </div>
+
             <div>
               If you see me with my pixel backpack at a park, just come up and
               say hi. I look forward to meeting every new enthusiast with whom I
