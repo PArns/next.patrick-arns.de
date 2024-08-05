@@ -216,7 +216,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
 
             <div className="mb-4">
               By the way: All statistics on this page are only current as of
-              July 26, 2022, and are tracked using the iOS & Android app{" "}
+              July 26th 2022, and are tracked using the iOS & Android app{" "}
               <a
                 href="https://coaster.cloud"
                 className="external"
@@ -224,7 +224,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
               >
                 Coaster.Cloud
               </a>
-              . Since August 2024, I have also been a member of the{" "}
+              . Since August 2024, I&apos;m also a member of the{" "}
               <a href="https://fkfev.de/" className="external" target="_blank">
                 Freundeskreis Kirmes und Freizeitparks e.V.
               </a>
