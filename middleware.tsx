@@ -24,7 +24,7 @@ export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   const pathLocale = config.supportedLocales.find((locale) => {
-    return pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`;
+    return pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`;
   });
 
   if (pathname === "/" && config.startRoute && config.startRoute !== "/") {

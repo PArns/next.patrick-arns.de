@@ -10,7 +10,6 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
 import { createEvent } from "react-event-hook";
 import clsx from "clsx";
-import Link from "next/link";
 
 const setAlternativeLanguages = createEvent("onAlternativeLanguagesAvailable")<
   Array<alternativeLanguage>
@@ -156,7 +155,7 @@ export default function LanguageSwitcher() {
                 className="ui-active:bg-blue-500 ui-active:text-white ui-not-active:bg-white ui-not-active:text-black p-1"
               >
                 {({ focus }) => (
-                  <Link
+                  <a
                     href={loc.path}
                     className={`${
                       focus
@@ -176,7 +175,7 @@ export default function LanguageSwitcher() {
                       </div>
                       <div>{loc.language}</div>
                     </div>
-                  </Link>
+                  </a>
                 )}
               </MenuItem>
             ))}
