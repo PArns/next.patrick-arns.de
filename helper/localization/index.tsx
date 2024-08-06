@@ -1,5 +1,6 @@
 import PageBaseConfiguration from "@/configuration";
 import { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types";
+import { headers } from "next/headers";
 
 const isValidLocale = (locale: string): boolean => {
   const config = PageBaseConfiguration();
@@ -13,7 +14,7 @@ const getPageAlternates = (baseRoute: string): AlternateURLs => {
 
   const alternates: AlternateURLs = {
     languages: {},
-    canonical: `/${baseRoute}`
+    canonical: `/${baseRoute}`,
   };
 
   if (alternates.languages) {
@@ -31,4 +32,10 @@ const getPageAlternates = (baseRoute: string): AlternateURLs => {
   return alternates;
 };
 
-export { isValidLocale, getPageAlternates };
+const getLocale = (): string => {
+  const config = PageBaseConfiguration();
+  const headersList = headers();
+  return headersList.get("x-locale") ?? config.defaultLocale;
+};
+
+export { isValidLocale, getPageAlternates, getLocale };

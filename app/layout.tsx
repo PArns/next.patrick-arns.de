@@ -7,10 +7,12 @@ import { Analytics } from "@vercel/analytics/react";
 import { Providers } from "./providers";
 
 import "./globals.css";
+import { Metadata } from "next";
+import { getLocale } from "@/helper/localization";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export function generateMetadata() {
+export function generateMetadata(): Metadata {
   const config = PageBaseConfiguration();
 
   return {
@@ -31,13 +33,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const locale = getLocale();
   const classes = clsx(
     inter.className,
     "overflow-hidden overscroll-none bg-neutral-200 dark:bg-neutral-900",
   );
 
   return (
-    <html suppressHydrationWarning>
+    <html suppressHydrationWarning lang={locale}>
       <body className={classes}>
         <Providers>{children}</Providers>
         <Analytics />

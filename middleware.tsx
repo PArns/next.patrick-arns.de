@@ -23,10 +23,9 @@ export async function middleware(request: NextRequest) {
   const config = PageBaseConfiguration();
   const pathname = request.nextUrl.pathname;
 
-  const pathnameIsMissingLocale = config.supportedLocales.every(
-    (locale) =>
-      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
-  );
+  const pathLocale = config.supportedLocales.find((locale) => {
+    return pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`;
+  });
 
   if (pathname === "/" && config.startRoute && config.startRoute !== "/") {
     const locale = getLocale(request);
@@ -40,17 +39,19 @@ export async function middleware(request: NextRequest) {
   }
 
   // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
+  if (pathLocale == null) {
     const locale = getLocale(request);
-
     return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
   }
 
-  return NextResponse.next();
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-locale", pathLocale);
+
+  return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
 export const config = {
   matcher: [
-    "/((?!api|_next|favicon.ico|robots.txt|sitemap.xml|appicons|favicons|flags|images|jumbotron|assets|de/|en/).*)",
+    "/((?!api|_next|favicon.ico|robots.txt|sitemap.xml|appicons|backgrounds|favicons|flags|images|jumbotron|assets).*)",
   ],
 };
