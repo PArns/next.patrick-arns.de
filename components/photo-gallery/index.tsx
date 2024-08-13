@@ -1,27 +1,27 @@
 "use client";
 
-import PhotoAlbum, { Photo, RenderPhotoProps } from "react-photo-album";
+import PhotoAlbum, { Photo, RenderImageContext, RenderImageProps, RenderPhotoProps, RowsPhotoAlbum } from "react-photo-album";
 import Image from "next/image";
 import { showLightBoxImage } from "../os/lightbox";
 import clsx from 'clsx';
+
+import "react-photo-album/rows.css";
 
 export interface GalleryPhoto extends Photo {
   lightboxImageSrc: string;
 }
 
-function NextJsImage({
-  photo,
-  imageProps: { alt, title, sizes, className, onClick, onTouchEnd },
-  wrapperStyle,
-}: RenderPhotoProps<GalleryPhoto>) {
+function renderNextImage(
+  { alt = "", title, sizes }: RenderImageProps,
+  { photo, width, height }: RenderImageContext,
+) { 
   const galleryPhoto = photo as GalleryPhoto;
   const imageClasses = clsx(
-    className,
     "cursor-zoom-in opacity-0 transition-opacity",
   );
 
   return (
-    <div style={{ ...wrapperStyle, position: "relative" }}>
+    <div style={{width: "100%", position: "relative", aspectRatio: `${width} / ${height}` }}>
       <Image
         src={photo}
         alt={alt}
@@ -29,8 +29,6 @@ function NextJsImage({
         sizes={sizes}
         className={imageClasses}
         onClick={(e) => {
-          if (onClick) onClick(e);
-
           showLightBoxImage({
             src: galleryPhoto.lightboxImageSrc,
             title: title ? title : alt,
@@ -47,10 +45,9 @@ function NextJsImage({
 
 export default function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
   return (
-    <PhotoAlbum
+    <RowsPhotoAlbum
       photos={photos}
-      layout="rows"
-      renderPhoto={NextJsImage}
+      render={{ image: renderNextImage }}
       defaultContainerWidth={1200}
       spacing={10}
       sizes={{
