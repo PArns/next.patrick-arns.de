@@ -332,9 +332,9 @@ export default function DesktopWindow({
               className="flex overflow-y-auto overflow-x-clip"
               onClick={handleContainerClick}
             >
-              <div className={contentClass} ref={childrenRef}>
+              <main className={contentClass} ref={childrenRef}>
                 {children}
-              </div>
+              </main>
             </div>
           </div>
         </Rnd>
