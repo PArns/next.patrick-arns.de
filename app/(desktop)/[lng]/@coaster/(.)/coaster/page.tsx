@@ -10,7 +10,6 @@ import {
 } from "@/data-provider/coastercloud/provider/ride-statistics-provider";
 
 import CoasterImage from "@/public/jumbotron/coaster.jpg";
-import PoweredByCoasterCloud from "@/components/coaster/coaster-stats/powered-by";
 import TranslateSwitch, {
   Translation,
 } from "@/components/translate/translate-switch";
@@ -28,6 +27,9 @@ import {
 import TopParkEntry from "@/components/coaster/top-park";
 import AppLink from "@/components/os/app-link";
 import TopCoasterEntry from "@/components/coaster/top-coaster";
+
+import FkFLogo from "@/public/images/fkf.png";
+import PoweredByCoasterCloud from "@/components/coaster/coaster-stats/powered-by";
 
 export async function generateMetadata({
   params,
@@ -585,8 +587,27 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
         />
       </div>
 
-      <div className="pb-4 pr-4">
-        <PoweredByCoasterCloud />
+      <div className="pr--4 relative flex flex-col pl-1">
+        <a
+          href="https://fkf.de"
+          target="_blank"
+          className="flex flex-row grayscale hover:grayscale-0 w-max"
+        >
+          <div>
+            <Image
+              src={FkFLogo}
+              alt={"Freundeskreis Kirmes und Freizeitparks e.V."}
+              width={32}
+              height={50}
+            />
+          </div>
+          <div className="my-auto ml-1 text-sm text-neutral-900 dark:text-neutral-300">
+            Mitglied des FKF e.V.
+          </div>
+        </a>
+        <div className="absolute right-0 top-[-7px] w-32 pr-4">
+          <PoweredByCoasterCloud />
+        </div>
       </div>
     </div>
   );
