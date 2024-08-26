@@ -587,11 +587,11 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
         />
       </div>
 
-      <div className="pr--4 relative flex flex-col pl-1">
+      <div className="relative mt-2 flex flex-col pl-1">
         <a
           href="https://fkfev.de"
           target="_blank"
-          className="flex flex-row grayscale hover:grayscale-0 w-max"
+          className="flex w-max flex-row grayscale hover:grayscale-0"
         >
           <div>
             <Image
