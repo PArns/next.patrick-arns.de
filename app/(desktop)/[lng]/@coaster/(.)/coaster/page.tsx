@@ -589,7 +589,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
 
       <div className="pr--4 relative flex flex-col pl-1">
         <a
-          href="https://fkf.de"
+          href="https://fkfev.de"
           target="_blank"
           className="flex flex-row grayscale hover:grayscale-0 w-max"
         >
