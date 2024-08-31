@@ -9,7 +9,8 @@ import {
   fetchParkVisits,
 } from "@/data-provider/coastercloud/provider/ride-statistics-provider";
 
-import CoasterImage from "@/public/jumbotron/coaster.jpg";
+import BackgroundPlayer from "next-video/background-player";
+
 import TranslateSwitch, {
   Translation,
 } from "@/components/translate/translate-switch";
@@ -78,27 +79,21 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
 
   return (
     <div className="flex w-full flex-col p-2 @container">
-      <div className="relative w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center @container/header">
-        <Image
-          src={CoasterImage}
-          alt={t("title")}
-          fill={true}
-          quality={80}
-          placeholder="blur"
-          className="absolute bottom-0 left-0 right-0 top-0 h-max w-max object-cover"
-        />
-        <div className="py-10 @md/header:py-20 @lg/header:py-28">
-          <div className="flex h-full items-center justify-center">
-            <div className="text-white">
-              <h1 className="mb-2 text-4xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @md/header:text-5xl @lg/header:text-6xl">
-                {t("title")}
-              </h1>
-              <h2 className="text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @md/header:text-3xl @lg/header:text-4xl">
-                {t("subTitle")}
-              </h2>
-            </div>
+      <div className="overflow-hidden rounded-lg @container/header">
+        <BackgroundPlayer
+          src={"https://assets.arns.dev/header-coaster.mp4"}
+          poster={"https://assets.arns.dev/header-coaster.jpg"}
+          blurDataURL="|DO;DHogIANM-4kDaKbcn#}jWB?^Rk.8WCo~xYSi9~-j_2E6D%NI9GobR5tRR.NGt7I8j[RiRltS%NR+n#s.RPRl.7xYx^?bRjIUR*jue-tmoJjEx]j]ITs:t8flt7ofMx%gR,IUj@%LoLWBfkRPxvWBV?WBx]jYRjR*ae"
+        >
+          <div className="text-center text-white">
+            <h1 className="mb-2 text-4xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @md/header:text-5xl @lg/header:text-6xl">
+              {t("title")}
+            </h1>
+            <h2 className="text-2xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @md/header:text-3xl @lg/header:text-4xl">
+              {t("subTitle")}
+            </h2>
           </div>
-        </div>
+        </BackgroundPlayer>
       </div>
 
       <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
