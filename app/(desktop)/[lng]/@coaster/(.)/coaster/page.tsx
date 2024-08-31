@@ -32,6 +32,8 @@ import TopCoasterEntry from "@/components/coaster/top-coaster";
 import FkFLogo from "@/public/images/fkf.png";
 import PoweredByCoasterCloud from "@/components/coaster/coaster-stats/powered-by";
 
+import Backpack from "@/public/images/divoom-backpack.png";
+
 export async function generateMetadata({
   params,
 }: {
@@ -103,21 +105,21 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
 
         <TranslateSwitch locale={params.lng}>
           <Translation lang="de">
-            <div className="mb-4">
+            <span className="mb-4">
               Irgendwie weigere ich mich, erwachsen zu werden - zumindest sagen
               das viele, die mich kennen.
-            </div>
+            </span>
 
-            <div className="mb-4">
+            <span className="mb-4">
               Wer verbringt schon seine Wochenenden und einen Großteil seiner
               Ferien in Freizeitparks? Wird das nicht irgendwann langweilig?
-            </div>
+            </span>
 
             <div className="mb-4">
               Nein, &uuml;berhaupt nicht! Ganz im Gegenteil ...
             </div>
 
-            <div className="mb-4">
+            <span className="mb-4">
               Freizeitparks sind aus meinem Leben nicht mehr wegzudenken. Seit
               meinem ersten Besuch in einem Freizeitpark, als ich ungef&auml;hr
               sechs Jahre alt war, schl&auml;gt mein Herz f&uuml;r diese
@@ -127,7 +129,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
               das Eintauchen in fantastische Welten - sei es Steampunk, eine
               versunkene Stadt oder ein Bergdorf, durch das eine Achterbahn
               rast.
-            </div>
+            </span>
 
             <div className="mb-4">
               Freizeitparks begleiten mich seit vielen Jahren als nicht ganz
@@ -136,6 +138,13 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
               Achterbahnen fahren und entsprechend &quot;z&auml;hlen&quot;
               wollen.
             </div>
+
+            <Image
+              src={Backpack}
+              alt="Pixelrucksack"
+              width={150}
+              className="float-end pl-4 pt-4"
+            />
 
             <div className="mb-4">
               Auf dieser Seite findet ihr eine Zusammenfassung meines
@@ -201,6 +210,13 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
               enthusiasts who aim to ride and &quot;count&quot; as many
               different roller coasters as possible.
             </div>
+
+            <Image
+              src={Backpack}
+              alt="Pixel Backpack"
+              width={150}
+              className="float-end pl-4 pt-4"
+            />
 
             <div className="mb-4">
               On this page, you&apos;ll find a summary of my &quot;amusement
