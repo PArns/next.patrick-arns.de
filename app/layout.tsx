@@ -44,6 +44,42 @@ export default function RootLayout({
       <body className={classes}>
         <Providers>{children}</Providers>
         <Analytics />
+
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `<!-- 
+
+                                                                                                           dddddddd                                           
+               AAA                                                                                         d::::::d                                           
+              A:::A                                                                                        d::::::d                                           
+             A:::::A                                                                                       d::::::d                                           
+            A:::::::A                                                                                      d:::::d                                            
+           A:::::::::A          rrrrr   rrrrrrrrr   nnnn  nnnnnnnn        ssssssssss               ddddddddd:::::d     eeeeeeeeeeee  vvvvvvv           vvvvvvv
+          A:::::A:::::A         r::::rrr:::::::::r  n:::nn::::::::nn    ss::::::::::s            dd::::::::::::::d   ee::::::::::::ee v:::::v         v:::::v 
+         A:::::A A:::::A        r:::::::::::::::::r n::::::::::::::nn ss:::::::::::::s          d::::::::::::::::d  e::::::eeeee:::::eev:::::v       v:::::v  
+        A:::::A   A:::::A       rr::::::rrrrr::::::rnn:::::::::::::::ns::::::ssss:::::s        d:::::::ddddd:::::d e::::::e     e:::::e v:::::v     v:::::v   
+       A:::::A     A:::::A       r:::::r     r:::::r  n:::::nnnn:::::n s:::::s  ssssss         d::::::d    d:::::d e:::::::eeeee::::::e  v:::::v   v:::::v    
+      A:::::AAAAAAAAA:::::A      r:::::r     rrrrrrr  n::::n    n::::n   s::::::s              d:::::d     d:::::d e:::::::::::::::::e    v:::::v v:::::v     
+     A:::::::::::::::::::::A     r:::::r              n::::n    n::::n      s::::::s           d:::::d     d:::::d e::::::eeeeeeeeeee      v:::::v:::::v      
+    A:::::AAAAAAAAAAAAA:::::A    r:::::r              n::::n    n::::nssssss   s:::::s         d:::::d     d:::::d e:::::::e                v:::::::::v       
+   A:::::A             A:::::A   r:::::r              n::::n    n::::ns:::::ssss::::::s        d::::::ddddd::::::dde::::::::e                v:::::::v        
+  A:::::A               A:::::A  r:::::r              n::::n    n::::ns::::::::::::::s  ......  d:::::::::::::::::d e::::::::eeeeeeee         v:::::v         
+ A:::::A                 A:::::A r:::::r              n::::n    n::::n s:::::::::::ss   .::::.   d:::::::::ddd::::d  ee:::::::::::::e          v:::v          
+AAAAAAA                   AAAAAAArrrrrrr              nnnnnn    nnnnnn  sssssssssss     ......    ddddddddd   ddddd    eeeeeeeeeeeeee           vvv     
+
+✨ arns.dev - Handcrafted with passion by Patrick Arns ✨
+
+This page was built entirely from scratch using Next.js, TypeScript, a lot of love, and fun! 💻❤️🎉
+I've used this project to deepen my knowledge of Next.js, polish my TypeScript skills, and reignite my Node.js expertise. 🚀👨‍💻
+Of course, it's open source! If you want to see how this project is done, just visit: 📂https://github.com/PArns/next.patrick-arns.de
+
+If you're from an amusement park or ride manufacturer 🎢 and have stumbled upon this page (and you like what you see), I'd love to hear from you! 🎡✨
+
+Drop me a line at: 💌 your-page-is-awesome@arns.dev 📧 
+
+-->`,
+          }}
+        />
       </body>
     </html>
   );
