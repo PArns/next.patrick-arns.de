@@ -148,8 +148,8 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                 &nbsp;bin ich nach wie vor für die Entwicklung von CyberGhost
                 und unseren anderen Brands verantwortlich - selbst wenn sich die
                 Aufgabenbereiche vom 2-Mann-Startup zum 1.200-Mann-Unicorn
-                natürlich verändert haben. Dennoch gilt die Devise: "Once a
-                Ghostie, always a Ghostie"
+                natürlich verändert haben. Dennoch gilt die Devise: &quot;Once a
+                Ghostie, always a Ghostie&quot;
               </p>
               <p className="pt-2">
                 Kape zählt mittlerweile zu den größten VPN-Anbietern weltweit
@@ -162,8 +162,8 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                 CyberGhost - From startup to unicorn
               </h1>
               <p>
-                I've dedicated a large part of my professional life to one of
-                the world's largest VPNs -&nbsp;
+                I&apos;ve dedicated a large part of my professional life to one of
+                the world&apos;s largest VPNs -&nbsp;
                 <a
                   href="https://cyberghostvpn.com"
                   target="_blank"
@@ -210,7 +210,7 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                 still responsible for the development of CyberGhost and our
                 other brands - even if the scope of tasks has changed from a
                 2-man startup to a 1,200-man unicorn. However, the motto
-                remains: "Once a Ghostie, always a Ghostie"
+                remains: &quot;Once a Ghostie, always a Ghostie&quot;
               </p>
               <p className="pt-2">
                 Kape has now grown into one of the largest VPN providers in the
@@ -322,7 +322,7 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                   </p>
                   <p className="pt-2">
                     Zur Neuausrichtung gehörte damals auch ein neues Logo -
-                    intern nur "Mützenmann" genannt.
+                    intern nur &quot;Mützenmann&quot; genannt.
                   </p>
                 </Translation>
                 <Translation lang="en">
@@ -339,7 +339,7 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                   </p>
                   <p className="pt-2">
                     The rebranding also included a new logo - internally
-                    nicknamed "Mützenmann" (Hat Man).
+                    nicknamed &quot;Mützenmann&quot; (Hat Man).
                   </p>
                 </Translation>
               </TranslateSwitch>
@@ -478,7 +478,7 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                   <p className="pt-2">
                     To do this, we developed our own framework that could send
                     information from the application itself to the interface and
-                    vice versa. Frameworks like Electrum, etc., didn't exist at
+                    vice versa. Frameworks like Electrum, etc., didn&apos;t exist at
                     that time, but today are based on a similar principle.
                   </p>
                 </Translation>
@@ -592,8 +592,8 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                   </p>
                   <p className="pt-2">
                     Dieses eigene Framework ermöglichte uns auch die
-                    Vereinfachung der Software nach dem heutigen Prinzip "vom
-                    Einfachen zum Komplexen", bei dem es möglich ist, die
+                    Vereinfachung der Software nach dem heutigen Prinzip &quot;vom
+                    Einfachen zum Komplexen&quot;, bei dem es möglich ist, die
                     VPN-Verbindung mit nur einem Klick zu aktivieren.
                   </p>
                 </Translation>
@@ -611,7 +611,7 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                   </p>
                   <p className="pt-2">
                     This framework also allowed us to simplify the software
-                    according to the principle of "from simple to complex,"
+                    according to the principle of &quot;from simple to complex&quot;,
                     making it possible to activate the VPN connection with just
                     one click.
                   </p>
@@ -639,7 +639,7 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
               <TranslateSwitch locale={params.lng}>
                 <Translation lang="de">
                   <p>
-                    CyberGhost 8 läutete die Ära "more than a VPN" für
+                    CyberGhost 8 läutete die Ära &quot;more than a VPN&quot; für
                     CyberGhost ein. Wir haben den VPN-Client zu einem Framework
                     erweitert, das verschiedene Module als Plugins laden kann.
                   </p>
@@ -658,7 +658,7 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                 </Translation>
                 <Translation lang="en">
                   <p>
-                    CyberGhost 8 marked the start of the "more than a VPN" era
+                    CyberGhost 8 marked the start of the &quot;more than a VPN&quot; era
                     for CyberGhost. We expanded the VPN client into a framework
                     that can load various modules as plugins.
                   </p>

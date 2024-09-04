@@ -30,7 +30,7 @@ export default function Age({
       if (age == 1) setPluralize(single);
       else setPluralize(plural);
     }
-  }, [yearsOld, setYearsOld, pluralize, setPluralize, birthday]);
+  }, [yearsOld, setYearsOld, pluralize, setPluralize, birthday, single, plural]);
 
   return (
     <>
