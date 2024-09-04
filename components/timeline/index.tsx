@@ -57,11 +57,11 @@ export const TimeLineItem: React.FunctionComponent<ITimeLineItem> = ({
         { "is-active": isActive },
       )}
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white bg-neutral-300 text-neutral-500 shadow group-[.is-active]:bg-emerald-500 group-[.is-active]:text-emerald-50 @2xl/timeline:order-1 @2xl/timeline:group-odd:-translate-x-1/2 @2xl/timeline:group-even:translate-x-1/2 dark:border-neutral-800 dark:bg-neutral-600 dark:text-neutral-300 dark:group-[.is-active]:bg-emerald-600">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white bg-neutral-300 text-neutral-500 shadow group-first:!mt-0 group-[.is-active]:bg-emerald-500 group-[.is-active]:text-emerald-50 @2xl/timeline:order-1 @2xl/timeline:-mt-36 @2xl/timeline:group-odd:-translate-x-1/2 @2xl/timeline:group-even:translate-x-1/2 dark:border-neutral-800 dark:bg-neutral-600 dark:text-neutral-300 dark:group-[.is-active]:bg-emerald-600">
         <IconComponent className="h-5 w-5" />
       </div>
 
-      <div className="w-[calc(100%-4rem)] rounded-lg bg-white p-4 drop-shadow-lg @2xl/timeline:w-[calc(50%-2.5rem)] dark:bg-neutral-800">
+      <div className="w-[calc(100%-4rem)] rounded-lg bg-white p-4 drop-shadow-lg group-first:!mt-0 @2xl/timeline:-mt-36 @2xl/timeline:w-[calc(50%-2.5rem)] dark:bg-neutral-800">
         <div className="mb-1 flex items-center justify-between space-x-2">
           <div className="font-bold text-neutral-900 dark:text-neutral-100">
             {title}
