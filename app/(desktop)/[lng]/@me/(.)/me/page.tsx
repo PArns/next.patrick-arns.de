@@ -108,6 +108,11 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                 </a>{" "}
                 tätig.
               </p>
+              <p>
+                Im Jahr 2006 habe ich mein Studium an der FH Aachen
+                abgeschlossen und darf mich seitdem Diplom-Informatiker (FH)
+                Patrick Arns nennen.
+              </p>
               <p className="pt-2">
                 In meiner Freizeit stehe ich jeden Samstag für die{" "}
                 <a
@@ -152,6 +157,10 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                   Kape Technologies
                 </a>{" "}
                 since <Age birthday="2002-11-01" single=" " plural="years" />.
+              </p>
+              <p>
+                In 2006 I completed my studies at the FH Aachen and since then I
+                can call myself a computer scientist (FH) Patrick Arns.
               </p>
               <p className="pt-2">
                 In my free time, I work every Saturday as a dog trainer for the{" "}
