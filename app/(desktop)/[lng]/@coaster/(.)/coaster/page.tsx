@@ -83,7 +83,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
     <div className="flex w-full flex-col p-2 @container">
       <div className="overflow-hidden rounded-lg @container/header">
         <BackgroundPlayer
-          src={"https://assets.arns.dev/header-coaster.mp4"}
+          src={"https://assets.arns.dev/header-coaster-loop.mp4"}
           poster={"https://assets.arns.dev/header-coaster.jpg"}
           blurDataURL="|DO;DHogIANM-4kDaKbcn#}jWB?^Rk.8WCo~xYSi9~-j_2E6D%NI9GobR5tRR.NGt7I8j[RiRltS%NR+n#s.RPRl.7xYx^?bRjIUR*jue-tmoJjEx]j]ITs:t8flt7ofMx%gR,IUj@%LoLWBfkRPxvWBV?WBx]jYRjR*ae"
         >
