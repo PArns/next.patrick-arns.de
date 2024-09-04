@@ -24,6 +24,7 @@ import CyberGhost6 from "@/public/cyberghost/cyberghost6.png";
 import CyberGhost7 from "@/public/cyberghost/cyberghost7.png";
 import CyberGhost8 from "@/public/cyberghost/cyberghost8.png";
 import Age from "@/components/age";
+import AppLink from "@/components/os/app-link";
 
 export async function generateMetadata({
   params,
@@ -92,6 +93,103 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
       </div>
 
       <div className="flex flex-col">
+        <div className="mb-4 flex w-full flex-col rounded-md bg-white p-4 dark:bg-neutral-800">
+          <h1 className="mb-2 text-2xl">Patrick Arns</h1>
+
+          <TranslateSwitch locale={params.lng}>
+            <Translation lang="de">
+              <p>
+                Mittlerweile gute{" "}
+                <Age birthday="1982-04-01" single="" plural="Jahre" /> alt und
+                seit <Age birthday="2002-11-01" single="" plural="Jahren" /> als
+                Entwickler und Teamlead für{" "}
+                <a href="https://kape.com" target="_blank" className="external">
+                  Kape Technologies
+                </a>{" "}
+                tätig.
+              </p>
+              <p className="pt-2">
+                In meiner Freizeit stehe ich jeden Samstag für die{" "}
+                <a
+                  href="https://hundefreunde-herzogenrath.de"
+                  target="_blank"
+                  className="external"
+                >
+                  Hundefreunde Herzogenrath e.V.
+                </a>{" "}
+                als Trainer auf dem Platz, auch wenn ich mittlerweile leider
+                keine eigene Fellnase mehr habe. Das ist für mich der perfekte
+                Ausgleich zum doch manchmal stressigen Job als Entwickler.
+              </p>
+
+              <p className="pt-2">
+                Ansonsten verbringe ich meine Wochenenden am liebsten in einem{" "}
+                <AppLink href="/coaster" id="coaster" className="external">
+                  Freizeitpark
+                </AppLink>{" "}
+                irgendwo auf der Welt.
+              </p>
+              <p className="pt-2">
+                Wenn du mehr über meinen beruflichen Werdegang erfahren
+                möchtest, dann schau doch mal auf mein{" "}
+                <a
+                  href="https://www.linkedin.com/in/patrick-arns"
+                  target="_blank"
+                  className="external"
+                >
+                  LinkedIn-Profil
+                </a>
+                .
+              </p>
+            </Translation>
+
+            <Translation lang="en">
+              <p>
+                Now well over{" "}
+                <Age birthday="1982-04-01" single="" plural="years" /> old and
+                working as a developer and team lead for{" "}
+                <a href="https://kape.com" target="_blank" className="external">
+                  Kape Technologies
+                </a>{" "}
+                since <Age birthday="2002-11-01" single=" " plural="years" />.
+              </p>
+              <p className="pt-2">
+                In my free time, I work every Saturday as a dog trainer for the{" "}
+                <a
+                  href="https://hundefreunde-herzogenrath.de"
+                  target="_blank"
+                  className="external"
+                >
+                  Hundefreunde Herzogenrath e.V.
+                </a>
+                , even though I no longer have a furry friend of my own. This is
+                the perfect counterbalance to the sometimes stressful job as a
+                developer for me.
+              </p>
+
+              <p className="pt-2">
+                Otherwise, I like to spend my weekends in a{" "}
+                <AppLink href="/coaster" id="coaster" className="external">
+                  theme park
+                </AppLink>{" "}
+                somewhere around the world.
+              </p>
+              <p className="pt-2">
+                If you want to know more about my professional background, check
+                out my{" "}
+                <a
+                  href="https://www.linkedin.com/in/patrick-arns"
+                  target="_blank"
+                  className="external"
+                >
+                  LinkedIn profile
+                </a>
+                .
+              </p>
+            </Translation>
+          </TranslateSwitch>
+        </div>
+
         <div className="flex w-full flex-col rounded-md bg-white p-4 dark:bg-neutral-800">
           <TranslateSwitch locale={params.lng}>
             <Translation lang="de">
@@ -144,7 +242,7 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
               </p>
               <p className="pt-2">
                 Auch nach&nbsp;
-                <Age birthday="2002-11-01" plural="Jahren" single="Jahr" />
+                <Age birthday="2002-11-01" plural="Jahren" single="" />
                 &nbsp;bin ich nach wie vor für die Entwicklung von CyberGhost
                 und unseren anderen Brands verantwortlich - selbst wenn sich die
                 Aufgabenbereiche vom 2-Mann-Startup zum 1.200-Mann-Unicorn
@@ -162,8 +260,8 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                 CyberGhost - From startup to unicorn
               </h1>
               <p>
-                I&apos;ve dedicated a large part of my professional life to one of
-                the world&apos;s largest VPNs -&nbsp;
+                I&apos;ve dedicated a large part of my professional life to one
+                of the world&apos;s largest VPNs -&nbsp;
                 <a
                   href="https://cyberghostvpn.com"
                   target="_blank"
@@ -478,8 +576,9 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                   <p className="pt-2">
                     To do this, we developed our own framework that could send
                     information from the application itself to the interface and
-                    vice versa. Frameworks like Electrum, etc., didn&apos;t exist at
-                    that time, but today are based on a similar principle.
+                    vice versa. Frameworks like Electrum, etc., didn&apos;t
+                    exist at that time, but today are based on a similar
+                    principle.
                   </p>
                 </Translation>
               </TranslateSwitch>
@@ -592,9 +691,9 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                   </p>
                   <p className="pt-2">
                     Dieses eigene Framework ermöglichte uns auch die
-                    Vereinfachung der Software nach dem heutigen Prinzip &quot;vom
-                    Einfachen zum Komplexen&quot;, bei dem es möglich ist, die
-                    VPN-Verbindung mit nur einem Klick zu aktivieren.
+                    Vereinfachung der Software nach dem heutigen Prinzip
+                    &quot;vom Einfachen zum Komplexen&quot;, bei dem es möglich
+                    ist, die VPN-Verbindung mit nur einem Klick zu aktivieren.
                   </p>
                 </Translation>
                 <Translation lang="en">
@@ -611,9 +710,9 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                   </p>
                   <p className="pt-2">
                     This framework also allowed us to simplify the software
-                    according to the principle of &quot;from simple to complex&quot;,
-                    making it possible to activate the VPN connection with just
-                    one click.
+                    according to the principle of &quot;from simple to
+                    complex&quot;, making it possible to activate the VPN
+                    connection with just one click.
                   </p>
                 </Translation>
               </TranslateSwitch>
@@ -658,9 +757,9 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
                 </Translation>
                 <Translation lang="en">
                   <p>
-                    CyberGhost 8 marked the start of the &quot;more than a VPN&quot; era
-                    for CyberGhost. We expanded the VPN client into a framework
-                    that can load various modules as plugins.
+                    CyberGhost 8 marked the start of the &quot;more than a
+                    VPN&quot; era for CyberGhost. We expanded the VPN client
+                    into a framework that can load various modules as plugins.
                   </p>
                   <p className="pt-2">
                     We expanded the CyberGhost portfolio to include an
@@ -688,12 +787,6 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
           </TimeLineItem>
         </TimeLine>
       </div>
-
-      <BlogTeaserSpecific
-        locale={params.lng}
-        postId="3L8OVL4Eq4SRF2DPRcGvcR"
-        className="pt-4"
-      />
     </div>
   );
 }
