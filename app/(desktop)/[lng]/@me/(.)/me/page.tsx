@@ -100,8 +100,8 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
             <Translation lang="de">
               <p>
                 Mittlerweile gute{" "}
-                <Age birthday="1982-04-01" single="" plural="Jahre" /> alt und
-                seit <Age birthday="2002-11-01" single="" plural="Jahren" /> als
+                <Age birthday="1982-04-01" single="Jahr" plural="Jahre" /> alt und
+                seit <Age birthday="2002-11-01" single="Jahre" plural="Jahren" /> als
                 Entwickler und Teamlead für{" "}
                 <a href="https://kape.com" target="_blank" className="external">
                   Kape Technologies
@@ -151,12 +151,12 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
             <Translation lang="en">
               <p>
                 Now well over{" "}
-                <Age birthday="1982-04-01" single="" plural="years" /> old and
+                <Age birthday="1982-04-01" single="year" plural="years" /> old and
                 working as a developer and team lead for{" "}
                 <a href="https://kape.com" target="_blank" className="external">
                   Kape Technologies
                 </a>{" "}
-                since <Age birthday="2002-11-01" single=" " plural="years" />.
+                since <Age birthday="2002-11-01" single="year" plural="years" />.
               </p>
               <p>
                 In 2006 I completed my studies at the FH Aachen and since then I
@@ -251,7 +251,7 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
               </p>
               <p className="pt-2">
                 Auch nach&nbsp;
-                <Age birthday="2002-11-01" plural="Jahren" single="" />
+                <Age birthday="2002-11-01" plural="Jahren" single="Jahre" />
                 &nbsp;bin ich nach wie vor für die Entwicklung von CyberGhost
                 und unseren anderen Brands verantwortlich - selbst wenn sich die
                 Aufgabenbereiche vom 2-Mann-Startup zum 1.200-Mann-Unicorn
