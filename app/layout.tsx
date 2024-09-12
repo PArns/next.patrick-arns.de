@@ -36,7 +36,7 @@ export default function RootLayout({
   const locale = getLocale();
   const classes = clsx(
     inter.className,
-    "overflow-hidden overscroll-none bg-neutral-200 dark:bg-neutral-900",
+    "overflow-hidden overscroll-none bg-neutral-200 dark:bg-neutral-900 subpixel-antialiased",
   );
 
   return (
