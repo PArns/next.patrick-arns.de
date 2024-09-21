@@ -1,4 +1,4 @@
-import { EntryFieldTypes } from "contentful/dist/types/types/entry";
+import { EntryFieldTypes } from "contentful";
 import Image from "next/image";
 import { CSSProperties } from "react";
 import ClientImage from "./client-image";

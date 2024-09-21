@@ -5,7 +5,7 @@ import Image from "next/image";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 
 import Link from "next/link";
-import { EntryFieldTypes } from "contentful/dist/types/types/entry";
+import { EntryFieldTypes } from "contentful";
 
 export default function DesktopIcon({
   icon,

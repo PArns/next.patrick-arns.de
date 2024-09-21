@@ -4,7 +4,7 @@ import { MotionValue, motion, useSpring, useTransform } from "framer-motion";
 import { useRef, MouseEvent } from "react";
 
 import ContentfulImageAsset from "@/components/contentful/image-asset";
-import { EntryFieldTypes } from "contentful/dist/types/types/entry";
+import { EntryFieldTypes } from "contentful";
 import clsx from "clsx";
 
 export default function SocialMediaIcon({
