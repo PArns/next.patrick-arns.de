@@ -11,7 +11,7 @@ export default function Age({
   single: string;
   plural: string;
 }) {
-  const [yearsOld, setYearsOld] = useState<number>();
+  const [yearsOld, setYearsOld] = useState<number>(0);
   const [pluralize, setPluralize] = useState("");
 
   useEffect(() => {
