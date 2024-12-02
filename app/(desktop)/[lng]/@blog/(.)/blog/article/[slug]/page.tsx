@@ -44,11 +44,10 @@ export async function generateStaticParams(): Promise<BlogPostPageParams[]> {
   return entries;
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string; lng: string };
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string; lng: string }>;
 }): Promise<Metadata> {
+  const params = await props.params;
   const config = PageBaseConfiguration();
   const post = await GetBlogPostBySlug(params.slug, params.lng);
   if (!post) return {};
@@ -89,11 +88,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogOverlay({
-  params,
-}: {
-  params: { slug: string; lng: string };
+export default async function BlogOverlay(props: {
+  params: Promise<{ slug: string; lng: string }>;
 }) {
+  const params = await props.params;
   const post = await GetBlogPostBySlug(params.slug, params.lng);
   if (!post) redirect(`/${params.lng}/blog`);
 

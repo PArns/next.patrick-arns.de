@@ -28,12 +28,12 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const locale = getLocale();
+  const locale = await getLocale();
   const classes = clsx(
     inter.className,
     "overflow-hidden overscroll-none bg-neutral-200 dark:bg-neutral-900 subpixel-antialiased",

@@ -1,6 +1,6 @@
 import PageBaseConfiguration from "@/configuration";
 import { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types";
-import { headers } from "next/headers";
+import { headers, type UnsafeUnwrappedHeaders } from "next/headers";
 
 const isValidLocale = (locale: string): boolean => {
   const config = PageBaseConfiguration();
@@ -32,9 +32,9 @@ const getPageAlternates = (baseRoute: string): AlternateURLs => {
   return alternates;
 };
 
-const getLocale = (): string => {
+const getLocale = async (): Promise<string> => {
   const config = PageBaseConfiguration();
-  const headersList = headers();
+  const headersList = (await headers()) as unknown as UnsafeUnwrappedHeaders;
   return headersList.get("x-locale") ?? config.defaultLocale;
 };
 
