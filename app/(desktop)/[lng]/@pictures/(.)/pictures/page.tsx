@@ -56,7 +56,7 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
 
         <div className="py-8 @md:py-14 @lg:py-20">
           <div className="flex h-full items-center justify-center">
-            <div className="text-white">
+            <div className="rounded-xl border-neutral-500 bg-white/30 p-5 text-white backdrop-blur-md dark:border-neutral-600 dark:bg-neutral-800/50">
               <h1 className="mb-4 text-5xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @lg:text-7xl">
                 <Translate id="pictures" locale={params.lng} ns="titles" />
               </h1>

@@ -87,7 +87,7 @@ export default async function Coaster({ params }: { params: { lng: string } }) {
           poster={"https://assets.arns.dev/header-coaster-loop.jpg"}
           blurDataURL="|DO;DHogIANM-4kDaKbcn#}jWB?^Rk.8WCo~xYSi9~-j_2E6D%NI9GobR5tRR.NGt7I8j[RiRltS%NR+n#s.RPRl.7xYx^?bRjIUR*jue-tmoJjEx]j]ITs:t8flt7ofMx%gR,IUj@%LoLWBfkRPxvWBV?WBx]jYRjR*ae"
         >
-          <div className="text-center text-white">
+          <div className="text-center rounded-xl border-neutral-500 bg-white/30 p-5 text-white backdrop-blur-md dark:border-neutral-600 dark:bg-neutral-800/50">
             <h1 className="mb-2 text-4xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @md/header:text-5xl @lg/header:text-6xl">
               {t("title")}
             </h1>
