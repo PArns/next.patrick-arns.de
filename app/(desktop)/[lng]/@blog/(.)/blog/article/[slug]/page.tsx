@@ -21,6 +21,7 @@ import { LanguageAlternates } from "@/components/os/language-switcher";
 import DateRenderer from "@/components/date-renderer";
 
 import { ClockIcon } from "@heroicons/react/20/solid";
+import BlogAlternateLanguageLink from "@/components/blog/blog-alternate-language";
 
 interface BlogPostPageParams {
   slug: string;
@@ -130,6 +131,7 @@ export default async function BlogOverlay({
             locale={params.lng}
           />
         </h5>
+        <BlogAlternateLanguageLink alternatives={alternates} locale={params.lng} />
         <article>
           <RichTextRenderer document={post.body} />
         </article>
