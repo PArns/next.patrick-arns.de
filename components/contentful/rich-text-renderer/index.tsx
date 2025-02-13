@@ -132,7 +132,7 @@ function renderOptions(links: any) {
         );
       },
       [BLOCKS.PARAGRAPH]: (node: any, children: any) => {
-        return <div className="[&:not(:last-child)]:pb-3">{children}</div>;
+        return <div className="not-last:pb-3">{children}</div>;
       },
     },
   };

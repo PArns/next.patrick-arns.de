@@ -33,7 +33,7 @@ export default function TitleBar({ pageName }: { pageName: string }) {
   );
 
   return (
-    <div className="flex flex-row bg-white/50 px-1 drop-shadow backdrop-blur-lg dark:bg-neutral-800/50">
+    <div className="flex flex-row bg-white/50 px-1 drop-shadow-sm backdrop-blur-lg dark:bg-neutral-800/50">
       <div className="flex-none">
         <div className="flex flex-row">
           <div>
@@ -52,7 +52,7 @@ export default function TitleBar({ pageName }: { pageName: string }) {
           </div>
         </div>
       </div>
-      <div className="flex-grow"></div>
+      <div className="grow"></div>
       <div className="hidden flex-none pr-2 md:block pt-[1px]">
         <Clock timeFormat="hh-mm" />
       </div>

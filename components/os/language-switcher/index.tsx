@@ -145,7 +145,7 @@ export default function LanguageSwitcher() {
           </MenuButton>
 
           <MenuItems
-            className="mt-[7px] origin-top-right divide-y divide-gray-100/50 rounded-md bg-white/50 ring-1 ring-black/5 drop-shadow-lg backdrop-blur-lg focus:outline-none dark:bg-neutral-800/50 dark:ring-white/5"
+            className="mt-[7px] origin-top-right divide-y divide-gray-100/50 rounded-md bg-white/50 ring-1 ring-black/5 drop-shadow-lg backdrop-blur-lg focus:outline-hidden dark:bg-neutral-800/50 dark:ring-white/5"
             anchor={"bottom"}
           >
             {supportedLocales.map((loc) => (

@@ -88,7 +88,6 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
               src={JumbotronPic}
               alt="Patrick"
               height={500}
-              placeholder="blur"
             />
           </div>
         </div>

@@ -51,7 +51,6 @@ export default async function Welcome(props: { params: Promise<{ lng: string }> 
         <Image
           className="absolute bottom-0 left-0 right-0 top-0 h-max w-max object-cover"
           src={PicturesJumbotron}
-          placeholder="blur"
           fill={true}
           alt="Gallery Header"
         />

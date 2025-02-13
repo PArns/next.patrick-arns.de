@@ -143,7 +143,7 @@ export default async function BlogOverlay(
         <div className="mr-1 mt-2 flex flex-nowrap text-neutral-800">
           <Link
             href={`/${params.lng}/blog`}
-            className="rounded bg-sky-400 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
+            className="rounded-sm bg-sky-400 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
           >
             <div className="flex flex-nowrap">
               <div>

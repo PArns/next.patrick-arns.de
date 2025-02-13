@@ -8,11 +8,11 @@ export default function Taskbar({
 }) {
   return (
     <div className="flex h-16">
-      <div className="flex flex-grow"></div>
+      <div className="flex grow"></div>
       <div>
         <Dock socialMediaLinks={socialMediaLinks} />
       </div>
-      <div className="flex flex-grow"></div>
+      <div className="flex grow"></div>
     </div>
   );
 }

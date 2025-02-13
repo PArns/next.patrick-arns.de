@@ -89,7 +89,7 @@ export default function Pagination({
   return (
     <div className={className}>
       <nav
-        className="isolate inline-flex -space-x-px rounded-md shadow-sm"
+        className="isolate inline-flex -space-x-px rounded-md shadow-xs"
         aria-label="Pagination"
       >
         <Link

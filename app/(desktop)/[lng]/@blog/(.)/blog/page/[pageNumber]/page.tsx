@@ -89,7 +89,6 @@ export default async function BlogIndex(
         <Image
           className="absolute bottom-0 left-0 right-0 top-0 h-max w-max object-cover"
           src={BlogJumbotron}
-          placeholder="blur"
           fill={true}
           alt="Blog Header"
         />
@@ -158,7 +157,7 @@ export default async function BlogIndex(
 
                 <Link
                   href={`/${params.lng}/blog`}
-                  className="rounded bg-sky-500 px-2 py-2 font-semibold text-white transition hover:bg-sky-700 @lg:px-4"
+                  className="rounded-sm bg-sky-500 px-2 py-2 font-semibold text-white transition hover:bg-sky-700 @lg:px-4"
                 >
                   <Translate id="showAll" ns="blog" locale={params.lng} />
                 </Link>
