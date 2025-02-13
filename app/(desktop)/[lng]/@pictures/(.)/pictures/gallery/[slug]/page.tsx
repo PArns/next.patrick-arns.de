@@ -13,11 +13,12 @@ import { GetGalleryBySlug } from "@/data-provider/contentful/provider/gallery-pr
 
 import { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string; lng: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string; lng: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const config = PageBaseConfiguration();
   const gallery = await GetGalleryBySlug(params.slug, params.lng);
   if (!gallery) return {};
@@ -59,11 +60,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function GalleryOverlay({
-  params,
-}: {
-  params: { slug: string; lng: string };
-}) {
+export default async function GalleryOverlay(
+  props: {
+    params: Promise<{ slug: string; lng: string }>;
+  }
+) {
+  const params = await props.params;
   const gallery = await GetGalleryBySlug(params.slug, params.lng);
   if (!gallery) redirect(`/${params.lng}/pictures`);
 

@@ -7,21 +7,26 @@ import DesktopWindow from "@/components/os/window";
 import PageBaseConfiguration from "@/configuration";
 import initTranslations from "@/components/translate/i18n";
 
-export default async function AppLayout({
-  coaster,
-  blog,
-  welcome,
-  pictures,
-  me,
-  params,
-}: {
-  coaster: React.ReactNode;
-  blog: React.ReactNode;
-  welcome: React.ReactNode;
-  pictures: React.ReactNode;
-  me: React.ReactNode;
-  params: { lng: string };
-}) {
+export default async function AppLayout(
+  props: {
+    coaster: React.ReactNode;
+    blog: React.ReactNode;
+    welcome: React.ReactNode;
+    pictures: React.ReactNode;
+    me: React.ReactNode;
+    params: Promise<{ lng: string }>;
+  }
+) {
+  const params = await props.params;
+
+  const {
+    coaster,
+    blog,
+    welcome,
+    pictures,
+    me
+  } = props;
+
   const { t } = await initTranslations({
     locale: params.lng,
     namespaces: ["titles"],

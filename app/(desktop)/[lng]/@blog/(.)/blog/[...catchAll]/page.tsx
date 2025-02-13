@@ -3,11 +3,12 @@ import { permanentRedirect, notFound } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { isValidLocale } from "@/helper/localization";
 
-export default async function DefaultRedirect({
-  params,
-}: {
-  params: { catchAll: string; lng: string };
-}) {
+export default async function DefaultRedirect(
+  props: {
+    params: Promise<{ catchAll: string; lng: string }>;
+  }
+) {
+  const params = await props.params;
   const slug = Array.isArray(params.catchAll)
     ? params.catchAll[0]
     : params.catchAll;

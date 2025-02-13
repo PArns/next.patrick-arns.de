@@ -34,11 +34,12 @@ import PoweredByCoasterCloud from "@/components/coaster/coaster-stats/powered-by
 
 import Backpack from "@/public/images/divoom-backpack.png";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lng: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ lng: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const config = PageBaseConfiguration();
 
   const { t } = await initTranslations({
@@ -60,7 +61,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function Coaster({ params }: { params: { lng: string } }) {
+export default async function Coaster(props: { params: Promise<{ lng: string }> }) {
+  const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
     namespaces: ["coaster"],
