@@ -23,7 +23,8 @@ import DateRenderer from "@/components/date-renderer";
 import { ClockIcon } from "@heroicons/react/20/solid";
 import BlogAlternateLanguageLink from "@/components/blog/blog-alternate-language";
 
-interface BlogPostPageParams {
+// TODO: Staic parameter wieder funktionsfähig machen!
+/*interface BlogPostPageParams {
   slug: string;
   lng: string;
 }
@@ -43,7 +44,7 @@ export async function generateStaticParams(): Promise<BlogPostPageParams[]> {
   });
 
   return entries;
-}
+}*/
 
 export async function generateMetadata(
   props: {
