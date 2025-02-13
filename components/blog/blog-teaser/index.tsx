@@ -92,7 +92,7 @@ function BlogTeaserCard({ post }: { post: BlogPost }) {
             <AppLink
               href={`/${post.locale}/blog/article/${post.slug}`}
               id="blog"
-              className="rounded bg-sky-400 px-2 py-2 font-semibold text-white transition hover:bg-sky-700 @lg:px-4 dark:bg-sky-600 dark:hover:bg-sky-700"
+              className="rounded-sm bg-sky-400 px-2 py-2 font-semibold text-white transition hover:bg-sky-700 @lg:px-4 dark:bg-sky-600 dark:hover:bg-sky-700"
             >
               <Translate id="more" ns="blog" locale={post.locale} />
             </AppLink>

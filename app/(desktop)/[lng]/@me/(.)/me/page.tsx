@@ -26,11 +26,12 @@ import CyberGhost8 from "@/public/cyberghost/cyberghost8.png";
 import Age from "@/components/age";
 import AppLink from "@/components/os/app-link";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lng: string; pageNumber: number; tag: string | undefined };
-}) {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+  }
+) {
+  const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
     namespaces: ["titles"],
@@ -45,7 +46,8 @@ export async function generateMetadata({
     },
   };
 }
-export default async function AboutMe({ params }: { params: { lng: string } }) {
+export default async function AboutMe(props: { params: Promise<{ lng: string }> }) {
+  const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
     namespaces: ["titles"],
@@ -86,7 +88,6 @@ export default async function AboutMe({ params }: { params: { lng: string } }) {
               src={JumbotronPic}
               alt="Patrick"
               height={500}
-              placeholder="blur"
             />
           </div>
         </div>

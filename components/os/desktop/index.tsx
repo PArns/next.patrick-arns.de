@@ -24,14 +24,14 @@ export default function Desktop({
   return (
     <>
       <div className="fixed inset-0 flex flex-col">
-        <div className="z-[999] flex-none select-none">
+        <div className="z-999 flex-none select-none">
           <TitleBar pageName={pageName} />
         </div>
-        <div className="flex flex-grow">
+        <div className="flex grow">
           {children}
           <IconContainer socialMediaLinks={socialMediaLinks} />
         </div>
-        <div className="z-[999] flex-none select-none">
+        <div className="z-999 flex-none select-none">
           <Taskbar socialMediaLinks={socialMediaLinks} />
         </div>
       </div>

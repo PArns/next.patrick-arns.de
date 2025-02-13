@@ -29,7 +29,7 @@ export function ThemeEntry({
     <Tab
       className={({ selected }) =>
         clsx(className, "rounded-lg text-sm font-medium", {
-          "bg-neutral-800 text-white shadow dark:bg-white dark:text-black":
+          "bg-neutral-800 text-white shadow-sm dark:bg-white dark:text-black":
             selected,
           "text-neutral-800 hover:bg-black/[0.12] hover:text-black dark:text-blue-100 dark:hover:bg-white/[0.12] dark:hover:text-white":
             !selected,
@@ -111,7 +111,7 @@ export default function ThemeSwitcher() {
 
       <MenuItems
         anchor={"bottom"}
-        className="mt-[1px] origin-top-right divide-y divide-gray-100/50 rounded-md bg-white/50 ring-1 ring-black/5 drop-shadow-lg backdrop-blur-lg focus:outline-none dark:bg-neutral-800/50 dark:ring-white/5"
+        className="mt-[1px] origin-top-right divide-y divide-gray-100/50 rounded-md bg-white/50 ring-1 ring-black/5 drop-shadow-lg backdrop-blur-lg focus:outline-hidden dark:bg-neutral-800/50 dark:ring-white/5"
       >
         <ThemeSwitch />
       </MenuItems>

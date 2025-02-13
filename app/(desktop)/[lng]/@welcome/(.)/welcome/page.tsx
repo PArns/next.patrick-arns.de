@@ -6,11 +6,12 @@ import initTranslations from "@/components/translate/i18n";
 import BlogTeaser from "@/components/blog/blog-teaser";
 import { getPageAlternates } from "@/helper/localization";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lng: string; pageNumber: number; tag: string | undefined };
-}) {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+  }
+) {
+  const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
     namespaces: ["titles"],
@@ -26,7 +27,8 @@ export async function generateMetadata({
   };
 }
 
-export default function Welcome({ params }: { params: { lng: string } }) {
+export default async function Welcome(props: { params: Promise<{ lng: string }> }) {
+  const params = await props.params;
   return (
     <div className="container mx-auto">
       <article className="m-4 rounded-md bg-white p-4 dark:bg-neutral-800">

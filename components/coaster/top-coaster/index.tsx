@@ -57,7 +57,7 @@ export default async function TopCoasterEntry({
           lightbox={true}
         />
       </div>
-      <div className="flex rounded-lg border border-neutral-400 bg-neutral-100/40 drop-shadow-lg backdrop-blur-sm @2xl/park:backdrop-blur-lg dark:bg-neutral-900/40">
+      <div className="flex rounded-lg border border-neutral-400 bg-neutral-100/40 drop-shadow-lg backdrop-blur-xs @2xl/park:backdrop-blur-lg dark:bg-neutral-900/40">
         <div className={spacerClassLeft} />
         <div className="m-4 grow">
           <h2 className="pb-2 text-2xl font-semibold">

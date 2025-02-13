@@ -61,6 +61,7 @@ export async function GetBlogPosts(
 
   const variables = { locale: locale, limit: tag ? 999 : limit, skip: skip };
   const data = await fetchGraphQL(query, variables);
+
   const collection = data.data.blogPostCollection;
 
   const regex = /Blog: (.*)/gm;

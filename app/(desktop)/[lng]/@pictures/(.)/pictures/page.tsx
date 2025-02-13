@@ -10,11 +10,12 @@ import AboutAuthor from "@/parts/about-author";
 import { getPageAlternates } from "@/helper/localization";
 import CoasterStats from "@/components/coaster/coaster-stats";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lng: string; pageNumber: number; tag: string | undefined };
-}) {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+  }
+) {
+  const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
     namespaces: ["gallery"],
@@ -32,7 +33,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function Welcome({ params }: { params: { lng: string } }) {
+export default async function Welcome(props: { params: Promise<{ lng: string }> }) {
+  const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
     namespaces: ["titles"],
@@ -49,7 +51,6 @@ export default async function Welcome({ params }: { params: { lng: string } }) {
         <Image
           className="absolute bottom-0 left-0 right-0 top-0 h-max w-max object-cover"
           src={PicturesJumbotron}
-          placeholder="blur"
           fill={true}
           alt="Gallery Header"
         />
