@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -20,10 +20,12 @@
   }
 }
 
-a.external {
-  @apply text-sky-800 hover:text-sky-900 dark:text-sky-500 dark:hover:text-sky-700;
-}
+@layer components {
+  a.external {
+    @apply text-sky-800 hover:text-sky-900 dark:text-sky-500 dark:hover:text-sky-700;
+  }
 
-.next-video-bg-text {
-  padding: 0 !important;
+  .next-video-bg-text {
+    padding: 0 !important;
+  }
 }
