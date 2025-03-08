@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function NotFound() {
+export default function NotFound() {
   return (
     <div className="dark">
       <section className="bg-white dark:bg-gray-900">
         <div className="container mx-auto min-h-screen px-6 py-12 lg:flex lg:items-center lg:gap-12">
-          <div className="wf-ull lg:w-1/2">
+          <div className="w-full lg:w-1/2">
             <p className="text-4xl font-extrabold text-blue-500 dark:text-blue-400">
               404
             </p>

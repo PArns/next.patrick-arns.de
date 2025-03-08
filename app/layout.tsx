@@ -28,26 +28,7 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const locale = await getLocale();
-  const classes = clsx(
-    inter.className,
-    "overflow-hidden overscroll-none bg-neutral-200 dark:bg-neutral-900 subpixel-antialiased",
-  );
-
-  return (
-    <html suppressHydrationWarning lang={locale}>
-      <body className={classes}>
-        <Providers>{children}</Providers>
-        <Analytics />
-
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `<!-- 
+const HTML_COMMENT = `<!-- 
 
                                                                                                            dddddddd                                           
                AAA                                                                                         d::::::d                                           
@@ -65,7 +46,7 @@ export default async function RootLayout({
    A:::::A             A:::::A   r:::::r              n::::n    n::::ns:::::ssss::::::s        d::::::ddddd::::::dde::::::::e                v:::::::v        
   A:::::A               A:::::A  r:::::r              n::::n    n::::ns::::::::::::::s  ......  d:::::::::::::::::d e::::::::eeeeeeee         v:::::v         
  A:::::A                 A:::::A r:::::r              n::::n    n::::n s:::::::::::ss   .::::.   d:::::::::ddd::::d  ee:::::::::::::e          v:::v          
-AAAAAAA                   AAAAAAArrrrrrr              nnnnnn    nnnnnn  sssssssssss     ......    ddddddddd   ddddd    eeeeeeeeeeeeee           vvv     
+AAAAAAA                   AAAAAAArrrrrrr              nnnnnn    nnnnnn  sssssssssss     ......    ddddddddd   ddddd    eeeeeeeeeeeeee           vvv      
 
 ✨ arns.dev - Handcrafted with passion by Patrick Arns ✨
 
@@ -77,8 +58,26 @@ If you're from an amusement park or ride manufacturer 🎢 and have stumbled upo
 
 Drop me a line at: 💌 your-page-is-awesome@arns.dev 📧 
 
--->`,
-          }}
+-->`;
+
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const locale = await getLocale();
+  const classes = clsx(
+    inter.className,
+    "overflow-hidden overscroll-none bg-neutral-200 dark:bg-neutral-900 subpixel-antialiased",
+  );
+
+  return (
+    <html suppressHydrationWarning lang={locale}>
+      <body className={classes}>
+        <Providers>{children}</Providers>
+        <Analytics />
+        <div
+          dangerouslySetInnerHTML={{ __html: HTML_COMMENT }}
         />
       </body>
     </html>

@@ -1,5 +1,4 @@
 import { NextResponse, type NextRequest } from "next/server";
-
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import PageBaseConfiguration from "./configuration";
@@ -10,8 +9,8 @@ function getLocale(request: NextRequest) {
   try {
     const acceptedLanguage =
       request.headers.get("accept-language") ?? undefined;
-    let headers = { "accept-language": acceptedLanguage };
-    let languages = new Negotiator({ headers }).languages();
+    const headers = { "accept-language": acceptedLanguage };
+    const languages = new Negotiator({ headers }).languages();
 
     return match(languages, config.supportedLocales, config.defaultLocale);
   } catch {
@@ -19,29 +18,30 @@ function getLocale(request: NextRequest) {
   }
 }
 
+function redirectToLocale(request: NextRequest, locale: string, path: string) {
+  return NextResponse.redirect(new URL(`/${locale}${path}`, request.url));
+}
+
 export async function middleware(request: NextRequest) {
   const config = PageBaseConfiguration();
   const pathname = request.nextUrl.pathname;
 
-  const pathLocale = config.supportedLocales.find((locale) => {
-    return pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`;
-  });
+  const pathLocale = config.supportedLocales.find(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+  );
 
   if (pathname === "/" && config.startRoute && config.startRoute !== "/") {
     const locale = getLocale(request);
-
-    return NextResponse.redirect(
-      new URL(
-        `/${locale}/${config.startRoute}`.replaceAll("//", "/"),
-        request.url,
-      ),
+    return redirectToLocale(
+      request,
+      locale,
+      `/${config.startRoute}`.replaceAll("//", "/"),
     );
   }
 
-  // Redirect if there is no locale
   if (pathLocale == null) {
     const locale = getLocale(request);
-    return NextResponse.redirect(new URL(`/${locale}${pathname}`, request.url));
+    return redirectToLocale(request, locale, pathname);
   }
 
   const requestHeaders = new Headers(request.headers);
