@@ -5,12 +5,11 @@ import TranslateSwitch, {
 import initTranslations from "@/components/translate/i18n";
 import BlogTeaser from "@/components/blog/blog-teaser";
 import { getPageAlternates } from "@/helper/localization";
+import BuildInfo from "@/components/os/build-number";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
-  }
-) {
+export async function generateMetadata(props: {
+  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+}) {
   const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
@@ -27,7 +26,9 @@ export async function generateMetadata(
   };
 }
 
-export default async function Welcome(props: { params: Promise<{ lng: string }> }) {
+export default async function Welcome(props: {
+  params: Promise<{ lng: string }>;
+}) {
   const params = await props.params;
   return (
     <div className="container mx-auto">
@@ -68,7 +69,7 @@ export default async function Welcome(props: { params: Promise<{ lng: string }> 
               überwiegend im englischen Bereich arbeite und ungern deutsche
               Seiten verlinkt habe.
             </p>
-            <p>
+            <p className="mb-4">
               Zudem ist das Framework und der Inhalt der Seite nun explizit Open
               Source und bei{" "}
               <a
@@ -80,6 +81,9 @@ export default async function Welcome(props: { params: Promise<{ lng: string }> 
               </a>
               !
             </p>
+            <div className="flex w-full items-end justify-end -mb-2">
+              <BuildInfo />
+            </div>
           </Translation>
           <Translation lang="en">
             <h1 className="mb-2 text-2xl">Hello Stranger!</h1>
@@ -113,7 +117,7 @@ export default async function Welcome(props: { params: Promise<{ lng: string }> 
               not least because I primarily work in the English-speaking domain
               and prefer not to link to German sites.
             </p>
-            <p>
+            <p className="mb-4">
               Furthermore, the framework and content of the site are now
               explicitly open source and can be found on{" "}
               <a
@@ -125,6 +129,9 @@ export default async function Welcome(props: { params: Promise<{ lng: string }> 
               </a>
               !
             </p>
+            <div className="flex w-full items-end justify-end -mb-2">
+              <BuildInfo />
+            </div>
           </Translation>
         </TranslateSwitch>
       </article>
