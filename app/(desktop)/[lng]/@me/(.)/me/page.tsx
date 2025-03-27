@@ -1,10 +1,9 @@
 import Image from "next/image";
 
-import { BlogTeaserSpecific } from "@/components/blog/blog-teaser";
 import initTranslations from "@/components/translate/i18n";
 import TypeWriter from "@/components/type-writer";
 
-import JumbotronPic from "@/public/images/profilePic-exempt.png";
+import JumbotronPic from "@/public/images/profilePic-sp.png";
 import { getPageAlternates } from "@/helper/localization";
 
 import { WindowTitle } from "@/components/os/windowManager";
