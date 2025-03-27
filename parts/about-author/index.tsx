@@ -6,7 +6,7 @@ import TranslateSwitch, {
 } from "@/components/translate/translate-switch";
 import AppLink from "@/components/os/app-link";
 
-import ProfilePic from "@/public/images/profilePic.jpg";
+import ProfilePic from "@/public/images/profilePic2.jpg";
 
 export default function AboutAuthor({ lng }: { lng: string }) {
   return (
