@@ -53,7 +53,7 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
   });
 
   return (
-    <div className="flex flex-col p-2 @container">
+    <div className="flex flex-col px-4 py-2 @container">
       <WindowTitle id="me" title={t("aboutMe")} />
 
       <div className="relative w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
