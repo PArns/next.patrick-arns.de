@@ -82,7 +82,7 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
               </h1>
             </div>
           </div>
-          <div className="w-max @md:pr-4">
+          <div className="w-max @xl:pr-12 @4xl:pr-24">
             <Image
               src={JumbotronPic}
               alt="Patrick"
