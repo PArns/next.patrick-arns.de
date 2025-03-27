@@ -12,8 +12,8 @@ export default function BuildInfo() {
 
   return (
     <div className="flex items-center">
-      <span className="text-xs text-neutral-400">
-        Version: {buildInfo.buildNumber} (<DateRenderer date={buildDate} />)
+      <span className="text-xs text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+        <span>Version: </span>{buildInfo.buildNumber} <span className="hidden md:inline">(<DateRenderer date={buildDate} />)</span>
       </span>
     </div>
   );

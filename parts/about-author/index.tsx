@@ -10,8 +10,8 @@ import ProfilePic from "@/public/images/profilePic2.jpg";
 
 export default function AboutAuthor({ lng }: { lng: string }) {
   return (
-    <div className="flex flex-col rounded-lg bg-white p-2 drop-shadow-lg dark:bg-neutral-800">
-      <div className="pb-2 text-xl font-bold">
+    <div className="flex flex-col rounded-lg bg-white p-4 drop-shadow-lg dark:bg-neutral-800">
+      <div className="pb-2 text-xl">
         <Translate id="aboutAuthor" locale={lng} ns="blog" />
       </div>
       <Image

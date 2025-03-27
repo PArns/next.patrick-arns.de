@@ -9,6 +9,7 @@ import IconContainer from "../icon-container";
 import WindowManager from "../windowManager";
 import BackgroundImage from "../background-image";
 import Lightbox from "../lightbox";
+import BuildInfo from "../build-number";
 
 export default function Desktop({
   children,
@@ -34,10 +35,15 @@ export default function Desktop({
         <div className="z-999 flex-none select-none">
           <Taskbar socialMediaLinks={socialMediaLinks} />
         </div>
+
+        <div className="absolute right-0 bottom-0 p-2">
+          <BuildInfo />
+        </div>
       </div>
 
       <WindowManager />
       <Lightbox />
+
       <BackgroundImage backgroundImages={backgroundImages} />
     </>
   );

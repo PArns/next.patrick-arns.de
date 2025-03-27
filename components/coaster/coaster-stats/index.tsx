@@ -41,7 +41,7 @@ export default async function CoasterStats({ lng }: { lng: string }) {
   const coasterStats = await fetchCoasterStats();
 
   return (
-    <div className="relative flex-col rounded-lg bg-white p-2 drop-shadow-lg dark:bg-neutral-800">
+    <div className="relative flex-col rounded-lg bg-white p-4 drop-shadow-lg dark:bg-neutral-800">
       <h2 className="pb-1 text-xl">{t("coasterStats")}</h2>
       <AppLink href={`/${lng}/coaster`} id="coaster">
         <table className="min-w-full">
