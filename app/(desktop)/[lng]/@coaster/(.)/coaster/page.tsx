@@ -33,6 +33,7 @@ import FkFLogo from "@/public/images/fkf.png";
 import PoweredByCoasterCloud from "@/components/coaster/coaster-stats/powered-by";
 
 import Backpack from "@/public/images/divoom-backpack.png";
+import WindowDefaultContainer from "@/components/os/window/default-container";
 
 export async function generateMetadata(
   props: {
@@ -82,7 +83,7 @@ export default async function Coaster(props: { params: Promise<{ lng: string }> 
   );
 
   return (
-    <div className="flex w-full flex-col p-2 @container">
+    <WindowDefaultContainer>
       <div className="overflow-hidden rounded-lg @container/header">
         <BackgroundPlayer
           src={"https://assets.arns.dev/header-coaster-loop.mp4"}
@@ -622,6 +623,6 @@ export default async function Coaster(props: { params: Promise<{ lng: string }> 
           <PoweredByCoasterCloud />
         </div>
       </div>
-    </div>
+    </WindowDefaultContainer>
   );
 }

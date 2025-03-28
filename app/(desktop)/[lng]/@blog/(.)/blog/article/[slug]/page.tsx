@@ -22,6 +22,7 @@ import DateRenderer from "@/components/date-renderer";
 
 import { ClockIcon } from "@heroicons/react/20/solid";
 import BlogAlternateLanguageLink from "@/components/blog/blog-alternate-language";
+import WindowDefaultContainer from "@/components/os/window/default-container";
 
 // TODO: Staic parameter wieder funktionsfähig machen!
 /*interface BlogPostPageParams {
@@ -111,7 +112,7 @@ export default async function BlogOverlay(
   }
 
   return (
-    <div className="flex w-full flex-col p-2 @container">
+    <WindowDefaultContainer>
       <WindowTitle id="blog" title={`${post.title} - ${post.subTitle}`} />
       <LanguageAlternates alternates={alternates} />
       <BlogHeader
@@ -169,6 +170,6 @@ export default async function BlogOverlay(
           </Link>
         </div>
       </div>
-    </div>
+    </WindowDefaultContainer>
   );
 }

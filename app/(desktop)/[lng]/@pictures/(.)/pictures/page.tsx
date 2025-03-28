@@ -9,6 +9,7 @@ import PicturesJumbotron from "@/public/jumbotron/pictures.jpg";
 import AboutAuthor from "@/parts/about-author";
 import { getPageAlternates } from "@/helper/localization";
 import CoasterStats from "@/components/coaster/coaster-stats";
+import WindowDefaultContainer from "@/components/os/window/default-container";
 
 export async function generateMetadata(
   props: {
@@ -44,7 +45,7 @@ export default async function Welcome(props: { params: Promise<{ lng: string }> 
   if (!imageGalleries) return null;
 
   return (
-    <div className="flex flex-col p-2 @container">
+    <WindowDefaultContainer>
       <WindowTitle id="pictures" title={t("pictures")} />
 
       <div className="relative mb-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
@@ -81,6 +82,6 @@ export default async function Welcome(props: { params: Promise<{ lng: string }> 
           <CoasterStats lng={params.lng} />
         </div>
       </div>
-    </div>
+    </WindowDefaultContainer>
   );
 }

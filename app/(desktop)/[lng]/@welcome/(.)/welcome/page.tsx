@@ -6,6 +6,7 @@ import initTranslations from "@/components/translate/i18n";
 import BlogTeaser from "@/components/blog/blog-teaser";
 import { getPageAlternates } from "@/helper/localization";
 import AboutAuthor from "@/parts/about-author";
+import WindowDefaultContainer from "@/components/os/window/default-container";
 
 export async function generateMetadata(props: {
   params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
@@ -31,9 +32,9 @@ export default async function Welcome(props: {
 }) {
   const params = await props.params;
   return (
-    <div className="@container mx-auto">
+    <WindowDefaultContainer>
       <div className="flex">
-        <article className="m-4 rounded-md bg-white p-4 dark:bg-neutral-800">
+        <article className="p-4 rounded-md bg-white dark:bg-neutral-800">
           <TranslateSwitch locale={params.lng}>
             <Translation lang="de">
               <h1 className="mb-2 text-2xl">Hallo Fremder!</h1>
@@ -130,12 +131,12 @@ export default async function Welcome(props: {
             </Translation>
           </TranslateSwitch>
         </article>
-        <div className="hidden pt-4 pr-4 @2xl:block">
+        <div className="hidden pl-4 @2xl:block">
           <AboutAuthor lng={params.lng} />
         </div>
       </div>
 
-      <BlogTeaser locale={params.lng} maxEntries={1} className="m-4 mt-0" />
-    </div>
+      <BlogTeaser locale={params.lng} maxEntries={1} className="pt-4" />
+    </WindowDefaultContainer>
   );
 }

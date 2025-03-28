@@ -24,6 +24,7 @@ import CyberGhost7 from "@/public/cyberghost/cyberghost7.png";
 import CyberGhost8 from "@/public/cyberghost/cyberghost8.png";
 import Age from "@/components/age";
 import AppLink from "@/components/os/app-link";
+import WindowDefaultContainer from "@/components/os/window/default-container";
 
 export async function generateMetadata(
   props: {
@@ -53,7 +54,7 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
   });
 
   return (
-    <div className="flex flex-col px-4 py-2 @container">
+    <WindowDefaultContainer>
       <WindowTitle id="me" title={t("aboutMe")} />
 
       <div className="relative w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
@@ -796,6 +797,6 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
           </TimeLineItem>
         </TimeLine>
       </div>
-    </div>
+    </WindowDefaultContainer>
   );
 }

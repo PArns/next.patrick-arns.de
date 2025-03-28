@@ -15,6 +15,7 @@ import AboutAuthor from "@/parts/about-author";
 
 import { getPageAlternates } from "@/helper/localization";
 import CoasterStats from "@/components/coaster/coaster-stats";
+import WindowDefaultContainer from "@/components/os/window/default-container";
 
 export async function generateMetadata(
   props: {
@@ -82,7 +83,7 @@ export default async function BlogIndex(
   const pageCount = Math.ceil(posts.total / postsPerPage);
 
   return (
-    <div className="flex flex-col p-2 @container">
+    <WindowDefaultContainer>
       <WindowTitle id="blog" title={"Blog"} />
 
       <div className="relative mb-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
@@ -168,6 +169,6 @@ export default async function BlogIndex(
           <CoasterStats lng={params.lng} />
         </div>
       </div>
-    </div>
+    </WindowDefaultContainer>
   );
 }
