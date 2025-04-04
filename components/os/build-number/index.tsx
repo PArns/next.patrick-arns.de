@@ -14,7 +14,7 @@ export default function BuildInfo() {
         <span>Version: </span>
         {buildInfo.buildNumber}{" "}
         <span className="hidden md:inline">
-          (<DateRenderer date={buildDate} />)
+          (<DateRenderer date={buildDate} locale="de" />)
         </span>
       </span>
     </div>
