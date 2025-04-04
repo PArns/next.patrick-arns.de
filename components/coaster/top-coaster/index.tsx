@@ -5,6 +5,7 @@ import { getAttractionCountsById } from "@/data-provider/coastercloud/provider/r
 import { Count } from "@/data-provider/coastercloud/types/TypeRideStatistics";
 import { TopCoaster } from "@/data-provider/contentful/provider/coaster-provider";
 import clsx from "clsx";
+import QueueTime from "../qeue-time";
 
 export function getCount(counts: Count[] | null, key: string): Number {
   if (counts === null || counts.length === 0) return 0;
@@ -61,12 +62,17 @@ export default async function TopCoasterEntry({
         <div className={spacerClassLeft} />
         <div className="m-4 grow">
           <h2 className="pb-2 text-2xl font-semibold">
-            {t("pos")} {coaster.rank}: {coaster.name}
+            {t("pos")} {coaster.rank}: {coaster.name}<span className="text-xl"> ({coaster.park})</span>
           </h2>
           <RichTextRenderer document={coaster.description} />
 
-          <div className="text-neutral-700 dark:text-neutral-300">
-            {getCount(attractionCounts, "totalRides").toString()} {t("rides")}
+          <div className="flex flex-row justify-between items-center">
+            <div className="text-neutral-700 dark:text-neutral-300">
+              {getCount(attractionCounts, "totalRides").toString()} {t("rides")}
+            </div>
+            <div className="ml-auto">
+              <QueueTime parkId={coaster.parkId} rideId={coaster.rideId} locale={locale} />
+            </div>
           </div>
         </div>
         <div className={spacerClassRight} />

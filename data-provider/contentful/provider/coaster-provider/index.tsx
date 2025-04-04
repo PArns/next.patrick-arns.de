@@ -94,6 +94,9 @@ export interface TopCoasters {
 
 export interface TopCoaster {
   name: string;
+  park: string;
+  parkId: number;
+  rideId: number;
   rank: string;
   description: any;
   image: any;
@@ -113,7 +116,10 @@ export async function GetTopCoasters({
     items {
       name
       rank
+      park
       coasterCloudId
+      parkId
+      rideId
       description {
         json
         links {
@@ -160,10 +166,13 @@ export async function GetTopCoasters({
   const coasterList: TopCoaster[] = coaster.items.map((coasterEntry: any) => {
     return {
       name: coasterEntry.name,
+      park: coasterEntry.park,
+      parkId: coasterEntry.parkId,
+      rideId: coasterEntry.rideId,
+      coasterCloudId: coasterEntry.coasterCloudId,
       rank: coasterEntry.rank,
       description: coasterEntry.description,
       image: coasterEntry.image,
-      coasterCloudId: coasterEntry.coasterCloudId,
     };
   });
 

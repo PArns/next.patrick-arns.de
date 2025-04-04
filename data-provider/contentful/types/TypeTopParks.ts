@@ -3,7 +3,6 @@ import type { ChainModifiers, Entry, EntryFieldTypes, EntrySkeletonType, LocaleC
 export interface TypeTopParksFields {
     name: EntryFieldTypes.Symbol;
     rank: EntryFieldTypes.Integer;
-    ccId: EntryFieldTypes.Symbol;
     image: EntryFieldTypes.AssetLink;
     description?: EntryFieldTypes.RichText;
 }
