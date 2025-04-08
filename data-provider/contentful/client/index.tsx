@@ -23,7 +23,7 @@ export const fetchGraphQL = async function (
       },
       body: JSON.stringify(requestBody),
       next: {
-        revalidate: process.env.NODE_ENV === "development" ? 10 : 60 * 60 * 6, // 6H Cache Time
+        revalidate: process.env.NODE_ENV === "development" ? 60 : 60 * 60 * 6, // 6H Cache Time
         tags: ["contentful"],
       },
     },
