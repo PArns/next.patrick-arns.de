@@ -314,7 +314,7 @@ export default async function Coaster(props: {
             ))}
         </div>
 
-        <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
+        <div className="mt-8 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
           <h3 className="mb-1 text-2xl leading-tight font-extrabold text-neutral-900 lg:text-3xl dark:text-white">
             {t("sectionTopCoaster")}
           </h3>
