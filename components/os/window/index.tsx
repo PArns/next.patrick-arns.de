@@ -318,7 +318,7 @@ export default function DesktopWindow({
                   className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
                 />
               </div>
-              <div className={windowTitleClass}>{titleState}</div>
+              <header className={windowTitleClass}>{titleState}</header>
               <button
                 className="flex h-7 w-7 flex-none items-center justify-center rounded-tr-sm border-0 hover:bg-red-500/50 focus:bg-red-500/50 focus:outline-hidden"
                 aria-label="Close"
@@ -329,7 +329,7 @@ export default function DesktopWindow({
               </button>
             </div>
             <div
-              className="flex overflow-y-auto overflow-x-clip"
+              className="flex overflow-x-clip overflow-y-auto"
               onClick={handleContainerClick}
             >
               <main className={contentClass} ref={childrenRef}>

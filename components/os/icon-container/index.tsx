@@ -36,8 +36,8 @@ const IconContainer: React.FC<IconContainerContract> = ({
   );
 
   return (
-    <div className={mainIconDivClasses}>
-      <nav className="flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
+    <nav className={mainIconDivClasses} aria-label="Desktop Icons">
+      <div className="flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
         {windowArray.map((window) => (
           <DesktopIcon
             icon={window.icon}
@@ -49,7 +49,7 @@ const IconContainer: React.FC<IconContainerContract> = ({
             }}
           />
         ))}
-      </nav>
+      </div>
       <div className="flex h-screen flex-col flex-wrap content-start gap-2 pb-16">
         {socialMediaLinks &&
           socialMediaLinks.map((link) => (
@@ -62,7 +62,7 @@ const IconContainer: React.FC<IconContainerContract> = ({
             />
           ))}
       </div>
-    </div>
+    </nav>
   );
 };
 

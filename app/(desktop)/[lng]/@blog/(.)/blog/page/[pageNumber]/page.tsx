@@ -17,11 +17,9 @@ import { getPageAlternates } from "@/helper/localization";
 import CoasterStats from "@/components/coaster/coaster-stats";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
-  }
-) {
+export async function generateMetadata(props: {
+  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+}) {
   const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
@@ -49,11 +47,9 @@ export async function generateMetadata(
   };
 }
 
-export default async function BlogIndex(
-  props: {
-    params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
-  }
-) {
+export default async function BlogIndex(props: {
+  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+}) {
   const params = await props.params;
   const config = PageBaseConfiguration();
 
@@ -86,15 +82,15 @@ export default async function BlogIndex(
     <WindowDefaultContainer>
       <WindowTitle id="blog" title={"Blog"} />
 
-      <div className="relative mb-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
+      <header className="relative mb-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
         <Image
-          className="absolute bottom-0 left-0 right-0 top-0 h-max w-max object-cover"
+          className="absolute top-0 right-0 bottom-0 left-0 h-max w-max object-cover"
           src={BlogJumbotron}
           fill={true}
           alt="Blog Header"
         />
 
-        <div className="py-8 @md:py-14 @lg:py-20">
+        <div className="px-4 py-8 @md:py-14 @lg:py-20">
           <div className="flex h-full items-center justify-center">
             <div className="rounded-xl border-neutral-500 bg-white/30 p-5 text-white backdrop-blur-md dark:border-neutral-600 dark:bg-neutral-800/50">
               <h1 className="mb-4 text-5xl font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] @lg:text-7xl">
@@ -106,10 +102,10 @@ export default async function BlogIndex(
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
       <div className="flex">
-        <div className="flex w-full flex-col gap-3 @3xl:w-3/4">
+        <section className="flex w-full flex-col gap-3 @3xl:w-3/4">
           {posts.posts.map((post) => (
             <BlogCard post={post} key={post.slug} />
           ))}
@@ -124,12 +120,15 @@ export default async function BlogIndex(
               />
             </div>
           )}
-        </div>
+        </section>
 
         <div className="hidden w-1/4 flex-col gap-2 pl-2 @3xl:flex">
           <AboutAuthor lng={params.lng} />
 
-          <div className="flex flex-col rounded-lg bg-white p-4 drop-shadow-lg dark:bg-neutral-800">
+          <aside
+            className="flex flex-col rounded-lg bg-white p-4 drop-shadow-lg dark:bg-neutral-800"
+            aria-label="Tag Cloud"
+          >
             <div className="pb-2">Tag Cloud</div>
             <div className="flex flex-wrap gap-2">
               {posts.tags.map((tag) => (
@@ -141,10 +140,13 @@ export default async function BlogIndex(
                 />
               ))}
             </div>
-          </div>
+          </aside>
 
           {params.tag && (
-            <div className="flex-col rounded-lg bg-white p-4 text-center drop-shadow-lg dark:bg-neutral-800">
+            <aside
+              className="flex-col rounded-lg bg-white p-4 text-center drop-shadow-lg dark:bg-neutral-800"
+              aria-label="Tag"
+            >
               <div className="pb-2 font-bold">
                 <Translate id="titleShowingTag" ns="blog" locale={params.lng} />
               </div>
@@ -163,7 +165,7 @@ export default async function BlogIndex(
                   <Translate id="showAll" ns="blog" locale={params.lng} />
                 </Link>
               </div>
-            </div>
+            </aside>
           )}
 
           <CoasterStats lng={params.lng} />

@@ -57,7 +57,7 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
     <WindowDefaultContainer>
       <WindowTitle id="me" title={t("aboutMe")} />
 
-      <div className="relative w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
+      <header className="relative w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
         <div className="relative flex flex-row">
           <div className="flex w-full items-center justify-center">
             <div>
@@ -91,10 +91,10 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
             />
           </div>
         </div>
-      </div>
+      </header>
 
       <div className="flex flex-col">
-        <div className="mb-4 flex w-full flex-col rounded-md bg-white p-4 dark:bg-neutral-800">
+        <section className="mb-4 flex w-full flex-col rounded-md bg-white p-4 dark:bg-neutral-800">
           <h1 className="mb-2 text-2xl">Patrick Arns</h1>
 
           <TranslateSwitch locale={params.lng}>
@@ -198,9 +198,9 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
               </p>
             </Translation>
           </TranslateSwitch>
-        </div>
+        </section>
 
-        <div className="flex w-full flex-col rounded-md bg-white p-4 dark:bg-neutral-800">
+        <section className="flex w-full flex-col rounded-md bg-white p-4 dark:bg-neutral-800">
           <TranslateSwitch locale={params.lng}>
             <Translation lang="de">
               <h1 className="mb-2 text-2xl">
@@ -326,7 +326,7 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
               </p>
             </Translation>
           </TranslateSwitch>
-        </div>
+        </section>
 
         <TimeLine className="py-6 @2xl:px-12">
           <TimeLineItem title="SimonTools CyberGhost" time={"2003"} icon="home">

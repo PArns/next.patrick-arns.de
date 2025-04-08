@@ -47,11 +47,9 @@ export async function generateStaticParams(): Promise<BlogPostPageParams[]> {
   return entries;
 }*/
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string; lng: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string; lng: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const config = PageBaseConfiguration();
   const post = await GetBlogPostBySlug(params.slug, params.lng);
@@ -93,11 +91,9 @@ export async function generateMetadata(
   };
 }
 
-export default async function BlogOverlay(
-  props: {
-    params: Promise<{ slug: string; lng: string }>;
-  }
-) {
+export default async function BlogOverlay(props: {
+  params: Promise<{ slug: string; lng: string }>;
+}) {
   const params = await props.params;
   const post = await GetBlogPostBySlug(params.slug, params.lng);
   if (!post) redirect(`/${params.lng}/blog`);
@@ -120,14 +116,21 @@ export default async function BlogOverlay(
         subTitle={post.subTitle}
         backgroundImage={post.image}
       />
-      <div className="mt-4 rounded-md bg-white p-4 dark:bg-neutral-800">
-        <h3 className="mb-1 text-3xl font-extrabold leading-tight text-neutral-900 @lg:text-4xl dark:text-white">
+      <article
+        className="mt-4 rounded-md bg-white p-4 dark:bg-neutral-800"
+        aria-labelledby="article-title"
+        role="article"
+      >
+        <h3
+          className="mb-1 text-3xl leading-tight font-extrabold text-neutral-900 @lg:text-4xl dark:text-white"
+          id="article-title"
+        >
           {post.title}
         </h3>
-        <h4 className="mb-2 text-xl font-semibold leading-tight text-neutral-900 @lg:text-2xl dark:text-white">
+        <h4 className="mb-2 text-xl leading-tight font-semibold text-neutral-900 @lg:text-2xl dark:text-white">
           {post.subTitle}
         </h4>
-        <h5 className="text-regular mb-2 flex flex-row font-semibold leading-tight text-neutral-900 dark:text-white">
+        <h5 className="text-regular mb-2 flex flex-row leading-tight font-semibold text-neutral-900 dark:text-white">
           <ClockIcon className="mr-2 h-5 w-5" />
           <DateRenderer
             date={post.publishedAt}
@@ -135,13 +138,14 @@ export default async function BlogOverlay(
             locale={params.lng}
           />
         </h5>
-        <BlogAlternateLanguageLink alternatives={alternates} locale={params.lng} />
-        <article>
-          <RichTextRenderer document={post.body} />
-        </article>
-      </div>
-      <div>
-        <div className="mr-1 mt-2 flex flex-nowrap text-neutral-800">
+        <BlogAlternateLanguageLink
+          alternatives={alternates}
+          locale={params.lng}
+        />
+        <RichTextRenderer document={post.body} />
+      </article>
+      <aside aria-label="Back to Blog Overview">
+        <div className="mt-2 mr-1 flex flex-nowrap text-neutral-800">
           <Link
             href={`/${params.lng}/blog`}
             className="rounded-sm bg-sky-400 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"
@@ -169,7 +173,7 @@ export default async function BlogOverlay(
             </div>
           </Link>
         </div>
-      </div>
+      </aside>
     </WindowDefaultContainer>
   );
 }

@@ -23,9 +23,9 @@ export async function BlogTeaserSpecific({
   if (!post) return null;
 
   return (
-    <div className={clsx("flex flex-col gap-2", className)}>
+    <section className={clsx("flex flex-col gap-2", className)}>
       <BlogTeaserCard post={post} key={post.slug} />
-    </div>
+    </section>
   );
 }
 
@@ -43,13 +43,13 @@ export default async function BlogTeaser({
   if (!posts) return null;
 
   return (
-    <div className={clsx(className)}>
+    <section className={clsx(className)}>
       <div className="flex flex-col gap-2 @container">
         {posts.posts.map((post) => (
           <BlogTeaserCard post={post} key={post.slug} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

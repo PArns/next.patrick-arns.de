@@ -10,7 +10,7 @@ export default function BlogHeader({
   backgroundImage: any;
 }) {
   return (
-    <div className="relative w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center @container/header">
+    <header className="relative w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center @container/header">
       <ContentfulImageAsset
         asset={backgroundImage}
         alt={title}
@@ -33,6 +33,6 @@ export default function BlogHeader({
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

@@ -42,21 +42,28 @@ export default function TitleBar({ pageName }: { pageName: string }) {
               alt={title}
               width={20}
               height={20}
-              className="pr-1 pt-1 drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
+              className="pt-1 pr-1 drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
             />
           </div>
-          <div className="w-96 truncate md:w-auto md:max-w-[500px] lg:max-w-none pt-[1px]">
-            <span className="hidden md:inline">{pageName}</span>
-            <span className="hidden md:inline">{spacer}</span>
+          <div className="w-96 truncate pt-[1px] md:w-auto md:max-w-[500px] lg:max-w-none">
+            <span className="hidden md:inline" aria-hidden="true">
+              {pageName}
+            </span>
+            <span className="hidden md:inline" aria-hidden="true">
+              {spacer}
+            </span>
             <span>{title}</span>
           </div>
         </div>
       </div>
       <div className="grow"></div>
-      <div className="hidden flex-none pr-2 md:block pt-[1px]">
+      <div
+        className="hidden flex-none pt-[1px] pr-2 md:block"
+        aria-hidden="true"
+      >
         <Clock timeFormat="hh-mm" />
       </div>
-      <div className="flex-none">
+      <div className="flex-none" aria-hidden="true">
         <ThemeSwitcher />
       </div>
       <div className="flex-none">

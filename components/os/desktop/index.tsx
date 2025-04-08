@@ -25,20 +25,20 @@ export default function Desktop({
   return (
     <>
       <div className="fixed inset-0 flex flex-col">
-        <div className="z-999 flex-none select-none">
+        <header className="z-999 flex-none select-none">
           <TitleBar pageName={pageName} />
-        </div>
+        </header>
         <div className="flex grow">
           {children}
           <IconContainer socialMediaLinks={socialMediaLinks} />
         </div>
-        <div className="z-999 flex-none select-none">
+        <nav className="z-999 flex-none select-none" aria-label="Taskbar">
           <Taskbar socialMediaLinks={socialMediaLinks} />
-        </div>
+        </nav>
 
-        <div className="absolute right-0 bottom-0 p-2">
+        <aside className="absolute right-0 bottom-0 p-2">
           <BuildInfo />
-        </div>
+        </aside>
       </div>
 
       <WindowManager />

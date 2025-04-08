@@ -24,13 +24,13 @@ export default function TimeLine({
   className?: string;
 }) {
   return (
-    <div className={clsx("w-full @container/timeline", className)}>
+    <section className={clsx("@container/timeline w-full", className)}>
       <div className="relative mx-auto space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-linear-to-b before:from-transparent before:via-neutral-300 before:to-transparent @2xl/timeline:before:mx-auto @2xl/timeline:before:translate-x-0 dark:before:via-neutral-700">
         {children.map((child, index) => (
           <Fragment key={index}>{child}</Fragment>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -51,14 +51,14 @@ export const TimeLineItem: React.FunctionComponent<ITimeLineItem> = ({
   const IconComponent = iconMap[icon];
 
   return (
-    <div
+    <article
       className={clsx(
         "group relative flex items-center justify-between @2xl/timeline:justify-normal @2xl/timeline:odd:flex-row-reverse",
         { "is-active": isActive },
       )}
     >
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white bg-neutral-300 text-neutral-500 shadow-sm group-first:mt-0! group-[.is-active]:bg-emerald-500 group-[.is-active]:text-emerald-50 @2xl/timeline:order-1 @2xl/timeline:-mt-36 @2xl/timeline:group-odd:-translate-x-1/2 @2xl/timeline:group-even:translate-x-1/2 dark:border-neutral-800 dark:bg-neutral-600 dark:text-neutral-300 dark:group-[.is-active]:bg-emerald-600">
-        <IconComponent className="h-5 w-5" />
+        <IconComponent className="h-5 w-5" aria-hidden="true" />
       </div>
 
       <div className="w-[calc(100%-4rem)] rounded-lg bg-white p-4 drop-shadow-lg group-first:mt-0! @2xl/timeline:-mt-36 @2xl/timeline:w-[calc(50%-2.5rem)] dark:bg-neutral-800">
@@ -72,6 +72,6 @@ export const TimeLineItem: React.FunctionComponent<ITimeLineItem> = ({
         </div>
         <div className="text-neutral-700 dark:text-neutral-300">{children}</div>
       </div>
-    </div>
+    </article>
   );
 };

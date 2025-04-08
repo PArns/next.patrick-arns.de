@@ -75,10 +75,12 @@ export default async function RootLayout({
     <html suppressHydrationWarning lang={locale}>
       <body className={classes}>
         <Providers>{children}</Providers>
-        <Analytics />
+        
         <div
           dangerouslySetInnerHTML={{ __html: HTML_COMMENT }}
         />
+        
+        <Analytics />
       </body>
     </html>
   );
