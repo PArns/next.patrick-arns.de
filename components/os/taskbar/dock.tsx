@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useMotionValue } from "framer-motion";
-import { TypeSocialMediaLinkFields } from "@/data-provider/contentful/types";
 
 import AppIcon from "./app-icon";
 import SocialMediaIcon from "./social-media-icon";
@@ -13,11 +12,12 @@ import { useState } from "react";
 
 import { isMobile } from "react-device-detect";
 import clsx from "clsx";
+import { SocialMediaLink } from "../icon-container";
 
 export default function Dock({
   socialMediaLinks,
 }: {
-  socialMediaLinks?: TypeSocialMediaLinkFields[];
+  socialMediaLinks?: SocialMediaLink[];
 }) {
   let mouseX = useMotionValue(Infinity);
   const [windowsArray, setWindowsArray] = useState<RegisteredWindows>([]);

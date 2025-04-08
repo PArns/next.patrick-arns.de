@@ -1,4 +1,3 @@
-import { EntryFieldTypes } from "contentful";
 import Image from "next/image";
 import { CSSProperties } from "react";
 import ClientImage from "./client-image";
@@ -6,7 +5,7 @@ import clsx from "clsx";
 
 export interface ContentfulImageAssetProps {
   asset: any;
-  alt: string | EntryFieldTypes.Symbol;
+  alt: string;
   width?: number;
   height?: number;
   quality?: number;

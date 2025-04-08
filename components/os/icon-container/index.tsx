@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import DesktopIcon from "./desktop-icon";
-import { TypeSocialMediaLinkFields } from "@/data-provider/contentful/types";
 
 import {
   registeredWindowsChangedEvent,
@@ -12,8 +11,15 @@ import {
 } from "../windowManager";
 import clsx from "clsx";
 
+export type SocialMediaLink = {
+  name: string;
+  title: string;
+  link: string;
+  icon?: string;
+};
+
 export type IconContainerContract = {
-  socialMediaLinks?: TypeSocialMediaLinkFields[];
+  socialMediaLinks?: SocialMediaLink[];
 };
 
 const IconContainer: React.FC<IconContainerContract> = ({

@@ -5,7 +5,6 @@ import Image from "next/image";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 
 import Link from "next/link";
-import { EntryFieldTypes } from "contentful";
 
 export default function DesktopIcon({
   icon,
@@ -17,9 +16,9 @@ export default function DesktopIcon({
 }: {
   icon?: string;
   contentfulIcon?: any;
-  name?: string | EntryFieldTypes.Symbol;
-  title?: string | EntryFieldTypes.Symbol;
-  href?: string | EntryFieldTypes.Symbol;
+  name?: string;
+  title?: string;
+  href?: string;
   click?: Function;
 }) {
   const handleMouseEvent = (e: MouseEvent<HTMLAnchorElement>) => {

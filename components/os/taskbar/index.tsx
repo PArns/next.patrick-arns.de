@@ -1,10 +1,10 @@
+import { SocialMediaLink } from "../icon-container";
 import Dock from "./dock";
-import { TypeSocialMediaLinkFields } from "@/data-provider/contentful/types";
 
 export default function Taskbar({
   socialMediaLinks,
 }: {
-  socialMediaLinks?: TypeSocialMediaLinkFields[];
+  socialMediaLinks?: SocialMediaLink[];
 }) {
   return (
     <div className="flex h-16">

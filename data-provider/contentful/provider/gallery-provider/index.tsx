@@ -1,5 +1,4 @@
 import { fetchGraphQL } from "@/data-provider/contentful/client";
-import { LocaleCode } from "contentful";
 import { isValidLocale } from "@/helper/localization";
 
 export interface ImageGalleries {
@@ -21,7 +20,7 @@ export interface ImageGallery {
 }
 
 export async function GetGalleries(
-  locale: LocaleCode,
+  locale: string,
   skip: number = 0,
   limit: number = 10,
 ): Promise<ImageGalleries | null> {

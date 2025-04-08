@@ -1,5 +1,4 @@
 import { fetchGraphQL } from "@/data-provider/contentful/client";
-import { LocaleCode } from "contentful";
 
 export interface TopParks {
   parks: TopPark[];
@@ -17,7 +16,7 @@ export interface TopPark {
 export async function GetTopParks({
   locale,
 }: {
-  locale: LocaleCode;
+  locale: string;
 }): Promise<TopParks | null> {
   const data = await fetchGraphQL(
     `query ($limit: Int!, $locale: String!) {
@@ -106,7 +105,7 @@ export interface TopCoaster {
 export async function GetTopCoasters({
   locale,
 }: {
-  locale: LocaleCode;
+  locale: string;
 }): Promise<TopCoasters | null> {
   const data = await fetchGraphQL(
     `query ($limit: Int!, $locale: String!) {

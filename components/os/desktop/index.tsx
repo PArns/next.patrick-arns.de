@@ -1,13 +1,8 @@
-import {
-  TypeBackgroundImagesFields,
-  TypeSocialMediaLinkFields,
-} from "@/data-provider/contentful/types";
-
 import Taskbar from "../taskbar";
 import TitleBar from "../titlebar";
-import IconContainer from "../icon-container";
+import IconContainer, { SocialMediaLink } from "../icon-container";
 import WindowManager from "../windowManager";
-import BackgroundImage from "../background-image";
+import BackgroundImage, { BackgroundImageData } from "../background-image";
 import Lightbox from "../lightbox";
 import BuildInfo from "../build-number";
 
@@ -18,8 +13,8 @@ export default function Desktop({
   pageName,
 }: {
   children: React.ReactNode;
-  backgroundImages: TypeBackgroundImagesFields[];
-  socialMediaLinks?: TypeSocialMediaLinkFields[];
+  backgroundImages: BackgroundImageData[];
+  socialMediaLinks?: SocialMediaLink[];
   pageName: string;
 }) {
   return (

@@ -1,5 +1,4 @@
 import { fetchGraphQL } from "@/data-provider/contentful/client";
-import { LocaleCode } from "contentful";
 import { isValidLocale } from "@/helper/localization";
 
 export interface BlogPosts {
@@ -23,7 +22,7 @@ export interface BlogPost {
 }
 
 export async function GetBlogPosts(
-  locale: LocaleCode,
+  locale: string,
   skip: number = 0,
   limit: number = 10,
   tag: string | undefined = undefined,

@@ -1,18 +1,23 @@
 "use client";
 
-import { TypeBackgroundImagesFields } from "@/data-provider/contentful/types";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 import { CSSProperties, useEffect, useState } from "react";
 
 const randomGenerator = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
+export type BackgroundImageData = {
+  image: string;
+  alt: string;
+  position: string | undefined;
+}
+
 export default function BackgroundImage({
   backgroundImages,
 }: {
-  backgroundImages: TypeBackgroundImagesFields[];
+  backgroundImages: BackgroundImageData[];
 }) {
-  const [background, setBackground] = useState<TypeBackgroundImagesFields>();
+  const [background, setBackground] = useState<BackgroundImageData>();
 
   const bgImage: CSSProperties = {
     pointerEvents: "none",
@@ -38,7 +43,7 @@ export default function BackgroundImage({
         <ContentfulImageAsset
           asset={background.image}
           fill={true}
-          alt={background.name || "Background"}
+          alt={"Background Image"}
           style={bgImage}
           className="opacity-0 transition-all duration-500"
           onLoad={(image: any) => {
