@@ -60,7 +60,7 @@ export async function fetchCoasterStats(): Promise<RideStatistic | null> {
     body: raw,
     redirect: "follow",
     next: {
-      revalidate: process.env.NODE_ENV === "development" ? 10 : 60 * 60 * 6, // 6H Cache Time
+      revalidate: process.env.NODE_ENV === "development" ? 60 : 60 * 60 * 6, // 6H Cache Time
       tags: ["coaster"],
     },
   };
