@@ -87,7 +87,9 @@ export default async function BlogIndex(props: {
           className="absolute top-0 right-0 bottom-0 left-0 h-max w-max object-cover"
           src={BlogJumbotron}
           fill={true}
+          priority={true}
           alt="Blog Header"
+          sizes="100vw"
         />
 
         <div className="px-4 py-8 @md:py-14 @lg:py-20">
