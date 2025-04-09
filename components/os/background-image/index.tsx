@@ -43,6 +43,7 @@ export default function BackgroundImage({
         <ContentfulImageAsset
           asset={background.image}
           fill={true}
+          sizes="100vw"
           alt={"Background Image"}
           style={bgImage}
           className="opacity-0 transition-all duration-500"
