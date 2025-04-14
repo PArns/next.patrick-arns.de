@@ -113,7 +113,7 @@ export default async function Coaster(props: {
           <Translation lang="de">
             <span className="mb-4">
               Irgendwie weigere ich mich, erwachsen zu werden - zumindest sagen
-              das viele, die mich kennen.
+              das viele, die mich kennen.&nbsp;
             </span>
 
             <span className="mb-4">
