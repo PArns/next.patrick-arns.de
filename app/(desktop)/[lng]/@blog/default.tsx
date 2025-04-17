@@ -1,4 +1,10 @@
 import BlogIndex from "@/app/(desktop)/[lng]/@blog/(.)/blog/page/[pageNumber]/page";
+import PageBaseConfiguration from "@/configuration";
+
+export async function generateStaticParams() {
+  const config = PageBaseConfiguration();
+  return config.supportedLocales.map((lng: string) => ({ lng }));
+}
 
 export default async function BlogProxy(
   props: {
