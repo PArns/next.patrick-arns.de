@@ -6,7 +6,7 @@ const nextConfig = {
       { hostname: "media.coaster.cloud" },
     ],
     minimumCacheTTL: 86400,
-  },
+  }
 };
 
 module.exports = nextConfig;

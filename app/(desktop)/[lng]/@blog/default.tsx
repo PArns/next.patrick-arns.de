@@ -7,6 +7,6 @@ export default async function BlogProxy(
 ) {
   const params = await props.params;
   return await BlogIndex({
-    params: Promise.resolve({ lng: params.lng, pageNumber: 1, tag: undefined }),
+    params: Promise.resolve({ lng: params.lng, pageNumber: 1, tag: undefined, fromProxy: true }),
   });
 }

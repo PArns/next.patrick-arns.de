@@ -7,7 +7,7 @@ import Image from "next/image";
 import initTranslations from "@/components/translate/i18n";
 import Translate from "@/components/translate";
 import Tag from "@/components/blog/tag";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Link from "next/link";
 
 import BlogJumbotron from "@/public/jumbotron/blog.jpg";
@@ -17,8 +17,39 @@ import { getPageAlternates } from "@/helper/localization";
 import CoasterStats from "@/components/coaster/coaster-stats";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 
+export async function generateStaticParams() {
+  const config = PageBaseConfiguration();
+  const params: { lng: string; pageNumber: string; tag?: string }[] = [];
+
+  for (const lng of config.supportedLocales) {
+    // Alle Seiten ohne Tag (beginne erst ab Seite 2)
+    const posts = await GetBlogPosts(lng);
+    if (!posts) continue;
+    const postsPerPage = config.blogPostsPerPage;
+    const pageCount = Math.ceil(posts.total / postsPerPage);
+
+    // beginne ab Seite 2 (page=2)
+    for (let page = 2; page <= pageCount; page++) {
+      params.push({ lng, pageNumber: page.toString() });
+    }
+
+    // Alle Seiten für jeden Tag (beginne erst ab Seite 2)
+    for (const tag of posts.tags) {
+      const taggedPosts = await GetBlogPosts(lng, 0, postsPerPage, tag);
+      if (!taggedPosts) continue;
+      const tagPageCount = Math.ceil(taggedPosts.total / postsPerPage);
+      // beginne ab Seite 2 (page=2)
+      for (let page = 2; page <= tagPageCount; page++) {
+        params.push({ lng, pageNumber: page.toString(), tag });
+      }
+    }
+  }
+
+  return params;
+}
+
 export async function generateMetadata(props: {
-  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined; fromProxy: boolean | undefined }>;
 }) {
   const params = await props.params;
   const { t } = await initTranslations({
@@ -48,10 +79,15 @@ export async function generateMetadata(props: {
 }
 
 export default async function BlogIndex(props: {
-  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined; fromProxy: boolean | undefined }>;
 }) {
   const params = await props.params;
   const config = PageBaseConfiguration();
+
+  // Redirect /blog/page/1 => /blog (mit Sprache)
+  if (+params.pageNumber === 1 && !params.tag && !params.fromProxy) {
+    redirect(`/${params.lng}/blog`);
+  }
 
   if (!config.supportedLocales.includes(params.lng)) return <></>;
 

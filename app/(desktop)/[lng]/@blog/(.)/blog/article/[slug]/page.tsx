@@ -24,8 +24,7 @@ import { ClockIcon } from "@heroicons/react/20/solid";
 import BlogAlternateLanguageLink from "@/components/blog/blog-alternate-language";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 
-// TODO: Staic parameter wieder funktionsfähig machen!
-/*interface BlogPostPageParams {
+interface BlogPostPageParams {
   slug: string;
   lng: string;
 }
@@ -34,18 +33,17 @@ export async function generateStaticParams(): Promise<BlogPostPageParams[]> {
   const config = PageBaseConfiguration();
   const entries: BlogPostPageParams[] = [];
 
-  config.supportedLocales.forEach(async (locale) => {
+  for (const locale of config.supportedLocales) {
     const blogPosts = await GetBlogPosts(locale);
-
-    if (!blogPosts) notFound();
-
-    blogPosts.posts.forEach((post) => {
+    if (!blogPosts) continue;
+    
+    for (const post of blogPosts.posts) {
       entries.push({ slug: post.slug, lng: locale });
-    });
-  });
+    }
+  }
 
   return entries;
-}*/
+}
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string; lng: string }>;

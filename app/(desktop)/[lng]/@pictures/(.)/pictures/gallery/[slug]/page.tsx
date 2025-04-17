@@ -12,6 +12,28 @@ import PageBaseConfiguration from "@/configuration";
 import { GetGalleryBySlug } from "@/data-provider/contentful/provider/gallery-provider";
 
 import { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types";
+import { GetAllBlogPostSlugs } from "@/data-provider/contentful/provider/blog-post-provider";
+
+export async function generateStaticParams() {
+  const params: { slug: string; lng: string }[] = [];
+  const gallerySlugs = await GetAllBlogPostSlugs();
+
+  for (const slugData in gallerySlugs) {
+    const slug = gallerySlugs[slugData];
+
+    params.push({
+      slug: slug.slugDE,
+      lng: "de",
+    });
+
+    params.push({
+      slug: slug.slugEN,
+      lng: "en",
+    });
+  }
+
+  return params;
+}
 
 export async function generateMetadata(
   props: {

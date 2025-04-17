@@ -25,6 +25,12 @@ import CyberGhost8 from "@/public/cyberghost/cyberghost8.png";
 import Age from "@/components/age";
 import AppLink from "@/components/os/app-link";
 import WindowDefaultContainer from "@/components/os/window/default-container";
+import PageBaseConfiguration from "@/configuration";
+
+export async function generateStaticParams() {
+  const config = PageBaseConfiguration();
+  return config.supportedLocales.map((lng: string) => ({ lng }));
+}
 
 export async function generateMetadata(
   props: {
@@ -46,6 +52,7 @@ export async function generateMetadata(
     },
   };
 }
+
 export default async function AboutMe(props: { params: Promise<{ lng: string }> }) {
   const params = await props.params;
   const { t } = await initTranslations({

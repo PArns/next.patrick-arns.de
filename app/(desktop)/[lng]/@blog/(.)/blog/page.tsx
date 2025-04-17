@@ -1,6 +1,12 @@
 import BlogIndex, {
   generateMetadata as blogMetaData,
 } from "@/app/(desktop)/[lng]/@blog/(.)/blog/page/[pageNumber]/page";
+import PageBaseConfiguration from "@/configuration";
+
+export async function generateStaticParams() {
+  const config = PageBaseConfiguration();
+  return config.supportedLocales.map((lng: string) => ({ lng }));
+}
 
 export async function generateMetadata(
   props: {
@@ -9,7 +15,7 @@ export async function generateMetadata(
 ) {
   const params = await props.params;
   return blogMetaData({
-    params: Promise.resolve({ lng: params.lng, pageNumber: 1, tag: undefined }),
+    params: Promise.resolve({ lng: params.lng, pageNumber: 1, tag: undefined, fromProxy: true }),
   });
 }
 
@@ -20,6 +26,6 @@ export default async function BlogProxy(
 ) {
   const params = await props.params;
   return await BlogIndex({
-    params: Promise.resolve({ lng: params.lng, pageNumber: 1, tag: undefined }),
+    params: Promise.resolve({ lng: params.lng, pageNumber: 1, tag: undefined, fromProxy: true }),
   });
 }

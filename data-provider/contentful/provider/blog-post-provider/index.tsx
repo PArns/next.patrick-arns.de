@@ -252,8 +252,8 @@ export async function GetBlogPostById(
 }
 
 export interface BlogPostSlug {
-  slugDE: String;
-  slugEN: String;
+  slugDE: string;
+  slugEN: string;
   publishedAt: Date;
 }
 

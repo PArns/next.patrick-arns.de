@@ -8,8 +8,9 @@ import { getPageAlternates } from "@/helper/localization";
 import AboutAuthor from "@/parts/about-author";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 
+
 export async function generateMetadata(props: {
-  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+  params: Promise<{ lng: string; }>;
 }) {
   const params = await props.params;
   const { t } = await initTranslations({
@@ -34,7 +35,7 @@ export default async function Welcome(props: {
   return (
     <WindowDefaultContainer>
       <div className="flex">
-        <article className="p-4 rounded-md bg-white dark:bg-neutral-800">
+        <article className="rounded-md bg-white p-4 dark:bg-neutral-800">
           <TranslateSwitch locale={params.lng}>
             <Translation lang="de">
               <h1 className="mb-2 text-2xl">Hallo Fremder!</h1>
