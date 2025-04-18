@@ -7,6 +7,15 @@ export default function PageBaseConfiguration() {
     supportedLocales: ["de", "en"],
     defaultLocale: "en",
     blogPostsPerPage: 5,
-    startRoute: "/welcome",
+    redirects: {
+      "/": "/{lng}/welcome",
+      "/en": "/en/welcome",
+      "/de": "/de/welcome",
+      "/coaster": "/{lng}/coaster",
+      "/pictures": "/{lng}/pictures",
+      "/blog": "/{lng}/blog",
+      "/me": "/{lng}/me",
+      "/welcome": "/{lng}/welcome",
+    }
   };
 }

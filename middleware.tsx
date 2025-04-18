@@ -3,50 +3,48 @@ import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import PageBaseConfiguration from "./configuration";
 
-function getLocale(request: NextRequest) {
-  const config = PageBaseConfiguration();
-
+function getLocale(request: NextRequest, config: any) {
   try {
-    const acceptedLanguage =
-      request.headers.get("accept-language") ?? undefined;
+    const acceptedLanguage = request.headers.get("accept-language") ?? undefined;
     const headers = { "accept-language": acceptedLanguage };
     const languages = new Negotiator({ headers }).languages();
-
     return match(languages, config.supportedLocales, config.defaultLocale);
   } catch {
     return config.defaultLocale;
   }
 }
 
-function redirectToLocale(request: NextRequest, locale: string, path: string) {
-  return NextResponse.redirect(new URL(`/${locale}${path}`, request.url));
+function cleanPathname(pathname: string): string {
+  if (pathname === "/") return "/";
+  return `/${pathname.replace(/^\/|\/$/g, "")}`;
 }
 
-export async function middleware(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const config = PageBaseConfiguration();
-  const pathname = request.nextUrl.pathname;
+  const pathname = cleanPathname(request.nextUrl.pathname);
 
+  // Default redirects
+  if (config.redirects) {
+    const redirect = Object.entries(config.redirects).find(([source]) => source === pathname);
+    if (redirect) {
+      const locale = getLocale(request, config);
+      const destinationWithLocale = redirect[1].replace("{lng}", locale);
+      return NextResponse.redirect(new URL(destinationWithLocale, request.url), 301);
+    }
+  }
+
+  // Locale detection
   const pathLocale = config.supportedLocales.find(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
+    (locale: string) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
-  if (pathname === "/" && config.startRoute && config.startRoute !== "/") {
-    const locale = getLocale(request);
-    return redirectToLocale(
-      request,
-      locale,
-      `/${config.startRoute}`.replaceAll("//", "/"),
-    );
+  if (pathLocale) {
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-locale", pathLocale);
+    return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
-  if (pathLocale == null) {
-      return NextResponse.rewrite(new URL("/not-found", request.url));
-  }
-
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-locale", pathLocale);
-
-  return NextResponse.next({ request: { headers: requestHeaders } });
+  return NextResponse.next();
 }
 
 export const config = {
