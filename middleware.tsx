@@ -5,7 +5,8 @@ import PageBaseConfiguration from "./configuration";
 
 function getLocale(request: NextRequest, config: any) {
   try {
-    const acceptedLanguage = request.headers.get("accept-language") ?? undefined;
+    const acceptedLanguage =
+      request.headers.get("accept-language") ?? undefined;
     const headers = { "accept-language": acceptedLanguage };
     const languages = new Negotiator({ headers }).languages();
     return match(languages, config.supportedLocales, config.defaultLocale);
@@ -25,23 +26,20 @@ export function middleware(request: NextRequest) {
 
   // Default redirects
   if (config.redirects) {
-    const redirect = Object.entries(config.redirects).find(([source]) => source === pathname);
+    const redirect = Object.entries(config.redirects).find(
+      ([source]) => source === pathname,
+    );
+
     if (redirect) {
       const locale = getLocale(request, config);
-      const destinationWithLocale = redirect[1].replace("{lng}", locale);
-      return NextResponse.redirect(new URL(destinationWithLocale, request.url), 301);
+      let destination = redirect[1];
+
+      if (destination.includes("{lng}")) {
+        destination = destination.replace("{lng}", locale);
+      }
+      
+      return NextResponse.redirect(new URL(destination, request.url), 301);
     }
-  }
-
-  // Locale detection
-  const pathLocale = config.supportedLocales.find(
-    (locale: string) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
-  );
-
-  if (pathLocale) {
-    const requestHeaders = new Headers(request.headers);
-    requestHeaders.set("x-locale", pathLocale);
-    return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
   return NextResponse.next();

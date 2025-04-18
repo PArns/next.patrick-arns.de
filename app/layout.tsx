@@ -8,7 +8,6 @@ import { Providers } from "./providers";
 
 import "./globals.css";
 import { Metadata } from "next";
-import { getLocale } from "@/helper/localization";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +24,20 @@ export function generateMetadata(): Metadata {
     creator: "Patrick Arns",
     publisher: config.publisher,
     metadataBase: config.baseUrl,
+    alternates: {
+      languages: {
+        de: config.baseUrl + "de",
+        en: config.baseUrl + "en",
+      },
+    },
+    openGraph: {
+      type: "website",
+      title: config.title,
+      description: config.description,
+      locale: config.defaultLocale,
+      url: config.baseUrl,
+      siteName: config.title,
+    },
   };
 }
 
@@ -65,22 +78,20 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const locale = await getLocale();
   const classes = clsx(
     inter.className,
     "overflow-hidden overscroll-none bg-neutral-200 dark:bg-neutral-900 subpixel-antialiased",
   );
 
   return (
-    <html suppressHydrationWarning lang={locale}>
+    <html suppressHydrationWarning>
       <body className={classes}>
         <Providers>{children}</Providers>
-        
+        <Analytics />
+
         <div
           dangerouslySetInnerHTML={{ __html: HTML_COMMENT }}
         />
-        
-        <Analytics />
       </body>
     </html>
   );

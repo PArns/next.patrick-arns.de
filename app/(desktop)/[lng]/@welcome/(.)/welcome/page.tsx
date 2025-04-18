@@ -9,7 +9,7 @@ import AboutAuthor from "@/parts/about-author";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 
 export async function generateMetadata(props: {
-  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+  params: Promise<{ lng: string }>;
 }) {
   const params = await props.params;
   const { t } = await initTranslations({
