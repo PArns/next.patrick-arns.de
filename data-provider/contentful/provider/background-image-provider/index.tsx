@@ -3,7 +3,7 @@ import { fetchGraphQL } from "@/data-provider/contentful/client";
 export async function GetBackgroundImages() {
   const data = await fetchGraphQL(
     `query {
-      backgroundImagesCollection {
+      backgroundImagesCollection(order: name_DESC) {
           items {
             name
             position

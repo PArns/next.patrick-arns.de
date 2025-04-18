@@ -1,15 +1,9 @@
-import { Inter } from "next/font/google";
-import clsx from "clsx";
-
 import PageBaseConfiguration from "@/configuration";
-
 import { Analytics } from "@vercel/analytics/react";
-import { Providers } from "./providers";
 
 import "./globals.css";
 import { Metadata } from "next";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ThemeProvider } from "next-themes";
 
 export function generateMetadata(): Metadata {
   const config = PageBaseConfiguration();
@@ -78,20 +72,13 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const classes = clsx(
-    inter.className,
-    "overflow-hidden overscroll-none bg-neutral-200 dark:bg-neutral-900 subpixel-antialiased",
-  );
-
   return (
     <html suppressHydrationWarning>
-      <body className={classes}>
-        <Providers>{children}</Providers>
+      <body className="overflow-hidden overscroll-none bg-neutral-200 subpixel-antialiased dark:bg-neutral-900">
+        <ThemeProvider attribute="class">{children}</ThemeProvider>
         <Analytics />
 
-        <div
-          dangerouslySetInnerHTML={{ __html: HTML_COMMENT }}
-        />
+        <div dangerouslySetInnerHTML={{ __html: HTML_COMMENT }} />
       </body>
     </html>
   );
