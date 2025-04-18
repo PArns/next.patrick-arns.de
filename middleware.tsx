@@ -40,7 +40,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (pathLocale == null) {
-      return NextResponse.error();
+      return NextResponse.rewrite(new URL("/not-found", request.url));
   }
 
   const requestHeaders = new Headers(request.headers);
