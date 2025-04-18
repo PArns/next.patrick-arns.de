@@ -1,8 +1,8 @@
 "use client";
 
 import React, { memo, useState, useEffect, useCallback } from "react";
-import ContentfulImageAsset from "@/components/contentful/image-asset";
 import type { CSSProperties } from "react";
+import ContentfulImageAsset from "@/components/contentful/image-asset";
 
 export type BackgroundImageData = {
   image: string;
@@ -14,21 +14,20 @@ interface Props {
   backgroundImages: BackgroundImageData[];
 }
 
-function BackgroundImageComponent({ backgroundImages }: Props) {
+const BackgroundImageComponent = memo(function BackgroundImageComponent({
+  backgroundImages,
+}: Props) {
   const [background, setBackground] = useState<BackgroundImageData | null>(null);
 
-  // läuft erst nach Mount, also nur auf Client
   useEffect(() => {
     if (backgroundImages.length === 0) return;
-
     const idx = Math.floor(Math.random() * backgroundImages.length);
     setBackground(backgroundImages[idx]);
   }, [backgroundImages]);
 
   const handleLoad = useCallback(
-    (e: React.SyntheticEvent<HTMLImageElement>) => {
-      e.currentTarget.classList.remove("opacity-0");
-    },
+    (e: React.SyntheticEvent<HTMLImageElement>) =>
+      e.currentTarget.classList.remove("opacity-0"),
     []
   );
 
@@ -55,6 +54,6 @@ function BackgroundImageComponent({ backgroundImages }: Props) {
       />
     </div>
   );
-}
+});
 
-export default memo(BackgroundImageComponent);
+export default BackgroundImageComponent;
