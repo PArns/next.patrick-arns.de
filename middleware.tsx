@@ -40,8 +40,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (pathLocale == null) {
-    const locale = getLocale(request);
-    return redirectToLocale(request, locale, pathname);
+      return NextResponse.error();
   }
 
   const requestHeaders = new Headers(request.headers);
