@@ -1,6 +1,5 @@
 import { GetBlogPostBySlug } from "@/data-provider/contentful/provider/blog-post-provider";
 import { permanentRedirect, notFound } from "next/navigation";
-import { revalidatePath } from "next/cache";
 import { isValidLocale } from "@/helper/localization";
 
 export default async function DefaultRedirect(
@@ -18,6 +17,5 @@ export default async function DefaultRedirect(
   const post = await GetBlogPostBySlug(slug, params.lng);
   if (post === null) notFound();
 
-  revalidatePath(`/${params.lng}/blog/${params.catchAll}`);
   permanentRedirect(`/${params.lng}/blog/article/${params.catchAll}`);
 }

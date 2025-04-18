@@ -1,57 +1,59 @@
 "use client";
 
+import React, { memo, useState, useEffect, useCallback } from "react";
+import type { CSSProperties } from "react";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
-import { CSSProperties, useEffect, useState } from "react";
-
-const randomGenerator = (min: number, max: number) =>
-  Math.floor(Math.random() * (max - min + 1)) + min;
 
 export type BackgroundImageData = {
   image: string;
   alt: string;
-  position: string | undefined;
+  position?: string;
+};
+
+interface Props {
+  backgroundImages: BackgroundImageData[];
 }
 
-export default function BackgroundImage({
+const BackgroundImageComponent = memo(function BackgroundImageComponent({
   backgroundImages,
-}: {
-  backgroundImages: BackgroundImageData[];
-}) {
-  const [background, setBackground] = useState<BackgroundImageData>();
-
-  const bgImage: CSSProperties = {
-    pointerEvents: "none",
-    objectFit: "cover",
-    objectPosition: (
-      (background?.position || "center") as string
-    ).toLowerCase(),
-  };
+}: Props) {
+  const [background, setBackground] = useState<BackgroundImageData | null>(null);
 
   useEffect(() => {
-    const getRandomBackgroundImageData = () => {
-      const randomPosition = randomGenerator(0, backgroundImages.length - 1);
-      return backgroundImages[randomPosition];
-    };
-
-    const backgroundImage = getRandomBackgroundImageData();
-    setBackground(backgroundImage);
+    if (backgroundImages.length === 0) return;
+    const idx = Math.floor(Math.random() * backgroundImages.length);
+    setBackground(backgroundImages[idx]);
   }, [backgroundImages]);
+
+  const handleLoad = useCallback(
+    (e: React.SyntheticEvent<HTMLImageElement>) =>
+      e.currentTarget.classList.remove("opacity-0"),
+    []
+  );
+
+  if (!background) {
+    return <div className="fixed inset-0 -z-50" />;
+  }
+
+  const style: CSSProperties = {
+    pointerEvents: "none",
+    objectFit: "cover",
+    objectPosition: (background.position || "center").toLowerCase(),
+  };
 
   return (
     <div className="fixed inset-0 -z-50">
-      {background && (
-        <ContentfulImageAsset
-          asset={background.image}
-          fill={true}
-          sizes="100vw"
-          alt={"Background Image"}
-          style={bgImage}
-          className="opacity-0 transition-all duration-500"
-          onLoad={(image: any) => {
-            image.currentTarget.classList.remove("opacity-0");
-          }}
-        />
-      )}
+      <ContentfulImageAsset
+        asset={background.image}
+        fill
+        sizes="100vw"
+        alt={background.alt ? background.alt : ""}
+        style={style}
+        className="opacity-0 transition-opacity duration-500"
+        onLoad={handleLoad}
+      />
     </div>
   );
-}
+});
+
+export default BackgroundImageComponent;
