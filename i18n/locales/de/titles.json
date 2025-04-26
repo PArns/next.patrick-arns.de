@@ -1,6 +1,7 @@
 {
   "welcome": "Willkommen",
   "pictures": "Bilder",
-  "aboutMe": "Über mich",
-  "coaster": "Freizeitparks"
+  "me": "Über mich",
+  "coaster": "Freizeitparks",
+  "blog": "Blog"
 }

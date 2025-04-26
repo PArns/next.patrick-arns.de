@@ -34,7 +34,7 @@ const registeredWindowsChangedEvent = createEvent(
 
 const makeWindowActiveEvent = createEvent(
   "onMakeWindowActiveEvent",
-)<WindowDetails>();
+)<WindowDetails | string>();
 
 const activeWindowChangedEvent = createEvent(
   "onActiveWindowChangedEvent",
@@ -166,13 +166,16 @@ export default function WindowManager() {
   };
 
   // ----------------- WindowManager Events ----------------
-  makeWindowActiveEvent.useOnMakeWindowActiveEventListener((windowDetails) => {
+  makeWindowActiveEvent.useOnMakeWindowActiveEventListener((windowOrKey) => {
     const existingWindowsClone: RegisteredWindows = JSON.parse(
       JSON.stringify(registeredWindows),
     );
 
     const existingWindowIndex = existingWindowsClone.findIndex(
-      (window) => window.id === windowDetails.id,
+      (window) =>
+        typeof windowOrKey === "string"
+          ? window.id === windowOrKey
+          : window.id === windowOrKey.id,
     );
 
     if (existingWindowIndex === -1) return;
@@ -197,7 +200,7 @@ export default function WindowManager() {
       updateWindowDetails(window);
     });
 
-    setTitleAndRouteFromActiveWindow(windowDetails);
+    setTitleAndRouteFromActiveWindow(existingWindow);
   });
 
   changeWindowTitleEvent.useOnChangeWindowTitleEventListener(

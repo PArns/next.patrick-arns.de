@@ -5,17 +5,22 @@ import WindowManager from "../windowManager";
 import BackgroundImage, { BackgroundImageData } from "../background-image";
 import Lightbox from "../lightbox";
 import BuildInfo from "../build-number";
+import { DesktopWindowConfig } from "@/configuration";
 
 export default function Desktop({
   children,
   backgroundImages,
   socialMediaLinks,
+  desktopWindows,
   pageName,
+  locale,
 }: {
   children: React.ReactNode;
   backgroundImages: BackgroundImageData[];
   socialMediaLinks?: SocialMediaLink[];
+  desktopWindows: DesktopWindowConfig[];
   pageName: string;
+  locale: string;
 }) {
   return (
     <>
@@ -25,7 +30,11 @@ export default function Desktop({
         </header>
         <div className="flex grow">
           {children}
-          <IconContainer socialMediaLinks={socialMediaLinks} />
+          <IconContainer
+            socialMediaLinks={socialMediaLinks}
+            desktopWindows={desktopWindows}
+            locale={locale}
+          />
         </div>
         <nav className="z-999 flex-none select-none" aria-label="Taskbar">
           <Taskbar socialMediaLinks={socialMediaLinks} />
