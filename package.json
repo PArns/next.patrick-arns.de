@@ -2,6 +2,7 @@
   "name": "patrick-arns.de",
   "version": "4.5.1",
   "private": true,
+  "packageManager": "pnpm@10.9.0",
   "scripts": {
     "prebuild": "node prebuild.js",
     "dev": "next dev --turbopack",
