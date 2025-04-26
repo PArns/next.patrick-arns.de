@@ -1,6 +1,7 @@
 {
   "welcome": "Welcome",
   "pictures": "Pictures",
-  "aboutMe": "About Me",
-  "coaster": "Coasters"
+  "me": "About Me",
+  "coaster": "Coasters",
+  "blog": "Blog"
 }
