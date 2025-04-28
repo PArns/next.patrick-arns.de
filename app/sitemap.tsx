@@ -3,8 +3,6 @@ import PageBaseConfiguration from "@/configuration";
 import { GetAllBlogPostSlugs } from "@/data-provider/contentful/provider/blog-post-provider";
 import { GetAllGallerySlugs } from "@/data-provider/contentful/provider/gallery-provider";
 
-export const dynamic = "force-dynamic";
-
 const createSitemapEntry = (
   baseUrl: URL,
   path: string,
