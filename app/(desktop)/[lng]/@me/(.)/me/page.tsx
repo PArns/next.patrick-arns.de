@@ -38,7 +38,7 @@ export async function generateMetadata(
   });
 
   return {
-    title: t("aboutMe"),
+    title: t("me"),
     alternates: getPageAlternates("me"),
     openGraph: {
       type: "website",
@@ -55,7 +55,7 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
 
   return (
     <WindowDefaultContainer>
-      <WindowTitle id="me" title={t("aboutMe")} />
+      <WindowTitle id="me" title={t("me")} />
 
       <header className="relative w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
         <div className="relative flex flex-row">
