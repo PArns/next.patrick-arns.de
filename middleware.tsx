@@ -26,18 +26,28 @@ export function middleware(request: NextRequest) {
 
   // Default redirects
   if (config.redirects) {
-    const redirect = Object.entries(config.redirects).find(
-      ([source]) => source === pathname,
-    );
-
+    const redirect = Object.entries(config.redirects).find(([source]) => {
+      if (source.endsWith("/*")) {
+        const base = source.slice(0, -2);
+        return pathname.startsWith(base + "/");
+      }
+      return source === pathname;
+    });
+  
     if (redirect) {
       const locale = getLocale(request, config);
-      let destination = redirect[1];
-
+      let [source, destination] = redirect;
+  
+      if (source.endsWith("/*")) {
+        const base = source.slice(0, -2);
+        const wildcard = pathname.slice(base.length); // z.B. /blog/foo → /foo
+        destination = destination.replace("*", wildcard.replace(/^\//, ""));
+      }
+  
       if (destination.includes("{lng}")) {
         destination = destination.replace("{lng}", locale);
       }
-      
+  
       return NextResponse.redirect(new URL(destination, request.url), 301);
     }
   }
