@@ -6,6 +6,9 @@ import PageBaseConfiguration, {
   RegisteredDesktopWindows,
   SlotProps,
 } from "@/configuration";
+import RootLayout from "@/components/layout/root-layout";
+
+export { generateMetadata } from "@/components/layout/root-layout";
 
 export default async function AppLayout(
   props: SlotProps & { params: Promise<{ lng: string }> },
@@ -18,28 +21,30 @@ export default async function AppLayout(
   const desktopWindows = await RegisteredDesktopWindows(params.lng);
 
   return (
-    <Desktop
-      backgroundImages={backgroundImages}
-      socialMediaLinks={socialMediaLinks}
-      desktopWindows={desktopWindows}
-      pageName={config.title}
-      locale={params.lng}
-    >
-      {desktopWindows.map((win) => (
-        <DesktopWindow
-          key={win.key}
-          width={win.width}
-          height={win.height}
-          maxWidth={win.maxWidth}
-          route={win.route}
-          title={win.title}
-          icon={win.icon}
-          isInitiallyOpen={win.isInitiallyOpen}
-          id={win.key}
-        >
-          {props[win.key as keyof SlotProps]}
-        </DesktopWindow>
-      ))}
-    </Desktop>
+    <RootLayout language={params.lng}>
+      <Desktop
+        backgroundImages={backgroundImages}
+        socialMediaLinks={socialMediaLinks}
+        desktopWindows={desktopWindows}
+        pageName={config.title}
+        locale={params.lng}
+      >
+        {desktopWindows.map((win) => (
+          <DesktopWindow
+            key={win.key}
+            width={win.width}
+            height={win.height}
+            maxWidth={win.maxWidth}
+            route={win.route}
+            title={win.title}
+            icon={win.icon}
+            isInitiallyOpen={win.isInitiallyOpen}
+            id={win.key}
+          >
+            {props[win.key as keyof SlotProps]}
+          </DesktopWindow>
+        ))}
+      </Desktop>
+    </RootLayout>
   );
 }
