@@ -52,7 +52,7 @@ export default async function TopParkEntry({
   });
 
   return (
-    <div className="relative mx-2 @container/park">
+    <div className="@container/park relative mx-2">
       <div className="hidden h-8 @2xl/park:block"></div>
       <div className={imageClass}>
         <ContentfulImageAsset

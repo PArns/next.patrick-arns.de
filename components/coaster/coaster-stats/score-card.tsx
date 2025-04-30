@@ -161,7 +161,7 @@ export default async function ScoreCard({
             className={imageClassNames}
           />
           <div
-            className="absolute left-0 top-0 flex h-full w-full items-center justify-center"
+            className="absolute top-0 left-0 flex h-full w-full items-center justify-center"
             title={getAttractionImage(attraction).copyright}
           >
             <div className={scoreValueClassNames}>{scoreValue}</div>

@@ -1,7 +1,13 @@
 "use client";
 
 import { createEvent } from "react-event-hook";
-import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
+import {
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
 import { Fragment, useState } from "react";
 import Image from "next/image";
 import IconXMark from "@/components/icons/x-mark";

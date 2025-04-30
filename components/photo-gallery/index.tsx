@@ -1,9 +1,15 @@
 "use client";
 
-import PhotoAlbum, { Photo, RenderImageContext, RenderImageProps, RenderPhotoProps, RowsPhotoAlbum } from "react-photo-album";
+import PhotoAlbum, {
+  Photo,
+  RenderImageContext,
+  RenderImageProps,
+  RenderPhotoProps,
+  RowsPhotoAlbum,
+} from "react-photo-album";
 import Image from "next/image";
 import { showLightBoxImage } from "../os/lightbox";
-import clsx from 'clsx';
+import clsx from "clsx";
 
 import "react-photo-album/rows.css";
 
@@ -14,14 +20,18 @@ export interface GalleryPhoto extends Photo {
 function renderNextImage(
   { alt = "", title, sizes }: RenderImageProps,
   { photo, width, height }: RenderImageContext,
-) { 
+) {
   const galleryPhoto = photo as GalleryPhoto;
-  const imageClasses = clsx(
-    "cursor-zoom-in opacity-0 transition-opacity",
-  );
+  const imageClasses = clsx("cursor-zoom-in opacity-0 transition-opacity");
 
   return (
-    <div style={{width: "100%", position: "relative", aspectRatio: `${width} / ${height}` }}>
+    <div
+      style={{
+        width: "100%",
+        position: "relative",
+        aspectRatio: `${width} / ${height}`,
+      }}
+    >
       <Image
         src={photo}
         alt={alt}

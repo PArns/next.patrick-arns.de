@@ -46,7 +46,7 @@ export default async function TopCoasterEntry({
   });
 
   return (
-    <div className="relative mx-2 @container/park">
+    <div className="@container/park relative mx-2">
       <div className="hidden h-8 @2xl/park:block"></div>
       <div className={imageClass}>
         <ContentfulImageAsset
@@ -62,16 +62,21 @@ export default async function TopCoasterEntry({
         <div className={spacerClassLeft} />
         <div className="m-4 grow">
           <h2 className="pb-2 text-2xl font-semibold">
-            {t("pos")} {coaster.rank}: {coaster.name}<span className="text-xl"> ({coaster.park})</span>
+            {t("pos")} {coaster.rank}: {coaster.name}
+            <span className="text-xl"> ({coaster.park})</span>
           </h2>
           <RichTextRenderer document={coaster.description} />
 
-          <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-row items-center justify-between">
             <div className="text-neutral-700 dark:text-neutral-300">
               {getCount(attractionCounts, "totalRides").toString()} {t("rides")}
             </div>
             <div className="ml-auto">
-              <QueueTime parkId={coaster.parkId} rideId={coaster.rideId} locale={locale} />
+              <QueueTime
+                parkId={coaster.parkId}
+                rideId={coaster.rideId}
+                locale={locale}
+              />
             </div>
           </div>
         </div>

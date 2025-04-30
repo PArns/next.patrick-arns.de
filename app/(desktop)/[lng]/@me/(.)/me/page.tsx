@@ -26,11 +26,9 @@ import Age from "@/components/age";
 import AppLink from "@/components/os/app-link";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
-  }
-) {
+export async function generateMetadata(props: {
+  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+}) {
   const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
@@ -46,7 +44,9 @@ export async function generateMetadata(
     },
   };
 }
-export default async function AboutMe(props: { params: Promise<{ lng: string }> }) {
+export default async function AboutMe(props: {
+  params: Promise<{ lng: string }>;
+}) {
   const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
@@ -84,11 +84,7 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
             </div>
           </div>
           <div className="w-max @xl:pr-12 @4xl:pr-24">
-            <Image
-              src={JumbotronPic}
-              alt="Patrick"
-              height={500}
-            />
+            <Image src={JumbotronPic} alt="Patrick" height={500} />
           </div>
         </div>
       </header>
@@ -101,8 +97,9 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
             <Translation lang="de">
               <p>
                 Mittlerweile gute{" "}
-                <Age birthday="1982-04-01" single="Jahr" plural="Jahre" /> alt und
-                seit <Age birthday="2002-11-01" single="Jahre" plural="Jahren" /> als
+                <Age birthday="1982-04-01" single="Jahr" plural="Jahre" /> alt
+                und seit{" "}
+                <Age birthday="2002-11-01" single="Jahre" plural="Jahren" /> als
                 Entwickler und Teamlead für{" "}
                 <a href="https://kape.com" target="_blank" className="external">
                   Kape Technologies
@@ -152,12 +149,13 @@ export default async function AboutMe(props: { params: Promise<{ lng: string }> 
             <Translation lang="en">
               <p>
                 Now well over{" "}
-                <Age birthday="1982-04-01" single="year" plural="years" /> old and
-                working as a developer and team lead for{" "}
+                <Age birthday="1982-04-01" single="year" plural="years" /> old
+                and working as a developer and team lead for{" "}
                 <a href="https://kape.com" target="_blank" className="external">
                   Kape Technologies
                 </a>{" "}
-                since <Age birthday="2002-11-01" single="year" plural="years" />.
+                since <Age birthday="2002-11-01" single="year" plural="years" />
+                .
               </p>
               <p>
                 In 2006 I completed my studies at the FH Aachen and since then I

@@ -69,7 +69,7 @@ Drop me a line at: 💌 your-page-is-awesome@arns.dev 📧
 
 export default async function RootLayout({
   children,
-  language
+  language,
 }: {
   children: React.ReactNode;
   language?: string;

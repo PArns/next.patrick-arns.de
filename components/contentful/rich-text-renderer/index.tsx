@@ -91,42 +91,42 @@ function renderOptions(links: any) {
       },
       [BLOCKS.HEADING_1]: (node: any, children: any) => {
         return (
-          <h1 className="clear-both pb-2 text-4xl text-neutral-600 dark:text-neutral-400 md:text-6xl">
+          <h1 className="clear-both pb-2 text-4xl text-neutral-600 md:text-6xl dark:text-neutral-400">
             {children}
           </h1>
         );
       },
       [BLOCKS.HEADING_2]: (node: any, children: any) => {
         return (
-          <h2 className="clear-both pb-2 text-3xl text-neutral-600 dark:text-neutral-400 md:text-5xl">
+          <h2 className="clear-both pb-2 text-3xl text-neutral-600 md:text-5xl dark:text-neutral-400">
             {children}
           </h2>
         );
       },
       [BLOCKS.HEADING_3]: (node: any, children: any) => {
         return (
-          <h3 className="clear-both pb-2 text-2xl text-neutral-600 dark:text-neutral-400 md:text-4xl">
+          <h3 className="clear-both pb-2 text-2xl text-neutral-600 md:text-4xl dark:text-neutral-400">
             {children}
           </h3>
         );
       },
       [BLOCKS.HEADING_4]: (node: any, children: any) => {
         return (
-          <h4 className="clear-both pb-2 text-xl text-neutral-600 dark:text-neutral-400 md:text-3xl">
+          <h4 className="clear-both pb-2 text-xl text-neutral-600 md:text-3xl dark:text-neutral-400">
             {children}
           </h4>
         );
       },
       [BLOCKS.HEADING_5]: (node: any, children: any) => {
         return (
-          <h5 className="clear-both pb-2 text-lg text-neutral-600 dark:text-neutral-400 md:text-2xl">
+          <h5 className="clear-both pb-2 text-lg text-neutral-600 md:text-2xl dark:text-neutral-400">
             {children}
           </h5>
         );
       },
       [BLOCKS.HEADING_6]: (node: any, children: any) => {
         return (
-          <h6 className="text-md clear-both pb-2 text-neutral-600 dark:text-neutral-400 md:text-xl">
+          <h6 className="text-md clear-both pb-2 text-neutral-600 md:text-xl dark:text-neutral-400">
             {children}
           </h6>
         );

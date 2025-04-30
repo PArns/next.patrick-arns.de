@@ -1,5 +1,5 @@
 import Link from "next/link";
-import clsx from 'clsx';
+import clsx from "clsx";
 
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 
@@ -94,7 +94,7 @@ export default function Pagination({
       >
         <Link
           href={previousLink}
-          className="aria-disabled:hover-none relative inline-flex items-center rounded-l-md bg-gray-50/60 px-2 py-2 text-neutral-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 aria-disabled:pointer-events-none"
+          className="aria-disabled:hover-none relative inline-flex items-center rounded-l-md bg-gray-50/60 px-2 py-2 text-neutral-400 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0 aria-disabled:pointer-events-none"
           aria-disabled={firstPage}
         >
           <span className="sr-only">Previous</span>
@@ -105,7 +105,7 @@ export default function Pagination({
 
         <Link
           href={nextLink}
-          className="aria-disabled:hover-none relative inline-flex items-center rounded-r-md bg-gray-50/60 px-2 py-2 text-neutral-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 aria-disabled:pointer-events-none"
+          className="aria-disabled:hover-none relative inline-flex items-center rounded-r-md bg-gray-50/60 px-2 py-2 text-neutral-400 ring-1 ring-gray-300 ring-inset hover:bg-gray-50 focus:z-20 focus:outline-offset-0 aria-disabled:pointer-events-none"
           aria-disabled={lastPage}
         >
           <span className="sr-only">Next</span>

@@ -134,6 +134,7 @@ export default function LanguageSwitcher() {
                 src={`/flags/${currentLocale}.png`}
                 width={26}
                 height={15}
+                priority={true}
                 alt="Language"
                 className={clsx(
                   "pt-[5px] hover:opacity-90",

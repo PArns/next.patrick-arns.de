@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import Image from "next/image";
 import { ReactElement, ReactNode } from "react";
 
@@ -33,8 +32,11 @@ function BlogAlternative({
   children: ReactNode;
 }) {
   return (
-    <a href={altLink} className="flex flex-row pb-2 external opacity-70 hover:opacity-100">
-      <div >
+    <a
+      href={altLink}
+      className="external flex flex-row pb-2 opacity-70 hover:opacity-100"
+    >
+      <div>
         <Image
           src={`/flags/${locale}.png`}
           width={26}

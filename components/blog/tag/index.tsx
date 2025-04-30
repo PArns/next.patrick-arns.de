@@ -97,9 +97,7 @@ export default function Tag({ tag, href, locale }: TagProps) {
   return (
     <Link
       href={href}
-      className={`
-        inline-block rounded ${config.border} ${config.bgColor} px-2.5 py-0.5 text-xs font-medium ${config.color} ${config.darkBgColor} ${config.darkColor}
-      `}
+      className={`inline-block rounded ${config.border} ${config.bgColor} px-2.5 py-0.5 text-xs font-medium ${config.color} ${config.darkBgColor} ${config.darkColor} `}
     >
       <Translate id={tag} locale={locale} ns={"tags"} />
     </Link>

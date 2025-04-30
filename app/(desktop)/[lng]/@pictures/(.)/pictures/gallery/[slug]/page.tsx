@@ -13,11 +13,9 @@ import { GetGalleryBySlug } from "@/data-provider/contentful/provider/gallery-pr
 
 import { AlternateURLs } from "next/dist/lib/metadata/types/alternative-urls-types";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string; lng: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string; lng: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const config = PageBaseConfiguration();
   const gallery = await GetGalleryBySlug(params.slug, params.lng);
@@ -25,7 +23,7 @@ export async function generateMetadata(
 
   const alternates: AlternateURLs = {
     languages: {},
-    canonical: `/pictures/gallery/${params.slug}`
+    canonical: `/pictures/gallery/${params.slug}`,
   };
 
   if (gallery.alternativeSlugs && alternates.languages) {
@@ -60,11 +58,9 @@ export async function generateMetadata(
   };
 }
 
-export default async function GalleryOverlay(
-  props: {
-    params: Promise<{ slug: string; lng: string }>;
-  }
-) {
+export default async function GalleryOverlay(props: {
+  params: Promise<{ slug: string; lng: string }>;
+}) {
   const params = await props.params;
   const gallery = await GetGalleryBySlug(params.slug, params.lng);
   if (!gallery) redirect(`/${params.lng}/pictures`);
@@ -99,7 +95,7 @@ export default async function GalleryOverlay(
       <BlogHeader title={gallery.name} backgroundImage={gallery.teaserImage} />
 
       <div className="mt-2 w-full rounded-md bg-white p-4 dark:bg-neutral-800">
-        <h3 className="mb-1 text-3xl font-extrabold leading-tight text-neutral-900 dark:text-white lg:text-4xl">
+        <h3 className="mb-1 text-3xl leading-tight font-extrabold text-neutral-900 lg:text-4xl dark:text-white">
           {gallery.name}
         </h3>
         <h4 className="mb-4 leading-tight text-neutral-900 dark:text-white">
@@ -108,7 +104,7 @@ export default async function GalleryOverlay(
         <PhotoGallery photos={galleryImages} />
       </div>
 
-      <div className="mr-1 mt-2 flex flex-nowrap text-neutral-800">
+      <div className="mt-2 mr-1 flex flex-nowrap text-neutral-800">
         <Link
           href={`/${params.lng}/pictures`}
           className="rounded-sm bg-sky-400 px-4 py-2 font-semibold text-white transition hover:bg-sky-700 dark:bg-sky-600 dark:hover:bg-sky-700"

@@ -6,7 +6,7 @@ export default function PoweredByCoasterCloud() {
   return (
     <div className="relative mt-7 grayscale hover:grayscale-0">
       <a
-        className="absolute -bottom-2 -right-2 flex w-full place-content-end pt-2 text-sm text-neutral-900 dark:text-neutral-300"
+        className="absolute -right-2 -bottom-2 flex w-full place-content-end pt-2 text-sm text-neutral-900 dark:text-neutral-300"
         href="https://coaster.cloud"
         target="_blank"
         title="Powered by coaster.cloud"

@@ -32,9 +32,9 @@ const registeredWindowsChangedEvent = createEvent(
   "onRegisteredWindowsChangedEvent",
 )<RegisteredWindows>();
 
-const makeWindowActiveEvent = createEvent(
-  "onMakeWindowActiveEvent",
-)<WindowDetails | string>();
+const makeWindowActiveEvent = createEvent("onMakeWindowActiveEvent")<
+  WindowDetails | string
+>();
 
 const activeWindowChangedEvent = createEvent(
   "onActiveWindowChangedEvent",
@@ -171,11 +171,10 @@ export default function WindowManager() {
       JSON.stringify(registeredWindows),
     );
 
-    const existingWindowIndex = existingWindowsClone.findIndex(
-      (window) =>
-        typeof windowOrKey === "string"
-          ? window.id === windowOrKey
-          : window.id === windowOrKey.id,
+    const existingWindowIndex = existingWindowsClone.findIndex((window) =>
+      typeof windowOrKey === "string"
+        ? window.id === windowOrKey
+        : window.id === windowOrKey.id,
     );
 
     if (existingWindowIndex === -1) return;

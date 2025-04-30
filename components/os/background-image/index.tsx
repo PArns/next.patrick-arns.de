@@ -17,7 +17,9 @@ interface Props {
 const BackgroundImageComponent = memo(function BackgroundImageComponent({
   backgroundImages,
 }: Props) {
-  const [background, setBackground] = useState<BackgroundImageData | null>(null);
+  const [background, setBackground] = useState<BackgroundImageData | null>(
+    null,
+  );
 
   useEffect(() => {
     if (backgroundImages.length === 0) return;
@@ -28,7 +30,7 @@ const BackgroundImageComponent = memo(function BackgroundImageComponent({
   const handleLoad = useCallback(
     (e: React.SyntheticEvent<HTMLImageElement>) =>
       e.currentTarget.classList.remove("opacity-0"),
-    []
+    [],
   );
 
   if (!background) {

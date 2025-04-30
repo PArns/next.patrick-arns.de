@@ -71,7 +71,7 @@ export default async function CoasterStats({ lng }: { lng: string }) {
         </div>
       </AppLink>
 
-      <div className="pb-2 pr-2">
+      <div className="pr-2 pb-2">
         <PoweredByCoasterCloud />
       </div>
     </aside>

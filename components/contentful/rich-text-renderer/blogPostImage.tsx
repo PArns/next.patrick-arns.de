@@ -1,6 +1,6 @@
 "use client";
 
-import clsx from 'clsx';
+import clsx from "clsx";
 import ContentfulImageAsset, { getImageSource } from "../image-asset";
 import { showLightBoxImage } from "@/components/os/lightbox";
 
@@ -76,7 +76,7 @@ export default function BlogPostImage({ imageData }: { imageData: any }) {
         }}
       />
       {showSubtitle && (
-        <p className="truncate text-xs text-neutral-500 dark:text-neutral-400 md:text-sm">
+        <p className="truncate text-xs text-neutral-500 md:text-sm dark:text-neutral-400">
           {name}
         </p>
       )}

@@ -11,11 +11,9 @@ import { getPageAlternates } from "@/helper/localization";
 import CoasterStats from "@/components/coaster/coaster-stats";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
-  }
-) {
+export async function generateMetadata(props: {
+  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
+}) {
   const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
@@ -34,7 +32,9 @@ export async function generateMetadata(
   };
 }
 
-export default async function Welcome(props: { params: Promise<{ lng: string }> }) {
+export default async function Welcome(props: {
+  params: Promise<{ lng: string }>;
+}) {
   const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
@@ -50,7 +50,7 @@ export default async function Welcome(props: { params: Promise<{ lng: string }> 
 
       <header className="relative mb-4 w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
         <Image
-          className="absolute bottom-0 left-0 right-0 top-0 h-max w-max object-cover"
+          className="absolute top-0 right-0 bottom-0 left-0 h-max w-max object-cover"
           src={PicturesJumbotron}
           fill={true}
           priority={true}

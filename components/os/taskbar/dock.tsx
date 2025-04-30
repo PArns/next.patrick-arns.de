@@ -50,7 +50,7 @@ export default function Dock({
       ))}
 
       {socialMediaLinks && socialMediaLinks.length && (
-        <div className="-m-1.5 mx-[0px] hidden h-full w-[1px] bg-neutral-400 dark:bg-neutral-600 md:block" />
+        <div className="-m-1.5 mx-[0px] hidden h-full w-[1px] bg-neutral-400 md:block dark:bg-neutral-600" />
       )}
 
       {socialMediaLinks &&

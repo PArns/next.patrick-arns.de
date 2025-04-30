@@ -1,9 +1,5 @@
-"use client";
-
 import React from "react";
 import DesktopIcon from "./desktop-icon";
-
-import { makeWindowActiveEvent } from "../windowManager";
 import { DesktopWindowConfig } from "@/configuration";
 
 export type SocialMediaLink = {
@@ -37,9 +33,7 @@ const IconContainer: React.FC<IconContainerContract> = ({
               name={window.title}
               key={window.key}
               href={`/${locale}${window.route}`}
-              click={() => {
-                makeWindowActiveEvent.emitOnMakeWindowActiveEvent(window.key);
-              }}
+              windowKey={window.key}
             />
           ))}
       </div>

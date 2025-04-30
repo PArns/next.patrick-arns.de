@@ -2,11 +2,9 @@ import { GetBlogPostBySlug } from "@/data-provider/contentful/provider/blog-post
 import { permanentRedirect, notFound } from "next/navigation";
 import { isValidLocale } from "@/helper/localization";
 
-export default async function DefaultRedirect(
-  props: {
-    params: Promise<{ catchAll: string; lng: string }>;
-  }
-) {
+export default async function DefaultRedirect(props: {
+  params: Promise<{ catchAll: string; lng: string }>;
+}) {
   const params = await props.params;
   const slug = Array.isArray(params.catchAll)
     ? params.catchAll[0]
