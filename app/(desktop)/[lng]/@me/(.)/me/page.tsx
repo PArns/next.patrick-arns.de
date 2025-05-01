@@ -27,11 +27,6 @@ import AppLink from "@/components/os/app-link";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 import PageBaseConfiguration from "@/configuration";
 
-export async function generateStaticParams() {
-  const config = PageBaseConfiguration();
-  return config.supportedLocales.map((lng) => ({ lng }));
-}
-
 export async function generateMetadata(props: {
   params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
 }) {

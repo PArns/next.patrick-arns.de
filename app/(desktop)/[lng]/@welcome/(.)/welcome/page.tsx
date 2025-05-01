@@ -9,11 +9,6 @@ import AboutAuthor from "@/parts/about-author";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 import PageBaseConfiguration from "@/configuration";
 
-export async function generateStaticParams() {
-  const config = PageBaseConfiguration();
-  return config.supportedLocales.map((lng) => ({ lng }));
-}
-
 export async function generateMetadata(props: {
   params: Promise<{ lng: string }>;
 }) {
