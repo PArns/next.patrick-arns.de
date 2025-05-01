@@ -35,6 +35,11 @@ import PoweredByCoasterCloud from "@/components/coaster/coaster-stats/powered-by
 import Backpack from "@/public/images/divoom-backpack.png";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 
+export async function generateStaticParams() {
+  const config = PageBaseConfiguration();
+  return config.supportedLocales.map((lng) => ({ lng }));
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ lng: string }>;
 }): Promise<Metadata> {

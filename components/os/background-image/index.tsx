@@ -1,6 +1,3 @@
-"use client";
-
-import React, { memo, useState, useEffect, useCallback } from "react";
 import type { CSSProperties } from "react";
 import ContentfulImageAsset from "@/components/contentful/image-asset";
 
@@ -14,28 +11,11 @@ interface Props {
   backgroundImages: BackgroundImageData[];
 }
 
-const BackgroundImageComponent = memo(function BackgroundImageComponent({
-  backgroundImages,
-}: Props) {
-  const [background, setBackground] = useState<BackgroundImageData | null>(
-    null,
-  );
+export default function BackgroundImageComponent({ backgroundImages }: Props) {
+  if (!backgroundImages.length) return <div className="fixed inset-0 -z-50" />;
 
-  useEffect(() => {
-    if (backgroundImages.length === 0) return;
-    const idx = Math.floor(Math.random() * backgroundImages.length);
-    setBackground(backgroundImages[idx]);
-  }, [backgroundImages]);
-
-  const handleLoad = useCallback(
-    (e: React.SyntheticEvent<HTMLImageElement>) =>
-      e.currentTarget.classList.remove("opacity-0"),
-    [],
-  );
-
-  if (!background) {
-    return <div className="fixed inset-0 -z-50" />;
-  }
+  const idx = Math.floor(Math.random() * backgroundImages.length);
+  const background = backgroundImages[idx];
 
   const style: CSSProperties = {
     pointerEvents: "none",
@@ -49,13 +29,10 @@ const BackgroundImageComponent = memo(function BackgroundImageComponent({
         asset={background.image}
         fill
         sizes="100vw"
-        alt={background.alt ? background.alt : ""}
+        alt={background.alt || ""}
         style={style}
-        className="opacity-0 transition-opacity duration-500"
-        onLoad={handleLoad}
+        className="transition-opacity duration-500"
       />
     </div>
   );
-});
-
-export default BackgroundImageComponent;
+}
