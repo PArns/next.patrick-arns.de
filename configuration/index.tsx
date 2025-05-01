@@ -41,6 +41,7 @@ export default function PageBaseConfiguration() {
       "/blog/*": "/{lng}/blog/article/*",
       "/me": "/{lng}/me",
       "/welcome": "/{lng}/welcome",
+      "/index.html": "/{lng}/welcome",
     },
   };
 }

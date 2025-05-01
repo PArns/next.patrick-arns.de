@@ -17,7 +17,7 @@ function getLocale(request: NextRequest, config: any) {
 
 function cleanPathname(pathname: string): string {
   if (pathname === "/") return "/";
-  return `/${pathname.replace(/^\/|\/$/g, "")}`;
+  return `/${pathname.replace(/^\/|\/$/g, "")}`.toLowerCase();
 }
 
 export function middleware(request: NextRequest) {
