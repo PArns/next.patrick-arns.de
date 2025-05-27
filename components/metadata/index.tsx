@@ -1,20 +1,19 @@
-import { Metadata } from "next";
-import initTranslations from "@/components/translate/i18n";
-import { getPageAlternates } from "@/helper/localization";
 import PageBaseConfiguration from "@/configuration";
+import { getPageAlternates } from "@/helper/localization";
+import initTranslations from "../translate/i18n";
+import { Metadata } from "next";
 
-export async function generateMetadata(
+export default async function getMetadata(
   props: { params: Promise<{ lng: string }> },
   route: string,
-  namespace: string,
   imagePath?: string,
-  ogType: "website" | "article" = "website"
 ): Promise<Metadata> {
   const params = await props.params;
   const { t } = await initTranslations({
     locale: params.lng,
-    namespaces: [namespace],
+    namespaces: [route],
   });
+
   const config = PageBaseConfiguration();
   const alternates = getPageAlternates(route);
   return {
@@ -23,7 +22,7 @@ export async function generateMetadata(
     alternates,
     metadataBase: config.baseUrl,
     openGraph: {
-      type: ogType,
+      type: "website",
       locale: params.lng,
       url: `${config.baseUrl}${params.lng}/${route}`,
       siteName: config.title,
@@ -33,4 +32,4 @@ export async function generateMetadata(
       card: "summary",
     },
   };
-} 
+}
