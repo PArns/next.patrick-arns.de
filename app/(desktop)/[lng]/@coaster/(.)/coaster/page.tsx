@@ -1,8 +1,5 @@
 import Image from "next/image";
 import initTranslations from "@/components/translate/i18n";
-import { Metadata } from "next";
-
-import PageBaseConfiguration from "@/configuration";
 
 import {
   fetchCoasterStats,

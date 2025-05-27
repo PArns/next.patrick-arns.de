@@ -1,5 +1,4 @@
-import BlogIndex, {
-} from "@/app/(desktop)/[lng]/@blog/(.)/blog/page/[pageNumber]/page";
+import BlogIndex from "@/app/(desktop)/[lng]/@blog/(.)/blog/page/[pageNumber]/page";
 
 export default async function BlogProxy(props: {
   params: Promise<{ lng: string }>;
