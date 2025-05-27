@@ -2,12 +2,15 @@ import TranslateSwitch, {
   Translation,
 } from "@/components/translate/translate-switch";
 
-import initTranslations from "@/components/translate/i18n";
 import BlogTeaser from "@/components/blog/blog-teaser";
-import { getPageAlternates } from "@/helper/localization";
 import AboutAuthor from "@/parts/about-author";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 import PageBaseConfiguration from "@/configuration";
+
+export async function generateStaticParams() {
+  const config = PageBaseConfiguration();
+  return config.supportedLocales.map((lng) => ({ lng }));
+}
 
 export default async function Welcome(props: {
   params: Promise<{ lng: string }>;

@@ -1,3 +1,1 @@
-export {
-    default,
-  } from "@/app/(desktop)/[lng]/@me/(.)/me/page";
+export { default } from "@/app/(desktop)/[lng]/@me/(.)/me/page";
