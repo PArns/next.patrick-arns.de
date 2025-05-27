@@ -25,26 +25,7 @@ import CyberGhost8 from "@/public/cyberghost/cyberghost8.png";
 import Age from "@/components/age";
 import AppLink from "@/components/os/app-link";
 import WindowDefaultContainer from "@/components/os/window/default-container";
-import PageBaseConfiguration from "@/configuration";
 
-export async function generateMetadata(props: {
-  params: Promise<{ lng: string; pageNumber: number; tag: string | undefined }>;
-}) {
-  const params = await props.params;
-  const { t } = await initTranslations({
-    locale: params.lng,
-    namespaces: ["titles"],
-  });
-
-  return {
-    title: t("me"),
-    alternates: getPageAlternates("me"),
-    openGraph: {
-      type: "website",
-      locale: params.lng,
-    },
-  };
-}
 export default async function AboutMe(props: {
   params: Promise<{ lng: string }>;
 }) {

@@ -9,25 +9,6 @@ import AboutAuthor from "@/parts/about-author";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 import PageBaseConfiguration from "@/configuration";
 
-export async function generateMetadata(props: {
-  params: Promise<{ lng: string }>;
-}) {
-  const params = await props.params;
-  const { t } = await initTranslations({
-    locale: params.lng,
-    namespaces: ["titles"],
-  });
-
-  return {
-    title: t("welcome"),
-    alternates: getPageAlternates("welcome"),
-    openGraph: {
-      type: "website",
-      locale: params.lng,
-    },
-  };
-}
-
 export default async function Welcome(props: {
   params: Promise<{ lng: string }>;
 }) {

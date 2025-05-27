@@ -35,31 +35,6 @@ import PoweredByCoasterCloud from "@/components/coaster/coaster-stats/powered-by
 import Backpack from "@/public/images/divoom-backpack.png";
 import WindowDefaultContainer from "@/components/os/window/default-container";
 
-export async function generateMetadata(props: {
-  params: Promise<{ lng: string }>;
-}): Promise<Metadata> {
-  const params = await props.params;
-  const config = PageBaseConfiguration();
-
-  const { t } = await initTranslations({
-    locale: params.lng,
-    namespaces: ["coaster"],
-  });
-
-  return {
-    metadataBase: config.baseUrl,
-    title: t("title"),
-    description: t("subTitle"),
-    openGraph: {
-      type: "website",
-      url: `${config.baseUrl}${params.lng}/coaster`,
-      description: t("subTitle"),
-      locale: params.lng,
-      images: "/jumbotron/coaster.jpg",
-    },
-  };
-}
-
 export default async function Coaster(props: {
   params: Promise<{ lng: string }>;
 }) {
