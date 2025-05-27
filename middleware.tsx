@@ -41,7 +41,7 @@ export function middleware(request: NextRequest) {
       if (source.endsWith("/*")) {
         const base = source.slice(0, -2);
         const wildcard = pathname.slice(base.length); // z.B. /blog/foo → /foo
-        destination = destination.replace("*", wildcard.replace(/^\//, ""));
+        destination = destination.replace(/\*/g, wildcard.replace(/^\//, ""));
       }
   
       if (destination.includes("{lng}")) {
