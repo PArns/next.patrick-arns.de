@@ -302,7 +302,7 @@ export default function DesktopWindow({
           <div className="absolute inset-0 -z-10 rounded-md backdrop-blur-md"></div>
           <div className="flex h-full cursor-default flex-col">
             <header className="draggable flex h-7 border-b bg-white/30 dark:border-neutral-600 dark:bg-neutral-800/30">
-              <div className="vertical-center flex w-full cursor-move items-center justify-center truncate align-middle">
+              <div className="vertical-center flex w-full cursor-move items-center justify-center truncate pb-0.5 align-middle">
                 <div className="px-1.5">
                   <Image
                     src={icon}
@@ -312,7 +312,7 @@ export default function DesktopWindow({
                     className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
                   />
                 </div>
-                <div className="pb-[1px]">{titleState}</div>
+                <div className="">{titleState}</div>
               </div>
               <button
                 className="flex h-7 w-7 flex-none items-center justify-center rounded-tr-sm border-0 hover:bg-red-500/50 focus:bg-red-500/50 focus:outline-hidden"
