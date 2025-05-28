@@ -276,13 +276,6 @@ export default function DesktopWindow({
     },
   );
 
-  const windowTitleClass = clsx(
-    "grow text-center cursor-move justify-center align-middle vertical-center truncate px-2 pt-[1px]",
-    {
-      "font-bold": activeState,
-    },
-  );
-
   const contentClass = clsx(
     "h-max w-full transition-all duration-300 delay-150",
     {
@@ -308,17 +301,19 @@ export default function DesktopWindow({
         >
           <div className="absolute inset-0 -z-10 rounded-md backdrop-blur-md"></div>
           <div className="flex h-full cursor-default flex-col">
-            <div className="draggable flex h-7 border-b bg-white/30 dark:border-neutral-600 dark:bg-neutral-800/30">
-              <div className="flex flex-none items-center justify-center pl-1">
-                <Image
-                  src={icon}
-                  width={20}
-                  height={20}
-                  alt={title}
-                  className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
-                />
+            <header className="draggable flex h-7 border-b bg-white/30 dark:border-neutral-600 dark:bg-neutral-800/30">
+              <div className="vertical-center flex w-full cursor-move items-center justify-center truncate align-middle">
+                <div className="px-1.5">
+                  <Image
+                    src={icon}
+                    width={18}
+                    height={18}
+                    alt={title}
+                    className="drop-shadow-[0_0.8px_0.8px_rgba(0,0,0,0.8)]"
+                  />
+                </div>
+                <div className="pb-[1px]">{titleState}</div>
               </div>
-              <header className={windowTitleClass}>{titleState}</header>
               <button
                 className="flex h-7 w-7 flex-none items-center justify-center rounded-tr-sm border-0 hover:bg-red-500/50 focus:bg-red-500/50 focus:outline-hidden"
                 aria-label="Close"
@@ -327,7 +322,7 @@ export default function DesktopWindow({
               >
                 <IconXMark />
               </button>
-            </div>
+            </header>
             <div
               className="flex overflow-x-clip overflow-y-auto"
               onClick={handleContainerClick}
