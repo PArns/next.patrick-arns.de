@@ -5,7 +5,7 @@ const nextConfig = {
       { hostname: "images.ctfassets.net" },
       { hostname: "media.coaster.cloud" },
     ],
-    minimumCacheTTL: 86400,
+    minimumCacheTTL: 2592000,
   },
 };
 
