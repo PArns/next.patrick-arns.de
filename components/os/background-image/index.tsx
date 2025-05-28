@@ -31,7 +31,6 @@ export default function BackgroundImageComponent({ backgroundImages }: Props) {
         sizes="100vw"
         alt={background.alt || ""}
         style={style}
-        className="transition-opacity duration-500"
       />
     </div>
   );

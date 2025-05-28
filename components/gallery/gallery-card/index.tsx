@@ -13,8 +13,9 @@ export default function GalleryCard({ gallery }: { gallery: ImageGallery }) {
             <ContentfulImageAsset
               asset={gallery.teaserImage}
               alt={gallery.name}
-              fill={true}
-              quality={50}
+              quality={80}
+              height={200}
+              width={1200}
               className="absolute top-0 right-0 bottom-0 left-0 h-full w-full rounded-t-lg object-cover"
             />
 

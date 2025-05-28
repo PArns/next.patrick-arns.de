@@ -62,8 +62,10 @@ function BlogTeaserCard({ post }: { post: BlogPost }) {
             <ContentfulImageAsset
               asset={post.image}
               alt={post.title}
-              fill={true}
-              quality={50}
+              priority={true}
+              quality={80}
+              height={200}
+              width={1200}
               className="absolute top-0 right-0 bottom-0 left-0 h-full w-full rounded-t-lg object-cover"
             />
 

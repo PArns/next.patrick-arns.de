@@ -11,16 +11,18 @@ export default function BlogHeader({
 }) {
   return (
     <header className="@container/header relative w-full overflow-hidden rounded-lg bg-cover bg-no-repeat text-center">
-      <ContentfulImageAsset
-        asset={backgroundImage}
-        alt={title}
-        fill={true}
-        quality={80}
-        sizes="100vw"
-        priority={true}
-        usePlaceholder={true}
-        className="absolute top-0 right-0 bottom-0 left-0 h-max w-max object-cover"
-      />
+      <div className="absolute top-0 right-0 bottom-0 left-0 h-full w-full">
+        <ContentfulImageAsset
+          asset={backgroundImage}
+          alt={title}
+          height={370}
+          width={1500}
+          sizes="100vw"
+          priority={true}
+          usePlaceholder={true}
+          className="h-full w-full object-cover"
+        />
+      </div>
       <div className="relative py-8 @md/header:py-16 @2xl/header:py-32">
         <div className="flex items-center justify-center">
           <div className="z-10 rounded-xl border-neutral-500 bg-white/30 p-5 text-white backdrop-blur-md dark:border-neutral-600 dark:bg-neutral-800/50">
