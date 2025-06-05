@@ -1,7 +1,7 @@
 {
   "name": "arns.dev",
   "description": "Personal website of Patrick Arns, built with Next.js and Tailwind CSS.",
-  "version": "4.8.1",
+  "version": "4.8.2",
   "private": true,
   "packageManager": "pnpm@10.11.1",
   "scripts": {
