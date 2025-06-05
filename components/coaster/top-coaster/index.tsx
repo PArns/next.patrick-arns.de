@@ -73,8 +73,7 @@ export default async function TopCoasterEntry({
             </div>
             <div className="ml-auto">
               <QueueTime
-                parkId={coaster.parkId}
-                rideId={coaster.rideId}
+                rideId={coaster.parkFanRideId}
                 locale={locale}
               />
             </div>

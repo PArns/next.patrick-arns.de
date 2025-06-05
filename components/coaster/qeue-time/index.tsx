@@ -1,16 +1,14 @@
 import initTranslations from "@/components/translate/i18n";
-import { getQueueInfo } from "@/data-provider/queue-times/provider";
+import { getQueueInfo } from "@/data-provider/parkfan/provider";
 
 export default async function QueueTime({
-  parkId,
   rideId,
   locale,
 }: {
-  parkId: number;
   rideId: number;
   locale: string;
 }) {
-  const rideInfo = await getQueueInfo(parkId, rideId);
+  const rideInfo = await getQueueInfo(rideId);
   if (!rideInfo) return null;
 
   const { t } = await initTranslations({

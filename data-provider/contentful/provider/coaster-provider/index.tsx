@@ -94,8 +94,7 @@ export interface TopCoasters {
 export interface TopCoaster {
   name: string;
   park: string;
-  parkId: number;
-  rideId: number;
+  parkFanRideId: number;
   rank: string;
   description: any;
   image: any;
@@ -117,8 +116,7 @@ export async function GetTopCoasters({
       rank
       park
       coasterCloudId
-      parkId
-      rideId
+      parkFanRideId
       description {
         json
         links {
@@ -166,8 +164,7 @@ export async function GetTopCoasters({
     return {
       name: coasterEntry.name,
       park: coasterEntry.park,
-      parkId: coasterEntry.parkId,
-      rideId: coasterEntry.rideId,
+      parkFanRideId: coasterEntry.parkFanRideId,
       coasterCloudId: coasterEntry.coasterCloudId,
       rank: coasterEntry.rank,
       description: coasterEntry.description,
