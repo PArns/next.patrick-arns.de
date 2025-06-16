@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^15.3.3",
-    "@tailwindcss/postcss": "^4.1.8",
+    "@tailwindcss/postcss": "^4.1.10",
     "@types/negotiator": "^0.6.4",
     "@types/node": "^22.15.30",
     "@types/react": "19.1.6",
