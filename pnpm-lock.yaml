@@ -28,7 +28,7 @@ importers:
         version: 0.1.1(tailwindcss@4.1.11)
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(next@15.4.0-canary.129(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
+        version: 1.5.0(next@15.4.2-canary.11(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -46,13 +46,13 @@ importers:
         version: 1.0.0
       next:
         specifier: canary
-        version: 15.4.0-canary.129(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 15.4.2-canary.11(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       next-video:
         specifier: ^2.2.1
-        version: 2.2.1(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(next@15.4.0-canary.129(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        version: 2.2.1(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(next@15.4.2-canary.11(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react:
         specifier: 19.1.0
         version: 19.1.0
@@ -75,8 +75,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(@types/react@19.1.8)(react@19.1.0)
       react-player:
-        specifier: ^3.2.0
-        version: 3.2.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^3.3.1
+        version: 3.3.1(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-rnd:
         specifier: ^10.5.2
         version: 10.5.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -686,56 +686,56 @@ packages:
   '@next/env@15.3.5':
     resolution: {integrity: sha512-7g06v8BUVtN2njAX/r8gheoVffhiKFVt4nx74Tt6G4Hqw9HCLYQVx/GkH2qHvPtAHZaUNZ0VXAa0pQP6v1wk7g==}
 
-  '@next/env@15.4.0-canary.129':
-    resolution: {integrity: sha512-NFkpXUNaCqUzaJyFYuO+HkJKT8v6T/gsgstEsmKwOiRgQDElk+ZDqJFZfVMe05c2tFEoumtW5OSl4N6oBLZDqw==}
+  '@next/env@15.4.2-canary.11':
+    resolution: {integrity: sha512-P4J53z686fzUE0d7u0M0mExPxtFpDJHM8rGmU+NK44jKZxkpeMiCYKANTK3v0DD66Au6Mqs8oWrsJe6UwuRDfg==}
 
   '@next/eslint-plugin-next@15.3.5':
     resolution: {integrity: sha512-BZwWPGfp9po/rAnJcwUBaM+yT/+yTWIkWdyDwc74G9jcfTrNrmsHe+hXHljV066YNdVs8cxROxX5IgMQGX190w==}
 
-  '@next/swc-darwin-arm64@15.4.0-canary.129':
-    resolution: {integrity: sha512-kUAJ9DISMQJxheT8YCWwwgmAGkqZGIWEmH8WfpX+hA76xW3yn21rP41mH6GFwo7K/OtGv8G3uhwnlpwK+Jvt1A==}
+  '@next/swc-darwin-arm64@15.4.2-canary.11':
+    resolution: {integrity: sha512-H19s6XHM+RWRcfiboIGrrEXQ9vnZQ4hFFE/gzWAgaBfEhxWQ/nB40yIehYe8gDrB0LzQb/YFjpfy6yVng3WHMg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@next/swc-darwin-x64@15.4.0-canary.129':
-    resolution: {integrity: sha512-KfdiLs6IW9Dz9uaJT6Pc70xoQ3pBOzIxTVxJci9/ryMSMmELDPFmI67ciypY+Qe4uaag9wzpejzuT7CPhO2RwA==}
+  '@next/swc-darwin-x64@15.4.2-canary.11':
+    resolution: {integrity: sha512-s3Lak2mPcz/ZMp4ME28sDQMWXGC3bvHxIBHN+zk0LhbtaAU7YHFB2UeA4k/dlyWx0We8YcZNzbB30BQWbgcQ/w==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@next/swc-linux-arm64-gnu@15.4.0-canary.129':
-    resolution: {integrity: sha512-v+KPkVjVSjCDqIQnjY0SjcI9t9YehU0ZgdndjkqsWavrPZ/hmsDfFm9k/RexJMruPW/4lKnDEX422axe19gMEw==}
+  '@next/swc-linux-arm64-gnu@15.4.2-canary.11':
+    resolution: {integrity: sha512-0bFAl7gwtvwMq7abT7XclQ5LU6VnvncV+f468853EEr8hYED4hLHru0ifsh8Q65N9i0f0wl3bpGXZWSSuqbDZA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-arm64-musl@15.4.0-canary.129':
-    resolution: {integrity: sha512-YZ/qVHb/tKYHbMrZgntYi/8xP6esI/aVLjprKc+jxKltnw5qXz3TnVZ/ZVExRsqmWwGjj0//zezpUIHHbqVC0g==}
+  '@next/swc-linux-arm64-musl@15.4.2-canary.11':
+    resolution: {integrity: sha512-JSIsmlfy24oz6Ty6UP5WzUxvuOJXrbX6BYlrkGcmSchuKbXMainWF+Yp0Z7JKrNhhAXWjdJpuHRhins/RzPQaQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-x64-gnu@15.4.0-canary.129':
-    resolution: {integrity: sha512-aaopzw2yw3Qzcma8RmBRZ8AQYYmfIAPjUleEWMvS2WKTonzXl0LW7L8HvJjtoHhKEHzwb8RmDDXbgA4xF4+3jg==}
+  '@next/swc-linux-x64-gnu@15.4.2-canary.11':
+    resolution: {integrity: sha512-wTBGjfmktgy04mYwmiU5J3xnUgxqHf8edrccgf1X2ZiTKI462bYn5+nSFWiue8sa9hrnXb2HaFPTgBIBxz4ADQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-linux-x64-musl@15.4.0-canary.129':
-    resolution: {integrity: sha512-uYJBA8TmqHpF3W5r7yuBVn1qImqHF+VXPfDqYwFiROkgTkCDxSBF1XDIHTTc4DF41nVNe4n7Qg/iZhDGhMm8zw==}
+  '@next/swc-linux-x64-musl@15.4.2-canary.11':
+    resolution: {integrity: sha512-FmEGHNedQSV+LjrzUr7+Kba2aqimsPRrMLX0ykuKMoL5VRsKnJck5ECIagKagrqM8BnYaN+AO7VYIafqkdDkzQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-win32-arm64-msvc@15.4.0-canary.129':
-    resolution: {integrity: sha512-HNmW8y3CavV2SBQ3lSyyNJgUHF7DD88PSxC2KO2Q6aQRenkWqDCwsBZGdpEVKiyqvpc+Q7kCFIDv9DZBfzU/5A==}
+  '@next/swc-win32-arm64-msvc@15.4.2-canary.11':
+    resolution: {integrity: sha512-+qypSWo6s8t6RzlkRbgoUEtgYxgp4+JQO9Ta2bTi/I0TX0zx+DWrsnFOZND8JWcAsH9YmWqwGlugxraQyMhiNA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@next/swc-win32-x64-msvc@15.4.0-canary.129':
-    resolution: {integrity: sha512-pTANnQIFYU2xP4oQYQUwv4/wSv7EsY0omw14gZzh1LqyVZUd3TBxeKnK0ZTooou5HJ9lO2T/VwCTvF81Gf5H/g==}
+  '@next/swc-win32-x64-msvc@15.4.2-canary.11':
+    resolution: {integrity: sha512-PrD2vjFpX2bJ0UAAJe0QV3Iqk9MKrUtBYAGzENsM5KMogu6o8bjhEJ3AsMF3Iqb7OLVvWb2Uci1/rdh2w+yZQw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -892,6 +892,7 @@ packages:
   '@smithy/middleware-endpoint@4.1.14':
     resolution: {integrity: sha512-+BGLpK5D93gCcSEceaaYhUD/+OCGXM1IDaq/jKUQ+ujB0PTWlWN85noodKw/IPFZhIKFCNEe19PGd/reUMeLSQ==}
     engines: {node: '>=18.0.0'}
+    deprecated: Please upgrade to @smithy/middleware-endpoint@4.1.15 or higher to fix a bug preventing the resolution of ENV and config file custom endpoints https://github.com/smithy-lang/smithy-typescript/issues/1645
 
   '@smithy/middleware-retry@4.1.15':
     resolution: {integrity: sha512-iKYUJpiyTQ33U2KlOZeUb0GwtzWR3C0soYcKuCnTmJrvt6XwTPQZhMfsjJZNw7PpQ3TU4Ati1qLSrkSJxnnSMQ==}
@@ -1563,8 +1564,8 @@ packages:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
     engines: {node: '>=12'}
 
-  cloudflare-video-element@1.3.2:
-    resolution: {integrity: sha512-6M55oHTqDKVIu7sUhuvJnjTfZDEfyNEhBi5gP9dcUK3m2ECWm4J6xLEbwWaaRhgbfQ3cR5zIazEYXuFwoxUp0w==}
+  cloudflare-video-element@1.3.3:
+    resolution: {integrity: sha512-qrHzwLmUhisoIuEoKc7iBbdzBNj2Pi7ThHslU/9U/6PY9DEvo4mh/U+w7OVuzXT9ks7ZXfARvDBfPAaMGF/hIg==}
 
   clsx@1.2.1:
     resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
@@ -1623,6 +1624,9 @@ packages:
   dash-video-element@0.1.5:
     resolution: {integrity: sha512-sPXsm1evfjLPXLTpE5a1a/9swmQP+kHUDu4HfPN4qXPHIKh8OJ6Vfr3kbidbLEke3MpS4c02iVBBpo4oiejWjw==}
 
+  dash-video-element@0.1.6:
+    resolution: {integrity: sha512-4gHShaQjcFv6diX5EzB6qAdUGKlIUGGZY8J8yp2pQkWqR0jX4c6plYy0cFraN7mr0DZINe8ujDN1fssDYxJjcg==}
+
   dashjs@5.0.3:
     resolution: {integrity: sha512-TXndNnCUjFjF2nYBxDVba+hWRpVkadkQ8flLp7kHkem+5+wZTfRShJCnVkPUosmjS0YPE9fVNLbYPJxHBeQZvA==}
 
@@ -1663,10 +1667,6 @@ packages:
 
   deep-is@0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
-
-  deepmerge@4.3.1:
-    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
-    engines: {node: '>=0.10.0'}
 
   define-data-property@1.1.4:
     resolution: {integrity: sha512-rBMvIzlpA8v6E+SJZoo++HAYqsLrkg7MSfIinMPFhmkorw7X+dOXVJQs+QT69zGkzMyfDnIMN2Wid1+NbL3T+A==}
@@ -2041,6 +2041,9 @@ packages:
 
   hls-video-element@1.5.5:
     resolution: {integrity: sha512-7HYIf+jeeCtazcBVVmj16qfTDRKvxd92TMdscocNWPoAePmovPPnii1aBdRsinsiw4rt90B8FgYoHzMhLi1qYQ==}
+
+  hls-video-element@1.5.6:
+    resolution: {integrity: sha512-KPdvSR+oBJPiCVb+m6pd2mn3rJEjNbaK8pGhSkxFI2pmyvZIeTVQrPbEO9PT/juwXHwhvCoKJnNxAuFwJG9H5A==}
 
   hls.js@1.6.7:
     resolution: {integrity: sha512-QW2fnwDGKGc9DwQUGLbmMOz8G48UZK7PVNJPcOUql1b8jubKx4/eMHNP5mGqr6tYlJNDG1g10Lx2U/qPzL6zwQ==}
@@ -2503,8 +2506,8 @@ packages:
       '@types/react-dom':
         optional: true
 
-  next@15.4.0-canary.129:
-    resolution: {integrity: sha512-yj8260imnoIGXIa9dwWZx3XbHGbY2LPkgdpT8TOPuZpAUcAe8szrW1LaL37MDkHjo4MQwieV3AxV84HgmuMQXA==}
+  next@15.4.2-canary.11:
+    resolution: {integrity: sha512-YTcbMDQkG15F/LK8h7e0ijtYqsmVw4APzlmos+In8uFIzSgHsvALt2km86cTaQXhwcBkAXz/jcw/QJEeqsBEEw==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
     peerDependencies:
@@ -2785,8 +2788,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-player@3.2.0:
-    resolution: {integrity: sha512-ZbrtiNSJPpJyHQxHGDAgJBL+USU0mauHnRrMJqbKO7vTUQYUfiNcBxeAgkIHWTsjQCrhN3PqyK8HYPpbN2tbdA==}
+  react-player@3.3.1:
+    resolution: {integrity: sha512-wE/xLloneXZ1keelFCaNeIFVNUp4/7YoUjfHjwF945aQzsbDKiIB0LQuCchGL+la0Y1IybxnR0R6Cm3AiqInMw==}
     peerDependencies:
       '@types/react': ^17.0.0 || ^18 || ^19
       react: ^17.0.2 || ^18 || ^19
@@ -2941,8 +2944,8 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
-  spotify-audio-element@1.0.1:
-    resolution: {integrity: sha512-Uc30QxulPAoWxkMSVeMGcHmEij9KXedzbsliwlhNWnZP2Fgkz1Ifl2laj0poAXiqUDdJTWapfUI9IkGkhwgTEg==}
+  spotify-audio-element@1.0.2:
+    resolution: {integrity: sha512-YEovyyeJTJMzdSVqFw/Fx19e1gdcD4bmZZ/fWS0Ji58KTpvAT2rophgK87ocqpy6eJNSmIHikhgbRjGWumgZew==}
 
   stable-hash@0.0.5:
     resolution: {integrity: sha512-+L3ccpzibovGXFK+Ap/f8LOS0ahMrHTf3xu7mMLSpEGU0EO9ucaysSylKo9eRDFNhWve/y275iPmIZ4z39a9iA==}
@@ -3040,6 +3043,9 @@ packages:
     resolution: {integrity: sha512-nt6AMGKW1p/70DF/hGBdJB57B8Tspmbp5gfJ8ilhLnt7kkr2ye7hzD6NVG8GGErk2HWF34igrL2CXmNIkzKqKw==}
     engines: {node: '>=18'}
 
+  tiktok-video-element@0.1.0:
+    resolution: {integrity: sha512-PVWUlpDdQ/LPXi7x4/furfD7Xh1L72CgkGCaMsZBIjvxucMGm1DDPJdM9IhWBFfo6tuR4cYVO/v596r6GG/lvQ==}
+
   tinyglobby@0.2.14:
     resolution: {integrity: sha512-tX5e7OM1HnYr2+a2C/4V0htOcSQcoSTH9KgJnVvNm5zm/cyEWKJ7j7YutsH9CxMdtOkkLFy2AHrMci9IM8IPZQ==}
     engines: {node: '>=12.0.0'}
@@ -3074,8 +3080,8 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  twitch-video-element@0.1.0:
-    resolution: {integrity: sha512-9aV0OD9/QtMqV554RkjOHxg/WzMjDwxtp1l+M0OXIaQiLOrrL16FYqyng6g0dm9NY3Sx35ybdGTmDC/NvC3Xkw==}
+  twitch-video-element@0.1.2:
+    resolution: {integrity: sha512-/up4KiWiTYiav+CUo+/DbV8JhP4COwEKSo8h1H/Zft/5NzZ/ZiIQ48h7erFKvwzalN0GfkEGGIfwIzAO0h7FHQ==}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -3146,8 +3152,8 @@ packages:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
 
-  vimeo-video-element@1.5.1:
-    resolution: {integrity: sha512-KV1PCBYqnwsA364/Lr6UhKhQAAwhyxtv9AhS1Yex43u1Yk9roClYRcvfKldo/K66lMHWMKs4G0GcaItOjvqQmw==}
+  vimeo-video-element@1.5.3:
+    resolution: {integrity: sha512-OQWyGS9nTouMqfRJyvmAm/n6IRhZ7x3EfPAef+Q+inGBeHa3SylDbtyeB/rEBd4B/T/lcYBW3rjaD9W2DRYkiQ==}
 
   void-elements@3.1.0:
     resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
@@ -3193,8 +3199,8 @@ packages:
     engines: {node: '>= 8'}
     hasBin: true
 
-  wistia-video-element@1.3.2:
-    resolution: {integrity: sha512-7aSvKXAxBQErewJaDCoZGPOQaFGLljtMMo88eT1ZGRu6TQBwNSqBSIF/Q3x7hBtYWI6ZgqVTKbCACIZn4tAiOQ==}
+  wistia-video-element@1.3.3:
+    resolution: {integrity: sha512-ZVC8HH8uV3mQGcSz10MACLDalao/0YdVverNN4GNFsOXiumfqSiZnRVc8WZEywgVckBkR7+yerQYESYPDzvTfQ==}
 
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
@@ -3244,8 +3250,8 @@ packages:
     resolution: {integrity: sha512-cYVsTjKl8b+FrnidjibDWskAv7UKOfcwaVZdp/it9n1s9fU3IkgDbhdIRKCW4JDsAlECJY0ytoVPT3sK6kideA==}
     engines: {node: '>=18'}
 
-  youtube-video-element@1.6.0:
-    resolution: {integrity: sha512-yu6aMaSyyp8ygqNNnf01xjJdy7AaWwEhLlJ/XRdFteLP/djM7i7JOrK0INgjvBnv88dAtiW9PKZ0OQQzGFeydw==}
+  youtube-video-element@1.6.1:
+    resolution: {integrity: sha512-FDRgXlPxpe1bh6HlhL6GfJVcvVNaZKCcLEZ90X1G3Iu+z2g2cIhm2OWj9abPZq1Zqit6SY7Gwh13H9g7acoBnQ==}
 
 snapshots:
 
@@ -4172,34 +4178,34 @@ snapshots:
 
   '@next/env@15.3.5': {}
 
-  '@next/env@15.4.0-canary.129': {}
+  '@next/env@15.4.2-canary.11': {}
 
   '@next/eslint-plugin-next@15.3.5':
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/swc-darwin-arm64@15.4.0-canary.129':
+  '@next/swc-darwin-arm64@15.4.2-canary.11':
     optional: true
 
-  '@next/swc-darwin-x64@15.4.0-canary.129':
+  '@next/swc-darwin-x64@15.4.2-canary.11':
     optional: true
 
-  '@next/swc-linux-arm64-gnu@15.4.0-canary.129':
+  '@next/swc-linux-arm64-gnu@15.4.2-canary.11':
     optional: true
 
-  '@next/swc-linux-arm64-musl@15.4.0-canary.129':
+  '@next/swc-linux-arm64-musl@15.4.2-canary.11':
     optional: true
 
-  '@next/swc-linux-x64-gnu@15.4.0-canary.129':
+  '@next/swc-linux-x64-gnu@15.4.2-canary.11':
     optional: true
 
-  '@next/swc-linux-x64-musl@15.4.0-canary.129':
+  '@next/swc-linux-x64-musl@15.4.2-canary.11':
     optional: true
 
-  '@next/swc-win32-arm64-msvc@15.4.0-canary.129':
+  '@next/swc-win32-arm64-msvc@15.4.2-canary.11':
     optional: true
 
-  '@next/swc-win32-x64-msvc@15.4.0-canary.129':
+  '@next/swc-win32-x64-msvc@15.4.2-canary.11':
     optional: true
 
   '@noble/hashes@1.8.0': {}
@@ -4911,9 +4917,9 @@ snapshots:
   '@unrs/resolver-binding-win32-x64-msvc@1.11.1':
     optional: true
 
-  '@vercel/analytics@1.5.0(next@15.4.0-canary.129(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)':
+  '@vercel/analytics@1.5.0(next@15.4.2-canary.11(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)':
     optionalDependencies:
-      next: 15.4.0-canary.129(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      next: 15.4.2-canary.11(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react: 19.1.0
 
   '@vercel/blob@0.27.3':
@@ -5145,7 +5151,7 @@ snapshots:
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
 
-  cloudflare-video-element@1.3.2: {}
+  cloudflare-video-element@1.3.3: {}
 
   clsx@1.2.1: {}
 
@@ -5198,6 +5204,11 @@ snapshots:
       custom-media-element: 1.4.5
       dashjs: 5.0.3
 
+  dash-video-element@0.1.6:
+    dependencies:
+      custom-media-element: 1.4.5
+      dashjs: 5.0.3
+
   dashjs@5.0.3:
     dependencies:
       '@svta/common-media-library': 0.12.4
@@ -5242,8 +5253,6 @@ snapshots:
   decimal.js@10.6.0: {}
 
   deep-is@0.1.4: {}
-
-  deepmerge@4.3.1: {}
 
   define-data-property@1.1.4:
     dependencies:
@@ -5776,6 +5785,12 @@ snapshots:
       hls.js: 1.6.7
       media-tracks: 0.3.3
 
+  hls-video-element@1.5.6:
+    dependencies:
+      custom-media-element: 1.4.5
+      hls.js: 1.6.7
+      media-tracks: 0.3.3
+
   hls.js@1.6.7: {}
 
   hoist-non-react-statics@3.3.2:
@@ -6185,7 +6200,7 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  next-video@2.2.1(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(next@15.4.0-canary.129(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  next-video@2.2.1(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(next@15.4.2-canary.11(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@aws-sdk/client-s3': 3.844.0
       '@inquirer/prompts': 4.3.3
@@ -6201,7 +6216,7 @@ snapshots:
       hls-video-element: 1.5.5
       magicast: 0.3.5
       media-chrome: 4.12.0(react@19.1.0)
-      next: 15.4.0-canary.129(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      next: 15.4.2-canary.11(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       player.style: 0.1.9(react@19.1.0)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
@@ -6216,9 +6231,9 @@ snapshots:
       - aws-crt
       - encoding
 
-  next@15.4.0-canary.129(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  next@15.4.2-canary.11(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
-      '@next/env': 15.4.0-canary.129
+      '@next/env': 15.4.2-canary.11
       '@swc/helpers': 0.5.15
       caniuse-lite: 1.0.30001727
       postcss: 8.4.31
@@ -6226,14 +6241,14 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
       styled-jsx: 5.1.6(react@19.1.0)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 15.4.0-canary.129
-      '@next/swc-darwin-x64': 15.4.0-canary.129
-      '@next/swc-linux-arm64-gnu': 15.4.0-canary.129
-      '@next/swc-linux-arm64-musl': 15.4.0-canary.129
-      '@next/swc-linux-x64-gnu': 15.4.0-canary.129
-      '@next/swc-linux-x64-musl': 15.4.0-canary.129
-      '@next/swc-win32-arm64-msvc': 15.4.0-canary.129
-      '@next/swc-win32-x64-msvc': 15.4.0-canary.129
+      '@next/swc-darwin-arm64': 15.4.2-canary.11
+      '@next/swc-darwin-x64': 15.4.2-canary.11
+      '@next/swc-linux-arm64-gnu': 15.4.2-canary.11
+      '@next/swc-linux-arm64-musl': 15.4.2-canary.11
+      '@next/swc-linux-x64-gnu': 15.4.2-canary.11
+      '@next/swc-linux-x64-musl': 15.4.2-canary.11
+      '@next/swc-win32-arm64-msvc': 15.4.2-canary.11
+      '@next/swc-win32-x64-msvc': 15.4.2-canary.11
       sharp: 0.34.3
     transitivePeerDependencies:
       - '@babel/core'
@@ -6430,21 +6445,21 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.1.8
 
-  react-player@3.2.0(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  react-player@3.3.1(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@mux/mux-player-react': 3.5.1(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@types/react': 19.1.8
-      cloudflare-video-element: 1.3.2
-      dash-video-element: 0.1.5
-      deepmerge: 4.3.1
-      hls-video-element: 1.5.5
+      cloudflare-video-element: 1.3.3
+      dash-video-element: 0.1.6
+      hls-video-element: 1.5.6
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
-      spotify-audio-element: 1.0.1
-      twitch-video-element: 0.1.0
-      vimeo-video-element: 1.5.1
-      wistia-video-element: 1.3.2
-      youtube-video-element: 1.6.0
+      spotify-audio-element: 1.0.2
+      tiktok-video-element: 0.1.0
+      twitch-video-element: 0.1.2
+      vimeo-video-element: 1.5.3
+      wistia-video-element: 1.3.3
+      youtube-video-element: 1.6.1
     transitivePeerDependencies:
       - '@types/react-dom'
 
@@ -6644,7 +6659,7 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
-  spotify-audio-element@1.0.1: {}
+  spotify-audio-element@1.0.2: {}
 
   stable-hash@0.0.5: {}
 
@@ -6754,6 +6769,8 @@ snapshots:
 
   throttleit@2.1.0: {}
 
+  tiktok-video-element@0.1.0: {}
+
   tinyglobby@0.2.14:
     dependencies:
       fdir: 6.4.6(picomatch@4.0.2)
@@ -6786,7 +6803,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  twitch-video-element@0.1.0: {}
+  twitch-video-element@0.1.2: {}
 
   type-check@0.4.0:
     dependencies:
@@ -6884,7 +6901,7 @@ snapshots:
 
   uuid@9.0.1: {}
 
-  vimeo-video-element@1.5.1:
+  vimeo-video-element@1.5.3:
     dependencies:
       '@vimeo/player': 2.29.0
 
@@ -6965,7 +6982,7 @@ snapshots:
     dependencies:
       isexe: 2.0.0
 
-  wistia-video-element@1.3.2:
+  wistia-video-element@1.3.3:
     dependencies:
       super-media-element: 1.4.2
 
@@ -7005,4 +7022,4 @@ snapshots:
 
   yoctocolors-cjs@2.1.2: {}
 
-  youtube-video-element@1.6.0: {}
+  youtube-video-element@1.6.1: {}
