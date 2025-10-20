@@ -45,7 +45,7 @@
     "@next/bundle-analyzer": "^15.5.4",
     "@tailwindcss/postcss": "^4.1.14",
     "@types/negotiator": "^0.6.4",
-    "@types/node": "^24.7.0",
+    "@types/node": "^24.9.0",
     "@types/react": "19.2.0",
     "@types/react-dom": "19.2.0",
     "cross-env": "^10.1.0",
