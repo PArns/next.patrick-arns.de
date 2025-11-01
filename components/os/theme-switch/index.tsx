@@ -97,6 +97,21 @@ export function ThemeSwitch() {
 }
 
 export default function ThemeSwitcher() {
+  const [mounted, setMounted] = useState(false);
+
+  // Prevent hydration mismatch by only rendering after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className="mr-2 h-full w-5">
+        <LightBulbIcon className="h-5 w-5 opacity-70" />
+      </div>
+    );
+  }
+
   return (
     <Menu>
       <MenuButton className="mr-2 h-full w-5">

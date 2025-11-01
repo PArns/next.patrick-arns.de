@@ -20,7 +20,7 @@ function cleanPathname(pathname: string): string {
   return `/${pathname.replace(/^\/|\/$/g, "")}`.toLowerCase();
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const config = PageBaseConfiguration();
   const pathname = cleanPathname(request.nextUrl.pathname);
 
