@@ -3,10 +3,11 @@
   "description": "Personal website of Patrick Arns, built with Next.js and Tailwind CSS.",
   "version": "4.9.0",
   "private": true,
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.18.1",
   "scripts": {
     "prebuild": "node prebuild.js",
     "dev": "next dev --turbopack",
+    "dev:webpack": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

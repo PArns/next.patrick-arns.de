@@ -46,9 +46,12 @@ export default function DesktopWindow({
   const [activeState, setActiveState] = useState(false);
   const [initDoneState, setInitDoneState] = useState(false);
   const [maxHeight, setMaxHeight] = useState(9999);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const rndRef = useRef<Rnd>(null);
   const childrenRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
 
   desktopWindowEvents.updateWindowDetailsEvent.useOnUpdateWindowDetailsListener(
     (windowDetails) => {
@@ -135,6 +138,45 @@ export default function DesktopWindow({
   useEffect(() => {
     events.windowOpenedEvent.emitOnWindowOpened(currentWindowDetails());
   }, [visibleState, currentWindowDetails]);
+
+  // Scroll to top on route change - in cleanup to avoid flicker
+  useEffect(() => {
+    return () => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollTo(0, 0);
+      }
+    };
+  }, [routeState]);
+
+  // Handle scroll events to temporarily disable blur during scrolling
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+
+    const handleScroll = () => {
+      // Set scrolling state
+      setIsScrolling(true);
+
+      // Clear existing timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+
+      // Set new timeout to re-enable blur after scrolling stops
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 150);
+    };
+
+    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      scrollContainer.removeEventListener('scroll', handleScroll);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const setSize = function (
@@ -293,13 +335,18 @@ export default function DesktopWindow({
           minWidth={400}
           maxWidth={maxWidth}
           maxHeight={maxHeight}
-          style={{ zIndex: zIndexState }}
+          style={{ zIndex: zIndexState, contain: 'layout style paint' }}
           onMouseDown={() => activateWindow()}
           onResize={() => resizeWindow()}
           ref={rndRef}
           dragHandleClassName="draggable"
         >
-          <div className="absolute inset-0 -z-10 rounded-md backdrop-blur-md"></div>
+          <div
+            className={clsx(
+              "absolute inset-0 -z-10 rounded-md transform-gpu will-change-transform transition-[backdrop-filter] duration-150",
+              !isScrolling && "backdrop-blur-md"
+            )}
+          ></div>
           <div className="flex h-full cursor-default flex-col">
             <header className="draggable flex h-7 border-b bg-white/30 dark:border-neutral-600 dark:bg-neutral-800/30">
               <div className="vertical-center flex w-full cursor-move items-center justify-center truncate pb-0.5 align-middle">
@@ -324,6 +371,7 @@ export default function DesktopWindow({
               </button>
             </header>
             <div
+              ref={scrollContainerRef}
               className="flex overflow-x-clip overflow-y-auto"
               onClick={handleContainerClick}
             >
