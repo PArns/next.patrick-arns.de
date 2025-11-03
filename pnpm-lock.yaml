@@ -104,8 +104,8 @@ importers:
         specifier: ^0.6.4
         version: 0.6.4
       '@types/node':
-        specifier: ^24.9.2
-        version: 24.9.2
+        specifier: ^24.10.0
+        version: 24.10.0
       '@types/react':
         specifier: 19.2.2
         version: 19.2.2
@@ -1257,11 +1257,11 @@ packages:
   '@types/node@20.19.24':
     resolution: {integrity: sha512-FE5u0ezmi6y9OZEzlJfg37mqqf6ZDSF2V/NLjUyGrR9uTZ7Sb9F7bLNZ03S4XVUNRWGA7Ck4c1kK+YnuWjl+DA==}
 
-  '@types/node@22.18.13':
-    resolution: {integrity: sha512-Bo45YKIjnmFtv6I1TuC8AaHBbqXtIo+Om5fE4QiU1Tj8QR/qt+8O3BAtOimG5IFmwaWiPmB3Mv3jtYzBA4Us2A==}
+  '@types/node@22.19.0':
+    resolution: {integrity: sha512-xpr/lmLPQEj+TUnHmR+Ab91/glhJvsqcjB+yY0Ix9GO70H6Lb4FHH5GeqdOE5btAx7eIMwuHkp4H2MSkLcqWbA==}
 
-  '@types/node@24.9.2':
-    resolution: {integrity: sha512-uWN8YqxXxqFMX2RqGOrumsKeti4LlmIMIyV0lgut4jx7KQBcBiW6vkDtIBvHnHIquwNfJhk8v2OtmO8zXWHfPA==}
+  '@types/node@24.10.0':
+    resolution: {integrity: sha512-qzQZRBqkFsYyaSWXuEHc2WR9c0a0CXwiE5FWUvn7ZM+vdy1uZLfCunD38UzhuB7YN/J11ndbDBcTmOdxJo9Q7A==}
 
   '@types/react-dom@19.2.2':
     resolution: {integrity: sha512-9KQPoO6mZCi7jcIStSnlOWn2nEF3mNmyr3rIAsGnAbQKYbRLyqmeSc39EVgtxXVia+LMT8j3knZLAZAh+xLmrw==}
@@ -4279,7 +4279,7 @@ snapshots:
       '@inquirer/figures': 1.0.14
       '@inquirer/type': 2.0.0
       '@types/mute-stream': 0.0.4
-      '@types/node': 22.18.13
+      '@types/node': 22.19.0
       '@types/wrap-ansi': 3.0.0
       ansi-escapes: 4.3.2
       cli-width: 4.1.0
@@ -5016,13 +5016,13 @@ snapshots:
 
   '@types/mute-stream@0.0.4':
     dependencies:
-      '@types/node': 24.9.2
+      '@types/node': 24.10.0
 
   '@types/negotiator@0.6.4': {}
 
   '@types/node-fetch@2.6.13':
     dependencies:
-      '@types/node': 24.9.2
+      '@types/node': 24.10.0
       form-data: 4.0.4
 
   '@types/node@18.19.130':
@@ -5033,11 +5033,11 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@22.18.13':
+  '@types/node@22.19.0':
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@24.9.2':
+  '@types/node@24.10.0':
     dependencies:
       undici-types: 7.16.0
 
