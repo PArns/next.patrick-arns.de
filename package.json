@@ -43,7 +43,7 @@
     "sharp": "^0.34.5"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "16.0.1",
+    "@next/bundle-analyzer": "16.0.4",
     "@tailwindcss/postcss": "^4.1.17",
     "@types/negotiator": "^0.6.4",
     "@types/node": "^24.10.1",
