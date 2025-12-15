@@ -73,8 +73,8 @@ importers:
         specifier: ^3.1.2
         version: 3.1.2(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       react-i18next:
-        specifier: ^16.4.1
-        version: 16.4.1(i18next@25.7.2(typescript@5.9.3))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)
+        specifier: ^16.5.0
+        version: 16.5.0(i18next@25.7.2(typescript@5.9.3))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3)
       react-intl:
         specifier: ^7.1.14
         version: 7.1.14(react@19.2.1)(typescript@5.9.3)
@@ -2713,6 +2713,7 @@ packages:
   next@16.0.9:
     resolution: {integrity: sha512-Xk5x/wEk6ADIAtQECLo1uyE5OagbQCiZ+gW4XEv24FjQ3O2PdSkvgsn22aaseSXC7xg84oONvQjFbSTX5YsMhQ==}
     engines: {node: '>=20.9.0'}
+    deprecated: This version has a security vulnerability. Please upgrade to a patched version. See https://nextjs.org/blog/security-update-2025-12-11 for more details.
     hasBin: true
     peerDependencies:
       '@opentelemetry/api': ^1.1.0
@@ -2947,8 +2948,8 @@ packages:
       react: '>=17.0.2'
       react-dom: '>=17.0.2'
 
-  react-i18next@16.4.1:
-    resolution: {integrity: sha512-GzsYomxb1/uE7nlJm0e1qQ8f+W9I3Xirh9VoycZIahk6C8Pmv/9Fd0ek6zjf1FSgtGLElDGqwi/4FOHEGUbsEQ==}
+  react-i18next@16.5.0:
+    resolution: {integrity: sha512-IMpPTyCTKxEj8klCrLKUTIUa8uYTd851+jcu2fJuUB9Agkk9Qq8asw4omyeHVnOXHrLgQJGTm5zTvn8HpaPiqw==}
     peerDependencies:
       i18next: '>= 25.6.2'
       react: '>= 16.8.0'
@@ -6765,7 +6766,7 @@ snapshots:
       react: 19.2.1
       react-dom: 19.2.1(react@19.2.1)
 
-  react-i18next@16.4.1(i18next@25.7.2(typescript@5.9.3))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3):
+  react-i18next@16.5.0(i18next@25.7.2(typescript@5.9.3))(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(typescript@5.9.3):
     dependencies:
       '@babel/runtime': 7.28.4
       html-parse-stringify: 3.0.1
