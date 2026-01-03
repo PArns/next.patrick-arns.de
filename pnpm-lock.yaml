@@ -19,8 +19,8 @@ importers:
         specifier: ^17.2.5
         version: 17.2.5
       '@formatjs/intl-localematcher':
-        specifier: ^0.6.2
-        version: 0.6.2
+        specifier: ^0.7.4
+        version: 0.7.4
       '@headlessui/react':
         specifier: ^2.2.9
         version: 2.2.9(react-dom@19.2.1(react@19.2.3))(react@19.2.3)
@@ -469,17 +469,20 @@ packages:
   '@formatjs/fast-memoize@3.0.1':
     resolution: {integrity: sha512-kzk635kEmsxrrEWQXY7uKRocFCVXR4es5OQqcqCGg2NPtQztG/OBkE9THHu6UOTxpfyIkZhh6DjPBZGRp7y3og==}
 
+  '@formatjs/fast-memoize@3.0.2':
+    resolution: {integrity: sha512-YFApUDWFmjpPwAE7VcY7PYVjm6JaLZOAo0UfCQj1/OGi/1QtduG9kIBHmVC551M6AI01qvuP5kjbDebrZOT4Vg==}
+
   '@formatjs/icu-messageformat-parser@3.0.4':
     resolution: {integrity: sha512-24JitjUVRMGlvgSVMLZBZep6M/G8mUaGsObC6S9BYSvDlDulcQ3u/ZXhtQWuS6n/GTR39n5glnwL3aUwCaD9TQ==}
 
   '@formatjs/icu-skeleton-parser@2.0.3':
     resolution: {integrity: sha512-PfvEhRlRdBiEh5ivnVGrEpJRuN3JtiOD0r2vJjUwUJ7BHRs14AZl93QZ1nvNUByQ+WUYGmt5CArg3wejZV+o6Q==}
 
-  '@formatjs/intl-localematcher@0.6.2':
-    resolution: {integrity: sha512-XOMO2Hupl0wdd172Y06h6kLpBz6Dv+J4okPLl4LPtzbr8f66WbIoy4ev98EBuZ6ZK4h5ydTN6XneT4QVpD7cdA==}
-
   '@formatjs/intl-localematcher@0.7.2':
     resolution: {integrity: sha512-1cpFlw1omNn2/Uz/vAdAyovlh7qS/po7MWipH3JrShT/lVUh2+lbEAWquyh9yRa84fqlLulTt7oysGtjATujZQ==}
+
+  '@formatjs/intl-localematcher@0.7.4':
+    resolution: {integrity: sha512-AWsSZupIBMU/y04Nj24CjohyNVyfItMJPxSzX5OJwedDEIbGLOHkPxCjAeLeiLF2dw4xmQA8psktdi9MaebBQw==}
 
   '@formatjs/intl@4.0.4':
     resolution: {integrity: sha512-Y6S7r+0mevIR75yf7kqNFxi0vAALAeFJCKG0kfHWTb9PB+BEQhagDPdKi+y2LGBeqviVf1+AMqdHY9zN/m4aZg==}
@@ -4162,6 +4165,10 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@formatjs/fast-memoize@3.0.2':
+    dependencies:
+      tslib: 2.8.1
+
   '@formatjs/icu-messageformat-parser@3.0.4':
     dependencies:
       '@formatjs/ecma402-abstract': 3.0.3
@@ -4173,12 +4180,13 @@ snapshots:
       '@formatjs/ecma402-abstract': 3.0.3
       tslib: 2.8.1
 
-  '@formatjs/intl-localematcher@0.6.2':
+  '@formatjs/intl-localematcher@0.7.2':
     dependencies:
       tslib: 2.8.1
 
-  '@formatjs/intl-localematcher@0.7.2':
+  '@formatjs/intl-localematcher@0.7.4':
     dependencies:
+      '@formatjs/fast-memoize': 3.0.2
       tslib: 2.8.1
 
   '@formatjs/intl@4.0.4(typescript@5.9.3)':
