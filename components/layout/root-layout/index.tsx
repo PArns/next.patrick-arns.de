@@ -1,6 +1,4 @@
 import PageBaseConfiguration from "@/configuration";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import "@/app/globals.css";
 import { Metadata } from "next";
@@ -79,8 +77,6 @@ export default async function RootLayout({
     <html suppressHydrationWarning lang={language}>
       <body className="overflow-hidden overscroll-none bg-neutral-200 subpixel-antialiased dark:bg-neutral-900">
         <ThemeProvider attribute="class">{children}</ThemeProvider>
-        <Analytics />
-        <SpeedInsights />
 
         <div dangerouslySetInnerHTML={{ __html: HTML_COMMENT }} />
       </body>
