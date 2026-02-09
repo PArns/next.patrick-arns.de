@@ -21,7 +21,7 @@
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.33.0",
+    "framer-motion": "^12.34.0",
     "i18next": "^25.8.4",
     "i18next-resources-to-backend": "^1.2.1",
     "negotiator": "^1.0.0",
