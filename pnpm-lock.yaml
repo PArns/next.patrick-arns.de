@@ -70,8 +70,8 @@ importers:
         specifier: ^17.0.0
         version: 17.0.0(i18next@25.10.10(typescript@5.9.3))(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
       react-intl:
-        specifier: ^10.1.0
-        version: 10.1.0(@types/react@19.2.7)(react@19.2.4)(typescript@5.9.3)
+        specifier: ^10.1.1
+        version: 10.1.1(@types/react@19.2.7)(react@19.2.4)
       react-photo-album:
         specifier: ^3.5.1
         version: 3.5.1(@types/react@19.2.7)(react@19.2.4)
@@ -467,13 +467,8 @@ packages:
   '@formatjs/intl-localematcher@0.8.2':
     resolution: {integrity: sha512-q05KMYGJLyqFNFtIb8NhWLF5X3aK/k0wYt7dnRFuy6aLQL+vUwQ1cg5cO4qawEiINybeCPXAWlprY2mSBjSXAQ==}
 
-  '@formatjs/intl@4.1.4':
-    resolution: {integrity: sha512-y5aZ5p5zO74mZPdQMe9gq8SR1P6rlPQkaYOVFHyRzWrViif4sRKIQX01GYbKJvaGanupVVX+0WoKJqLVsP+X3Q==}
-    peerDependencies:
-      typescript: ^5.6.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
+  '@formatjs/intl@4.1.5':
+    resolution: {integrity: sha512-ybF/NIB/sIgP2oAq6KdJD6TQgUEJQL7F/ry4d4AbJ6zV0dfkwpQqycnIgpvChM9wRQ6IMr3XEdFevNjMNlC4WA==}
 
   '@headlessui/react@2.2.9':
     resolution: {integrity: sha512-Mb+Un58gwBn0/yWZfyrCh0TJyurtT+dETj7YHleylHk5od3dv2XqETPGWMyQ5/7sYN7oWdyM1u9MvC0OC8UmzQ==}
@@ -2970,15 +2965,11 @@ packages:
       typescript:
         optional: true
 
-  react-intl@10.1.0:
-    resolution: {integrity: sha512-SNF5gKE25E7Kw5vGGOQErXsLcDLYksbOkBCdVynHU+bLfCKCGBZef7tI13WarpSYm3D0Kx9tDBOOIVymaLHuSg==}
+  react-intl@10.1.1:
+    resolution: {integrity: sha512-B4rVLYxYHNE8NgPF6eoNbXQZ9uk2KLN7cCVSz1UaEIVeMp2aCstYTOyN3zNY5K3dF5iReDNiCrPaGA6lNpoZxQ==}
     peerDependencies:
       '@types/react': 19.2.7
       react: '19'
-      typescript: ^5.6.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -4121,14 +4112,12 @@ snapshots:
     dependencies:
       '@formatjs/fast-memoize': 3.1.1
 
-  '@formatjs/intl@4.1.4(typescript@5.9.3)':
+  '@formatjs/intl@4.1.5':
     dependencies:
       '@formatjs/ecma402-abstract': 3.2.0
       '@formatjs/fast-memoize': 3.1.1
       '@formatjs/icu-messageformat-parser': 3.5.3
       intl-messageformat: 11.2.0
-    optionalDependencies:
-      typescript: 5.9.3
 
   '@headlessui/react@2.2.9(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
@@ -6754,16 +6743,14 @@ snapshots:
       react-dom: 19.2.4(react@19.2.4)
       typescript: 5.9.3
 
-  react-intl@10.1.0(@types/react@19.2.7)(react@19.2.4)(typescript@5.9.3):
+  react-intl@10.1.1(@types/react@19.2.7)(react@19.2.4):
     dependencies:
       '@formatjs/ecma402-abstract': 3.2.0
       '@formatjs/icu-messageformat-parser': 3.5.3
-      '@formatjs/intl': 4.1.4(typescript@5.9.3)
+      '@formatjs/intl': 4.1.5
       '@types/react': 19.2.7
       intl-messageformat: 11.2.0
       react: 19.2.4
-    optionalDependencies:
-      typescript: 5.9.3
 
   react-is@16.13.1: {}
 
