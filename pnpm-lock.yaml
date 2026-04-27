@@ -19,8 +19,8 @@ importers:
         specifier: ^17.2.7
         version: 17.2.7
       '@formatjs/intl-localematcher':
-        specifier: ^0.8.3
-        version: 0.8.3
+        specifier: ^0.8.4
+        version: 0.8.4
       '@headlessui/react':
         specifier: ^2.2.10
         version: 2.2.10(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -454,8 +454,8 @@ packages:
   '@formatjs/icu-skeleton-parser@2.1.4':
     resolution: {integrity: sha512-8bSFZbrlvGX11ywMZxtgkPBt5Q8/etyts7j7j+GWpOVK1g43zwMIH3LZxk43HAtEP7L/jtZ+OZaMiFTOiBj9CA==}
 
-  '@formatjs/intl-localematcher@0.8.3':
-    resolution: {integrity: sha512-pHUjWb9NuhnMs8+PxQdzBtZRFJHlGhrURGAbm6Ltwl82BFajeuiIR3jblSa7ia3r62rXe/0YtVpUG3xWr5bFCA==}
+  '@formatjs/intl-localematcher@0.8.4':
+    resolution: {integrity: sha512-J51dAnynnqJdVUEXidHoIWn+qYve+yNQEgmFk9Dyfr3p0okzm+5QhQ+9QmsMz08+BeWTVpc1HadIiLfZmRYbAQ==}
 
   '@formatjs/intl@4.1.6':
     resolution: {integrity: sha512-eQuZCkG7kVBIjMhLhvsRZmYnVbTHBiiM+fNxIbDg7LZ9WXcpWUISuv58baq2dov7vz3qXYtDEgJ9AODZK6idaQ==}
@@ -4039,7 +4039,7 @@ snapshots:
 
   '@formatjs/icu-skeleton-parser@2.1.4': {}
 
-  '@formatjs/intl-localematcher@0.8.3':
+  '@formatjs/intl-localematcher@0.8.4':
     dependencies:
       '@formatjs/fast-memoize': 3.1.2
 
