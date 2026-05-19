@@ -18,7 +18,13 @@ export interface ContentfulImageAssetProps {
   [key: string]: any; // For other props that might be passed
 }
 
-export function getImageSource(asset: any, width: number, height?: number, quality?: number, fit?: "fit" | "pad" | "fill" | "scale" | "crop" | "thumb") {
+export function getImageSource(
+  asset: any,
+  width: number,
+  height?: number,
+  quality?: number,
+  fit?: "fit" | "pad" | "fill" | "scale" | "crop" | "thumb",
+) {
   let assetSrc = asset?.url;
 
   if (!assetSrc) {
@@ -33,7 +39,7 @@ export function getImageSource(asset: any, width: number, height?: number, quali
     ? "https:" + assetSrc
     : assetSrc;
 
-  const fullSource = `${imageSource}?w=${width ?? ""}&h=${height ?? ""}&q=${quality ?? 90}&fit=${fit ?? ""}`;
+  const fullSource = `${imageSource}?w=${width ?? ""}&h=${height ?? ""}&q=${quality ?? 80}&fit=${fit ?? ""}`;
 
   return fullSource;
 }
@@ -60,7 +66,13 @@ export default function ContentfulImageAsset(props: ContentfulImageAssetProps) {
     ...rest
   } = props;
 
-  const imageSource = getImageSource(asset, width ?? maxImageWidth ?? 1980, height ?? 1080, quality, width && height ? "fill" : undefined);
+  const imageSource = getImageSource(
+    asset,
+    width ?? maxImageWidth ?? 1980,
+    height ?? 1080,
+    quality,
+    width && height ? "fill" : undefined,
+  );
   if (!Boolean(imageSource) || imageSource === undefined) return <></>;
 
   if (lightbox) {

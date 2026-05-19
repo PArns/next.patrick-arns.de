@@ -33,21 +33,21 @@ export function proxy(request: NextRequest) {
       }
       return source === pathname;
     });
-  
+
     if (redirect) {
       const locale = getLocale(request, config);
       let [source, destination] = redirect;
-  
+
       if (source.endsWith("/*")) {
         const base = source.slice(0, -2);
         const wildcard = pathname.slice(base.length); // z.B. /blog/foo → /foo
         destination = destination.replace(/\*/g, wildcard.replace(/^\//, ""));
       }
-  
+
       if (destination.includes("{lng}")) {
         destination = destination.replace("{lng}", locale);
       }
-  
+
       return NextResponse.redirect(new URL(destination, request.url), 301);
     }
   }

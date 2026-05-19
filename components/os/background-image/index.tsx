@@ -14,6 +14,7 @@ interface Props {
 export default function BackgroundImageComponent({ backgroundImages }: Props) {
   if (!backgroundImages.length) return <div className="fixed inset-0 -z-50" />;
 
+  // eslint-disable-next-line react-hooks/purity
   const idx = Math.floor(Math.random() * backgroundImages.length);
   const background = backgroundImages[idx];
 
@@ -29,6 +30,7 @@ export default function BackgroundImageComponent({ backgroundImages }: Props) {
         asset={background.image}
         fill
         sizes="100vw"
+        priority={true}
         alt={background.alt || ""}
         style={style}
       />

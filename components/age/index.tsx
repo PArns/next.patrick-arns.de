@@ -24,13 +24,22 @@ export default function Age({
       age--;
     }
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setYearsOld(age);
 
     if (single && plural) {
       if (age == 1) setPluralize(single);
       else setPluralize(plural);
     }
-  }, [yearsOld, setYearsOld, pluralize, setPluralize, birthday, single, plural]);
+  }, [
+    yearsOld,
+    setYearsOld,
+    pluralize,
+    setPluralize,
+    birthday,
+    single,
+    plural,
+  ]);
 
   return (
     <>

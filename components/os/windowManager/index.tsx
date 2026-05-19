@@ -138,6 +138,7 @@ export default function WindowManager() {
   const config = PageBaseConfiguration();
 
   const localeFromRoute = getLocaleFromRoute(pathName);
+  // eslint-disable-next-line react-hooks/globals
   currentLocale = localeFromRoute ?? config.defaultLocale;
 
   const setTitleAndRouteFromActiveWindow = (
@@ -163,6 +164,55 @@ export default function WindowManager() {
     }
 
     activeWindowChangedEvent.emitOnActiveWindowChangedEvent(activeWindow);
+  };
+
+  const updateWindowDetails = (windowDetails: WindowDetails) => {
+    const existingWindowIndex = registeredWindows.findIndex(
+      (window) => window.id === windowDetails.id,
+    );
+
+    let changesMade = false;
+
+    if (existingWindowIndex !== -1) {
+      const existingWindow = registeredWindows[existingWindowIndex];
+
+      if (JSON.stringify(existingWindow) !== JSON.stringify(windowDetails)) {
+        // If a window with the same id exists and has changed, update its properties
+        registeredWindows[existingWindowIndex] = {
+          ...registeredWindows[existingWindowIndex],
+          ...windowDetails,
+        };
+
+        // Fire the updateWindowDetailsEvent
+        desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
+          windowDetails,
+        );
+
+        changesMade = true;
+      }
+    } else {
+      // If no window with the same id exists, add the new window to the array
+      registeredWindows.push(windowDetails);
+      changesMade = true;
+    }
+
+    // Trigger the registeredWindowsChangedEvent with the updated registeredWindows array
+    // only if changes were made
+    if (changesMade) {
+      registeredWindowsChangedEvent.emitOnRegisteredWindowsChangedEvent(
+        registeredWindows,
+      );
+
+      if (!windowDetails.visible || !windowDetails.active) {
+        const activeWindow = getActiveWindow();
+
+        if (activeWindow) initialActiveWindowSet = true;
+
+        if (initialActiveWindowSet && !activeWindow) {
+          setTitleAndRouteFromActiveWindow(null);
+        }
+      }
+    }
   };
 
   // ----------------- WindowManager Events ----------------
@@ -288,55 +338,6 @@ export default function WindowManager() {
   events.windowTitleChanged.useOnWindowTitleChangedListener((changedWindow) => {
     updateWindowDetails(changedWindow);
   });
-
-  const updateWindowDetails = (windowDetails: WindowDetails) => {
-    const existingWindowIndex = registeredWindows.findIndex(
-      (window) => window.id === windowDetails.id,
-    );
-
-    let changesMade = false;
-
-    if (existingWindowIndex !== -1) {
-      const existingWindow = registeredWindows[existingWindowIndex];
-
-      if (JSON.stringify(existingWindow) !== JSON.stringify(windowDetails)) {
-        // If a window with the same id exists and has changed, update its properties
-        registeredWindows[existingWindowIndex] = {
-          ...registeredWindows[existingWindowIndex],
-          ...windowDetails,
-        };
-
-        // Fire the updateWindowDetailsEvent
-        desktopWindowEvents.updateWindowDetailsEvent.emitOnUpdateWindowDetails(
-          windowDetails,
-        );
-
-        changesMade = true;
-      }
-    } else {
-      // If no window with the same id exists, add the new window to the array
-      registeredWindows.push(windowDetails);
-      changesMade = true;
-    }
-
-    // Trigger the registeredWindowsChangedEvent with the updated registeredWindows array
-    // only if changes were made
-    if (changesMade) {
-      registeredWindowsChangedEvent.emitOnRegisteredWindowsChangedEvent(
-        registeredWindows,
-      );
-
-      if (!windowDetails.visible || !windowDetails.active) {
-        const activeWindow = getActiveWindow();
-
-        if (activeWindow) initialActiveWindowSet = true;
-
-        if (initialActiveWindowSet && !activeWindow) {
-          setTitleAndRouteFromActiveWindow(null);
-        }
-      }
-    }
-  };
 
   return null;
 }

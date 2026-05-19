@@ -75,7 +75,7 @@ export default async function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang={language}>
-      <body className="overflow-hidden overscroll-none bg-neutral-200 subpixel-antialiased dark:bg-neutral-900">
+      <body className="overflow-hidden overscroll-none bg-neutral-200 text-neutral-900 subpixel-antialiased dark:bg-neutral-900 dark:text-neutral-100">
         <ThemeProvider attribute="class">{children}</ThemeProvider>
 
         <div dangerouslySetInnerHTML={{ __html: HTML_COMMENT }} />

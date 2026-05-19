@@ -168,15 +168,33 @@ export default function DesktopWindow({
       }, 150);
     };
 
-    scrollContainer.addEventListener('scroll', handleScroll, { passive: true });
+    scrollContainer.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
-      scrollContainer.removeEventListener('scroll', handleScroll);
+      scrollContainer.removeEventListener("scroll", handleScroll);
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
     };
   }, []);
+
+  const calculateMaxHeight = () => {
+    const parentSize = rndRef.current?.getParentSize();
+    if (
+      (!Boolean(height) || height === "auto") &&
+      childrenRef.current &&
+      parentSize
+    ) {
+      const childHeight =
+        childrenRef.current?.getBoundingClientRect().height ?? 0;
+
+      if (childHeight == 0 || childHeight >= parentSize.height - 32) {
+        return;
+      }
+
+      setMaxHeight(childHeight + 32);
+    }
+  };
 
   useEffect(() => {
     const setSize = function (
@@ -290,24 +308,6 @@ export default function DesktopWindow({
     calculateMaxHeight();
   };
 
-  const calculateMaxHeight = () => {
-    const parentSize = rndRef.current?.getParentSize();
-    if (
-      (!Boolean(height) || height === "auto") &&
-      childrenRef.current &&
-      parentSize
-    ) {
-      const childHeight =
-        childrenRef.current?.getBoundingClientRect().height ?? 0;
-
-      if (childHeight == 0 || childHeight >= parentSize.height - 32) {
-        return;
-      }
-
-      setMaxHeight(childHeight + 32);
-    }
-  };
-
   const windowClasses = clsx(
     "rounded-md shadow-md border-2 relative transition-colors",
     {
@@ -335,7 +335,7 @@ export default function DesktopWindow({
           minWidth={400}
           maxWidth={maxWidth}
           maxHeight={maxHeight}
-          style={{ zIndex: zIndexState, contain: 'layout style paint' }}
+          style={{ zIndex: zIndexState, contain: "layout style paint" }}
           onMouseDown={() => activateWindow()}
           onResize={() => resizeWindow()}
           ref={rndRef}
@@ -343,8 +343,8 @@ export default function DesktopWindow({
         >
           <div
             className={clsx(
-              "absolute inset-0 -z-10 rounded-md transform-gpu will-change-transform transition-[backdrop-filter] duration-150",
-              !isScrolling && "backdrop-blur-md"
+              "absolute inset-0 -z-10 transform-gpu rounded-md transition-[backdrop-filter] duration-150 will-change-transform",
+              !isScrolling && "backdrop-blur-md",
             )}
           ></div>
           <div className="flex h-full cursor-default flex-col">

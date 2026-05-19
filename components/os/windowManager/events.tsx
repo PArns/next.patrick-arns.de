@@ -17,7 +17,7 @@ export interface WindowDetails {
 export type RegisteredWindows = Array<WindowDetails>;
 
 const updateWindowDetailsEvent = createEvent(
-  "onUpdateWindowDetails"
+  "onUpdateWindowDetails",
 )<WindowDetails>();
 
 const desktopWindowEvents = {
@@ -26,12 +26,15 @@ const desktopWindowEvents = {
 
 export { desktopWindowEvents };
 
-const windowRegisteredEvent = createEvent("onWindowRegistered")<WindowDetails>();
+const windowRegisteredEvent =
+  createEvent("onWindowRegistered")<WindowDetails>();
 const windowDestroyedEvent = createEvent("onWindowDestroyed")<WindowDetails>();
 const windowActivatedEvent = createEvent("onWindowActivated")<WindowDetails>();
 const windowOpenedEvent = createEvent("onWindowOpened")<WindowDetails>();
 const windowRouteChanged = createEvent("onWindowRouteChanged")<WindowDetails>();
-const windowStartRouteChanged = createEvent("onWindowStartRouteChanged")<WindowDetails>();
+const windowStartRouteChanged = createEvent(
+  "onWindowStartRouteChanged",
+)<WindowDetails>();
 const windowTitleChanged = createEvent("onWindowTitleChanged")<WindowDetails>();
 
 const events = {

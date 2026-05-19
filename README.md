@@ -41,12 +41,14 @@ A modern, responsive personal website showcasing the work and projects of Patric
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/PArns/next.patrick-arns.de.git
 cd next.patrick-arns.de
 ```
 
 2. Install dependencies:
+
 ```bash
 pnpm install
 # or
@@ -54,12 +56,14 @@ npm install
 ```
 
 3. Set up environment variables:
+
 ```bash
 cp .env.local.example .env.local
 # Edit .env.local with your configuration
 ```
 
 4. Run the development server:
+
 ```bash
 pnpm dev
 # or

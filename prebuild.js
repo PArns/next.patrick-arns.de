@@ -1,20 +1,20 @@
-const fs = require('fs');
-const path = require('path');
-const https = require('https');
+const fs = require("fs");
+const path = require("path");
+const https = require("https");
 
-const owner = 'PArns';
-const repo = 'next.patrick-arns.de';
+const owner = "PArns";
+const repo = "next.patrick-arns.de";
 
 function getCommitCountFromGitHub(owner, repo) {
   return new Promise((resolve, reject) => {
     const options = {
-      hostname: 'api.github.com',
+      hostname: "api.github.com",
       path: `/repos/${owner}/${repo}/commits?per_page=1`,
-      method: 'GET',
+      method: "GET",
       headers: {
-        'User-Agent': 'BuildInfoScript',
-        'Accept': 'application/vnd.github+json'
-      }
+        "User-Agent": "BuildInfoScript",
+        Accept: "application/vnd.github+json",
+      },
     };
 
     const req = https.get(options, (res) => {
@@ -34,8 +34,8 @@ function getCommitCountFromGitHub(owner, repo) {
       resolve(count);
     });
 
-    req.on('error', (err) => {
-      console.error('Fehler beim Abrufen von Commits:', err);
+    req.on("error", (err) => {
+      console.error("Fehler beim Abrufen von Commits:", err);
       reject(err);
     });
   });
@@ -45,8 +45,8 @@ async function generateBuildInfo() {
   try {
     const commitCount = await getCommitCountFromGitHub(owner, repo);
 
-    const packageJsonPath = path.resolve(process.cwd(), 'package.json');
-    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+    const packageJsonPath = path.resolve(process.cwd(), "package.json");
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
     const version = packageJson.version;
 
     const buildDate = new Date().toISOString();
@@ -55,11 +55,13 @@ async function generateBuildInfo() {
       version,
       commitCount,
       buildDate,
-      buildNumber: `${version}.${commitCount}`
+      buildNumber: `${version}.${commitCount}`,
     };
 
-    fs.writeFileSync('build-info.json', JSON.stringify(buildInfo, null, 2));
-    console.log(`✅ Build info generated: ${JSON.stringify(buildInfo, null, 2)}`);
+    fs.writeFileSync("build-info.json", JSON.stringify(buildInfo, null, 2));
+    console.log(
+      `✅ Build info generated: ${JSON.stringify(buildInfo, null, 2)}`,
+    );
   } catch (err) {
     process.exit(1);
   }

@@ -8,6 +8,7 @@ const nextConfig = {
     ],
     minimumCacheTTL: 2592000,
     formats: ["image/avif", "image/webp"],
+    qualities: [75, 80],
   },
 };
 

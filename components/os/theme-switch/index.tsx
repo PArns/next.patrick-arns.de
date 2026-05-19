@@ -71,15 +71,13 @@ export function ThemeSwitch() {
   };
 
   const { theme, setTheme } = useTheme();
-  const [themeIndex, setThemeIndex] = useState<number>(themeToIndex(theme));
-
-  useEffect(() => {
-    setTheme(indexToTheme(themeIndex));
-  }, [themeIndex, setTheme]);
 
   return (
     <div className="w-full">
-      <TabGroup selectedIndex={themeIndex} onChange={setThemeIndex}>
+      <TabGroup
+        selectedIndex={themeToIndex(theme)}
+        onChange={(index) => setTheme(indexToTheme(index))}
+      >
         <TabList className="flex space-x-1 rounded-lg p-1">
           <ThemeEntry>
             <ComputerDesktopIcon className="h-5 w-5" />
@@ -101,6 +99,7 @@ export default function ThemeSwitcher() {
 
   // Prevent hydration mismatch by only rendering after mount
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

@@ -14,7 +14,7 @@ export async function GetBackgroundImages() {
             }
           }
         }
-      }`
+      }`,
   );
 
   const collection = data.data.backgroundImagesCollection;

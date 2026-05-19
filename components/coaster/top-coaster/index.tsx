@@ -72,10 +72,7 @@ export default async function TopCoasterEntry({
               {getCount(attractionCounts, "totalRides").toString()} {t("rides")}
             </div>
             <div className="ml-auto">
-              <QueueTime
-                rideId={coaster.parkFanRideId}
-                locale={locale}
-              />
+              <QueueTime rideId={coaster.parkFanRideId} locale={locale} />
             </div>
           </div>
         </div>
