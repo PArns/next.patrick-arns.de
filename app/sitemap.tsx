@@ -8,13 +8,7 @@ const createSitemapEntry = (
   path: string,
   lastModified: Date,
   changeFrequency:
-    | "monthly"
-    | "weekly"
-    | "always"
-    | "hourly"
-    | "daily"
-    | "yearly"
-    | "never",
+    "monthly" | "weekly" | "always" | "hourly" | "daily" | "yearly" | "never",
   priority: number,
   alternates: { [key: string]: string },
 ) => ({

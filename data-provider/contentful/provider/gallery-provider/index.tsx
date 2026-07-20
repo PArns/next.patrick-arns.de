@@ -142,7 +142,9 @@ export async function GetAllGallerySlugs(): Promise<GallerySlug[]> {
     }`;
 
   const data = await fetchGraphQL(query);
-  const collection = data.data.imageGalleryCollection;
+  const collection = data?.data?.imageGalleryCollection;
+
+  if (!collection?.items) return [];
 
   const posts: GallerySlug[] = collection.items.map((postEntry: any) => {
     return {

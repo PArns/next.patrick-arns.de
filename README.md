@@ -1,8 +1,8 @@
 # arns.dev - Personal Website of Patrick Arns
 
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=flat-square&logo=vercel)](https://vercel.com)
 
 > 🌐 **Live Website**: [arns.dev](https://arns.dev)
@@ -14,7 +14,7 @@ A modern, responsive personal website showcasing the work and projects of Patric
 - 🌍 **Multi-language Support** - Available in German and English
 - 🎨 **Modern Design** - Clean, professional interface with smooth animations
 - 📱 **Fully Responsive** - Optimized for all devices and screen sizes
-- ⚡ **High Performance** - Built with Next.js 15 for optimal speed
+- ⚡ **High Performance** - Built with Next.js 16 for optimal speed
 - 🔍 **SEO Optimized** - Enhanced search engine visibility
 - ♿ **Accessible** - WCAG compliant for inclusive user experience
 - 🎢 **Interactive Elements** - Engaging desktop-style interface
@@ -22,7 +22,7 @@ A modern, responsive personal website showcasing the work and projects of Patric
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
+- **Framework**: [Next.js 16](https://nextjs.org/) with App Router
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **UI Components**: [Headless UI](https://headlessui.com/)
