@@ -141,8 +141,16 @@ export async function GetAllGallerySlugs(): Promise<GallerySlug[]> {
         }
     }`;
 
-  const data = await fetchGraphQL(query);
-  const collection = data.data.imageGalleryCollection;
+  let data;
+  try {
+    data = await fetchGraphQL(query);
+  } catch (error) {
+    console.error("Failed to fetch gallery slugs:", error);
+    return [];
+  }
+  const collection = data?.data?.imageGalleryCollection;
+
+  if (!collection?.items) return [];
 
   const posts: GallerySlug[] = collection.items.map((postEntry: any) => {
     return {

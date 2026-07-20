@@ -270,8 +270,16 @@ export async function GetAllBlogPostSlugs(): Promise<BlogPostSlug[]> {
         }
     }`;
 
-  const data = await fetchGraphQL(query);
-  const collection = data.data.blogPostCollection;
+  let data;
+  try {
+    data = await fetchGraphQL(query);
+  } catch (error) {
+    console.error("Failed to fetch blog post slugs:", error);
+    return [];
+  }
+  const collection = data?.data?.blogPostCollection;
+
+  if (!collection?.items) return [];
 
   const posts: BlogPostSlug[] = collection.items.map((postEntry: any) => {
     return {
