@@ -141,7 +141,13 @@ export async function GetAllGallerySlugs(): Promise<GallerySlug[]> {
         }
     }`;
 
-  const data = await fetchGraphQL(query);
+  let data;
+  try {
+    data = await fetchGraphQL(query);
+  } catch (error) {
+    console.error("Failed to fetch gallery slugs:", error);
+    return [];
+  }
   const collection = data?.data?.imageGalleryCollection;
 
   if (!collection?.items) return [];

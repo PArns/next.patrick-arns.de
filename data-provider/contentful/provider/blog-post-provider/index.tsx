@@ -270,7 +270,13 @@ export async function GetAllBlogPostSlugs(): Promise<BlogPostSlug[]> {
         }
     }`;
 
-  const data = await fetchGraphQL(query);
+  let data;
+  try {
+    data = await fetchGraphQL(query);
+  } catch (error) {
+    console.error("Failed to fetch blog post slugs:", error);
+    return [];
+  }
   const collection = data?.data?.blogPostCollection;
 
   if (!collection?.items) return [];
