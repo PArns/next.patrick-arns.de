@@ -9,6 +9,7 @@ export default function PoweredByCoasterCloud() {
         className="absolute -right-2 -bottom-2 flex w-full place-content-end pt-2 text-sm text-neutral-900 dark:text-neutral-300"
         href="https://coaster.cloud"
         target="_blank"
+        rel="noopener noreferrer"
         title="Powered by coaster.cloud"
       >
         <div className="pr-0.5">Powered by</div>

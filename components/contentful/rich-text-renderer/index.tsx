@@ -74,7 +74,12 @@ function renderOptions(links: any) {
         const uri = node.data.uri;
         const content = node.content[0];
         return (
-          <Link href={uri} target="_blank" className="external">
+          <Link
+            href={uri}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="external"
+          >
             {content.value}
           </Link>
         );
