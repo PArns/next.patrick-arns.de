@@ -142,11 +142,17 @@ export default async function Coaster(props: {
                 href="https://coaster.cloud"
                 className="external"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Coaster.Cloud
               </a>{" "}
               getrackt. Seit August 2024 bin ich zudem Mitglied des{" "}
-              <a href="https://fkfev.de/" className="external" target="_blank">
+              <a
+                href="https://fkfev.de/"
+                className="external"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Freundeskreis Kirmes und Freizeitparks e.V.
               </a>
             </div>
@@ -212,11 +218,17 @@ export default async function Coaster(props: {
                 href="https://coaster.cloud"
                 className="external"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Coaster.Cloud
               </a>
               . Since August 2024, I&apos;m also a member of the{" "}
-              <a href="https://fkfev.de/" className="external" target="_blank">
+              <a
+                href="https://fkfev.de/"
+                className="external"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Freundeskreis Kirmes und Freizeitparks e.V.
               </a>
             </div>
@@ -421,6 +433,7 @@ export default async function Coaster(props: {
                 <a
                   href="https://coaster.cloud"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   Coaster.Cloud
@@ -447,6 +460,7 @@ export default async function Coaster(props: {
                 <a
                   href="https://coaster.cloud"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   Coaster.Cloud
@@ -586,6 +600,7 @@ export default async function Coaster(props: {
         <a
           href="https://fkfev.de"
           target="_blank"
+          rel="noopener noreferrer"
           className="flex w-max flex-row grayscale hover:grayscale-0"
         >
           <div>

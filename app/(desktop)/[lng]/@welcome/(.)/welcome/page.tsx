@@ -63,6 +63,7 @@ export default async function Welcome(props: {
                   href="https://github.com/PArns/next.patrick-arns.de"
                   className="external"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   GitHub zu finden
                 </a>
@@ -108,6 +109,7 @@ export default async function Welcome(props: {
                   href="https://github.com/PArns/next.patrick-arns.de"
                   className="external"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   GitHub
                 </a>

@@ -83,7 +83,12 @@ export default async function AboutMe(props: {
                 und seit{" "}
                 <Age birthday="2002-11-01" single="Jahre" plural="Jahren" /> als
                 Entwickler und Teamlead für{" "}
-                <a href="https://kape.com" target="_blank" className="external">
+                <a
+                  href="https://kape.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="external"
+                >
                   Kape Technologies
                 </a>{" "}
                 tätig.
@@ -98,6 +103,7 @@ export default async function AboutMe(props: {
                 <a
                   href="https://hundefreunde-herzogenrath.de"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   Hundefreunde Herzogenrath e.V.
@@ -120,6 +126,7 @@ export default async function AboutMe(props: {
                 <a
                   href="https://www.linkedin.com/in/patrick-arns"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   LinkedIn-Profil
@@ -133,7 +140,12 @@ export default async function AboutMe(props: {
                 Now well over{" "}
                 <Age birthday="1982-04-01" single="year" plural="years" /> old
                 and working as a developer and team lead for{" "}
-                <a href="https://kape.com" target="_blank" className="external">
+                <a
+                  href="https://kape.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="external"
+                >
                   Kape Technologies
                 </a>{" "}
                 since <Age birthday="2002-11-01" single="year" plural="years" />
@@ -148,6 +160,7 @@ export default async function AboutMe(props: {
                 <a
                   href="https://hundefreunde-herzogenrath.de"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   Hundefreunde Herzogenrath e.V.
@@ -170,6 +183,7 @@ export default async function AboutMe(props: {
                 <a
                   href="https://www.linkedin.com/in/patrick-arns"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   LinkedIn profile
@@ -192,6 +206,7 @@ export default async function AboutMe(props: {
                 <a
                   href="https://cyberghostvpn.com"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   CyberGhost VPN
@@ -208,13 +223,19 @@ export default async function AboutMe(props: {
                 zu einem der größten VPN-Anbieter weltweit gewachsen. Mit 8
                 Standorten weltweit und über 1.200 Mitarbeitern gehört
                 CyberGhost heute zur&nbsp;
-                <a href="https://kape.com" target="_blank" className="external">
+                <a
+                  href="https://kape.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="external"
+                >
                   Kape Gruppe
                 </a>
                 , zu der auch die VPN-Anbieter&nbsp;
                 <a
                   href="https://privateinternetaccess.com"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   Private Internet Access
@@ -223,6 +244,7 @@ export default async function AboutMe(props: {
                 <a
                   href="https://expressvpn.com"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   ExpressVPN
@@ -255,6 +277,7 @@ export default async function AboutMe(props: {
                 <a
                   href="https://cyberghostvpn.com"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   CyberGhost VPN
@@ -270,13 +293,19 @@ export default async function AboutMe(props: {
                 grown into one of the largest VPN providers in the world. With 8
                 locations worldwide and over 1,200 employees, CyberGhost is now
                 part of the&nbsp;
-                <a href="https://kape.com" target="_blank" className="external">
+                <a
+                  href="https://kape.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="external"
+                >
                   Kape Group
                 </a>
                 , which also includes the VPN providers&nbsp;
                 <a
                   href="https://privateinternetaccess.com"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   Private Internet Access
@@ -285,6 +314,7 @@ export default async function AboutMe(props: {
                 <a
                   href="https://expressvpn.com"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="external"
                 >
                   ExpressVPN
