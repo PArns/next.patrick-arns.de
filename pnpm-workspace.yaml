@@ -1,6 +1,6 @@
 overrides:
   "@types/react": "19.2.18"
-  "@types/react-dom": "19.2.4"
+  "@types/react-dom": "19.2.5"
   # Security overrides for vulnerable transitive dependencies (see pnpm audit)
   "form-data@>=4.0.0 <4.0.6": ">=4.0.6"
   "undici@<6.27.0": ">=6.27.0 <7"
