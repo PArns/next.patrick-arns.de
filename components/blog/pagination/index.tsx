@@ -37,7 +37,7 @@ function PageLink({
   return (
     <Link
       href={getLinkForPage(baseUrl, paginationSlug, pageNumber)}
-      aria-current="page"
+      aria-current={current ? "page" : undefined}
       className={className}
     >
       {pageNumber}
@@ -74,7 +74,7 @@ export default function Pagination({
 
   const pageLinks = [];
 
-  for (var i = 1; i <= pageCount; i++) {
+  for (let i = 1; i <= pageCount; i++) {
     pageLinks.push(
       <PageLink
         key={`page-${i}`}
