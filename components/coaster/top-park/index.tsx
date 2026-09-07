@@ -9,15 +9,9 @@ function getParkVisitsByParkName(
   visits: ParkVisit[],
   parkToFind: string,
 ): ParkVisit | null {
-  let res: ParkVisit | null = null;
-
   if (!visits) return null;
 
-  visits.forEach((visit) => {
-    if (visit.park.name === parkToFind) res = visit;
-  });
-
-  return res;
+  return visits.find((visit) => visit.park.name === parkToFind) ?? null;
 }
 
 export default async function TopParkEntry({

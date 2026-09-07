@@ -32,11 +32,17 @@ export default function AboutAuthor({ lng }: { lng: string }) {
               href="https://cyberghostvpn.com"
               className="external"
               target="_blank"
+              rel="noopener noreferrer"
             >
               CyberGhost
             </a>{" "}
             im Jahr 2003 und arbeitet für die{" "}
-            <a href="https://kape.com" className="external" target="_blank">
+            <a
+              href="https://kape.com"
+              className="external"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Kape PLC
             </a>
             , zu der{" "}
@@ -44,6 +50,7 @@ export default function AboutAuthor({ lng }: { lng: string }) {
               href="https://cyberghostvpn.com"
               className="external"
               target="_blank"
+              rel="noopener noreferrer"
             >
               CyberGhost
             </a>{" "}
@@ -55,11 +62,17 @@ export default function AboutAuthor({ lng }: { lng: string }) {
               href="https://cyberghostvpn.com"
               className="external"
               target="_blank"
+              rel="noopener noreferrer"
             >
               CyberGhost
             </a>{" "}
             in 2003 and works for{" "}
-            <a href="https://kape.com" className="external" target="_blank">
+            <a
+              href="https://kape.com"
+              className="external"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Kape PLC
             </a>
             , which{" "}
@@ -67,6 +80,7 @@ export default function AboutAuthor({ lng }: { lng: string }) {
               href="https://cyberghostvpn.com"
               className="external"
               target="_blank"
+              rel="noopener noreferrer"
             >
               CyberGhost
             </a>{" "}
