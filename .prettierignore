@@ -1,0 +1,14 @@
+# Dependencies
+node_modules
+
+# Lockfiles & workspace manifests (managed by pnpm, not Prettier)
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
+# Build output & generated files
+.next
+out
+build
+build-info.json
+next-env.d.ts
+*.tsbuildinfo
