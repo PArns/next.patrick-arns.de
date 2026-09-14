@@ -1,11 +1,11 @@
 overrides:
-  "@types/react": "19.2.18"
-  "@types/react-dom": "19.2.7"
+  "@types/react": "19.3.0"
+  "@types/react-dom": "19.3.0"
   # Security overrides for vulnerable transitive dependencies (see pnpm audit)
   "form-data@>=4.0.0 <4.0.6": ">=4.0.6"
   "undici@<6.27.0": ">=6.27.0 <7"
   "ws@>=7.0.0 <7.5.11": ">=7.5.11 <8"
-  "js-yaml@<4.1.2": ">=4.1.2"
+  "js-yaml@<4.3.2": ">=4.3.2 <5"
   "postcss@<8.5.10": ">=8.5.10"
   "@babel/core@<=7.29.0": ">=7.29.1"
   "brace-expansion@<1.1.18": ">=1.1.18 <2"
