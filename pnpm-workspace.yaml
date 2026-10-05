@@ -3,13 +3,13 @@ overrides:
   "@types/react-dom": "19.3.0"
   # Security overrides for vulnerable transitive dependencies (see pnpm audit)
   "form-data@>=4.0.0 <4.0.6": ">=4.0.6"
-  "undici@<6.27.0": ">=6.27.0 <7"
+  "undici@<6.28.1": ">=6.28.1 <7"
   "ws@>=7.0.0 <7.5.11": ">=7.5.11 <8"
   "js-yaml@<4.3.2": ">=4.3.2 <5"
   "postcss@<8.5.10": ">=8.5.10"
   "@babel/core@<=7.29.0": ">=7.29.1"
-  "brace-expansion@<1.1.18": ">=1.1.18 <2"
-  "brace-expansion@>=4.0.0 <5.0.9": ">=5.0.9"
+  "brace-expansion@<1.1.21": ">=1.1.21 <2"
+  "brace-expansion@>=4.0.0 <5.0.12": ">=5.0.12"
   "nanoid@<3.3.17": ">=3.3.17 <4"
   "sharp@<0.35.0": ">=0.35.0 <0.36"
 
