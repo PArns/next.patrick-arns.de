@@ -61,29 +61,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const galleryPosts = await GetAllGallerySlugs();
   const galleryPostEntries = createGalleryPostEntries(baseUrl, galleryPosts);
 
-  const pages = [
-    createSitemapEntry(baseUrl, "", new Date(), "weekly", 0.5, {}),
-    createSitemapEntry(baseUrl, "blog", new Date(), "weekly", 1, {
-      de: `${baseUrl}de/blog`,
-      en: `${baseUrl}en/blog`,
-    }),
-    createSitemapEntry(baseUrl, "welcome", new Date(), "weekly", 0.5, {
-      de: `${baseUrl}de/welcome`,
-      en: `${baseUrl}en/welcome`,
-    }),
-    createSitemapEntry(baseUrl, "me", new Date(), "weekly", 0.5, {
-      de: `${baseUrl}de/me`,
-      en: `${baseUrl}en/me`,
-    }),
-    createSitemapEntry(baseUrl, "pictures", new Date(), "weekly", 0.5, {
-      de: `${baseUrl}de/pictures`,
-      en: `${baseUrl}en/pictures`,
-    }),
-    createSitemapEntry(baseUrl, "coaster", new Date(), "weekly", 0.5, {
-      de: `${baseUrl}de/coaster`,
-      en: `${baseUrl}en/coaster`,
-    }),
-  ];
+  // Unprefixed routes only redirect, so the sitemap lists the localized URLs.
+  const pages = ["blog", "welcome", "me", "pictures", "coaster"].map((route) =>
+    createSitemapEntry(
+      baseUrl,
+      `en/${route}`,
+      new Date(),
+      "weekly",
+      route === "blog" ? 1 : 0.5,
+      {
+        de: `${baseUrl}de/${route}`,
+        en: `${baseUrl}en/${route}`,
+      },
+    ),
+  );
 
   return pages.concat(blogPostEntries, galleryPostEntries);
 }

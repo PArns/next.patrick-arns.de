@@ -15,7 +15,7 @@ export default async function getMetadata(
   });
 
   const config = PageBaseConfiguration();
-  const alternates = getPageAlternates(route);
+  const alternates = getPageAlternates(route, params.lng);
   return {
     title: t("title"),
     description: t("subTitle"),
