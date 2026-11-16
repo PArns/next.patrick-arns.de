@@ -23,7 +23,7 @@ export async function generateMetadata(props: {
 
   const alternates: AlternateURLs = {
     languages: {},
-    canonical: `/pictures/gallery/${params.slug}`,
+    canonical: `/${params.lng}/pictures/gallery/${params.slug}`,
   };
 
   if (gallery.alternativeSlugs && alternates.languages) {

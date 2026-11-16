@@ -9,18 +9,18 @@ const isValidLocale = (locale: string): boolean => {
   );
 };
 
-const getPageAlternates = (baseRoute: string): AlternateURLs => {
+const getPageAlternates = (baseRoute: string, lng: string): AlternateURLs => {
   const config = PageBaseConfiguration();
 
+  // Self-referencing canonical: the unprefixed route only 301-redirects, and
+  // hreflang annotations are ignored when the canonical points elsewhere.
   const alternates: AlternateURLs = {
     languages: {},
-    canonical: `/${baseRoute}`,
+    canonical: `/${lng}/${baseRoute}`,
   };
 
   if (alternates.languages) {
-    for (const localeIndex in config.supportedLocales) {
-      const locale = config.supportedLocales[localeIndex];
-
+    for (const locale of config.supportedLocales) {
       if (locale == "de" || locale == "en")
         alternates.languages[locale] = `/${locale}/${baseRoute}`;
       else {

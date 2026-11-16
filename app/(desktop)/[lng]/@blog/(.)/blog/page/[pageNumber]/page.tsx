@@ -37,7 +37,7 @@ export async function generateMetadata(props: {
   return {
     title: "Blog",
     description: t("subTitle"),
-    alternates: getPageAlternates(baseRoute),
+    alternates: getPageAlternates(baseRoute, params.lng),
     openGraph: {
       type: "website",
       description: t("subTitle"),
